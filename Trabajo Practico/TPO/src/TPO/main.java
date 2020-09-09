@@ -1,6 +1,6 @@
 package TPO;
 
-public class mian {
+public class main {
     public static void main(String[] args) {
 
     }
