@@ -4,15 +4,15 @@ import java.text.DateFormat;
 
 public class Socio {
 
-    String Cuit;
+    String cuit;
     String tipoSocio;
-    String Estado;
+    String estado;
     String razonSocial;
     DateFormat fechaInicioActividad;
     String actividadPrincipal;
-    String Direccion;
-    String Telefono;
-    String Email;
+    String direccion;
+    String telefono;
+    String correoElectronico;
     int Accion;
 
     public Socio ( String Cuit, String tipoSocio, String Estado, String razonSocial, DateFormat fechaInicioActividad, String actividadPrincipal, String Direccion, String Telefono, String Email, int Accion){
