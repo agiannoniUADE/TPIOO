@@ -1,7 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d022bf78-7bad-45b9-888b-ce0c896205f7" name="Default Changelist" comment="" />
+    <list default="true" id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson2_8_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/gson2_8_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/gson2_8_51.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/IOOClaseSwing.iml" beforeDir="false" afterPath="$PROJECT_DIR$/IOOClaseSwing.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/ColorItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/ColorItem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/UsuarioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/modelo/UsuarioDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/GenericDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/GenericDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/MiListaModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/MiListaModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/MiTableModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/utils/MiTableModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmDemoCombo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmDemoCombo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmDemoCombo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmDemoCombo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmGridDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmGridDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmGridDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmGridDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaDos$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaDos$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaDos.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaDos.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaUno.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmInternalSolapaUno.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmListaDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmTabsDemo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmTabsDemo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Accion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Accionista.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Aporte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Certificado.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Contragarantia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Cuota.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DescripcionOperacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Desembolso.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/DocumentoRegistro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/EstadoOperacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/FondoDeRiesgo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Garantia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/LineaDeCredito.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Operacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/OperacionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Recupero.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Riesgo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SGR.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Socio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SocioController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SocioParticipe.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SocioProtector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/SubtipoOperacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/TipoDocumentoRegistro.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/TipoOperacion.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/TipoOperacionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/TipoSocio.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tipo_1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tipo_2.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Tipo_3.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/ValidatorVO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/FrmDemoCombo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/FrmDemoCombo.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,80 +74,40 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/vista/FrmDemoCombo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="44" selection-start-line="44" selection-end-line="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/GenericDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+            <state relative-caret-position="75">
+              <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Model/Tipo 1.java">
+        <entry file="file://$PROJECT_DIR$/.idea/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/MiListaModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/MiTableModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/modelo/UsuarioDAO.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>model</find>
-    </findStrings>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/vista/FrmDemoCombo.java" />
-        <option value="$PROJECT_DIR$/src/Model/Tipo 1.java" />
+        <option value="$PROJECT_DIR$/.idea/.gitignore" />
       </list>
     </option>
   </component>
@@ -94,11 +116,14 @@
     <option name="width" value="1440" />
     <option name="height" value="877" />
   </component>
+  <component name="ProjectId" id="1hZ6MvNQ7o4MGffhCcKRKXeOOrn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -109,45 +134,29 @@
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="out" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="modelo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vista" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="382" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603923146945" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1603927512011" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -162,7 +171,7 @@
     </option>
   </component>
   <component name="RunManager">
-    <configuration name="FrmPrincipal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="FrmPrincipal" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="vista.FrmPrincipal" />
       <module name="IOOClaseSwing" />
       <extension name="coverage">
@@ -175,36 +184,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.FrmPrincipal" />
-      </list>
-    </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" BundledDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d022bf78-7bad-45b9-888b-ce0c896205f7" name="Default Changelist" comment="" />
-      <created>1600296307251</created>
+      <changelist id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="" />
+      <created>1600206222785</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1600296307251</updated>
-      <workItem from="1600296312595" duration="949000" />
-      <workItem from="1600897733701" duration="437000" />
-      <workItem from="1600957417629" duration="6000" />
-      <workItem from="1603922891320" duration="254000" />
+      <updated>1600206222785</updated>
+      <workItem from="1603926795948" duration="715000" />
+      <workItem from="1603927666790" duration="200000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1646000" />
+    <option name="totallyTimeSpent" value="915000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26037195" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2532189" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -213,7 +217,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3299363" />
+      <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -221,7 +225,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3299363" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.48789808" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.3299363" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -238,62 +242,134 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="WindowStateProjectService">
+    <state x="768" y="230" width="378" height="585" key="#com.intellij.ide.util.MemberChooser" timestamp="1600213434119">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="768" y="230" width="378" height="585" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1043@0.0.1920.1043" timestamp="1600213434119" />
+    <state x="692" y="314" width="529" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1600209170006">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="692" y="314" width="529" height="416" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1600209170006" />
+    <state x="692" y="314" width="529" height="416" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1600209226227">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="692" y="314" width="529" height="416" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1600209226227" />
+    <state x="742" y="295" width="429" height="454" key="#com.intellij.uiDesigner.palette.ComponentItemDialog" timestamp="1600209961826">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="742" y="295" width="429" height="454" key="#com.intellij.uiDesigner.palette.ComponentItemDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1600209961826" />
+    <state x="671" y="250" width="644" height="513" key="FileChooserDialogImpl" timestamp="1600213380531">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="671" y="250" width="644" height="513" key="FileChooserDialogImpl/0.0.1920.1043@0.0.1920.1043" timestamp="1600213380531" />
+    <state width="1874" height="87" key="GridCell.Tab.0.bottom" timestamp="1600213155774">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state width="1874" height="87" key="GridCell.Tab.0.bottom/0.0.1920.1043@0.0.1920.1043" timestamp="1600213155774" />
+    <state width="1874" height="87" key="GridCell.Tab.0.center" timestamp="1600213155773">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state width="1874" height="87" key="GridCell.Tab.0.center/0.0.1920.1043@0.0.1920.1043" timestamp="1600213155773" />
+    <state width="1874" height="87" key="GridCell.Tab.0.left" timestamp="1600213155773">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state width="1874" height="87" key="GridCell.Tab.0.left/0.0.1920.1043@0.0.1920.1043" timestamp="1600213155773" />
+    <state width="1874" height="87" key="GridCell.Tab.0.right" timestamp="1600213155774">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state width="1874" height="87" key="GridCell.Tab.0.right/0.0.1920.1043@0.0.1920.1043" timestamp="1600213155774" />
+    <state x="482" y="84" width="1028" height="845" key="SettingsEditor" timestamp="1600213385944">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="482" y="84" width="1028" height="845" key="SettingsEditor/0.0.1920.1043@0.0.1920.1043" timestamp="1600213385944" />
+    <state x="830" y="319" width="254" height="407" key="UIDesigner.ListEditorDialog" timestamp="1600211639295">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="830" y="319" width="254" height="407" key="UIDesigner.ListEditorDialog/0.0.1920.1043@0.0.1920.1043" timestamp="1600211639295" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/FrmDemoCombo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="44" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="75">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/MiListaModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/MiTableModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/modelo/UsuarioDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="36" selection-start-line="4" selection-start-column="36" selection-end-line="4" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utils/GenericDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model/Tipo 1.java">
+    <entry file="file://$PROJECT_DIR$/.idea/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
-      <state key="ProjectJDKs.UI">
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>grails-2.5.6</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
         <settings>
           <last-edited>1.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>IOOClaseSwing</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>gson2_8_5</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
