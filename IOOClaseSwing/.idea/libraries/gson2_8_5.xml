@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="gson2_8_5">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/out/production/IOOClaseSwing/thirparty/gson2_8_5.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/thirparty/gson2_8_5.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

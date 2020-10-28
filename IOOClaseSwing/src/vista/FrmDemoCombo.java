@@ -41,6 +41,7 @@ public class FrmDemoCombo extends JDialog{
         colores.add(new ColorItem(50, "Amarillo"));
 
         DefaultComboBoxModel model = new DefaultComboBoxModel();
+        //model.addAll(colores);
         cbColores.setModel(model);
 
 
