@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import vista.Socios.FrmSocios;
+
 public class FrmPrincipal extends JFrame {
 
     private JPanel pnlPrincipal;
@@ -13,6 +15,7 @@ public class FrmPrincipal extends JFrame {
     private JButton tabsButton;
     private JButton gridsButton;
     private JPanel pnlTitulo;
+    private JButton sociosButton;
 
     private FrmPrincipal self;
 
@@ -49,6 +52,7 @@ public class FrmPrincipal extends JFrame {
                 frame.setVisible(true);
             }
         });
+
     }
 
     private void asociarEventos()
@@ -72,6 +76,13 @@ public class FrmPrincipal extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 FrmDemoCombo frame = new FrmDemoCombo(self);
+                frame.setVisible(true);
+            }
+        });
+        sociosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                FrmSocios frame = new FrmSocios(self);
                 frame.setVisible(true);
             }
         });
