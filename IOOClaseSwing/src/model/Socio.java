@@ -9,11 +9,10 @@ public class Socio {
   /**
    *
    * */
-  public Socio(String cuit, TipoSocio tipoSocio, String estado, String razonSocial, Date fechaInicioActividad,
+  public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
                String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
     this.cuit = cuit;
     this.tipoSocio = tipoSocio;
-    this.estado = estado;
     this.razonSocial = razonSocial;
     this.fechaInicioActividad = fechaInicioActividad;
     this.actividadPrincipal = actividadPrincipal;
@@ -172,5 +171,13 @@ public class Socio {
     public void setCuit(String value) {
         // TODO implement here
     }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
 
 }

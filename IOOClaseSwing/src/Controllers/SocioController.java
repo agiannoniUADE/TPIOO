@@ -1,4 +1,7 @@
 package Controllers;
+import DAO.SociosDao;
+import model.Socio;
+
 import java.util.*;
 
 /**
@@ -6,16 +9,26 @@ import java.util.*;
  */
 public class SocioController {
 
+  private SociosDao sociosDao;
+
     /**
      * Default constructor
      */
-    public SocioController() {
+    public SocioController() throws Exception {
+      this.sociosDao = new SociosDao();
     }
 
-
-
-
-
+    public boolean AgregarNuevoSocio(Socio socio){
+      try {
+        int lastId = sociosDao.getLastInsertId();
+        lastId++;
+        socio.setId(lastId);
+        sociosDao.save(socio);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+      return true;
+    }
     /**
      * @param id
      */

@@ -33,7 +33,12 @@ public class FrmSocios extends JDialog{
     agregarButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(final ActionEvent e) {
-        FrmAgregarSocio frame = new FrmAgregarSocio(self);
+        FrmAgregarSocio frame = null;
+        try {
+          frame = new FrmAgregarSocio(self);
+        } catch (Exception e1) {
+          e1.printStackTrace();
+        }
         frame.setVisible(true);
       }
     });

@@ -59,5 +59,34 @@ public abstract class GenericDAO<T> {
 		BufferedWriter bwEscritor = new BufferedWriter(fileWriter);
 		bwEscritor.close();
 	}
-	
+
+  public void save(T obj) throws Exception {
+    Gson g = new Gson();
+    String texto = g.toJson(obj);
+    texto = texto.concat(System.lineSeparator());
+    FileWriter fileWriter = new FileWriter(archivo,true);
+    fileWriter.write(texto);
+    BufferedWriter bwEscritor = new BufferedWriter(fileWriter);
+    bwEscritor.close();
+    getLastInsertId();
+
+  }
+
+  public int getLastInsertId()throws Exception {
+
+	  BufferedReader input = new BufferedReader(new FileReader(archivo));
+    String last="";
+    String line;
+    String index = "0";
+
+    while ((line = input.readLine()) != null) {
+      last = line;
+    }
+
+    if(last != "") {
+       index = last.substring(last.indexOf(":") + 1, last.indexOf(","));
+    }
+    return Integer.parseInt(index);
+  }
+
 }

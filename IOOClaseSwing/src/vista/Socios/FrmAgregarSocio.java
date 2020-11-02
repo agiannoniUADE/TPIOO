@@ -1,10 +1,13 @@
 package vista.Socios;
 
+import Controllers.SocioController;
 import model.Socio;
+import model.TipoSocio;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import javax.swing.*;
 
 public class FrmAgregarSocio extends JDialog{
@@ -19,8 +22,9 @@ public class FrmAgregarSocio extends JDialog{
   private JTextField emailTextField;
   private JTextField tamañoEmpresaTextField;
   private JButton guardarButton;
+  private SocioController socioController = new SocioController();
 
-  public FrmAgregarSocio(Window owner) {
+  public FrmAgregarSocio(Window owner) throws Exception {
     super(owner, "");
 
     this.setContentPane(panel1);
@@ -37,10 +41,27 @@ public class FrmAgregarSocio extends JDialog{
       public void actionPerformed(ActionEvent e) {
         String cuit = CuitTextField.getText();
         String razonSocial = razonSocialTextField.getText();
-        String inicioActividad = inicioActividadTextField.getText();
-        Socio nuevoSocio = new Socio();
+        Date inicioActividad = new Date(inicioActividadTextField.getText());
+        String actividadPrincipal =  actividadPrincipalTextField.getText();
+        TipoSocio tipoSocio = TipoSocio.lookUp(TipoSocioCombo.getItemAt(TipoSocioCombo.getSelectedIndex()).toString());
+        String direccion = direccionTextField.getText();
+        String telefono = telefonoTextField.getText();
+        String email = emailTextField.getText();
+        String tamanioEmpresa = tamañoEmpresaTextField.getText();
+
+        Socio nuevoSocio = new Socio(
+          cuit,
+          tipoSocio,
+          razonSocial,
+          inicioActividad,
+          actividadPrincipal,
+          direccion,
+          telefono,
+          email,
+          tamanioEmpresa);
+
+        socioController.AgregarNuevoSocio(nuevoSocio);
       }
     });
   }
-
 }
