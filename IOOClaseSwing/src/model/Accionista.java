@@ -7,29 +7,36 @@ import java.util.*;
  */
 public class Accionista {
 
-    /**
+  public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
+    this.id = id;
+    this.cuit = cuit;
+    this.razonSocial = razonSocial;
+    this.porcentaje = porcentaje;
+  }
+
+  /**
      * Default constructor
      */
     public Accionista() {
     }
 
     /**
-     * 
+     *
      */
     public int id;
 
     /**
-     * 
+     *
      */
     public String cuit;
 
     /**
-     * 
+     *
      */
     public String razonSocial;
 
     /**
-     * 
+     *
      */
     public float porcentaje;
 
@@ -38,39 +45,40 @@ public class Accionista {
      * @return
      */
     public int getId() {
-        // TODO implement here
-        return 0;
+
+        return id;
     }
 
     /**
      * @return
      */
     public String getCuit() {
-        // TODO implement here
-        return "";
+
+        return cuit;
     }
 
     /**
      * @return
      */
     public String getRazonSocial() {
-        // TODO implement here
-        return "";
+
+        return razonSocial;
     }
 
     /**
      * @param value
      */
     public void setRazonSocial(String value) {
-        // TODO implement here
+
+      this.razonSocial = value;
     }
 
     /**
      * @return
      */
     public float getPorcentaje() {
-        // TODO implement here
-        return 0.0f;
+
+        return porcentaje;
     }
 
 }
