@@ -90,9 +90,6 @@ public class Socio {
     public String tamanioEmpresa;
 
 
-
-
-
     /**
      * @param accion
      */

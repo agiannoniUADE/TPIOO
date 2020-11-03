@@ -1,6 +1,6 @@
 package modelo;
 
-import utils.GenericDAO;
+import DAO.GenericDAO;
 
 public class UsuarioDAO extends GenericDAO {
 

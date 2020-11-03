@@ -1,7 +1,6 @@
 package DAO;
 
 import model.Socio;
-import utils.GenericDAO;
 
 public class SociosDao extends GenericDAO {
 

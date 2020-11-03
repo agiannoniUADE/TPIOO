@@ -2,6 +2,7 @@ package Controllers;
 import DAO.SociosDao;
 import model.Socio;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -32,10 +33,19 @@ public class SocioController {
     /**
      * @param id
      */
-    public void getSocioParticipe(int id) {
-        // TODO implement here
+    public Socio getSocioParticipe(int id) throws FileNotFoundException {
+
+      Object obj = sociosDao.search(id);
+      return obj != null ? (Socio)obj: null;
     }
 
+  /**
+   * @param obj
+   */
+  public void updateSocio(Socio obj) throws Exception {
+
+    sociosDao.update(obj);
+  }
     /**
      * @param socioId
      */
