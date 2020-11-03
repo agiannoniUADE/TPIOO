@@ -19,16 +19,12 @@ public class SocioController {
       this.sociosDao = new SociosDao();
     }
 
-    public boolean AgregarNuevoSocio(Socio socio){
-      try {
-        int lastId = sociosDao.getLastInsertId();
+    public int AgregarNuevoSocio(Socio socio) throws Exception {
+      int lastId = sociosDao.getLastInsertId();
         lastId++;
         socio.setId(lastId);
         sociosDao.save(socio);
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-      return true;
+      return lastId;
     }
     /**
      * @param id
@@ -42,9 +38,23 @@ public class SocioController {
   /**
    * @param obj
    */
-  public void updateSocio(Socio obj) throws Exception {
+  public Boolean updateSocio(Socio obj) throws Exception {
 
-    sociosDao.update(obj);
+   return sociosDao.update(obj);
+  }
+
+  /**
+   * @param id
+   */
+  public Boolean delete(int id) throws Exception {
+
+    return sociosDao.delete(id);
+  }
+
+
+  public int getLastInsertId() throws Exception
+  {
+    return sociosDao.getLastInsertId();
   }
     /**
      * @param socioId

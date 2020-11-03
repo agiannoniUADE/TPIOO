@@ -3,18 +3,12 @@ import Controllers.SocioController;
 import model.Socio;
 import model.TipoSocio;
 import org.junit.jupiter.api.Test;
-import sun.jvm.hotspot.utilities.Assert;
 
-import java.io.FileNotFoundException;
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SociosControllerTest {
 
@@ -24,20 +18,30 @@ public class SociosControllerTest {
   }
 
   @Test
-  void searchByIdTest_Fail() throws FileNotFoundException {
-    Socio socio = SocioController.getSocioParticipe(90);
+  void searchByIdTest_Fail() throws Exception {
+    int id = SocioController.getLastInsertId();
+    Socio socio = SocioController.getSocioParticipe(id + 1);
     assertNull(socio);
   }
 
   @Test
-  void searchByIdTest_Success() throws FileNotFoundException {
+  void searchByIdTest_Success() throws Exception {
+    int id = insertSocio();
     Socio socio = SocioController.getSocioParticipe(9);
     assertNotNull(socio);
+    SocioController.delete(id);
+  }
+
+  @Test
+  void DeleteByIdTest_Success() throws Exception {
+    int id = insertSocio();
+   assertTrue(SocioController.delete(id));
   }
 
   @Test
   void UpdateSocio_Success() throws Exception {
 
+    int id = insertSocio();
     String cuit = "202020";
     String razonSocial = "TEST";
     Date inicioActividad = new Date();
@@ -59,10 +63,34 @@ public class SociosControllerTest {
       email,
       tamanioEmpresa);
 
-      nuevoSocio.setId(9);
-
-    SocioController.updateSocio(nuevoSocio);
+      nuevoSocio.setId(id);
+      assertTrue(SocioController.updateSocio(nuevoSocio));
+      SocioController.delete(id);
   }
 
+  private int insertSocio() throws Exception {
+    String cuit = "202020";
+    String razonSocial = "TEST";
+    Date inicioActividad = new Date();
+    String actividadPrincipal =  "Manufactura";
+    TipoSocio tipoSocio = TipoSocio.PARTICIPE;
+    String direccion = "FAKE street 123";
+    String telefono = "428123132";
+    String email = "info@test.com";
+    String tamanioEmpresa = "pyme";
 
+    Socio nuevoSocio = new Socio(
+      cuit,
+      tipoSocio,
+      razonSocial,
+      inicioActividad,
+      actividadPrincipal,
+      direccion,
+      telefono,
+      email,
+      tamanioEmpresa);
+
+    return SocioController.AgregarNuevoSocio(nuevoSocio);
+  }
 }
+

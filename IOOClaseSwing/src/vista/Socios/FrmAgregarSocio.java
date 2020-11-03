@@ -38,7 +38,7 @@ public class FrmAgregarSocio extends JDialog{
 
     guardarButton.addActionListener(new ActionListener() {
       @Override
-      public void actionPerformed(ActionEvent e) {
+      public void actionPerformed(ActionEvent e){
         String cuit = CuitTextField.getText();
         String razonSocial = razonSocialTextField.getText();
         Date inicioActividad = new Date(inicioActividadTextField.getText());
@@ -59,8 +59,11 @@ public class FrmAgregarSocio extends JDialog{
           telefono,
           email,
           tamanioEmpresa);
+        try {
+          socioController.AgregarNuevoSocio(nuevoSocio);
+        }catch (Exception ex){
 
-        socioController.AgregarNuevoSocio(nuevoSocio);
+        }
       }
     });
   }
