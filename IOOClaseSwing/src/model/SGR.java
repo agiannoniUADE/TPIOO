@@ -9,44 +9,44 @@ public class SGR {
     /**
      * Default constructor
      */
-    public SGR() {
+    private SGR() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String razonSocial;
+    private String razonSocial;
 
     /**
      * 
      */
-    public void getRiesgoVivo() {
+    private void getRiesgoVivo() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void calcularFondoDeRiego() {
+    private void calcularFondoDeRiego() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getSocioParticipe() {
+    private void getSocioParticipe() {
         // TODO implement here
     }
 
     /**
      * @param id
      */
-    public int getAporte(int id) {
+    private int getAporte(int id) {
         // TODO implement here
         return 0;
     }
@@ -54,7 +54,7 @@ public class SGR {
     /**
      * @param id
      */
-    public int getSocio(int id) {
+    private int getSocio(int id) {
         // TODO implement here
         return  0;
     }

@@ -2,7 +2,7 @@ package model;
 /**
  * 
  */
-public enum TipoSocio {
+public enum  TipoSocio {
     Participe,
     Protector
 }

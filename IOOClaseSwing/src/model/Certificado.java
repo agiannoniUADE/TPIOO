@@ -9,36 +9,36 @@ public class Certificado {
     /**
      * Default constructor
      */
-    public Certificado() {
+    private Certificado() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String Estado;
+    private String Estado;
 
     /**
      * 
      */
-    public int certifivadoDeGarantia;
+    private int certifivadoDeGarantia;
 
 
     /**
      * @param id
      */
-    public void getOperacion(int id) {
+    private void getOperacion(int id) {
         // TODO implement here
     }
 
     /**
      * @param id
      */
-    public void getSocio(int id) {
+    private void getSocio( int id) {
         // TODO implement here
     }
 

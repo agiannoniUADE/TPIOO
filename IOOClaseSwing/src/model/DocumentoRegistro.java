@@ -9,28 +9,28 @@ public class DocumentoRegistro {
     /**
      * Default constructor
      */
-    public DocumentoRegistro() {
+    private DocumentoRegistro() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
     /**
      * 
      */
-    public String estado;
+    private String estado;
 
     /**
      * 
      */
-    public String usuario;
+    private String usuario;
 
 
 
@@ -40,7 +40,7 @@ public class DocumentoRegistro {
     /**
      * @param id
      */
-    public void getTipoDocumentoRegistro(int id) {
+    private void getTipoDocumentoRegistro(int  id) {
         // TODO implement here
     }
 

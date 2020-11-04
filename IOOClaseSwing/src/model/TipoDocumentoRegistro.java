@@ -4,23 +4,23 @@ import java.util.*;
 /**
  * 
  */
-public class TipoDocumentoRegistro {
+public class  TipoDocumentoRegistro {
 
     /**
      * Default constructor
      */
-    public TipoDocumentoRegistro() {
+    private TipoDocumentoRegistro() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String nombre;
+    private String nombre;
 
 
 }

@@ -9,25 +9,25 @@ public class Desembolso {
     /**
      * Default constructor
      */
-    public Desembolso() {
+    private Desembolso() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public float montoAdeudado;
+    private float montoAdeudado;
 
 
 
     /**
      * @param id
      */
-    public void getMonto(int id) {
+    private void getMonto(int  id) {
         // TODO implement here
     }
 

@@ -33,113 +33,112 @@ public class Socio {
   /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String cuit;
+    private String cuit;
 
     /**
      * 
      */
-    public TipoSocio tipoSocio;
+    private TipoSocio tipoSocio;
 
     /**
      *
      */
-    public String estado;
+    private String estado;
 
     /**
      * 
      */
-    public String razonSocial;
+    private String razonSocial;
 
     /**
      * 
      */
-    public Date fechaInicioActividad;
+    private Date fechaInicioActividad;
 
     /**
      * 
      */
-    public String actividadPrincipal;
+    private String actividadPrincipal;
 
     /**
      * 
      */
-    public String direccion;
+    private String direccion;
 
     /**
      * 
      */
-    public String telefono;
+    private String telefono;
 
     /**
      * 
      */
-    public String email;
+    private String email;
 
     /**
      * 
      */
-    public int accion;
+    private int accion;
 
     /**
      * 
      */
-    public String tamanioEmpresa;
+    private String tamanioEmpresa;
 
 
 
 
-
-    /**
+  /**
      * @param accion
      */
-    public void venderAcciones(int accion) {
+    private void venderAcciones(int accion) {
         // TODO implement here
     }
 
     /**
      * @param accion
      */
-    public void comprarAcciones(int accion) {
+    private void comprarAcciones(int accion) {
         // TODO implement here
     }
 
     /**
      * @param accion
      */
-    public void getAccionista(int accion) {
+    private void getAccionista(int accion) {
         // TODO implement here
     }
 
     /**
      * @param id
      */
-    public void getDocumentoRegistro(int id) {
+    private void getDocumentoRegistro(int id) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getIdSocio() {
+    private void getIdSocio() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getTamanioEmpresa() {
+    private void getTamanioEmpresa() {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public TipoSocio getTipoSocio() {
+    private TipoSocio getTipoSocio() {
         // TODO implement here
         return null;
     }
@@ -147,21 +146,21 @@ public class Socio {
     /**
      * @param value
      */
-    public void setTipoSocio(TipoSocio value) {
+    private void setTipoSocio(TipoSocio value) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getAccionistas() {
+    private void getAccionistas() {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public String getCuit() {
+    private String getCuit() {
         // TODO implement here
         return "";
     }
@@ -169,7 +168,7 @@ public class Socio {
     /**
      * @param value
      */
-    public void setCuit(String value) {
+    private void setCuit(String value) {
         // TODO implement here
     }
 

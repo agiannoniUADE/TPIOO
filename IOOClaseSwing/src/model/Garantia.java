@@ -4,34 +4,34 @@ import java.util.*;
 /**
  * 
  */
-public class Garantia {
+public class  Garantia {
 
     /**
      * Default constructor
      */
-    public Garantia() {
+    private Garantia() {
     }
 
     /**
      * 
      */
-    public int nroDeGarantia;
+    private int nroDeGarantia;
 
     /**
      * 
      */
-    public String responsable;
+    private String responsable;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
 
     /**
      * 
      */
-    public void Operation1() {
+    private void Operation1() {
         // TODO implement here
     }
 

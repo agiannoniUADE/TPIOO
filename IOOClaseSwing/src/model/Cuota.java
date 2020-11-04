@@ -4,39 +4,39 @@ import java.util.*;
 /**
  * 
  */
-public class Cuota {
+public class  Cuota {
 
     /**
      * Default constructor
      */
-    public Cuota() {
+    private Cuota() {
     }
 
     /**
      * 
      */
-    public int cuotaId;
+    private int cuotaId;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public String estado;
+    private String estado;
 
     /**
      * 
      */
-    public int numeroCuota;
+    private int numeroCuota;
 
 
     /**
      * @return
      */
-    public int getCuotaId() {
+    private int getCuotaId() {
         // TODO implement here
         return 0;
     }
@@ -44,14 +44,14 @@ public class Cuota {
     /**
      * @param value
      */
-    public void setCuotaId(int value) {
+    private void setCuotaId(int value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public float getMonto() {
+    private float getMonto() {
         // TODO implement here
         return 0.0f;
     }
@@ -59,14 +59,14 @@ public class Cuota {
     /**
      * @param value
      */
-    public void setMonto(float value) {
+    private void setMonto(float value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public String getEstado() {
+    private String getEstado() {
         // TODO implement here
         return "";
     }
@@ -74,14 +74,14 @@ public class Cuota {
     /**
      * @param value
      */
-    public void setEstado(String value) {
+    private void setEstado(String value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public int getNumeroCuota() {
+    private int getNumeroCuota() {
         // TODO implement here
         return 0;
     }
@@ -89,7 +89,7 @@ public class Cuota {
     /**
      * @param value
      */
-    public void setNumeroCuota(int value) {
+    private void setNumeroCuota(int value) {
         // TODO implement here
     }
 

@@ -6,31 +6,32 @@ import java.util.*;
  */
 public class Aporte {
 
+
     /**
      * Default constructor
      */
-    public Aporte() {
+    private Aporte() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public Date fechaInicio;
+    private Date fechaInicio;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public Boolean estado;
+    private Boolean estado;
 
 
 
@@ -39,7 +40,7 @@ public class Aporte {
     /**
      * @return
      */
-    public int getId() {
+    private int getId() {
         // TODO implement here
         return 0;
     }
@@ -47,7 +48,7 @@ public class Aporte {
     /**
      * @return
      */
-    public Date getFechaInicio() {
+    private Date getFechaInicio() {
         // TODO implement here
         return null;
     }
@@ -55,7 +56,7 @@ public class Aporte {
     /**
      * @return
      */
-    public float getMonto() {
+    private float getMonto() {
         // TODO implement here
         return 0.0f;
     }
@@ -63,7 +64,7 @@ public class Aporte {
     /**
      * @return
      */
-    public Boolean getEstado() {
+    private Boolean getEstado() {
         // TODO implement here
         return null;
     }

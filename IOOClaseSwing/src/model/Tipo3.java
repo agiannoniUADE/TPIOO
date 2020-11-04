@@ -38,7 +38,7 @@ public class Tipo3 extends Operacion {
     public Date fechaDeAcreditacion;
 
     /**
-     * 
+     *
      */
     public int cantidadCuotas;
 

@@ -4,28 +4,28 @@ import java.util.*;
 /**
  * 
  */
-public class LineaDeCredito {
+public class  LineaDeCredito {
 
     /**
      * Default constructor
      */
-    public LineaDeCredito() {
+    private LineaDeCredito() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public Date fechaVigencia;
+    private Date fechaVigencia;
 
     /**
      * 
      */
-    public float montoAsignado;
+    private float montoAsignado;
 
 
 
@@ -34,7 +34,7 @@ public class LineaDeCredito {
     /**
      * @return
      */
-    public int getId() {
+    private int getId() {
         // TODO implement here
         return 0;
     }
@@ -42,7 +42,7 @@ public class LineaDeCredito {
     /**
      * @return
      */
-    public Date getFechaVigencia() {
+    private Date getFechaVigencia() {
         // TODO implement here
         return null;
     }
@@ -50,7 +50,7 @@ public class LineaDeCredito {
     /**
      * @return
      */
-    public float getMontoAsignado() {
+    private float getMontoAsignado() {
         // TODO implement here
         return 0.0f;
     }
@@ -58,7 +58,7 @@ public class LineaDeCredito {
     /**
      * @param value
      */
-    public void setMontoAsignado(float value) {
+    private void setMontoAsignado(float value) {
         // TODO implement here
     }
 

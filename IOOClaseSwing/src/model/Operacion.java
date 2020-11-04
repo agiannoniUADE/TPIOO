@@ -15,27 +15,27 @@ public class Operacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public Date fecha;
+    private Date fecha;
 
     /**
      * 
      */
-    public EstadoOperacion estado;
+    private EstadoOperacion estado;
 
     /**
      * 
      */
-    public Date fechaVencimiento;
+    private Date fechaVencimiento;
 
 
 
@@ -55,63 +55,63 @@ public class Operacion {
     /**
      * 
      */
-    public void Operation1() {
+    private void Operation1() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getGarantia() {
+    private void getGarantia() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void Operation2() {
+    private void Operation2() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void calcularComision() {
+    private void calcularComision() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getIdTipo() {
+    private void getIdTipo() {
         // TODO implement here
     }
 
     /**
      * @param nroDegarantia
      */
-    public void getGarantia(int nroDegarantia) {
+    private void getGarantia(int nroDegarantia) {
         // TODO implement here
     }
 
     /**
      * @param id
      */
-    public void getOperacion(int id) {
+    private void getOperacion(int id) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getFecha() {
+    private void getFecha() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public float getComision() {
+    private float getComision() {
         // TODO implement here
         return 0.0f;
     }
@@ -119,28 +119,28 @@ public class Operacion {
     /**
      * 
      */
-    public void getIdOperacion() {
+    private void getIdOperacion() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getEstado() {
+    private void getEstado() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getIdSocio() {
+    private void getIdSocio() {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public float getMonto() {
+    private float getMonto() {
         // TODO implement here
         return 0.0f;
     }
@@ -148,7 +148,7 @@ public class Operacion {
     /**
      * @param value
      */
-    public void setMonto(float value) {
+    private void setMonto(float value) {
         // TODO implement here
     }
 
@@ -156,7 +156,7 @@ public class Operacion {
     /**
      * @return
      */
-    public Date getFechaVencimiento() {
+    private Date getFechaVencimiento() {
         // TODO implement here
         return null;
     }
@@ -164,14 +164,14 @@ public class Operacion {
     /**
      * @param value
      */
-    public void setFechaVencimiento(Date value) {
+    private void setFechaVencimiento(Date value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public Desembolso getDesembolso() {
+    private Desembolso getDesembolso() {
         // TODO implement here
         return null;
     }

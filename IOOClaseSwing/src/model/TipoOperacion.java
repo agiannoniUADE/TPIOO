@@ -4,28 +4,28 @@ import java.util.*;
 /**
  * 
  */
-public class TipoOperacion {
+public class  TipoOperacion {
 
     /**
      * Default constructor
      */
-    public TipoOperacion() {
+    private TipoOperacion() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String descripcion;
+    private String descripcion;
 
     /**
      * 
      */
-    public float comision;
+    private float comision;
 
 
 
@@ -35,14 +35,14 @@ public class TipoOperacion {
     /**
      * 
      */
-    public void getDescripcion() {
+    private void getDescripcion() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getComision() {
+    private void getComision() {
         // TODO implement here
     }
 

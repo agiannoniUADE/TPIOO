@@ -81,7 +81,7 @@ public class Tipo2 extends Operacion {
     /**
      * @return
      */
-    public float getComision() {
+    public float  getComision() {
         // TODO implement here
         return 0.0f;
     }

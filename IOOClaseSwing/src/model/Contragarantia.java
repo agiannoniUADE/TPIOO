@@ -4,28 +4,28 @@ import java.util.*;
 /**
  * 
  */
-public class Contragarantia {
+public class  Contragarantia {
 
     /**
      * Default constructor
      */
-    public Contragarantia() {
+    private Contragarantia() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String tipo;
+    private String tipo;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
 
 
@@ -33,7 +33,7 @@ public class Contragarantia {
     /**
      * @return
      */
-    public int getId() {
+    private int getId() {
         // TODO implement here
         return 0;
     }
@@ -41,14 +41,14 @@ public class Contragarantia {
     /**
      * @param value
      */
-    public void setId(int value) {
+    private void setId(int value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public String getTipo() {
+    private String getTipo() {
         // TODO implement here
         return "";
     }
@@ -56,14 +56,14 @@ public class Contragarantia {
     /**
      * @param value
      */
-    public void setTipo(String value) {
+    private void setTipo(String value) {
         // TODO implement here
     }
 
     /**
      * @return
      */
-    public float getMonto() {
+    private float getMonto() {
         // TODO implement here
         return 0.0f;
     }
@@ -71,7 +71,7 @@ public class Contragarantia {
     /**
      * @param value
      */
-    public void setMonto(float value) {
+    private void setMonto(float value) {
         // TODO implement here
     }
 

@@ -16,7 +16,7 @@ public class SocioProtector extends Socio {
     /**
      * @param id
      */
-    public void retirarAporte(int id) {
+    public void retirarAporte(int  id) {
         // TODO implement here
     }
 

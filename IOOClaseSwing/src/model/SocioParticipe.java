@@ -9,7 +9,9 @@ public class SocioParticipe extends Socio {
     /**
      * Default constructor
      */
-    public SocioParticipe() {
+    private SocioParticipe() {
+      super();
+
     }
 
 
@@ -26,21 +28,21 @@ public class SocioParticipe extends Socio {
 
 
     /**
-     * 
+     *
      */
     public void getMontoGarantia() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void getRiesgo() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void getContragarantias() {
         // TODO implement here
@@ -56,26 +58,26 @@ public class SocioParticipe extends Socio {
     /**
      * @param tipoOperacionId
      */
-    public void getComisionPreferencial(int tipoOperacionId) {
+    public void getComisionPreferencial(int  tipoOperacionId) {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void tieneComisionPreferencial() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void getTamanioEmpresa() {
         // TODO implement here
     }
 
     /**
-     * 
+     *
      */
     public void getMontoLineaDeCredito() {
         // TODO implement here

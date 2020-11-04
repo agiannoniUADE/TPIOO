@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class Accionista {
 
-  public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
+  private Accionista(int id, String cuit, String razonSocial, float porcentaje) {
     this.id = id;
     this.cuit = cuit;
     this.razonSocial = razonSocial;
@@ -17,34 +17,34 @@ public class Accionista {
   /**
      * Default constructor
      */
-    public Accionista() {
+    private Accionista() {
     }
 
     /**
      *
      */
-    public int id;
+    private int id;
 
     /**
      *
      */
-    public String cuit;
+    private String cuit;
 
     /**
      *
      */
-    public String razonSocial;
+    private String razonSocial;
 
     /**
      *
      */
-    public float porcentaje;
+    private float porcentaje;
 
 
     /**
      * @return
      */
-    public int getId() {
+    private int getId() {
 
         return id;
     }
@@ -52,7 +52,7 @@ public class Accionista {
     /**
      * @return
      */
-    public String getCuit() {
+    private String getCuit() {
 
         return cuit;
     }
@@ -60,7 +60,7 @@ public class Accionista {
     /**
      * @return
      */
-    public String getRazonSocial() {
+    private String getRazonSocial() {
 
         return razonSocial;
     }
@@ -68,7 +68,7 @@ public class Accionista {
     /**
      * @param value
      */
-    public void setRazonSocial(String value) {
+    private void setRazonSocial(String value) {
 
       this.razonSocial = value;
     }
@@ -76,7 +76,7 @@ public class Accionista {
     /**
      * @return
      */
-    public float getPorcentaje() {
+    private float getPorcentaje() {
 
         return porcentaje;
     }

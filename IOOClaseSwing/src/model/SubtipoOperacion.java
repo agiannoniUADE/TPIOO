@@ -9,39 +9,39 @@ public class SubtipoOperacion {
     /**
      * Default constructor
      */
-    public SubtipoOperacion() {
+    private SubtipoOperacion() {
     }
 
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String descripcion;
+    private String descripcion;
 
 
 
     /**
      * @param id
      */
-    public void getTipoOperacion(int id) {
+    private void getTipoOperacion(int  id) {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getDescripcion() {
+    private void getDescripcion() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getComision() {
+    private void getComision() {
         // TODO implement here
     }
 
