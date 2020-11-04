@@ -99,6 +99,28 @@ public class FrmSocios extends JFrame {
           }
         }
       });
+      ButtonBuscar.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          try {
+            Socio s = socioController.getSocioParticipe(Integer.parseInt(textBuscar.getText()));
+
+            TextFieldCUIT.setText(s.cuit);
+            TextFieldRazonSocial.setText(s.razonSocial);
+            TextFieldFechaInicioActividad.setText(s.fechaInicioActividad.toString());
+            TextFieldActividadPrincipal.setText(s.actividadPrincipal);
+            TextFieldDireccion.setText(s.direccion);
+            TextFieldTelefono.setText(s.telefono);
+            textFieldEmail.setText(s.email);
+
+            textBuscar.setEnabled(false);
+            ButtonBuscar.setText("Nueva busqueda");
+
+          } catch (Exception e1) {
+            e1.printStackTrace();
+          }
+        }
+      });
     }
 
 }
