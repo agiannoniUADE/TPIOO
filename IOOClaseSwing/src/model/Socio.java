@@ -9,11 +9,10 @@ public class Socio {
   /**
    *
    * */
-  public Socio(String cuit, TipoSocio tipoSocio, String estado, String razonSocial, Date fechaInicioActividad,
+  public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
                String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
     this.cuit = cuit;
     this.tipoSocio = tipoSocio;
-    this.estado = estado;
     this.razonSocial = razonSocial;
     this.fechaInicioActividad = fechaInicioActividad;
     this.actividadPrincipal = actividadPrincipal;
@@ -92,8 +91,6 @@ public class Socio {
 
 
 
-
-  /**
      * @param accion
      */
     private void venderAcciones(int accion) {
@@ -172,4 +169,24 @@ public class Socio {
         // TODO implement here
     }
 
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Socio socio = (Socio) o;
+    return id == socio.id;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id);
+  }
 }

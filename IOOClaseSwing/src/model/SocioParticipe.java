@@ -6,26 +6,12 @@ import java.util.*;
  */
 public class SocioParticipe extends Socio {
 
-    /**
-     * Default constructor
-     */
-    private SocioParticipe() {
-      super();
-
-    }
 
 
-
-
-
-
-
-
-
-
-
-
-
+  public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+                        String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
+      super(cuit,tipoSocio,razonSocial,fechaInicioActividad,actividadPrincipal,direccion,telefono,email,tamanioEmpresa);
+  }
 
     /**
      *

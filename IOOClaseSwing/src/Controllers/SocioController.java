@@ -1,4 +1,8 @@
 package Controllers;
+import DAO.SociosDao;
+import model.Socio;
+
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -6,23 +10,52 @@ import java.util.*;
  */
 public class SocioController {
 
+  private SociosDao sociosDao;
+
     /**
      * Default constructor
      */
-    public SocioController() {
+    public SocioController() throws Exception {
+      this.sociosDao = new SociosDao();
     }
 
-
-
-
-
+    public int AgregarNuevoSocio(Socio socio) throws Exception {
+      int lastId = sociosDao.getLastInsertId();
+        lastId++;
+        socio.setId(lastId);
+        sociosDao.save(socio);
+      return lastId;
+    }
     /**
      * @param id
      */
-    public void getSocioParticipe(int id) {
-        // TODO implement here
+    public Socio getSocioParticipe(int id) throws FileNotFoundException {
+
+      Object obj = sociosDao.search(id);
+      return obj != null ? (Socio)obj: null;
     }
 
+  /**
+   * @param obj
+   */
+  public Boolean updateSocio(Socio obj) throws Exception {
+
+   return sociosDao.update(obj);
+  }
+
+  /**
+   * @param id
+   */
+  public Boolean delete(int id) throws Exception {
+
+    return sociosDao.delete(id);
+  }
+
+
+  public int getLastInsertId() throws Exception
+  {
+    return sociosDao.getLastInsertId();
+  }
     /**
      * @param socioId
      */

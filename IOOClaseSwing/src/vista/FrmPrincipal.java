@@ -82,8 +82,13 @@ public class FrmPrincipal extends JFrame {
         sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                FrmSocios frame = new FrmSocios(self);
-                frame.setVisible(true);
+              FrmSocios frame = null;
+              try {
+                frame = new FrmSocios();
+              } catch (Exception e1) {
+                e1.printStackTrace();
+              }
+              frame.setVisible(true);
             }
         });
     }
