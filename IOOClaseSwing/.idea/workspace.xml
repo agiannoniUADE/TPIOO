@@ -3,18 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SocioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SocioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/DAO/GenericDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/DAO/GenericDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/META-INF/IOOClaseSwing.kotlin_module" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Socio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Socio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/repo/socio.json" beforeDir="false" afterPath="$PROJECT_DIR$/repo/socio.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/SocioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/SocioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/GenericDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/SociosControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/SociosControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Socio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Socio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/FrmPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/FrmPrincipal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,10 +25,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java">
+        <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="64" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="1815">
+              <caret line="125" selection-start-line="125" selection-end-line="125" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,41 +46,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
+        <entry file="file://$PROJECT_DIR$/repo/socio.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="125" selection-start-line="125" selection-end-line="125" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src/thirparty/gson2_8_5.jar!/com/google/gson/Gson.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="564" selection-start-line="564" selection-end-line="564" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$PROJECT_DIR$/src/thirparty/gson2_8_5.jar!/com/google/gson/internal/bind/JsonTreeReader.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Socio.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="186" selection-start-line="186" selection-end-line="186" />
-              <folding>
-                <element signature="e#2901#2902#0" expanded="true" />
-                <element signature="e#2934#2935#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="23" column="84" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -80,7 +57,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
+            <state relative-caret-position="435">
               <caret line="33" selection-start-line="33" selection-end-line="33" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -89,29 +66,40 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+            <state relative-caret-position="45">
+              <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+        <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.form">
+          <provider selected="true" editor-type-id="ui-designer" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="367" column="3" selection-start-line="367" selection-start-column="3" selection-end-line="367" selection-end-column="3" />
+            <state relative-caret-position="270">
+              <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/TipoOperacionController.java">
+        <entry file="file://$PROJECT_DIR$/src/vista/Socios/buscarSocio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+            <state relative-caret-position="60">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -155,7 +143,6 @@
         <option value="$PROJECT_DIR$/src/vista/FrmDemoCombo.java" />
         <option value="$PROJECT_DIR$/.idea/.gitignore" />
         <option value="$PROJECT_DIR$/src/vista/FrmPrincipal.form" />
-        <option value="$PROJECT_DIR$/src/vista/FrmPrincipal.java" />
         <option value="$PROJECT_DIR$/src/vista/FrmSocios.java" />
         <option value="$PROJECT_DIR$/src/vista/FrmSocios.form" />
         <option value="$PROJECT_DIR$/src/model/Accion.java" />
@@ -192,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.form" />
         <option value="$PROJECT_DIR$/src/model/SocioParticipe.java" />
         <option value="$PROJECT_DIR$/src/model/TipoSocio.java" />
-        <option value="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" />
         <option value="$PROJECT_DIR$/src/modelo/UsuarioDAO.java" />
         <option value="$PROJECT_DIR$/src/DAO/SociosDao.java" />
         <option value="$PROJECT_DIR$/src/utils/GenericDAO.java" />
@@ -201,6 +187,9 @@
         <option value="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java" />
         <option value="$PROJECT_DIR$/src/Controllers/SocioController.java" />
         <option value="$PROJECT_DIR$/src/Test/SociosControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/vista/FrmPrincipal.java" />
+        <option value="$PROJECT_DIR$/repo/socio.json" />
+        <option value="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" />
       </list>
     </option>
   </component>
@@ -226,31 +215,33 @@
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
+              <item name="repo" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+              <item name="vista" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DAO" type="462c0819:PsiDirectoryNode" />
+              <item name="vista" type="462c0819:PsiDirectoryNode" />
+              <item name="Socios" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
+              <item name="vista" type="462c0819:PsiDirectoryNode" />
+              <item name="Socios" type="462c0819:PsiDirectoryNode" />
+              <item name="FrmSocios" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
@@ -274,10 +265,11 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="264" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604435659175" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604531140656" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -286,12 +278,12 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/vista" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/vista/Socios" />
       <recent name="$PROJECT_DIR$/src/model" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/vista" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -306,7 +298,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SociosControllerTest.searchByIdTest_Fail">
+  <component name="RunManager" selected="Application.FrmPrincipal">
     <configuration name="FrmPrincipal" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="vista.FrmPrincipal" />
@@ -401,6 +393,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.FrmPrincipal" />
+      <item itemvalue="JUnit.SociosControllerTest.searchByIdTest_Success" />
+      <item itemvalue="JUnit.SociosControllerTest" />
+      <item itemvalue="JUnit.SociosControllerTest.DeleteByIdTest_Success" />
+      <item itemvalue="JUnit.SociosControllerTest.searchByIdTest_Fail" />
+      <item itemvalue="JUnit.SociosControllerTest.UpdateSocio_Success" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.SociosControllerTest.searchByIdTest_Fail" />
@@ -465,23 +465,23 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48363000" />
+    <option name="totallyTimeSpent" value="50213000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="877" extended-state="0" />
+    <frame x="0" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.20028612" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.20600858" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31082803" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.042038217" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31082803" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.042038217" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="6" weight="0.32611465" />
@@ -649,13 +649,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Accion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Aporte.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -684,20 +677,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DescripcionOperacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="14" selection-start-column="14" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Riesgo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/DescripcionOperacion.java" />
+    <entry file="file://$PROJECT_DIR$/src/model/Riesgo.java" />
     <entry file="file://$PROJECT_DIR$/src/model/TipoOperacion.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -726,13 +707,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Recupero.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Recupero.java" />
     <entry file="file://$PROJECT_DIR$/src/model/LineaDeCredito.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -813,11 +788,12 @@
     <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/Socios/buscarSocio.java">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/SocioProtector.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -831,16 +807,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.form">
       <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="84" column="41" selection-start-line="84" selection-start-column="38" selection-end-line="84" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/SocioParticipe.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -894,16 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="489">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.sdkman/candidates/java/8.0.202-zulu/src.zip!/java/lang/Exception.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -928,9 +884,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/notes.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/notes.txt" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
@@ -982,14 +936,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
+        <state relative-caret-position="1815">
           <caret line="125" selection-start-line="125" selection-end-line="125" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
+        <state relative-caret-position="435">
           <caret line="33" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -999,8 +953,41 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+        <state relative-caret-position="45">
+          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/socio.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="84" selection-start-line="23" selection-start-column="72" selection-end-line="23" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
