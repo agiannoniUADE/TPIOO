@@ -3,17 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/META-INF/IOOClaseSwing.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/FrmPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repo/socio.json" beforeDir="false" afterPath="$PROJECT_DIR$/repo/socio.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/FrmPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/FrmPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,7 +26,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
+            <state relative-caret-position="247">
               <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="37" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -57,8 +47,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="253">
+              <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -86,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+            <state relative-caret-position="344">
+              <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -126,6 +116,7 @@
     <findStrings>
       <find>date</find>
       <find>void</find>
+      <find>getText</find>
     </findStrings>
     <replaceStrings>
       <replace>Date</replace>
@@ -215,33 +206,12 @@
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="repo" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vista" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vista" type="462c0819:PsiDirectoryNode" />
-              <item name="Socios" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vista" type="462c0819:PsiDirectoryNode" />
-              <item name="Socios" type="462c0819:PsiDirectoryNode" />
-              <item name="FrmSocios" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
@@ -269,7 +239,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="264" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604531140656" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604532414648" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -465,22 +435,21 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50213000" />
+    <option name="totallyTimeSpent" value="51501000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Capture Tool" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.20600858" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.20600858" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Structure" order="5" side_tool="true" weight="0.25" />
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31082803" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.31082803" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.042038217" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -489,8 +458,8 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="TODO" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Version Control" order="11" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.14012739" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="11" visible="true" weight="0.3299363" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.34394905" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Maven" order="2" />
@@ -941,16 +910,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
@@ -961,10 +920,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
+    <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="37" />
+        <state relative-caret-position="253">
+          <caret line="90" column="16" selection-start-line="90" selection-start-column="16" selection-end-line="90" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -978,13 +937,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="88" column="16" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/Socios/FrmSocios.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="95" column="44" selection-start-line="95" selection-start-column="44" selection-end-line="95" selection-end-column="44" />
+        <state relative-caret-position="344">
+          <caret line="123" column="5" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
