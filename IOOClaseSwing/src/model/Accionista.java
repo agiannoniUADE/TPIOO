@@ -23,7 +23,20 @@ public class Accionista {
      */
     public String cuit;
 
-    /**
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Accionista that = (Accionista) o;
+    return Objects.equals(cuit, that.cuit);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cuit);
+  }
+
+  /**
      * 
      */
     public String razonSocial;

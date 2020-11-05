@@ -89,6 +89,28 @@ public class Socio {
      */
     public String tamanioEmpresa;
 
+    public List<Accionista> accionistas;
+
+    public void agregarAccionista(Accionista obj)
+    {
+      this.accionistas.add(obj);
+    }
+
+  public void removeAccionista(Accionista obj)
+  {
+    this.accionistas.remove(obj);
+  }
+
+  public Accionista getAccionista(String cuit)
+  {
+    for (Accionista a: this.accionistas) {
+      if(a.cuit == cuit){
+        return a;
+      }
+    }
+    return null;
+  }
+
 
     /**
      * @param accion
