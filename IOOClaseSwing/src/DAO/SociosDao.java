@@ -6,6 +6,6 @@ public class SociosDao extends GenericDAO {
 
 
   public SociosDao() throws Exception {
-    super(Socio.class, "repo/socio.json");
+    super(Socio.class, "IOOClaseSwing/repo/socio.json");
   }
 }
