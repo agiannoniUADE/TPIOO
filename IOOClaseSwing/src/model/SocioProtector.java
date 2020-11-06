@@ -18,6 +18,8 @@ public class SocioProtector extends Socio {
      */
     public void retirarAporte(int  id) {
         // TODO implement here
+      //GR.getRiesgoVivo();
+
     }
 
 }

@@ -10,7 +10,7 @@ public class Aporte {
     /**
      * Default constructor
      */
-    private Aporte() {
+    public Aporte() {
     }
 
     /**
@@ -34,39 +34,35 @@ public class Aporte {
     private Boolean estado;
 
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public Date getFechaInicio() {
+    return fechaInicio;
+  }
 
-    /**
-     * @return
-     */
-    private int getId() {
-        // TODO implement here
-        return 0;
-    }
+  public void setFechaInicio(Date fechaInicio) {
+    this.fechaInicio = fechaInicio;
+  }
 
-    /**
-     * @return
-     */
-    private Date getFechaInicio() {
-        // TODO implement here
-        return null;
-    }
+  public float getMonto() {
+    return monto;
+  }
 
-    /**
-     * @return
-     */
-    private float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
-    /**
-     * @return
-     */
-    private Boolean getEstado() {
-        // TODO implement here
-        return null;
-    }
+  public Boolean getEstado() {
+    return estado;
+  }
 
+  public void setEstado(Boolean estado) {
+    this.estado = estado;
+  }
 }

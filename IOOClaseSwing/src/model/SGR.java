@@ -6,7 +6,12 @@ import java.util.*;
  */
 public class SGR {
 
-    /**
+  public SGR(int id, String razonSocial) {
+    this.id = id;
+    this.razonSocial = razonSocial;
+  }
+
+  /**
      * Default constructor
      */
     private SGR() {
@@ -22,11 +27,29 @@ public class SGR {
      */
     private String razonSocial;
 
-    /**
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getRazonSocial() {
+    return razonSocial;
+  }
+
+  public void setRazonSocial(String razonSocial) {
+    this.razonSocial = razonSocial;
+  }
+
+  /**
      * 
      */
-    private void getRiesgoVivo() {
+    private int getRiesgoVivo() {
         // TODO implement here
+      return 2;
     }
 
     /**

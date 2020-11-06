@@ -6,7 +6,24 @@ import java.util.*;
  */
 public class Tipo1 extends Operacion {
 
-    /**
+  public Tipo1(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento, int id1, String cuitDelFirmante, float comision, Date fechaDeCobro, float tasaDeDescuento) {
+    super(id, monto, fecha, estado, fechaVencimiento);
+    this.id = id1;
+    this.cuitDelFirmante = cuitDelFirmante;
+    this.comision = comision;
+    this.fechaDeCobro = fechaDeCobro;
+    this.tasaDeDescuento = tasaDeDescuento;
+  }
+
+  public Tipo1(int id, String cuitDelFirmante, float comision, Date fechaDeCobro, float tasaDeDescuento) {
+    this.id = id;
+    this.cuitDelFirmante = cuitDelFirmante;
+    this.comision = comision;
+    this.fechaDeCobro = fechaDeCobro;
+    this.tasaDeDescuento = tasaDeDescuento;
+  }
+
+  /**
      * Default constructor
      */
     public Tipo1() {
@@ -15,57 +32,75 @@ public class Tipo1 extends Operacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String cuitDelFirmante;
+    private String cuitDelFirmante;
 
     /**
      * 
      */
-    public float comision;
+    private float comision;
 
     /**
      * 
      */
-    public Date fechaDeCobro;
+    private Date fechaDeCobro;
 
     /**
      * 
      */
-    public float tasaDeDescuento;
+    private float tasaDeDescuento;
 
 
+  @Override
+  public int getId() {
+    return id;
+  }
 
-    /**
+  @Override
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public float getComision() {
+    return comision;
+  }
+
+  public void setComision(float comision) {
+    this.comision = comision;
+  }
+
+  public float getTasaDeDescuento() {
+    return tasaDeDescuento;
+  }
+
+  public void setTasaDeDescuento(float tasaDeDescuento) {
+    this.tasaDeDescuento = tasaDeDescuento;
+  }
+
+  /**
      * 
      */
-    public void tieneTasadeDescuento() {
+    public boolean tieneTasadeDescuento() {
         // TODO implement here
+      return true;
     }
 
-    /**
-     * 
-     */
-    public void getTasaDeDesceunto() {
-        // TODO implement here
-    }
 
     /**
      * @return
      */
     public String getCuitDelFirmante() {
         // TODO implement here
-        return "";
+        return cuitDelFirmante;
     }
 
-    /**
-     * @param value
-     */
-    public void setCuitDelFirmante(String value) {
+    public void setCuitDelFirmante(String cuitDelFirmante) {
         // TODO implement here
+      this.cuitDelFirmante = cuitDelFirmante;
     }
 
     /**
@@ -73,14 +108,15 @@ public class Tipo1 extends Operacion {
      */
     public Date getFechaDeCobro() {
         // TODO implement here
-        return null;
+        return fechaDeCobro;
     }
 
     /**
      * @param value
      */
-    public void setFechaDeCobro(Date value) {
+    public void setFechaDeCobro(Date fechaDeCobro) {
         // TODO implement here
+      this.fechaDeCobro=fechaDeCobro;
     }
 
 }

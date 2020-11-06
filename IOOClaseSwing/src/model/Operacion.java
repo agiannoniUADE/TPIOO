@@ -6,7 +6,16 @@ import java.util.*;
  */
 public class Operacion {
 
-    /**
+
+  public Operacion(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento) {
+    this.id = id;
+    this.monto = monto;
+    this.fecha = fecha;
+    this.estado = estado;
+    this.fechaVencimiento = fechaVencimiento;
+  }
+
+  /**
      * Default constructor
      */
     public Operacion() {
@@ -38,21 +47,47 @@ public class Operacion {
     private Date fechaVencimiento;
 
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public float getMonto() {
+    return monto;
+  }
 
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
+  public Date getFecha() {
+    return fecha;
+  }
 
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
 
+  public EstadoOperacion getEstado() {
+    return estado;
+  }
 
+  public void setEstado(EstadoOperacion estado) {
+    this.estado = estado;
+  }
 
+  public Date getFechaVencimiento() {
+    return fechaVencimiento;
+  }
 
+  public void setFechaVencimiento(Date fechaVencimiento) {
+    this.fechaVencimiento = fechaVencimiento;
+  }
 
-
-
-
-
-    /**
+  /**
      * 
      */
     private void Operation1() {
@@ -80,12 +115,7 @@ public class Operacion {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    private void getIdTipo() {
-        // TODO implement here
-    }
+
 
     /**
      * @param nroDegarantia
@@ -101,12 +131,6 @@ public class Operacion {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    private void getFecha() {
-        // TODO implement here
-    }
 
     /**
      * 
@@ -123,12 +147,6 @@ public class Operacion {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    private void getEstado() {
-        // TODO implement here
-    }
 
     /**
      * 
@@ -137,36 +155,6 @@ public class Operacion {
         // TODO implement here
     }
 
-    /**
-     * @return
-     */
-    private float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    private void setMonto(float value) {
-        // TODO implement here
-    }
-
-
-    /**
-     * @return
-     */
-    private Date getFechaVencimiento() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    private void setFechaVencimiento(Date value) {
-        // TODO implement here
-    }
 
     /**
      * @return

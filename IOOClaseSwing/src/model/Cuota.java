@@ -9,7 +9,7 @@ public class  Cuota {
     /**
      * Default constructor
      */
-    private Cuota() {
+    public Cuota() {
     }
 
     /**
@@ -33,64 +33,35 @@ public class  Cuota {
     private int numeroCuota;
 
 
-    /**
-     * @return
-     */
-    private int getCuotaId() {
-        // TODO implement here
-        return 0;
-    }
+  public int getCuotaId() {
+    return cuotaId;
+  }
 
-    /**
-     * @param value
-     */
-    private void setCuotaId(int value) {
-        // TODO implement here
-    }
+  public void setCuotaId(int cuotaId) {
+    this.cuotaId = cuotaId;
+  }
 
-    /**
-     * @return
-     */
-    private float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
+  public float getMonto() {
+    return monto;
+  }
 
-    /**
-     * @param value
-     */
-    private void setMonto(float value) {
-        // TODO implement here
-    }
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
-    /**
-     * @return
-     */
-    private String getEstado() {
-        // TODO implement here
-        return "";
-    }
+  public String getEstado() {
+    return estado;
+  }
 
-    /**
-     * @param value
-     */
-    private void setEstado(String value) {
-        // TODO implement here
-    }
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
 
-    /**
-     * @return
-     */
-    private int getNumeroCuota() {
-        // TODO implement here
-        return 0;
-    }
+  public int getNumeroCuota() {
+    return numeroCuota;
+  }
 
-    /**
-     * @param value
-     */
-    private void setNumeroCuota(int value) {
-        // TODO implement here
-    }
-
+  public void setNumeroCuota(int numeroCuota) {
+    this.numeroCuota = numeroCuota;
+  }
 }

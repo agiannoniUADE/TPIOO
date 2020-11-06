@@ -9,7 +9,7 @@ public class  Contragarantia {
     /**
      * Default constructor
      */
-    private Contragarantia() {
+    public Contragarantia() {
     }
 
     /**
@@ -30,49 +30,32 @@ public class  Contragarantia {
 
 
 
-    /**
-     * @return
-     */
-    private int getId() {
-        // TODO implement here
-        return 0;
+    public int getId() {
+        return id;
     }
 
-    /**
-     * @param value
-     */
-    private void setId(int value) {
-        // TODO implement here
+    public void setId(int id) {
+      this.id = id;
     }
 
-    /**
-     * @return
-     */
-    private String getTipo() {
-        // TODO implement here
-        return "";
+    public String getTipo() {
+        return tipo;
     }
 
-    /**
-     * @param value
-     */
-    private void setTipo(String value) {
-        // TODO implement here
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    /**
-     * @return
-     */
-    private float getMonto() {
-        // TODO implement here
-        return 0.0f;
+
+    public float getMonto() {
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    private void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
+
+
 
 }

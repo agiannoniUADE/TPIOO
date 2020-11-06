@@ -6,10 +6,16 @@ import java.util.*;
  */
 public class  TipoOperacion {
 
-    /**
+  public TipoOperacion(int id, String descripcion, float comision) {
+    this.id = id;
+    this.descripcion = descripcion;
+    this.comision = comision;
+  }
+
+  /**
      * Default constructor
      */
-    private TipoOperacion() {
+    public TipoOperacion() {
     }
 
     /**
@@ -28,22 +34,27 @@ public class  TipoOperacion {
     private float comision;
 
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public String getDescripcion() {
+    return descripcion;
+  }
 
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-    /**
-     * 
-     */
-    private void getDescripcion() {
-        // TODO implement here
-    }
+  public float getComision() {
+    return comision;
+  }
 
-    /**
-     * 
-     */
-    private void getComision() {
-        // TODO implement here
-    }
-
+  public void setComision(float comision) {
+    this.comision = comision;
+  }
 }

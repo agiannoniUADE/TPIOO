@@ -6,7 +6,23 @@ import java.util.*;
  */
 public class Tipo2 extends Operacion {
 
-    /**
+
+  public Tipo2(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento, int id1, String banco, float monto1, float comision) {
+    super(id, monto, fecha, estado, fechaVencimiento);
+    this.id = id1;
+    this.banco = banco;
+    this.monto = monto1;
+    this.comision = comision;
+  }
+
+  public Tipo2(int id, String banco, float monto, float comision) {
+    this.id = id;
+    this.banco = banco;
+    this.monto = monto;
+    this.comision = comision;
+  }
+
+  /**
      * Default constructor
      */
     public Tipo2() {
@@ -15,82 +31,57 @@ public class Tipo2 extends Operacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String banco;
+    private String banco;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public float comision;
+    private float comision;
 
 
-    /**
-     * @return
-     */
-    public int getId() {
-        // TODO implement here
-        return 0;
-    }
+  @Override
+  public int getId() {
+    return id;
+  }
 
-    /**
-     * @param value
-     */
-    public void setId(int value) {
-        // TODO implement here
-    }
+  @Override
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    /**
-     * @return
-     */
-    public String getBanco() {
-        // TODO implement here
-        return "";
-    }
+  public String getBanco() {
+    return banco;
+  }
 
-    /**
-     * @param value
-     */
-    public void setBanco(String value) {
-        // TODO implement here
-    }
+  public void setBanco(String banco) {
+    this.banco = banco;
+  }
 
-    /**
-     * @return
-     */
-    public float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
+  @Override
+  public float getMonto() {
+    return monto;
+  }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
-    }
+  @Override
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
-    /**
-     * @return
-     */
-    public float  getComision() {
-        // TODO implement here
-        return 0.0f;
-    }
+  public float getComision() {
+    return comision;
+  }
 
-    /**
-     * @param value
-     */
-    public void setComision(float value) {
-        // TODO implement here
-    }
-
+  public void setComision(float comision) {
+    this.comision = comision;
+  }
 }

@@ -9,7 +9,7 @@ public class Certificado {
     /**
      * Default constructor
      */
-    private Certificado() {
+    public Certificado() {
     }
 
     /**
@@ -28,18 +28,27 @@ public class Certificado {
     private int certifivadoDeGarantia;
 
 
-    /**
-     * @param id
-     */
-    private void getOperacion(int id) {
-        // TODO implement here
-    }
+  public int getId() {
+    return id;
+  }
 
-    /**
-     * @param id
-     */
-    private void getSocio( int id) {
-        // TODO implement here
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public String getEstado() {
+    return Estado;
+  }
+
+  public void setEstado(String estado) {
+    Estado = estado;
+  }
+
+  public int getCertifivadoDeGarantia() {
+    return certifivadoDeGarantia;
+  }
+
+  public void setCertifivadoDeGarantia(int certifivadoDeGarantia) {
+    this.certifivadoDeGarantia = certifivadoDeGarantia;
+  }
 }
