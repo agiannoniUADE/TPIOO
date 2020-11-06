@@ -122,6 +122,15 @@ public class FrmSocios extends JFrame {
           }
         }
       });
+        ButtonEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(panel1,
+                    "Eggs are not supposed to be green.",
+                    "Inane warning",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+        });
     }
 
 }
