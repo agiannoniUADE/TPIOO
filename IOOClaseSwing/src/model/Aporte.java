@@ -1,3 +1,5 @@
+package  model;
+import utils.DateUtils;
 
 import java.util.*;
 
@@ -13,59 +15,66 @@ public class Aporte {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
+    private int id;
 
     /**
-     * 
+     *
      */
-    public Date fechaInicio;
+    private Date fechaInicio;
 
     /**
-     * 
+     *
      */
-    public float monto;
+    private float monto;
 
-    /**
-     * 
-     */
-    public Boolean estado;
+    private SocioProtector socio;
 
+    private Boolean retirado;
 
-
-
-
-    /**
-     * @return
-     */
-    public int getId() {
-        // TODO implement here
-        return 0;
+    public SocioProtector getSocio() {
+        return socio;
     }
 
-    /**
-     * @return
-     */
+    public void setSocio(SocioProtector socio) {
+        this.socio = socio;
+    }
+
     public Date getFechaInicio() {
-        // TODO implement here
-        return null;
+        return fechaInicio;
     }
 
-    /**
-     * @return
-     */
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @return
-     */
-    public Boolean getEstado() {
-        // TODO implement here
-        return null;
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
+    public Boolean FueRetirado() {
+        return retirado;
+    }
+
+    public void setRetirado(Boolean estado) {
+        this.retirado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Boolean estaDisponibleParaRetiro()
+    {
+        return DateUtils.getDiffYears(fechaInicio, new Date()) >= 2;
+    }
 }

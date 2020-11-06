@@ -12,12 +12,11 @@ public class SocioProtector extends Socio {
     public SocioProtector() {
     }
 
-
-    /**
-     * @param id
-     */
-    public void retirarAporte(int id) {
-        // TODO implement here
+    public SocioProtector(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad, String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
+        super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa);
     }
 
+    public SocioProtector(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad, String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa, List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
+        super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa, accionistas, documentos);
+    }
 }

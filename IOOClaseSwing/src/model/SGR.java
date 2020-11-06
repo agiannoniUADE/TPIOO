@@ -1,5 +1,6 @@
 package model;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -10,6 +11,8 @@ public class SGR {
      * Default constructor
      */
     public SGR() {
+        socios = new ArrayList<>();
+        aportes = new ArrayList<>();
     }
 
     /**
@@ -22,41 +25,80 @@ public class SGR {
      */
     public String razonSocial;
 
+    private List<Aporte> aportes;
+
+    private List<Socio> socios;
+
+
+    public List<Socio> getSocios() {
+        return socios;
+    }
+
+    public void addSocios(List<Socio> socios) {
+        if(socios != null)
+            this.socios.addAll(socios);
+    }
+
+
+    public List<Aporte> getAportes() {
+        return aportes;
+    }
+
+    public void setAportes(List<Aporte> aportes) {
+        this.aportes = aportes;
+    }
+
+    public int addAportes(Aporte aporte) {
+        int id  = aportes.size();
+        aporte.setId(id);
+        this.aportes.add(aporte);
+        return id;
+    }
+
+
     /**
      * 
      */
     public void getRiesgoVivo() {
         // TODO implement here
     }
-
     /**
      * 
      */
-    public void calcularFondoDeRiego() {
-        // TODO implement here
-    }
+    public float calcularFondoDeRiego() {
+        double response =   aportes.stream()
+            .map(x -> x.getMonto())
+            .collect(Collectors.summingDouble(Float::doubleValue));
 
-    /**
-     * 
-     */
-    public void getSocioParticipe() {
-        // TODO implement here
+        return (float)response;
     }
 
     /**
      * @param id
      */
-    public int getAporte(int id) {
-        // TODO implement here
-        return 0;
+    public Aporte getAporte(int id) {
+        return aportes.stream().filter(e -> id == e.getId())
+            .findFirst()
+            .orElse(null);
     }
 
     /**
      * @param id
      */
-    public int getSocio(int id) {
-        // TODO implement here
-        return  0;
+    public Socio getSocio(int id) {
+        return socios.stream().filter(e -> id == e.getId())
+            .findFirst()
+            .orElse(null);
     }
 
+    public void retirarAporte(int id) throws Exception {
+       Aporte aporte = getAporte(id);
+       if(aporte == null){
+           throw new Exception("No se pudo encontrar el aporte indicado.");
+       } else if(!aporte.estaDisponibleParaRetiro()){
+           throw new Exception("No se puede retirar un aporte antes de transcurrido dos años.");
+       }else{
+           aporte.setRetirado(true);
+       }
+    }
 }

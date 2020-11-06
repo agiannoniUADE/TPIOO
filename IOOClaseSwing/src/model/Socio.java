@@ -1,14 +1,15 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Socio {
 
   /**
-   *
-   * */
+   * ctor socio
+   */
   public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
                String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
     this.cuit = cuit;
@@ -20,91 +21,119 @@ public class Socio {
     this.telefono = telefono;
     this.email = email;
     this.tamanioEmpresa = tamanioEmpresa;
+    this.documentosRegistro = new ArrayList<>();
+    this.accionistas = new ArrayList<>();
   }
 
   /**
-   *
+   * ctor con accionistas y documentos
+   */
+  public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+               String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa,
+               List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
+    this.cuit = cuit;
+    this.tipoSocio = tipoSocio;
+    this.razonSocial = razonSocial;
+    this.fechaInicioActividad = fechaInicioActividad;
+    this.actividadPrincipal = actividadPrincipal;
+    this.direccion = direccion;
+    this.telefono = telefono;
+    this.email = email;
+    this.tamanioEmpresa = tamanioEmpresa;
+    this.accionistas = accionistas;
+    this.documentosRegistro = documentos;
+  }
+
+  /**
+   * ctor por defecto
    */
   public Socio() {
 
   }
 
   /**
-     * 
-     */
-    public int id;
+   *
+   */
+  public int id;
 
-    /**
-     * 
-     */
-    public String cuit;
+  /**
+   *
+   */
+  public String cuit;
 
-    /**
-     * 
-     */
-    public TipoSocio tipoSocio;
+  /**
+   *
+   */
+  public TipoSocio tipoSocio;
 
-    /**
-     *
-     */
-    public String estado;
+  /**
+   *
+   */
+  public String estado;
 
-    /**
-     * 
-     */
-    public String razonSocial;
+  /**
+   *
+   */
+  public String razonSocial;
 
-    /**
-     * 
-     */
-    public Date fechaInicioActividad;
+  /**
+   *
+   */
+  public Date fechaInicioActividad;
 
-    /**
-     * 
-     */
-    public String actividadPrincipal;
+  /**
+   *
+   */
+  public String actividadPrincipal;
 
-    /**
-     * 
-     */
-    public String direccion;
+  /**
+   *
+   */
+  public String direccion;
 
-    /**
-     * 
-     */
-    public String telefono;
+  /**
+   *
+   */
+  public String telefono;
 
-    /**
-     * 
-     */
-    public String email;
+  /**
+   *
+   */
+  public String email;
 
-    /**
-     * 
-     */
-    public int accion;
+  /**
+   *
+   */
+  public int accion;
 
-    /**
-     * 
-     */
-    public String tamanioEmpresa;
+  /**
+   *
+   */
+  public String tamanioEmpresa;
 
-    public List<Accionista> accionistas;
+  private List<Accionista> accionistas;
 
-    public void agregarAccionista(Accionista obj)
-    {
-      this.accionistas.add(obj);
-    }
+  private List<DocumentoRegistro> documentosRegistro;
 
-  public void removeAccionista(Accionista obj)
-  {
+  public void agregarDocumento(DocumentoRegistro obj) {
+    this.documentosRegistro.add(obj);
+  }
+
+  public void quitarDocumentoRegistro(DocumentoRegistro obj) {
+    this.documentosRegistro.remove(obj);
+  }
+
+  public void agregarAccionista(Accionista obj) {
+    this.accionistas.add(obj);
+  }
+
+  public void removeAccionista(Accionista obj) {
     this.accionistas.remove(obj);
   }
 
-  public Accionista getAccionista(String cuit)
-  {
-    for (Accionista a: this.accionistas) {
-      if(a.cuit == cuit){
+  public Accionista getAccionista(String cuit) {
+    for (Accionista a : this.accionistas) {
+      if (a.cuit == cuit) {
         return a;
       }
     }
@@ -112,84 +141,84 @@ public class Socio {
   }
 
 
-    /**
-     * @param accion
-     */
-    public void venderAcciones(int accion) {
-        // TODO implement here
-    }
+  /**
+   * @param accion
+   */
+  public void venderAcciones(int accion) {
+    // TODO implement here
+  }
 
-    /**
-     * @param accion
-     */
-    public void comprarAcciones(int accion) {
-        // TODO implement here
-    }
+  /**
+   * @param accion
+   */
+  public void comprarAcciones(int accion) {
+    // TODO implement here
+  }
 
-    /**
-     * @param accion
-     */
-    public void getAccionista(int accion) {
-        // TODO implement here
-    }
+  /**
+   * @param accion
+   */
+  public void getAccionista(int accion) {
+    // TODO implement here
+  }
 
-    /**
-     * @param id
-     */
-    public void getDocumentoRegistro(int id) {
-        // TODO implement here
-    }
+  /**
+   * @param id
+   */
+  public void getDocumentoRegistro(int id) {
+    // TODO implement here
+  }
 
-    /**
-     * 
-     */
-    public void getIdSocio() {
-        // TODO implement here
-    }
+  /**
+   *
+   */
+  public void getIdSocio() {
+    // TODO implement here
+  }
 
-    /**
-     * 
-     */
-    public void getTamanioEmpresa() {
-        // TODO implement here
-    }
+  /**
+   *
+   */
+  public void getTamanioEmpresa() {
+    // TODO implement here
+  }
 
-    /**
-     * @return
-     */
-    public TipoSocio getTipoSocio() {
-        // TODO implement here
-        return null;
-    }
+  /**
+   * @return
+   */
+  public TipoSocio getTipoSocio() {
+    // TODO implement here
+    return null;
+  }
 
-    /**
-     * @param value
-     */
-    public void setTipoSocio(TipoSocio value) {
-        // TODO implement here
-    }
+  /**
+   * @param value
+   */
+  public void setTipoSocio(TipoSocio value) {
+    // TODO implement here
+  }
 
-    /**
-     * 
-     */
-    public void getAccionistas() {
-        // TODO implement here
-    }
+  /**
+   *
+   */
+  public void getAccionistas() {
+    // TODO implement here
+  }
 
-    /**
-     * @return
-     */
-    public String getCuit() {
-        // TODO implement here
-        return "";
-    }
+  /**
+   * @return
+   */
+  public String getCuit() {
+    // TODO implement here
+    return "";
+  }
 
-    /**
-     * @param value
-     */
-    public void setCuit(String value) {
-        // TODO implement here
-    }
+  /**
+   * @param value
+   */
+  public void setCuit(String value) {
+    // TODO implement here
+  }
 
   public int getId() {
     return id;

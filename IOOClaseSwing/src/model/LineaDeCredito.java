@@ -27,9 +27,7 @@ public class LineaDeCredito {
      */
     public float montoAsignado;
 
-
-
-
+    public TipoOperacion tipoOperacion;
 
     /**
      * @return
@@ -61,5 +59,6 @@ public class LineaDeCredito {
     public void setMontoAsignado(float value) {
         // TODO implement here
     }
+
 
 }

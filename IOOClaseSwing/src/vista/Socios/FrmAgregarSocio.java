@@ -2,6 +2,7 @@ package vista.Socios;
 
 import Controllers.SocioController;
 import model.Socio;
+import model.SocioParticipe;
 import model.TipoSocio;
 
 import java.awt.*;
@@ -49,7 +50,7 @@ public class FrmAgregarSocio extends JDialog{
         String email = emailTextField.getText();
         String tamanioEmpresa = tamañoEmpresaTextField.getText();
 
-        Socio nuevoSocio = new Socio(
+        Socio nuevoSocio = new SocioParticipe(
           cuit,
           tipoSocio,
           razonSocial,

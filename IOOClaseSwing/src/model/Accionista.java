@@ -3,7 +3,7 @@ package model;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Accionista {
 
@@ -13,38 +13,32 @@ public class Accionista {
     public Accionista() {
     }
 
+    public Accionista(String cuit, String razonSocial, int porcentaje) {
+        this.cuit = cuit;
+        this.razonSocial = razonSocial;
+        this.porcentaje = porcentaje;
+    }
+
     /**
-     * 
+     *
      */
     public int id;
 
     /**
-     * 
+     *
      */
     public String cuit;
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Accionista that = (Accionista) o;
-    return Objects.equals(cuit, that.cuit);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(cuit);
-  }
-
-  /**
-     * 
+    /**
+     *
      */
     public String razonSocial;
 
     /**
-     * 
+     *
      */
-    public float porcentaje;
+    public int porcentaje;
 
 
     /**
@@ -86,4 +80,16 @@ public class Accionista {
         return 0.0f;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Accionista that = (Accionista) o;
+        return Objects.equals(cuit, that.cuit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cuit);
+    }
 }

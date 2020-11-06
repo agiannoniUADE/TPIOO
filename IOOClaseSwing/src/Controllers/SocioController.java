@@ -1,5 +1,5 @@
 package Controllers;
-import DAO.SociosDao;
+import DAO.SocioParticipeDao;
 import model.Socio;
 
 import java.io.FileNotFoundException;
@@ -10,13 +10,13 @@ import java.util.*;
  */
 public class SocioController {
 
-  private SociosDao sociosDao;
+  private SocioParticipeDao sociosDao;
 
     /**
      * Default constructor
      */
     public SocioController() throws Exception {
-      this.sociosDao = new SociosDao();
+      this.sociosDao = new SocioParticipeDao();
     }
 
     public int AgregarNuevoSocio(Socio socio) throws Exception {

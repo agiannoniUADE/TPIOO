@@ -2,6 +2,7 @@ package vista.Socios;
 
 import Controllers.SocioController;
 import model.Socio;
+import model.SocioParticipe;
 import model.TipoSocio;
 
 import javax.swing.*;
@@ -81,7 +82,7 @@ public class FrmSocios extends JFrame {
           String email = textFieldEmail.getText();
           String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
 
-          Socio nuevoSocio = new Socio(
+          Socio nuevoSocio = new SocioParticipe(
             cuit,
             tipoSocio,
             razonSocial,

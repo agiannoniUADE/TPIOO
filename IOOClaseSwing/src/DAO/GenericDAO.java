@@ -21,26 +21,21 @@ public abstract class GenericDAO<T> {
     List<T> list = new ArrayList<T>();
     FileReader f = new FileReader(archivo);
     BufferedReader b = new BufferedReader(f);
+    String line = "";
 
     try {
-      String cadena = b.readLine();
 
-      if (cadena == null) {
-        this.saveAll(list);
-        cadena = "[]";
+      while ((line = b.readLine()) != null) {
+          JsonParser parser = new JsonParser();
+          JsonObject jsonObject = parser.parse(line).getAsJsonObject();
+          Gson g = new Gson();
+          list.add(g.fromJson(jsonObject, clase));
       }
-
-      JsonParser parser = new JsonParser();
-      JsonArray gsonArr = parser.parse(cadena).getAsJsonArray();
-      Gson g = new Gson();
-      for (JsonElement js : gsonArr) {
-        list.add(g.fromJson(js, clase));
-      }
-      b.close();
+        b.close();
     } catch (Exception e) {
       e.printStackTrace();
+      return list;
     }
-
     return list;
   }
 
