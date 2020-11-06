@@ -49,7 +49,7 @@ public class SGR {
     }
 
     public int addAportes(Aporte aporte) {
-        int id  = aportes.size();
+        int id  = aportes.size()+1;
         aporte.setId(id);
         this.aportes.add(aporte);
         return id;
@@ -66,7 +66,7 @@ public class SGR {
      * 
      */
     public float calcularFondoDeRiego() {
-        double response =   aportes.stream()
+        double response =   aportes.stream().filter(x -> !x.FueRetirado())
             .map(x -> x.getMonto())
             .collect(Collectors.summingDouble(Float::doubleValue));
 
@@ -97,8 +97,23 @@ public class SGR {
            throw new Exception("No se pudo encontrar el aporte indicado.");
        } else if(!aporte.estaDisponibleParaRetiro()){
            throw new Exception("No se puede retirar un aporte antes de transcurrido dos años.");
+       }else if(aporte.FueRetirado()){
+           throw new Exception("El aporte ya fue retirado");
        }else{
            aporte.setRetirado(true);
        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SGR sgr = (SGR) o;
+        return id == sgr.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, razonSocial, aportes, socios);
     }
 }

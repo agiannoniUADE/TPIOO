@@ -2,49 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controllers/SGRController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/SocioParticipeDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DAO/SocioProtectorDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test/SGRControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/EstadoDocumentoRegistro.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/TipoDocumento.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.editorconfig" beforeDir="false" afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Aporte.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SGRController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SGRController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SocioController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SocioController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/DAO/GenericDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/DAO/GenericDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/DAO/SociosDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SGRControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SGRControllerTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Test/SociosControllerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Accionista.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Accionista.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/DocumentoRegistro.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/DocumentoRegistro.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/LineaDeCredito.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/LineaDeCredito.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Accion.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Aporte.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Aporte.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SGR.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SGR.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Socio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/Socio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SocioParticipe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SocioParticipe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SocioProtector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/SocioProtector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/model/TipoDocumentoRegistro.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmAgregarSocio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/vista/Socios/FrmSocios.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/repo/socio.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/repo/sgr.json" beforeDir="false" afterPath="$PROJECT_DIR$/repo/sgr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repo/socioParticipe.json" beforeDir="false" afterPath="$PROJECT_DIR$/repo/socioParticipe.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/SGRController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/SGRController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/SocioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/SocioController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DAO/GenericDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/GenericDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DAO/SociosDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DAO/SGRDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/SGRControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/SGRControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Test/SociosControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/SociosControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Accionista.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Accionista.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Aporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Aporte.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/DocumentoRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/DocumentoRegistro.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/LineaDeCredito.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/LineaDeCredito.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/EstadoSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/EstadoSocio.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/SGR.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SGR.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Socio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Socio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SocioParticipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SocioParticipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SocioProtector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SocioProtector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/TipoDocumentoRegistro.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmAgregarSocio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Socios/FrmSocios.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -56,100 +32,94 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utils/DateUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/SGR.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#307#308#0" expanded="true" />
-                <element signature="e#336#337#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/model/Socio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/EstadoDocumentoRegistro.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Aporte.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+            <state relative-caret-position="187">
+              <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#705#706#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#938#939#0" expanded="true" />
-                <element signature="e#976#977#0" expanded="true" />
+                <element signature="e#3132#3133#0" expanded="true" />
+                <element signature="e#3150#3151#0" expanded="true" />
+                <element signature="e#4247#4248#0" expanded="true" />
+                <element signature="e#4276#4277#0" expanded="true" />
+                <element signature="e#4325#4326#0" expanded="true" />
+                <element signature="e#4361#4362#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DAO/SocioParticipeDao.java">
+        <entry file="file://$PROJECT_DIR$/src/model/EstadoSocio.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/TipoDocumento.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+            <state relative-caret-position="315">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1925">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3145#3162#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/SocioParticipe.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="475">
+              <caret line="88" column="7" lean-forward="true" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="121">
+              <caret line="363" selection-start-line="363" selection-end-line="363" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repo/socioProtector.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repo/socioParticipe.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/SGRControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="260">
+              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -157,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state relative-caret-position="355">
+              <caret line="123" selection-start-line="123" selection-end-line="123" />
             </state>
           </provider>
         </entry>
@@ -168,8 +138,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -178,6 +148,7 @@
       <find>date</find>
       <find>void</find>
       <find>getText</find>
+      <find>esta</find>
     </findStrings>
     <replaceStrings>
       <replace>Date</replace>
@@ -192,9 +163,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/EstadoOperacion.java" />
-        <option value="$PROJECT_DIR$/src/model/FondoDeRiesgo.java" />
-        <option value="$PROJECT_DIR$/src/model/Recupero.java" />
         <option value="$PROJECT_DIR$/src/model/Riesgo.java" />
         <option value="$PROJECT_DIR$/src/model/Garantia.java" />
         <option value="$PROJECT_DIR$/src/model/Tipo 1.java" />
@@ -217,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/model/TipoSocio.java" />
         <option value="$PROJECT_DIR$/src/modelo/UsuarioDAO.java" />
         <option value="$PROJECT_DIR$/src/utils/GenericDAO.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/SocioController.java" />
         <option value="$PROJECT_DIR$/src/vista/FrmPrincipal.java" />
         <option value="$PROJECT_DIR$/.idea/.gitignore" />
         <option value="$PROJECT_DIR$/src/model/TipoDocumento.java" />
@@ -232,17 +199,21 @@
         <option value="$PROJECT_DIR$/src/model/Accionista.java" />
         <option value="$PROJECT_DIR$/src/model/DocumentoRegistro.java" />
         <option value="$PROJECT_DIR$/src/DAO/SociosDao.java" />
-        <option value="$PROJECT_DIR$/src/model/Socio.java" />
-        <option value="$PROJECT_DIR$/src/Test/SociosControllerTest.java" />
         <option value="$PROJECT_DIR$/src/DAO/SGRDao.java" />
         <option value="$PROJECT_DIR$/src/DAO/SocioProtectorDao.java" />
         <option value="$PROJECT_DIR$/src/DAO/SociosParticipeDao.java" />
-        <option value="$PROJECT_DIR$/src/DAO/GenericDAO.java" />
         <option value="$PROJECT_DIR$/src/utils/DateUtils.java" />
         <option value="$PROJECT_DIR$/src/model/Aporte.java" />
-        <option value="$PROJECT_DIR$/src/model/SGR.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/SGRController.java" />
+        <option value="$PROJECT_DIR$/repo/sgr.json" />
         <option value="$PROJECT_DIR$/src/Test/SGRControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/SGRController.java" />
+        <option value="$PROJECT_DIR$/src/model/SGR.java" />
+        <option value="$PROJECT_DIR$/src/model/EstadoSocio.java" />
+        <option value="$PROJECT_DIR$/src/DAO/GenericDAO.java" />
+        <option value="$PROJECT_DIR$/src/Test/SociosControllerTest.java" />
+        <option value="$PROJECT_DIR$/repo/socioParticipe.json" />
+        <option value="$PROJECT_DIR$/src/model/Socio.java" />
+        <option value="$PROJECT_DIR$/src/Controllers/SocioController.java" />
       </list>
     </option>
   </component>
@@ -331,7 +302,7 @@
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="264" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604680668026" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1604697854885" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
@@ -364,7 +335,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.SGRControllerTest.getSGR">
+  <component name="RunManager" selected="JUnit.SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success">
     <configuration name="FrmPrincipal" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="INCLUDE_PROVIDED_SCOPE" value="true" />
       <option name="MAIN_CLASS_NAME" value="vista.FrmPrincipal" />
@@ -380,7 +351,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SGRControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SGRControllerTest.AgregarAporte_sucess" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IOOClaseSwing" />
       <extension name="coverage">
         <pattern>
@@ -390,7 +361,8 @@
       </extension>
       <option name="PACKAGE_NAME" value="Test" />
       <option name="MAIN_CLASS_NAME" value="Test.SGRControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="AgregarAporte_sucess" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -406,22 +378,6 @@
       <option name="PACKAGE_NAME" value="Test" />
       <option name="MAIN_CLASS_NAME" value="Test.SGRControllerTest" />
       <option name="METHOD_NAME" value="agregarSGR" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SGRControllerTest.getSGR" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IOOClaseSwing" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Test" />
-      <option name="MAIN_CLASS_NAME" value="Test.SGRControllerTest" />
-      <option name="METHOD_NAME" value="getSGR" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -443,7 +399,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SociosControllerTest.tetes" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IOOClaseSwing" />
       <extension name="coverage">
         <pattern>
@@ -453,7 +409,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="Test" />
       <option name="MAIN_CLASS_NAME" value="Test.SociosControllerTest" />
-      <option name="METHOD_NAME" value="tetes" />
+      <option name="METHOD_NAME" value="GetSociosConSaldoDeAccionesDisponibles_Success" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SociosControllerTest.UpdateSocio_Success" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IOOClaseSwing" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Test" />
+      <option name="MAIN_CLASS_NAME" value="Test.SociosControllerTest" />
+      <option name="METHOD_NAME" value="UpdateSocio_Success" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -461,19 +433,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.FrmPrincipal" />
-      <item itemvalue="JUnit.SociosControllerTest.tetes" />
-      <item itemvalue="JUnit.SociosControllerTest.AgregarSocio_Success" />
       <item itemvalue="JUnit.SGRControllerTest.agregarSGR" />
-      <item itemvalue="JUnit.SGRControllerTest.getSGR" />
-      <item itemvalue="JUnit.SGRControllerTest" />
+      <item itemvalue="JUnit.SGRControllerTest.AgregarAporte_sucess" />
+      <item itemvalue="JUnit.SociosControllerTest.UpdateSocio_Success" />
+      <item itemvalue="JUnit.SociosControllerTest.AgregarSocio_Success" />
+      <item itemvalue="JUnit.SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SGRControllerTest.getSGR" />
-        <item itemvalue="JUnit.SGRControllerTest" />
-        <item itemvalue="JUnit.SGRControllerTest.agregarSGR" />
+        <item itemvalue="JUnit.SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" />
         <item itemvalue="JUnit.SociosControllerTest.AgregarSocio_Success" />
-        <item itemvalue="JUnit.SociosControllerTest.tetes" />
+        <item itemvalue="JUnit.SociosControllerTest.UpdateSocio_Success" />
+        <item itemvalue="JUnit.SGRControllerTest.AgregarAporte_sucess" />
+        <item itemvalue="JUnit.SGRControllerTest.agregarSGR" />
       </list>
     </recent_temporary>
   </component>
@@ -499,39 +471,39 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 24m 38s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_AgregarSocio_Success - 2020.11.06 at 15h 29m 00s.xml">
+      <configuration name="SociosControllerTest.AgregarSocio_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 38m 26s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_AgregarSocio_Success - 2020.11.06 at 15h 29m 47s.xml">
+      <configuration name="SociosControllerTest.AgregarSocio_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 40m 26s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_AgregarSocio_Success - 2020.11.06 at 15h 30m 35s.xml">
+      <configuration name="SociosControllerTest.AgregarSocio_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 41m 00s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_AgregarSocio_Success - 2020.11.06 at 15h 31m 00s.xml">
+      <configuration name="SociosControllerTest.AgregarSocio_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 41m 59s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 02m 49s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 12h 56m 52s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 05m 24s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 13h 04m 01s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 17m 45s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest - 2020.11.06 at 13h 05m 38s.xml">
-      <configuration name="SGRControllerTest" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 21m 06s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest - 2020.11.06 at 13h 16m 37s.xml">
-      <configuration name="SGRControllerTest" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 21m 21s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="SGRControllerTest_getSGR - 2020.11.06 at 13h 36m 15s.xml">
-      <configuration name="SGRControllerTest.getSGR" configurationId="JUnit" />
+    <history-entry file="SociosControllerTest_GetSociosConSaldoDeAccionesDisponibles_Success - 2020.11.06 at 16h 22m 45s.xml">
+      <configuration name="SociosControllerTest.GetSociosConSaldoDeAccionesDisponibles_Success" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72447000" />
+    <option name="totallyTimeSpent" value="82874000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -546,8 +518,8 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3299363" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.31082803" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.32356688" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.14012739" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.29681528" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="6" weight="0.32611465" />
@@ -556,7 +528,7 @@
       <window_info anchor="bottom" id="TODO" order="9" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.24585988" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.059872612" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.24458599" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.25" />
       <window_info anchor="right" id="Maven" order="2" />
@@ -652,22 +624,34 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Controllers/SocioController.java</url>
-          <line>50</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Test/SociosControllerTest.java</url>
-          <line>115</line>
+          <line>118</line>
           <properties />
           <option name="timeStamp" value="31" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/model/SGR.java</url>
-          <line>51</line>
+          <url>file://$PROJECT_DIR$/src/Test/SGRControllerTest.java</url>
+          <line>43</line>
           <properties />
-          <option name="timeStamp" value="44" />
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Controllers/SocioController.java</url>
+          <line>140</line>
+          <properties />
+          <option name="timeStamp" value="54" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Test/SociosControllerTest.java</url>
+          <line>123</line>
+          <properties />
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/model/Socio.java</url>
+          <line>251</line>
+          <properties />
+          <option name="timeStamp" value="56" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -711,6 +695,16 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>g.fromJson(jsonObject, clase).equals(obj)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>jsonObject</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>sgr.getAporte(1).estaDisponibleParaRetiro()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -750,28 +744,9 @@
         <custom-info>utils.DateUtils,java.util.Date</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>new Date(&quot;6/12/2018&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>utils.DateUtils,java.util.Date</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>new Date(&quot;30/12/2018&quot;)</expression-string>
-        <language-id>JAVA</language-id>
-        <custom-info>utils.DateUtils,java.util.Date</custom-info>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/modelo/ColorItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/modelo/UsuarioDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -783,13 +758,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="44" column="13" selection-start-line="44" selection-start-column="13" selection-end-line="44" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/TipoOperacionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -805,13 +773,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
           <caret line="564" selection-start-line="564" selection-end-line="564" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/OperacionController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -931,17 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/SocioParticipe.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1320">
-          <caret line="88" column="7" lean-forward="true" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
-          <folding>
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1697#1698#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/SocioProtector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
@@ -981,20 +931,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="365" selection-start-line="365" selection-end-line="365" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repo/sgr.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" lean-forward="true" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/repo/socio.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1002,33 +938,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="35" column="26" lean-forward="true" selection-start-line="35" selection-start-column="26" selection-end-line="35" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repo/socioParticipe.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repo/socioProtector.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DAO/SocioProtectorDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1066,20 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/TipoDocumento.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Socio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utils/DateUtils.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -1090,13 +989,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DAO/SocioParticipeDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1104,24 +996,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Aporte.java">
+    <entry file="file://$PROJECT_DIR$/src/Controllers/OperacionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="5" selection-start-line="12" selection-start-column="5" selection-end-line="12" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/TipoOperacionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/sgr.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
+          <caret line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Aporte.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-330">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#705#706#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#938#939#0" expanded="true" />
-            <element signature="e#976#977#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="63" column="21" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/SGR.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="50" column="16" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+        <state relative-caret-position="1470">
+          <caret line="102" column="36" selection-start-line="102" selection-start-column="36" selection-end-line="102" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#307#308#0" expanded="true" />
@@ -1130,20 +1049,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
+    <entry file="file://$PROJECT_DIR$/src/model/TipoDocumento.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="67" column="22" lean-forward="true" selection-start-line="67" selection-start-column="22" selection-end-line="67" selection-end-column="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="75">
+          <caret line="5" selection-start-line="5" selection-end-line="26" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/EstadoSocio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DAO/GenericDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/socioProtector.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/SGRControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="260">
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/socioParticipe.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="363" selection-start-line="363" selection-end-line="363" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Test/SociosControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="123" selection-start-line="123" selection-end-line="123" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/SocioParticipe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="88" column="7" lean-forward="true" selection-start-line="88" selection-start-column="7" selection-end-line="88" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Socio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="25" column="13" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="e#3132#3133#0" expanded="true" />
+            <element signature="e#3150#3151#0" expanded="true" />
+            <element signature="e#4247#4248#0" expanded="true" />
+            <element signature="e#4276#4277#0" expanded="true" />
+            <element signature="e#4325#4326#0" expanded="true" />
+            <element signature="e#4361#4362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1925">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3145#3162#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

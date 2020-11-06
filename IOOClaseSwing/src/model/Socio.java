@@ -23,6 +23,9 @@ public class Socio {
     this.tamanioEmpresa = tamanioEmpresa;
     this.documentosRegistro = new ArrayList<>();
     this.accionistas = new ArrayList<>();
+    this.estado = accion == 0
+        ? EstadoSocio.POSTULANTE_A_SOCIO
+        : EstadoSocio.SOCIO_PLENO;
   }
 
   /**
@@ -42,6 +45,9 @@ public class Socio {
     this.tamanioEmpresa = tamanioEmpresa;
     this.accionistas = accionistas;
     this.documentosRegistro = documentos;
+      this.estado = accion == 0
+          ? EstadoSocio.POSTULANTE_A_SOCIO
+          : EstadoSocio.SOCIO_PLENO;
   }
 
   /**
@@ -66,10 +72,11 @@ public class Socio {
    */
   public TipoSocio tipoSocio;
 
-  /**
+
+    /**
    *
    */
-  public String estado;
+  private EstadoSocio estado;
 
   /**
    *
@@ -144,15 +151,18 @@ public class Socio {
   /**
    * @param accion
    */
-  public void venderAcciones(int accion) {
-    // TODO implement here
+  public Boolean venderAcciones(int accion) {
+    if(accion > this.accion)
+        return false;
+    this.accion -= accion;
+    return true;
   }
 
   /**
    * @param accion
    */
   public void comprarAcciones(int accion) {
-    // TODO implement here
+    this.accion += accion;
   }
 
   /**
@@ -228,7 +238,16 @@ public class Socio {
     this.id = id;
   }
 
-  @Override
+    public EstadoSocio getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoSocio estado) {
+        this.estado = estado;
+    }
+
+
+    @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;

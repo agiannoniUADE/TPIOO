@@ -77,18 +77,19 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-37987765-2";
-        String razonSocial = "Lavadero SRL";
+        String cuit = "20-44444444-2";
+        String razonSocial = "Saveiro SRL";
         Date inicioActividad = new Date();
         String actividadPrincipal = "Servicio";
-        TipoSocio tipoSocio = TipoSocio.PROTECTOR;
-        String direccion = "Av. de mayo 987";
+        TipoSocio tipoSocio = TipoSocio.PARTICIPE;
+        String direccion = "Av. de mayo 341";
         String telefono = "428123132";
         String email = "info@lavadero.com";
         String tamanioEmpresa = "Mediana";
 
-        Accionista accionista = new Accionista("111111", "Accionista1", 20);
-        Accionista accionista2 = new Accionista("222222", "Accionista2", 55);
+
+        Accionista accionista = new Accionista("4444444", "Accionista4", 20);
+        Accionista accionista2 = new Accionista("111111", "Accionista5", 55);
 
         DocumentoRegistro documentoRegistro1 = new DocumentoRegistro("Documento 1",
             "mgonzales", false, TipoDocumento.MANIFESTACION_BIENES);
@@ -112,7 +113,15 @@ public class SociosControllerTest {
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
 
+        nuevoSocio.accion = 200;
+
         return socioController.AgregarNuevoSocio(nuevoSocio);
+    }
+
+    @Test
+    void GetSociosConSaldoDeAccionesDisponibles_Success() throws Exception {
+        int id = insertSocio();
+        assertNotNull(socioController.getSociosConAccionesDisponibles(TipoSocio.PARTICIPE));
     }
 }
 

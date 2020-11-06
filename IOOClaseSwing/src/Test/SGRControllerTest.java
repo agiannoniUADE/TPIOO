@@ -11,26 +11,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SGRControllerTest {
 
-    SGRController controller = new SGRController();
+    SGRController target = new SGRController();
+    SocioController socioController = new SocioController();
 
     public SGRControllerTest() throws Exception {
     }
 
-   /* //para agregar SGR no borrar
+   //para agregar SGR no borrar
    @Test
     void agregarSGR() throws Exception {
-        controller.saveSGR();
+        target.saveSGR();
     }
-    */
+
    @Test
     void getSGR_sucess() throws Exception {
-        assertNotNull(controller.GetSGR());
+        assertNotNull(target.GetSGR());
     }
 
     @Test
     void AgregarAporte_sucess() throws Exception {
-       SGR obj = controller.GetSGR();
-       obj.
+       SGR obj = target.GetSGR();
+
+        //Aporte
+        Aporte a = new Aporte();
+        a.setId(1);
+        SocioProtector socioProtector =(SocioProtector) socioController.getSocioProtector(1);
+        a.setSocio(socioProtector);
+        a.setFechaInicio(new Date("1/11/2020"));
+        a.setMonto(700000);
+        a.setRetirado(false);
+
+        target.agregarAporte(a);
     }
 }
 
