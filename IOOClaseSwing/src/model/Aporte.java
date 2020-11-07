@@ -1,11 +1,15 @@
+package model;
+
+import utils.DateUtils;
+
+import model.SocioProtector;
 
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Aporte {
-
 
     /**
      * Default constructor
@@ -14,55 +18,67 @@ public class Aporte {
     }
 
     /**
-     * 
+     *
      */
     private int id;
 
     /**
-     * 
+     *
      */
     private Date fechaInicio;
 
     /**
-     * 
+     *
      */
     private float monto;
 
-    /**
-     * 
-     */
-    private Boolean estado;
+    private SocioProtector socio;
+
+    private Boolean retirado;
+
+    public SocioProtector getSocio() {
+        return socio;
+    }
+
+    public void setSocio(SocioProtector socio) {
+        this.socio = socio;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public float getMonto() {
+        return monto;
+    }
+
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
 
 
-  public int getId() {
-    return id;
-  }
+    public Boolean FueRetirado() {
+        return retirado;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setRetirado(Boolean estado) {
+        this.retirado = estado;
+    }
 
-  public Date getFechaInicio() {
-    return fechaInicio;
-  }
 
-  public void setFechaInicio(Date fechaInicio) {
-    this.fechaInicio = fechaInicio;
-  }
-
-  public float getMonto() {
-    return monto;
-  }
-
-  public void setMonto(float monto) {
-    this.monto = monto;
-  }
-
-  public Boolean getEstado() {
-    return estado;
-  }
-
-  public void setEstado(Boolean estado) {
-    this.estado = estado;
-  }
+    public Boolean estaDisponibleParaRetiro() {
+        return DateUtils.getDiffYears(fechaInicio, new Date()) >= 2;
+    }
 }

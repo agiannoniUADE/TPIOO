@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class  LineaDeCredito {
+public class LineaDeCredito {
 
   public LineaDeCredito(int id, Date fechaVigencia, float montoAsignado) {
     this.id = id;
@@ -16,6 +16,12 @@ public class  LineaDeCredito {
      * Default constructor
      */
     public LineaDeCredito() {
+    }
+
+    public LineaDeCredito(Date fechaVigencia, float montoAsignado, TipoOperacion tipoOperacion) {
+        this.fechaVigencia = fechaVigencia;
+        this.montoAsignado = montoAsignado;
+        this.tipoOperacion = tipoOperacion;
     }
 
     /**
@@ -33,14 +39,18 @@ public class  LineaDeCredito {
      */
     private float montoAsignado;
 
+    private TipoOperacion tipoOperacion;
 
-  public int getId() {
+
+    public int getId() {
     return id;
   }
 
   public void setId(int id) {
     this.id = id;
   }
+
+
 
   public Date getFechaVigencia() {
     return fechaVigencia;

@@ -28,6 +28,7 @@ public class SubtipoOperacion {
     private String descripcion;
 
 
+    public TipoOperacion tipoOperacion;
   public int getId() {
     return id;
   }
@@ -44,10 +45,10 @@ public class SubtipoOperacion {
     this.descripcion = descripcion;
   }
 
-  /**
+    /**
      * @param id
      */
-    private void getTipoOperacion(int  id) {
+    public void getTipoOperacion(int id) {
         // TODO implement here
     }
 
@@ -55,8 +56,20 @@ public class SubtipoOperacion {
     /**
      * 
      */
-    private void getComision() {
+    public void getComision() {
         // TODO implement here
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubtipoOperacion that = (SubtipoOperacion) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descripcion, tipoOperacion);
+    }
 }

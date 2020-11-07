@@ -21,6 +21,13 @@ public class Operacion {
     public Operacion() {
     }
 
+    public Operacion(float monto, Date fechaIngreso, Date fechaVencimiento) {
+        this.monto = monto;
+        this.fecha = fechaIngreso;
+        this.estado = EstadoOperacion.INGRESADO;
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
     /**
      * 
      */

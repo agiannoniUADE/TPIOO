@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class  TipoOperacion {
+public class TipoOperacion {
 
   public TipoOperacion(int id, String descripcion, float comision) {
     this.id = id;
@@ -16,23 +16,25 @@ public class  TipoOperacion {
      * Default constructor
      */
     public TipoOperacion() {
+        subtipoOperacion = new ArrayList<>();
     }
 
     /**
      * 
      */
-    private int id;
+    public int id;
 
     /**
      * 
      */
-    private String descripcion;
+    public String descripcion;
 
     /**
      * 
      */
-    private float comision;
+    public float comision;
 
+    public List<SubtipoOperacion> subtipoOperacion;
 
   public int getId() {
     return id;
@@ -54,6 +56,18 @@ public class  TipoOperacion {
     return comision;
   }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TipoOperacion that = (TipoOperacion) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descripcion, comision, subtipoOperacion);
+    }
   public void setComision(float comision) {
     this.comision = comision;
   }

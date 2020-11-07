@@ -7,17 +7,18 @@ import java.util.*;
 public class DocumentoRegistro {
 
 
-  public DocumentoRegistro(int id, String nombre, String estado, String usuario) {
-    this.id = id;
-    this.nombre = nombre;
-    this.estado = estado;
-    this.usuario = usuario;
+  /**
+   * Default constructor
+   */
+  public DocumentoRegistro() {
   }
 
-  /**
-     * Default constructor
-     */
-    public DocumentoRegistro() {
+    public DocumentoRegistro(String nombre, String usuario, boolean obligatorio, TipoDocumento tipoDocumento) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+        this.obligatorio = obligatorio;
+        this.tipoDocumento = tipoDocumento;
+        this.estado = EstadoDocumentoRegistro.INGRESADO;
     }
 
     /**
@@ -31,23 +32,47 @@ public class DocumentoRegistro {
     private String nombre;
 
     /**
-     * 
-     */
-    private String estado;
-
-    /**
-     * 
+     *
      */
     private String usuario;
+  /**
+   *
+   */
+
+  private boolean obligatorio;
+
+  private TipoDocumento tipoDocumento;
+
+  private EstadoDocumentoRegistro estado;
+
+  public boolean isObligatorio() {
+    return obligatorio;
+  }
+
+  public void setObligatorio(boolean obligatorio) {
+    this.obligatorio = obligatorio;
+  }
 
 
+  public TipoDocumento getTipoDocumentoRegistro() {
+    return tipoDocumento;
+  }
 
-    /**
-     * @param id
-     */
-    public void getTipoDocumentoRegistro(int  id) {
-        // TODO implement here
-    }
+  public TipoDocumento getTipoDocumento() {
+    return tipoDocumento;
+  }
+
+  public void setTipoDocumento(TipoDocumento tipoDocumento) {
+    this.tipoDocumento = tipoDocumento;
+  }
+
+  public EstadoDocumentoRegistro getEstado() {
+    return estado;
+  }
+
+  public void setEstado(EstadoDocumentoRegistro estado) {
+    this.estado = estado;
+  }
 
   public int getId() {
     return id;
@@ -65,13 +90,6 @@ public class DocumentoRegistro {
     this.nombre = nombre;
   }
 
-  public String getEstado() {
-    return estado;
-  }
-
-  public void setEstado(String estado) {
-    this.estado = estado;
-  }
 
   public String getUsuario() {
     return usuario;

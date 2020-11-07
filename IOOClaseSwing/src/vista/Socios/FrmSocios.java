@@ -2,6 +2,7 @@ package vista.Socios;
 
 import Controllers.SocioController;
 import model.Socio;
+import model.SocioParticipe;
 import model.TipoSocio;
 
 import javax.swing.*;
@@ -81,7 +82,7 @@ public class FrmSocios extends JFrame {
           String email = textFieldEmail.getText();
           String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
 
-          Socio nuevoSocio = new Socio(
+          Socio nuevoSocio = new SocioParticipe(
             cuit,
             tipoSocio,
             razonSocial,
@@ -105,13 +106,13 @@ public class FrmSocios extends JFrame {
           try {
             Socio s = socioController.getSocioParticipe(Integer.parseInt(textBuscar.getText()));
 
-            TextFieldCUIT.setText(s.cuit);
-            TextFieldRazonSocial.setText(s.razonSocial);
-            TextFieldFechaInicioActividad.setText(s.fechaInicioActividad.toString());
-            TextFieldActividadPrincipal.setText(s.actividadPrincipal);
-            TextFieldDireccion.setText(s.direccion);
-            TextFieldTelefono.setText(s.telefono);
-            textFieldEmail.setText(s.email);
+            TextFieldCUIT.setText(s.getCuit());
+            TextFieldRazonSocial.setText(s.getRazonSocial());
+            TextFieldFechaInicioActividad.setText(s.getFechaInicioActividad().toString());
+            TextFieldActividadPrincipal.setText(s.getActividadPrincipal());
+            TextFieldDireccion.setText(s.getDireccion());
+            TextFieldTelefono.setText(s.getTelefono());
+            textFieldEmail.setText(s.getEmail());
 
             textBuscar.setEnabled(false);
             ButtonBuscar.setText("Nueva busqueda");
@@ -121,6 +122,15 @@ public class FrmSocios extends JFrame {
           }
         }
       });
+        ButtonEditar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(panel1,
+                    "Eggs are not supposed to be green.",
+                    "Inane warning",
+                    JOptionPane.WARNING_MESSAGE);
+            }
+        });
     }
 
 }

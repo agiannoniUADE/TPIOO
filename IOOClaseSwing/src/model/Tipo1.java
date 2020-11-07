@@ -1,29 +1,27 @@
 package model;
+
+import com.sun.istack.internal.Nullable;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Tipo1 extends Operacion {
 
-  public Tipo1(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento, int id1, String cuitDelFirmante, float comision, Date fechaDeCobro, float tasaDeDescuento) {
-    super(id, monto, fecha, estado, fechaVencimiento);
-    this.id = id1;
-    this.cuitDelFirmante = cuitDelFirmante;
-    this.comision = comision;
-    this.fechaDeCobro = fechaDeCobro;
-    this.tasaDeDescuento = tasaDeDescuento;
-  }
+    public Tipo1(float monto, Date fecha, Date fechaVencimiento, String cuitDelFirmante, float comision, Date fechaDeCobro, Float tasaDeDescuento) {
+        super(monto, fecha, fechaVencimiento);
+        this.cuitDelFirmante = cuitDelFirmante;
+        this.comision = comision;
+        this.fechaDeCobro = fechaDeCobro;
+        this.tasaDeDescuento = tasaDeDescuento != null ? tasaDeDescuento.floatValue() : 0f;
+    }
 
-  public Tipo1(int id, String cuitDelFirmante, float comision, Date fechaDeCobro, float tasaDeDescuento) {
-    this.id = id;
-    this.cuitDelFirmante = cuitDelFirmante;
-    this.comision = comision;
-    this.fechaDeCobro = fechaDeCobro;
-    this.tasaDeDescuento = tasaDeDescuento;
-  }
+    public Tipo1(float monto, Date fecha, Date fechaVencimiento, String cuitDelFirmante, float comision, Date fechaDeCobro) {
+        new Tipo1(monto, fecha, fechaVencimiento, cuitDelFirmante, comision, fechaDeCobro, null);
+    }
 
-  /**
+    /**
      * Default constructor
      */
     public Tipo1() {
@@ -84,10 +82,10 @@ public class Tipo1 extends Operacion {
   /**
      * 
      */
-    public boolean tieneTasadeDescuento() {
-        // TODO implement here
+  public boolean tieneTasadeDescuento() {
+      // TODO implement here
       return true;
-    }
+  }
 
 
     /**
