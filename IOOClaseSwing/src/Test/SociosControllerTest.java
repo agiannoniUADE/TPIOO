@@ -1,6 +1,7 @@
 package Test;
 
 import Controllers.SocioController;
+import Controllers.TipoOperacionController;
 import model.*;
 import org.junit.jupiter.api.Test;
 
@@ -11,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SociosControllerTest {
 
     SocioController target = new SocioController();
+    TipoOperacionController tipoOperacionController = new TipoOperacionController();
 
     public SociosControllerTest() throws Exception {
     }
@@ -19,7 +21,7 @@ public class SociosControllerTest {
     void AgregarSocio_Success() throws Exception {
         int id = insertSocio();
         assertNotNull(target.getSocioParticipe(1));
-        target.delete(id);
+       // target.delete(id);
     }
 
     @Test
@@ -94,7 +96,7 @@ public class SociosControllerTest {
         DocumentoRegistro documentoRegistro2 = new DocumentoRegistro("Documento 2",
             "mgonzales", true, TipoDocumento.CONTRATO_SOCIAL);
 
-        Socio nuevoSocio = new SocioParticipe(
+        SocioParticipe nuevoSocio = new SocioParticipe(
             cuit,
             tipoSocio,
             razonSocial,
@@ -109,8 +111,20 @@ public class SociosControllerTest {
         nuevoSocio.agregarAccionista(accionista2);
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
-
         nuevoSocio.accion = 200;
+
+        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
+
+        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
+
+        LineaDeCredito lineaDeCredito = new LineaDeCredito(new Date("12/12/2022"), 70000, tipoOperacion);
+        nuevoSocio.setLineaDeCredito(lineaDeCredito);
+
+        Contragarantia c1 = new Contragarantia("Garantia1",20000);
+        Contragarantia c2 = new Contragarantia("Garantia2",30000);
+
+        nuevoSocio.addContragarantia(c1);
+        nuevoSocio.addContragarantia(c2);
 
         return target.AgregarNuevoSocio(nuevoSocio);
     }

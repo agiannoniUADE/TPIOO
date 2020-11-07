@@ -1,7 +1,6 @@
 package DAO;
 
 import model.SGR;
-import model.Socio;
 
 public class SGRDao extends GenericDAO {
 

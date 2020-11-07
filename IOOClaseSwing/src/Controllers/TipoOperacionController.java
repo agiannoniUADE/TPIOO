@@ -161,4 +161,11 @@ public class TipoOperacionController {
         return tipo.comision;
     }
 
+    /**
+     * @param IdTipoOperacion
+     */
+    public TipoOperacion getTipoOperacion(int IdTipoOperacion) throws FileNotFoundException {
+        return (TipoOperacion)tipoOperacionDao.search(1);
+    }
+
 }

@@ -13,6 +13,8 @@ public class SocioParticipe extends Socio {
     public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
                           String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
         super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa);
+
+        this.contragarantias = new ArrayList<>();
     }
 
     public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad, String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa, List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
@@ -51,6 +53,14 @@ public class SocioParticipe extends Socio {
         return totalContragarantias;
     }
 
+    public List<Contragarantia> getContragarantias() {
+        return contragarantias;
+    }
+
+    public void addContragarantia(Contragarantia obj) {
+        this.contragarantias.add(obj);
+    }
+
     /**
      *
      */
@@ -61,9 +71,6 @@ public class SocioParticipe extends Socio {
     /**
      *
      */
-    public List<Contragarantia> getContragarantias() {
-        return contragarantias;
-    }
 
     /**
      * @param id

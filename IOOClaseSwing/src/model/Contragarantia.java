@@ -17,6 +17,11 @@ public class Contragarantia {
      */
     public int id;
 
+    public Contragarantia(String tipo, float monto) {
+        this.tipo = tipo;
+        this.monto = monto;
+    }
+
     /**
      * 
      */

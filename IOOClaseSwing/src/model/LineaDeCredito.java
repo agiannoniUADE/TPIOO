@@ -12,6 +12,12 @@ public class LineaDeCredito {
     public LineaDeCredito() {
     }
 
+    public LineaDeCredito(Date fechaVigencia, float montoAsignado, TipoOperacion tipoOperacion) {
+        this.fechaVigencia = fechaVigencia;
+        this.montoAsignado = montoAsignado;
+        this.tipoOperacion = tipoOperacion;
+    }
+
     /**
      * 
      */
