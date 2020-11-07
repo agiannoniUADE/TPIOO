@@ -30,11 +30,6 @@ public class Tipo1 extends Operacion {
     /**
      * 
      */
-    private int id;
-
-    /**
-     * 
-     */
     private String cuitDelFirmante;
 
     /**
@@ -51,17 +46,6 @@ public class Tipo1 extends Operacion {
      * 
      */
     private float tasaDeDescuento;
-
-
-  @Override
-  public int getId() {
-    return id;
-  }
-
-  @Override
-  public void setId(int id) {
-    this.id = id;
-  }
 
   public float getComision() {
     return comision;
@@ -83,21 +67,16 @@ public class Tipo1 extends Operacion {
      * 
      */
   public boolean tieneTasadeDescuento() {
-      // TODO implement here
       return true;
   }
-
-
     /**
      * @return
      */
     public String getCuitDelFirmante() {
-        // TODO implement here
         return cuitDelFirmante;
     }
 
     public void setCuitDelFirmante(String cuitDelFirmante) {
-        // TODO implement here
       this.cuitDelFirmante = cuitDelFirmante;
     }
 
@@ -105,15 +84,12 @@ public class Tipo1 extends Operacion {
      * @return
      */
     public Date getFechaDeCobro() {
-        // TODO implement here
         return fechaDeCobro;
     }
 
     /**
-     * @param value
      */
     public void setFechaDeCobro(Date fechaDeCobro) {
-        // TODO implement here
       this.fechaDeCobro=fechaDeCobro;
     }
 

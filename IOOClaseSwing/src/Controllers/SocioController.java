@@ -38,8 +38,16 @@ public class SocioController {
      */
     public Socio getSocioParticipe(int id) throws FileNotFoundException {
 
-      Object obj = socioParticipeDao.search(id);
-      return obj != null ? (Socio)obj: null;
+        Object obj = socioParticipeDao.search(id);
+        return obj != null ? (Socio)obj: null;
+    }
+    public SocioParticipe getSocioParticipe(String cuit) throws Exception {
+
+        List<SocioParticipe> obj = socioParticipeDao.getAll();
+       return obj.stream()
+            .filter(e -> cuit.equalsIgnoreCase(e.getCuit()))
+            .findFirst()
+            .orElse(null);
     }
 
     public Socio getSocioProtector(int id) throws FileNotFoundException {

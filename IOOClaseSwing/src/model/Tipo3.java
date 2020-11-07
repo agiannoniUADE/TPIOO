@@ -15,11 +15,6 @@ public class Tipo3 extends Operacion {
     /**
      * 
      */
-    private int id;
-
-    /**
-     * 
-     */
     private String entidad;
 
     /**
@@ -58,18 +53,6 @@ public class Tipo3 extends Operacion {
     private Date fechaDeVencimiento;
 
 
-
-    /**
-     * @return
-     */
-    public int getId() {
-        // TODO implement here
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id=id;
-    }
     public String getEntidad() {
         // TODO implement here
         return entidad;

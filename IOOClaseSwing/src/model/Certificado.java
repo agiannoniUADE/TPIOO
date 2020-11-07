@@ -12,43 +12,19 @@ public class Certificado {
     public Certificado() {
     }
 
-    /**
-     * 
-     */
-    private int id;
+    public Certificado(int numeroCertificado, String razonSocial) {
+        this.numeroCertificado = numeroCertificado;
+        this.razonSocial = razonSocial;
+    }
 
-    /**
-     * 
-     */
-    private String Estado;
+    private int numeroCertificado;
+    private String razonSocial;
 
-    /**
-     * 
-     */
-    private int certifivadoDeGarantia;
+    public int getNumeroCertificado() {
+        return numeroCertificado;
+    }
 
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getEstado() {
-    return Estado;
-  }
-
-  public void setEstado(String estado) {
-    Estado = estado;
-  }
-
-  public int getCertifivadoDeGarantia() {
-    return certifivadoDeGarantia;
-  }
-
-  public void setCertifivadoDeGarantia(int certifivadoDeGarantia) {
-    this.certifivadoDeGarantia = certifivadoDeGarantia;
-  }
+    public void setNumeroCertificado(int numeroCertificado) {
+        this.numeroCertificado = numeroCertificado;
+    }
 }

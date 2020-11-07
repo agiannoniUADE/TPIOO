@@ -1,4 +1,5 @@
 package model;
+import Controllers.SGRController;
 import Controllers.SocioController;
 
 import java.util.*;
@@ -17,8 +18,13 @@ public class ValidatorVO {
     /**
      * @param
      */
-    private void ValidarMontoOperacion(float monto) {
-        // TODO implement here
+    public static boolean ValidarMontoOperacion(SGRController controller, float monto) throws Exception {
+       SGR sgr = controller.GetSGR();
+
+       //calculo 10% del fondo de riesgo
+       float porcentaje = sgr.calcularFondoDeRiego() * 0.1f;
+
+       return monto < porcentaje;
     }
 
     /**

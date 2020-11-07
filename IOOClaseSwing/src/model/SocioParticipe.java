@@ -20,6 +20,7 @@ public class SocioParticipe extends Socio {
         super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa, accionistas, documentos);
     }
 
+
     private LineaDeCredito lineaDeCredito;
 
     private List<Contragarantia> contragarantias;
@@ -104,4 +105,7 @@ public class SocioParticipe extends Socio {
         }
     }
 
+    public LineaDeCredito getLineaDeCredito() {
+        return lineaDeCredito;
+    }
 }

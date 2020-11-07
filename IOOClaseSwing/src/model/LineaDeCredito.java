@@ -42,6 +42,16 @@ public class LineaDeCredito {
     private TipoOperacion tipoOperacion;
 
 
+    public TipoOperacion getTipoOperacion() {
+        return tipoOperacion;
+    }
+
+    public void setTipoOperacion(TipoOperacion tipoOperacion) {
+        this.tipoOperacion = tipoOperacion;
+    }
+
+
+
     public int getId() {
     return id;
   }
