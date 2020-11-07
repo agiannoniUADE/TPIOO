@@ -19,8 +19,7 @@ public class FrmSocios extends JFrame {
     private JPanel SeccRSyCUIT;
     private JPanel SeccAPyFIA;
     private JPanel SeccDiryTel;
-    private JPanel SeccMessages;
-    private JPanel PanelDer;
+  private JPanel PanelDer;
     private JPanel TabLineasDeCredito;
     private JPanel TabContraGarantias;
     private JPanel TabAccionistas;
@@ -40,8 +39,10 @@ public class FrmSocios extends JFrame {
     private JButton ButtonAgregar;
     private JButton ButtonBuscar;
     private JTextField textBuscar;
-    private JComboBox comboBoxSeleccion;
-    private SocioController socioController;
+  private JButton agregarButton;
+  private JButton borrarButton;
+  private JButton editarButton;
+  private SocioController socioController;
 
 
     private FrmSocios self;
