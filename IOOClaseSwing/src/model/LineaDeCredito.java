@@ -6,7 +6,13 @@ import java.util.*;
  */
 public class LineaDeCredito {
 
-    /**
+  public LineaDeCredito(int id, Date fechaVigencia, float montoAsignado) {
+    this.id = id;
+    this.fechaVigencia = fechaVigencia;
+    this.montoAsignado = montoAsignado;
+  }
+
+  /**
      * Default constructor
      */
     public LineaDeCredito() {
@@ -21,50 +27,44 @@ public class LineaDeCredito {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public Date fechaVigencia;
+    private Date fechaVigencia;
 
     /**
      * 
      */
-    public float montoAsignado;
+    private float montoAsignado;
 
-    public TipoOperacion tipoOperacion;
+    private TipoOperacion tipoOperacion;
 
-    /**
-     * @return
-     */
+
     public int getId() {
-        // TODO implement here
-        return 0;
-    }
+    return id;
+  }
 
-    /**
-     * @return
-     */
-    public Date getFechaVigencia() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public float getMontoAsignado() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    public void setMontoAsignado(float value) {
-        // TODO implement here
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
 
+
+  public Date getFechaVigencia() {
+    return fechaVigencia;
+  }
+
+  public void setFechaVigencia(Date fechaVigencia) {
+    this.fechaVigencia = fechaVigencia;
+  }
+
+  public float getMontoAsignado() {
+    return montoAsignado;
+  }
+
+  public void setMontoAsignado(float montoAsignado) {
+    this.montoAsignado = montoAsignado;
+  }
 }

@@ -106,13 +106,13 @@ public class FrmSocios extends JFrame {
           try {
             Socio s = socioController.getSocioParticipe(Integer.parseInt(textBuscar.getText()));
 
-            TextFieldCUIT.setText(s.cuit);
-            TextFieldRazonSocial.setText(s.razonSocial);
-            TextFieldFechaInicioActividad.setText(s.fechaInicioActividad.toString());
-            TextFieldActividadPrincipal.setText(s.actividadPrincipal);
-            TextFieldDireccion.setText(s.direccion);
-            TextFieldTelefono.setText(s.telefono);
-            textFieldEmail.setText(s.email);
+            TextFieldCUIT.setText(s.getCuit());
+            TextFieldRazonSocial.setText(s.getRazonSocial());
+            TextFieldFechaInicioActividad.setText(s.getFechaInicioActividad().toString());
+            TextFieldActividadPrincipal.setText(s.getActividadPrincipal());
+            TextFieldDireccion.setText(s.getDireccion());
+            TextFieldTelefono.setText(s.getTelefono());
+            textFieldEmail.setText(s.getEmail());
 
             textBuscar.setEnabled(false);
             ButtonBuscar.setText("Nueva busqueda");

@@ -20,10 +20,10 @@ public class TipoOperacionController {
         subtipoOperacionDao = new SubtipoOperacionDao();
     }
 
-
+/*
     public void saveTipoOperacion() throws Exception {
 
-        TipoOperacion t = new TipoOperacion();
+      TipoOperacion t = new TipoOperacion();
 
         t.id = 1;
         t.descripcion = "tipo 1";
@@ -87,10 +87,10 @@ public class TipoOperacionController {
         tipos.add(t3);
 
         tipoOperacionDao.saveAll(tipos);
-    }
+    }*/
 
 
-    public void saveSubTipoOperacion() throws Exception {
+    /*public void saveSubTipoOperacion() throws Exception {
 
         TipoOperacion t = new TipoOperacion();
 
@@ -151,7 +151,7 @@ public class TipoOperacionController {
         subTipos.add(s6);
 
         subtipoOperacionDao.saveAll(subTipos);
-    }
+    }*/
 
     /**
      * @param IdTipoOperacion

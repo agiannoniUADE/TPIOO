@@ -21,9 +21,9 @@ public class SocioController {
     }
 
     public int AgregarNuevoSocio(Socio socio) throws Exception {
-        GenericDAO dao = socio.tipoSocio == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        if(socio.tipoSocio == TipoSocio.PROTECTOR){
-           if(!ValidatorVO.ValidarSocioProtector(this, socio.cuit)){
+        GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
+        if(socio.getTipoSocio() == TipoSocio.PROTECTOR){
+           if(!ValidatorVO.ValidarSocioProtector(this, socio.getCuit())){
                throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
            }
         }
@@ -151,8 +151,8 @@ public class SocioController {
         Dictionary<String, Integer> dic = new Hashtable<String, Integer>();
         for(Object item: dao.getAll()){
             socio = (Socio)item;
-                if(socio.accion > 1)
-                    ((Hashtable<String, Integer>) dic).put(socio.cuit,Integer.valueOf(socio.accion));
+                if(socio.getAccion() > 1)
+                    ((Hashtable<String, Integer>) dic).put(socio.getCuit(),Integer.valueOf(socio.getAcciones()));
         }
         return dic;
     }
@@ -160,16 +160,18 @@ public class SocioController {
     public void suscribirAcciones(Socio comprador, Socio vendedor, int cantidad) throws Exception {
         GenericDAO dao;
 
-        if(comprador.tipoSocio != vendedor.tipoSocio ){
+        if(comprador.getTipoSocio() != vendedor.getTipoSocio() ){
             throw new Exception("No se puede suscribir acciones entre socios de distinto tipo");
         }
-        if(vendedor.accion < cantidad)
+        if(vendedor.getAccion() < cantidad)
             throw new Exception("El socio vendedor no dispone de la cantidad solicitada.");
 
-        dao = vendedor.tipoSocio == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
+        dao = vendedor.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
 
-        comprador.accion +=cantidad;
-        vendedor.accion-=cantidad;
+        int accionesNuevas = comprador.getAcciones() + cantidad;
+        int restaAciones = vendedor.getAcciones() - cantidad;
+        comprador.setAccion(accionesNuevas);
+        vendedor.setAccion(restaAciones);
         comprador.setEstado(EstadoSocio.SOCIO_PLENO);
 
         dao.update(comprador);

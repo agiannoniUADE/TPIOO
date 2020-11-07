@@ -7,236 +7,205 @@ import java.util.*;
  */
 public class Socio {
 
-  /**
-   * ctor socio
-   */
-  public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
-               String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
-    this.cuit = cuit;
-    this.tipoSocio = tipoSocio;
-    this.razonSocial = razonSocial;
-    this.fechaInicioActividad = fechaInicioActividad;
-    this.actividadPrincipal = actividadPrincipal;
-    this.direccion = direccion;
-    this.telefono = telefono;
-    this.email = email;
-    this.tamanioEmpresa = tamanioEmpresa;
-    this.documentosRegistro = new ArrayList<>();
-    this.accionistas = new ArrayList<>();
-    this.estado = accion == 0
-        ? EstadoSocio.POSTULANTE_A_SOCIO
-        : EstadoSocio.SOCIO_PLENO;
-  }
+    /**
+     * ctor socio
+     */
+    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+                 String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
+        this.cuit = cuit;
+        this.tipoSocio = tipoSocio;
+        this.razonSocial = razonSocial;
+        this.fechaInicioActividad = fechaInicioActividad;
+        this.actividadPrincipal = actividadPrincipal;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.tamanioEmpresa = tamanioEmpresa;
+        this.documentosRegistro = new ArrayList<>();
+        this.accionistas = new ArrayList<>();
+        this.estado = accion == 0
+            ? EstadoSocio.POSTULANTE_A_SOCIO
+            : EstadoSocio.SOCIO_PLENO;
+    }
 
-  /**
-   * ctor con accionistas y documentos
-   */
-  public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
-               String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa,
-               List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
-    this.cuit = cuit;
-    this.tipoSocio = tipoSocio;
-    this.razonSocial = razonSocial;
-    this.fechaInicioActividad = fechaInicioActividad;
-    this.actividadPrincipal = actividadPrincipal;
-    this.direccion = direccion;
-    this.telefono = telefono;
-    this.email = email;
-    this.tamanioEmpresa = tamanioEmpresa;
-    this.accionistas = accionistas;
-    this.documentosRegistro = documentos;
-      this.estado = accion == 0
-          ? EstadoSocio.POSTULANTE_A_SOCIO
-          : EstadoSocio.SOCIO_PLENO;
-  }
+    /**
+     * ctor con accionistas y documentos
+     */
+    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+                 String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa,
+                 List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
+        this.cuit = cuit;
+        this.tipoSocio = tipoSocio;
+        this.razonSocial = razonSocial;
+        this.fechaInicioActividad = fechaInicioActividad;
+        this.actividadPrincipal = actividadPrincipal;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.email = email;
+        this.tamanioEmpresa = tamanioEmpresa;
+        this.accionistas = accionistas;
+        this.documentosRegistro = documentos;
+        this.estado = accion == 0
+            ? EstadoSocio.POSTULANTE_A_SOCIO
+            : EstadoSocio.SOCIO_PLENO;
+    }
 
-  /**
-   * ctor por defecto
-   */
-  public Socio() {
+    /**
+     * ctor por defecto
+     */
+    public Socio() {
 
-  }
+    }
 
-  /**
-   *
-   */
-  public int id;
 
-  /**
-   *
-   */
-  public String cuit;
+    private int acciones;
+    /**
+     *
+     */
+    private int id;
 
-  /**
-   *
-   */
-  public TipoSocio tipoSocio;
+    /**
+     *
+     */
+    private String cuit;
+
+    /**
+     *
+     */
+    private TipoSocio tipoSocio;
+
+    /**
+     *
+     */
+    private EstadoSocio estado;
+
+    /**
+     *
+     */
+    private String razonSocial;
+
+    /**
+     *
+     */
+    private Date fechaInicioActividad;
+
+    /**
+     *
+     */
+    private String actividadPrincipal;
+
+    /**
+     *
+     */
+    private String direccion;
+
+    /**
+     *
+     */
+    private String telefono;
+
+    /**
+     *
+     */
+    private String email;
+
+    /**
+     *
+     */
+    private int accion;
+
+    /**
+     *
+     */
+    private String tamanioEmpresa;
+
+    private List<Accionista> accionistas;
+
+    private List<DocumentoRegistro> documentosRegistro;
+
+    public void agregarDocumento(DocumentoRegistro obj) {
+        this.documentosRegistro.add(obj);
+    }
+
+    public void quitarDocumentoRegistro(DocumentoRegistro obj) {
+        this.documentosRegistro.remove(obj);
+    }
+
+    public void agregarAccionista(Accionista obj) {
+        this.accionistas.add(obj);
+    }
+
+    public void removeAccionista(Accionista obj) {
+        this.accionistas.remove(obj);
+    }
+
+    public Accionista getAccionista(String cuit) {
+        for (Accionista a : this.accionistas) {
+            if (a.getCuit().equals(cuit)) {
+                return a;
+            }
+        }
+        return null;
+    }
 
 
     /**
-   *
-   */
-  private EstadoSocio estado;
-
-  /**
-   *
-   */
-  public String razonSocial;
-
-  /**
-   *
-   */
-  public Date fechaInicioActividad;
-
-  /**
-   *
-   */
-  public String actividadPrincipal;
-
-  /**
-   *
-   */
-  public String direccion;
-
-  /**
-   *
-   */
-  public String telefono;
-
-  /**
-   *
-   */
-  public String email;
-
-  /**
-   *
-   */
-  public int accion;
-
-  /**
-   *
-   */
-  public String tamanioEmpresa;
-
-  private List<Accionista> accionistas;
-
-  private List<DocumentoRegistro> documentosRegistro;
-
-  public void agregarDocumento(DocumentoRegistro obj) {
-    this.documentosRegistro.add(obj);
-  }
-
-  public void quitarDocumentoRegistro(DocumentoRegistro obj) {
-    this.documentosRegistro.remove(obj);
-  }
-
-  public void agregarAccionista(Accionista obj) {
-    this.accionistas.add(obj);
-  }
-
-  public void removeAccionista(Accionista obj) {
-    this.accionistas.remove(obj);
-  }
-
-  public Accionista getAccionista(String cuit) {
-    for (Accionista a : this.accionistas) {
-      if (a.cuit.equals(cuit)) {
-        return a;
-      }
+     * @param accion
+     */
+    public Boolean venderAcciones(int accion) {
+        if (accion > this.accion)
+            return false;
+        this.accion -= accion;
+        return true;
     }
-    return null;
-  }
 
 
-  /**
-   * @param accion
-   */
-  public Boolean venderAcciones(int accion) {
-    if(accion > this.accion)
-        return false;
-    this.accion -= accion;
-    return true;
-  }
+    /**
+     * @param accion
+     */
+    public void getAccionista(int accion) {
+        // TODO implement here
+    }
 
-  /**
-   * @param accion
-   */
-  public void comprarAcciones(int accion) {
-    this.accion += accion;
-  }
+    public List getAccionistas() {
+        return accionistas;
+    }
 
-  /**
-   * @param accion
-   */
-  public void getAccionista(int accion) {
-    // TODO implement here
-  }
+    public void setAccionistas(List accionistas) {
+        this.accionistas = accionistas;
+    }
 
-  /**
-   * @param id
-   */
-  public void getDocumentoRegistro(int id) {
-    // TODO implement here
-  }
+    public int getAcciones() {
+        return acciones;
+    }
 
-  /**
-   *
-   */
-  public void getIdSocio() {
-    // TODO implement here
-  }
+    public void setAcciones(int acciones) {
+        this.acciones = acciones;
+    }
 
-  /**
-   *
-   */
-  public void getTamanioEmpresa() {
-    // TODO implement here
-  }
+    public int getId() {
+        return id;
+    }
 
-  /**
-   * @return
-   */
-  public TipoSocio getTipoSocio() {
-    // TODO implement here
-    return null;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  /**
-   * @param value
-   */
-  public void setTipoSocio(TipoSocio value) {
-    // TODO implement here
-  }
+    public String getCuit() {
+        return cuit;
+    }
 
-  /**
-   *
-   */
-  public void getAccionistas() {
-    // TODO implement here
-  }
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
 
-  /**
-   * @return
-   */
-  public String getCuit() {
-    // TODO implement here
-    return "";
-  }
+    public TipoSocio getTipoSocio() {
+        return tipoSocio;
+    }
 
-  /**
-   * @param value
-   */
-  public void setCuit(String value) {
-    // TODO implement here
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setTipoSocio(TipoSocio tipoSocio) {
+        this.tipoSocio = tipoSocio;
+    }
 
     public EstadoSocio getEstado() {
         return estado;
@@ -246,17 +215,98 @@ public class Socio {
         this.estado = estado;
     }
 
+    public String getRazonSocial() {
+        return razonSocial;
+    }
+
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
+
+    public Date getFechaInicioActividad() {
+        return fechaInicioActividad;
+    }
+
+    public void setFechaInicioActividad(Date fechaInicioActividad) {
+        this.fechaInicioActividad = fechaInicioActividad;
+    }
+
+    public String getActividadPrincipal() {
+        return actividadPrincipal;
+    }
+
+    public void setActividadPrincipal(String actividadPrincipal) {
+        this.actividadPrincipal = actividadPrincipal;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAccion() {
+        return accion;
+    }
+
+    public void setAccion(int accion) {
+        this.accion = accion;
+    }
+
+    public String getTamanioEmpresa() {
+        return tamanioEmpresa;
+    }
+
+    public void setTamanioEmpresa(String tamanioEmpresa) {
+        this.tamanioEmpresa = tamanioEmpresa;
+    }
+
+    /**
+     * @param accion
+     */
+    public boolean comprarAcciones(int accion) {
+        acciones += accion;
+        return true;
+    }
+
+    public DocumentoRegistro getDocumentoRegistro(int id) {
+        for (DocumentoRegistro doc : this.documentosRegistro) {
+            if (doc.equals(id)) {
+                return doc;
+            }
+        }
+        return null;
+    }
+
 
     @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Socio socio = (Socio) o;
-    return id == socio.id;
-  }
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Socio socio = (Socio) o;
+        return id == socio.id;
+    }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
-  }
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

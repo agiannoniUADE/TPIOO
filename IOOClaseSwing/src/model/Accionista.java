@@ -3,7 +3,7 @@ package model;
 import java.util.*;
 
 /**
- *
+ * 
  */
 public class Accionista {
 
@@ -19,66 +19,70 @@ public class Accionista {
         this.porcentaje = porcentaje;
     }
 
-    /**
-     *
-     */
-    public int id;
+  public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
+    this.id = id;
+    this.cuit = cuit;
+    this.razonSocial = razonSocial;
+    this.porcentaje = porcentaje;
+  }
 
-    /**
-     *
+  /**
+     * Default constructor
      */
-    public String cuit;
-
-
-    /**
-     *
-     */
-    public String razonSocial;
-
-    /**
-     *
-     */
-    public int porcentaje;
 
 
     /**
-     * @return
+     * 
      */
-    public int getId() {
-        // TODO implement here
-        return 0;
-    }
+    private int id;
 
     /**
-     * @return
+     * 
      */
-    public String getCuit() {
-        // TODO implement here
-        return "";
-    }
+    private String cuit;
 
     /**
-     * @return
+     * 
      */
-    public String getRazonSocial() {
-        // TODO implement here
-        return "";
-    }
+    private String razonSocial;
 
     /**
-     * @param value
+     * 
      */
-    public void setRazonSocial(String value) {
-        // TODO implement here
-    }
+    private float porcentaje;
 
-    /**
-     * @return
-     */
-    public float getPorcentaje() {
-        // TODO implement here
-        return 0.0f;
-    }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getCuit() {
+    return cuit;
+  }
+
+  public void setCuit(String cuit) {
+    this.cuit = cuit;
+  }
+
+  public String getRazonSocial() {
+    return razonSocial;
+  }
+
+  public void setRazonSocial(String razonSocial) {
+    this.razonSocial = razonSocial;
+  }
+
+  public float getPorcentaje() {
+    return porcentaje;
+  }
+
+  public void setPorcentaje(float porcentaje) {
+    this.porcentaje = porcentaje;
+  }
 
     @Override
     public boolean equals(Object o) {

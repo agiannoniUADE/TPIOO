@@ -5,6 +5,7 @@ import java.util.Arrays;
 /**
  * 
  */
+
 public enum TipoSocio {
   PARTICIPE("participe"),
   PROTECTOR("protector");
@@ -27,4 +28,5 @@ public enum TipoSocio {
       .orElse(null);
   }
 }
+
 

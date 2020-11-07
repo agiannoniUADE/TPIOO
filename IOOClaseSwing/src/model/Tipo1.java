@@ -28,58 +28,77 @@ public class Tipo1 extends Operacion {
     }
 
     /**
-     *
+     * 
      */
-    public int id;
+    private int id;
 
     /**
-     *
+     * 
      */
-    public String cuitDelFirmante;
+    private String cuitDelFirmante;
 
     /**
-     *
+     * 
      */
-    public float comision;
+    private float comision;
 
     /**
-     *
+     * 
      */
-    public Date fechaDeCobro;
+    private Date fechaDeCobro;
 
     /**
-     *
+     * 
      */
-    public float tasaDeDescuento;
+    private float tasaDeDescuento;
 
 
-    /**
-     *
-     */
-    public void tieneTasadeDescuento() {
-        // TODO implement here
-    }
+  @Override
+  public int getId() {
+    return id;
+  }
 
-    /**
-     *
+  @Override
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public float getComision() {
+    return comision;
+  }
+
+  public void setComision(float comision) {
+    this.comision = comision;
+  }
+
+  public float getTasaDeDescuento() {
+    return tasaDeDescuento;
+  }
+
+  public void setTasaDeDescuento(float tasaDeDescuento) {
+    this.tasaDeDescuento = tasaDeDescuento;
+  }
+
+  /**
+     * 
      */
-    public void getTasaDeDesceunto() {
-        // TODO implement here
-    }
+  public boolean tieneTasadeDescuento() {
+      // TODO implement here
+      return true;
+  }
+
 
     /**
      * @return
      */
     public String getCuitDelFirmante() {
         // TODO implement here
-        return "";
+        return cuitDelFirmante;
     }
 
-    /**
-     * @param value
-     */
-    public void setCuitDelFirmante(String value) {
+    public void setCuitDelFirmante(String cuitDelFirmante) {
         // TODO implement here
+      this.cuitDelFirmante = cuitDelFirmante;
     }
 
     /**
@@ -87,14 +106,15 @@ public class Tipo1 extends Operacion {
      */
     public Date getFechaDeCobro() {
         // TODO implement here
-        return null;
+        return fechaDeCobro;
     }
 
     /**
      * @param value
      */
-    public void setFechaDeCobro(Date value) {
+    public void setFechaDeCobro(Date fechaDeCobro) {
         // TODO implement here
+      this.fechaDeCobro=fechaDeCobro;
     }
 
 }

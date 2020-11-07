@@ -6,7 +6,16 @@ import java.util.*;
  */
 public class Operacion {
 
-    /**
+
+  public Operacion(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento) {
+    this.id = id;
+    this.monto = monto;
+    this.fecha = fecha;
+    this.estado = estado;
+    this.fechaVencimiento = fechaVencimiento;
+  }
+
+  /**
      * Default constructor
      */
     public Operacion() {
@@ -22,103 +31,118 @@ public class Operacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public Date fecha;
+    private Date fecha;
 
     /**
      * 
      */
-    public EstadoOperacion estado;
+    private EstadoOperacion estado;
 
     /**
      * 
      */
-    public Date fechaVencimiento;
+    private Date fechaVencimiento;
 
 
+  public int getId() {
+    return id;
+  }
 
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public float getMonto() {
+    return monto;
+  }
 
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
+  public Date getFecha() {
+    return fecha;
+  }
 
+  public void setFecha(Date fecha) {
+    this.fecha = fecha;
+  }
 
+  public EstadoOperacion getEstado() {
+    return estado;
+  }
 
+  public void setEstado(EstadoOperacion estado) {
+    this.estado = estado;
+  }
 
+  public Date getFechaVencimiento() {
+    return fechaVencimiento;
+  }
 
+  public void setFechaVencimiento(Date fechaVencimiento) {
+    this.fechaVencimiento = fechaVencimiento;
+  }
 
-
-
-
-
-    /**
+  /**
      * 
      */
-    public void Operation1() {
+    private void Operation1() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void getGarantia() {
+    private void getGarantia() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void Operation2() {
+    private void Operation2() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void calcularComision() {
+    private void calcularComision() {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void getIdTipo() {
-        // TODO implement here
-    }
+
 
     /**
      * @param nroDegarantia
      */
-    public void getGarantia(int nroDegarantia) {
+    private void getGarantia(int nroDegarantia) {
         // TODO implement here
     }
 
     /**
      * @param id
      */
-    public void getOperacion(int id) {
+    private void getOperacion(int id) {
         // TODO implement here
     }
+
 
     /**
      * 
      */
-    public void getFecha() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public float getComision() {
+    private float getComision() {
         // TODO implement here
         return 0.0f;
     }
@@ -126,36 +150,15 @@ public class Operacion {
     /**
      * 
      */
-    public void getIdOperacion() {
+    private void getIdOperacion() {
         // TODO implement here
     }
+
 
     /**
      * 
      */
-    public void getEstado() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void getIdSocio() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
+    private void getIdSocio() {
         // TODO implement here
     }
 
@@ -163,22 +166,7 @@ public class Operacion {
     /**
      * @return
      */
-    public Date getFechaVencimiento() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    public void setFechaVencimiento(Date value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Desembolso getDesembolso() {
+    private Desembolso getDesembolso() {
         // TODO implement here
         return null;
     }

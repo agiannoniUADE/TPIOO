@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class Cuota {
+public class  Cuota {
 
     /**
      * Default constructor
@@ -15,82 +15,53 @@ public class Cuota {
     /**
      * 
      */
-    public int cuotaId;
+    private int cuotaId;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public String estado;
+    private String estado;
 
     /**
      * 
      */
-    public int numeroCuota;
+    private int numeroCuota;
 
 
-    /**
-     * @return
-     */
-    public int getCuotaId() {
-        // TODO implement here
-        return 0;
-    }
+  public int getCuotaId() {
+    return cuotaId;
+  }
 
-    /**
-     * @param value
-     */
-    public void setCuotaId(int value) {
-        // TODO implement here
-    }
+  public void setCuotaId(int cuotaId) {
+    this.cuotaId = cuotaId;
+  }
 
-    /**
-     * @return
-     */
-    public float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
+  public float getMonto() {
+    return monto;
+  }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
-    }
+  public void setMonto(float monto) {
+    this.monto = monto;
+  }
 
-    /**
-     * @return
-     */
-    public String getEstado() {
-        // TODO implement here
-        return "";
-    }
+  public String getEstado() {
+    return estado;
+  }
 
-    /**
-     * @param value
-     */
-    public void setEstado(String value) {
-        // TODO implement here
-    }
+  public void setEstado(String estado) {
+    this.estado = estado;
+  }
 
-    /**
-     * @return
-     */
-    public int getNumeroCuota() {
-        // TODO implement here
-        return 0;
-    }
+  public int getNumeroCuota() {
+    return numeroCuota;
+  }
 
-    /**
-     * @param value
-     */
-    public void setNumeroCuota(int value) {
-        // TODO implement here
-    }
-
+  public void setNumeroCuota(int numeroCuota) {
+    this.numeroCuota = numeroCuota;
+  }
 }

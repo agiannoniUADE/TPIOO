@@ -6,7 +6,12 @@ import java.util.*;
  */
 public class SubtipoOperacion {
 
-    /**
+  public SubtipoOperacion(int id, String descripcion) {
+    this.id = id;
+    this.descripcion = descripcion;
+  }
+
+  /**
      * Default constructor
      */
     public SubtipoOperacion() {
@@ -15,14 +20,30 @@ public class SubtipoOperacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String descripcion;
+    private String descripcion;
+
 
     public TipoOperacion tipoOperacion;
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
     /**
      * @param id
@@ -31,12 +52,6 @@ public class SubtipoOperacion {
         // TODO implement here
     }
 
-    /**
-     * 
-     */
-    public void getDescripcion() {
-        // TODO implement here
-    }
 
     /**
      * 

@@ -111,7 +111,7 @@ public class SociosControllerTest {
         nuevoSocio.agregarAccionista(accionista2);
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
-        nuevoSocio.accion = 200;
+        nuevoSocio.setAccion(200);
 
         nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
@@ -184,7 +184,7 @@ public class SociosControllerTest {
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
 
-        nuevoSocio.accion = 200;
+        nuevoSocio.setAccion(200);
         return nuevoSocio;
     }
 }

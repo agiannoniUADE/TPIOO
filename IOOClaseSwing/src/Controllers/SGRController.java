@@ -22,7 +22,7 @@ public class SGRController {
 
         SGR s = new SGR();
         s.id = 1;
-        s.razonSocial = "Smart SGR SA";
+        s.setRazonSocial("Smart SGR SA");
 
         //Aporte
         Aporte a = new Aporte();

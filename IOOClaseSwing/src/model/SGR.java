@@ -23,7 +23,24 @@ public class SGR {
     /**
      * 
      */
-    public String razonSocial;
+    private String razonSocial;
+
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getRazonSocial() {
+    return razonSocial;
+  }
+
+  public void setRazonSocial(String razonSocial) {
+    this.razonSocial = razonSocial;
+  }
 
     private List<Aporte> aportes;
 
@@ -63,7 +80,7 @@ public class SGR {
         // TODO implement here
     }
     /**
-     * 
+     *
      */
     public float calcularFondoDeRiego() {
         double response =   aportes.stream().filter(x -> !x.FueRetirado())
@@ -71,6 +88,13 @@ public class SGR {
             .collect(Collectors.summingDouble(Float::doubleValue));
 
         return (float)response;
+    }
+
+    /**
+     *
+     */
+    private void getSocioParticipe() {
+        // TODO implement here
     }
 
     /**

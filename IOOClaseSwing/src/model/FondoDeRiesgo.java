@@ -4,7 +4,7 @@ import java.util.*;
 /**
  * 
  */
-public class FondoDeRiesgo {
+public class  FondoDeRiesgo {
 
     /**
      * Default constructor

@@ -1,9 +1,8 @@
 package model;
-
 import java.util.*;
 
 /**
- *
+ * 
  */
 public class SocioParticipe extends Socio {
 
@@ -47,11 +46,12 @@ public class SocioParticipe extends Socio {
         float totalContragarantias = 0;
         if (contragarantias != null) {
             for (Contragarantia item : contragarantias) {
-                totalContragarantias += item.monto;
+                totalContragarantias += item.getMonto();
             }
         }
         return totalContragarantias;
     }
+
 
     public List<Contragarantia> getContragarantias() {
         return contragarantias;
@@ -60,7 +60,6 @@ public class SocioParticipe extends Socio {
     public void addContragarantia(Contragarantia obj) {
         this.contragarantias.add(obj);
     }
-
     /**
      *
      */
@@ -68,9 +67,6 @@ public class SocioParticipe extends Socio {
         // TODO implement here
     }
 
-    /**
-     *
-     */
 
     /**
      * @param id
@@ -87,24 +83,25 @@ public class SocioParticipe extends Socio {
     }
 
     /**
-     *
+     * 
      */
     public Boolean tieneComisionPreferencial() {
        return comisionPreferencial != null;
     }
 
     /**
-     *
+     * 
      */
     public float getMontoLineaDeCredito() {
         if (lineaDeCredito == null) {
             return 0;
         } else if (contragarantias == null) {
             return 0;
-        } else if (getMontoGarantia() > lineaDeCredito.montoAsignado) {
+        } else if (getMontoGarantia() > lineaDeCredito.getMontoAsignado()) {
             return lineaDeCredito.getMontoAsignado();
         } else {
             return getMontoGarantia();
         }
     }
+
 }

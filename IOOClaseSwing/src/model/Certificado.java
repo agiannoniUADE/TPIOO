@@ -15,31 +15,40 @@ public class Certificado {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String Estado;
+    private String Estado;
 
     /**
      * 
      */
-    public int certifivadoDeGarantia;
+    private int certifivadoDeGarantia;
 
 
-    /**
-     * @param id
-     */
-    public void getOperacion(int id) {
-        // TODO implement here
-    }
+  public int getId() {
+    return id;
+  }
 
-    /**
-     * @param id
-     */
-    public void getSocio(int id) {
-        // TODO implement here
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
+  public String getEstado() {
+    return Estado;
+  }
+
+  public void setEstado(String estado) {
+    Estado = estado;
+  }
+
+  public int getCertifivadoDeGarantia() {
+    return certifivadoDeGarantia;
+  }
+
+  public void setCertifivadoDeGarantia(int certifivadoDeGarantia) {
+    this.certifivadoDeGarantia = certifivadoDeGarantia;
+  }
 }

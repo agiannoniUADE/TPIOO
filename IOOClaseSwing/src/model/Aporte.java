@@ -1,10 +1,13 @@
-package  model;
+package model;
+
 import utils.DateUtils;
+
+import model.SocioProtector;
 
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Aporte {
 
@@ -41,6 +44,14 @@ public class Aporte {
         this.socio = socio;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Date getFechaInicio() {
         return fechaInicio;
     }
@@ -57,6 +68,7 @@ public class Aporte {
         this.monto = monto;
     }
 
+
     public Boolean FueRetirado() {
         return retirado;
     }
@@ -65,16 +77,8 @@ public class Aporte {
         this.retirado = estado;
     }
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Boolean estaDisponibleParaRetiro()
-    {
+    public Boolean estaDisponibleParaRetiro() {
         return DateUtils.getDiffYears(fechaInicio, new Date()) >= 2;
     }
 }

@@ -15,47 +15,47 @@ public class Tipo3 extends Operacion {
     /**
      * 
      */
-    public int id;
+    private int id;
 
     /**
      * 
      */
-    public String entidad;
+    private String entidad;
 
     /**
      * 
      */
-    public float monto;
+    private float monto;
 
     /**
      * 
      */
-    public float tasa;
+    private float tasa;
 
     /**
      * 
      */
-    public Date fechaDeAcreditacion;
+    private Date fechaDeAcreditacion;
+
+    /**
+     *
+     */
+    private int cantidadCuotas;
 
     /**
      * 
      */
-    public int cantidadCuotas;
+    private String sistemaAmortizacion;
 
     /**
      * 
      */
-    public String sistemaAmortizacion;
+    private float comision;
 
     /**
      * 
      */
-    public float comision;
-
-    /**
-     * 
-     */
-    public Date fechaDeVencimiento;
+    private Date fechaDeVencimiento;
 
 
 
@@ -64,134 +64,85 @@ public class Tipo3 extends Operacion {
      */
     public int getId() {
         // TODO implement here
-        return 0;
+        return id;
     }
 
-    /**
-     * @param value
-     */
-    public void setId(int value) {
-        // TODO implement here
+    public void setId(int id) {
+        this.id=id;
     }
-
-    /**
-     * @return
-     */
     public String getEntidad() {
         // TODO implement here
-        return "";
+        return entidad;
     }
 
-    /**
-     * @param value
-     */
-    public void setEntidad(String value) {
-        // TODO implement here
+    public void setEntidad(String entidad) {
+        this.entidad=entidad;
     }
 
-    /**
-     * @return
-     */
     public float getMonto() {
         // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto=monto;
     }
-
-    /**
-     * @return
-     */
     public float getTasa() {
         // TODO implement here
-        return 0.0f;
+        return tasa;
     }
 
-    /**
-     * @param value
-     */
-    public void setTasa(float value) {
+    public void setTasa(float tasa) {
         // TODO implement here
+      this.tasa=tasa;
     }
 
-    /**
-     * @return
-     */
     public Date getFechaDeAcreditacion() {
         // TODO implement here
-        return null;
+        return fechaDeAcreditacion;
     }
 
-    /**
-     * @param value
-     */
-    public void setFechaDeAcreditacion(Date value) {
+    public void setFechaDeAcreditacion(Date fechaDeAcreditacion) {
         // TODO implement here
+      this.fechaDeAcreditacion=fechaDeAcreditacion;
     }
-
-    /**
-     * @return
-     */
     public int getCantidadCuotas() {
         // TODO implement here
-        return 0;
+        return cantidadCuotas;
     }
 
-    /**
-     * @param value
-     */
-    public void setCantidadCuotas(int value) {
-        // TODO implement here
+    public void setCantidadCuotas(int cantidadCuotas) {
+        this.cantidadCuotas=cantidadCuotas;
     }
 
-    /**
-     * @return
-     */
     public String getSistemaAmortizacion() {
         // TODO implement here
-        return "";
+        return sistemaAmortizacion;
     }
 
-    /**
-     * @param value
-     */
-    public void setSistemaAmortizacion(String value) {
-        // TODO implement here
+    public void setSistemaAmortizacion(String sistemaAmortizacion) {
+        this.sistemaAmortizacion=sistemaAmortizacion;
     }
 
-    /**
-     * @return
-     */
     public float getComision() {
         // TODO implement here
-        return 0.0f;
+        return comision;
     }
 
-    /**
-     * @param value
-     */
-    public void setComision(float value) {
-        // TODO implement here
+    public void setComision(float comision) {
+        this.comision=comision;
     }
 
     /**
      * @return
      */
     public Date getFechaDeVencimiento() {
-        // TODO implement here
-        return null;
+
+        return fechaDeVencimiento;
     }
 
-    /**
-     * @param value
-     */
-    public void setFechaDeVencimiento(Date value) {
-        // TODO implement here
+    public void setFechaDeVencimiento(Date fechaDeVencimiento) {
+        this.fechaDeVencimiento=fechaDeVencimiento;
     }
 
     /**
@@ -199,6 +150,7 @@ public class Tipo3 extends Operacion {
      */
     public List<Cuota> getCuotas() {
         // TODO implement here
+
         return null;
     }
 

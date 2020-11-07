@@ -6,7 +6,13 @@ import java.util.*;
  */
 public class TipoOperacion {
 
-    /**
+  public TipoOperacion(int id, String descripcion, float comision) {
+    this.id = id;
+    this.descripcion = descripcion;
+    this.comision = comision;
+  }
+
+  /**
      * Default constructor
      */
     public TipoOperacion() {
@@ -30,20 +36,25 @@ public class TipoOperacion {
 
     public List<SubtipoOperacion> subtipoOperacion;
 
+  public int getId() {
+    return id;
+  }
 
-    /**
-     * 
-     */
-    public void getDescripcion() {
-        // TODO implement here
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    /**
-     * 
-     */
-    public void getComision() {
-        // TODO implement here
-    }
+  public String getDescripcion() {
+    return descripcion;
+  }
+
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
+
+  public float getComision() {
+    return comision;
+  }
 
     @Override
     public boolean equals(Object o) {
@@ -57,4 +68,7 @@ public class TipoOperacion {
     public int hashCode() {
         return Objects.hash(id, descripcion, comision, subtipoOperacion);
     }
+  public void setComision(float comision) {
+    this.comision = comision;
+  }
 }
