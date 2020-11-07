@@ -6,11 +6,15 @@ import java.util.*;
  */
 public class Socio {
 
+
+
+
   /**
    *
-   * */
+   */
   public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
-               String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
+               String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa,
+               int acciones, List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
     this.cuit = cuit;
     this.tipoSocio = tipoSocio;
     this.razonSocial = razonSocial;
@@ -20,6 +24,9 @@ public class Socio {
     this.telefono = telefono;
     this.email = email;
     this.tamanioEmpresa = tamanioEmpresa;
+    this.acciones = acciones;
+    this.accionistas = accionistas;
+    this.documentosRegistro = documentos;
   }
 
   /**
@@ -29,73 +36,112 @@ public class Socio {
 
   }
 
+
+  private int acciones;
   /**
-     * 
-     */
-    private int id;
+   *
+   */
+  private int id;
 
-    /**
-     * 
-     */
-    private String cuit;
+  /**
+   *
+   */
+  private String cuit;
 
-    /**
-     * 
-     */
-    private TipoSocio tipoSocio;
+  /**
+   *
+   */
+  private TipoSocio tipoSocio;
 
-    /**
-     *
-     */
-    private String estado;
+  /**
+   *
+   */
+  private String estado;
 
-    /**
-     * 
-     */
-    private String razonSocial;
+  /**
+   *
+   */
+  private String razonSocial;
 
-    /**
-     * 
-     */
-    private Date fechaInicioActividad;
+  /**
+   *
+   */
+  private Date fechaInicioActividad;
 
-    /**
-     * 
-     */
-    private String actividadPrincipal;
+  /**
+   *
+   */
+  private String actividadPrincipal;
 
-    /**
-     * 
-     */
-    private String direccion;
+  /**
+   *
+   */
+  private String direccion;
 
-    /**
-     * 
-     */
-    private String telefono;
+  /**
+   *
+   */
+  private String telefono;
 
-    /**
-     * 
-     */
-    private String email;
+  /**
+   *
+   */
+  private String email;
 
-    /**
-     * 
-     */
-    private int accion;
+  /**
+   *
+   */
+  private int accion;
 
-    /**
-     * 
-     */
-    private String tamanioEmpresa;
+  /**
+   *
+   */
+  private String tamanioEmpresa;
+
+  private List<Accionista> accionistas;
+
+  private List<DocumentoRegistro> documentosRegistro;
 
 
-  private String getCuit() {
+
+  public List getAccionistas() {
+    return accionistas;
+  }
+
+  public void setAccionistas(List accionistas) {
+    this.accionistas = accionistas;
+  }
+
+  public int getAcciones() {
+    return acciones;
+  }
+
+  public void setAcciones(int acciones) {
+    this.acciones = acciones;
+  }
+
+  public int getId() {
+    return id;
+  }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public String getCuit() {
     return cuit;
   }
 
-  private void setCuit(String value) {
+  public void setCuit(String cuit) {
     this.cuit = cuit;
+  }
+
+  public TipoSocio getTipoSocio() {
+    return tipoSocio;
+  }
+
+  public void setTipoSocio(TipoSocio tipoSocio) {
+    this.tipoSocio = tipoSocio;
   }
 
   public String getEstado() {
@@ -162,94 +208,81 @@ public class Socio {
     this.accion = accion;
   }
 
+  public String getTamanioEmpresa() {
+    return tamanioEmpresa;
+  }
+
   public void setTamanioEmpresa(String tamanioEmpresa) {
     this.tamanioEmpresa = tamanioEmpresa;
   }
 
+  public Boolean venderAcciones(int accion) {
+    if(accion > this.accion)
+      return false;
+    this.accion -= accion;
+    return true;
+  }
+
   /**
-     * @param accion
-     */
-    private void venderAcciones(int accion) {
-        // TODO implement here
-    }
-
-    /**
-     * @param accion
-     */
-    private void comprarAcciones(int accion) {
-        // TODO implement here
-    }
-
-    /**
-     * @param accion
-     */
-    private void getAccionista(int accion) {
-        // TODO implement here
-    }
-
-    /**
-     * @param id
-     */
-    private void getDocumentoRegistro(int id) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    private void getIdSocio() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    private void getTamanioEmpresa() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    private TipoSocio getTipoSocio() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    private void setTipoSocio(TipoSocio value) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    private void getAccionistas() {
-        // TODO implement here
-    }
-
-
-
-  public int getId() {
-    return id;
+   * @param accion
+   */
+  public boolean comprarAcciones(int accion) {
+    acciones += accion;
+    return true;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void agregarDocumento(DocumentoRegistro obj) {
+    this.documentosRegistro.add(obj);
   }
+
+  public void quitarDocumentoRegistro(DocumentoRegistro obj) {
+    this.documentosRegistro.remove(obj);
+  }
+
+  public void agregarAccionista(Accionista obj)
+  {
+    this.accionistas.add(obj);
+  }
+
+  public void removeAccionista(Accionista obj)
+  {
+    this.accionistas.remove(obj);
+  }
+
+
+  public Accionista getAccionista(String cuit) {
+    for (Accionista ax : this.accionistas) {
+      //mati, si esto lo hago ax.cuit me dice que cuit es privado y no puede ingresar git
+      if (ax.getCuit().equals(cuit)) {
+        return ax;
+      }
+    }
+    return null;
+  }
+
+  public DocumentoRegistro getDocumentoRegistro(int id){
+    for (DocumentoRegistro doc : this.documentosRegistro){
+      if (doc.equals(id)){
+        return doc;
+      }
+    }
+    return null;
+  }
+
+
+
+
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Socio socio = (Socio) o;
-    return id == socio.id;
-  }
+    public boolean equals (Object o){
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Socio socio = (Socio) o;
+      return id == socio.id;
+    }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(id);
+    @Override
+    public int hashCode () {
+      return Objects.hash(id);
+    }
   }
-}

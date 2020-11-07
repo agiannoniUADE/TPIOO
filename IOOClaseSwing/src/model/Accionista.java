@@ -7,6 +7,12 @@ import java.util.*;
  */
 public class Accionista {
 
+
+
+
+  public Accionista() {
+  }
+
   public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
     this.id = id;
     this.cuit = cuit;
@@ -17,8 +23,7 @@ public class Accionista {
   /**
      * Default constructor
      */
-    public Accionista() {
-    }
+
 
     /**
      *
@@ -71,5 +76,18 @@ public class Accionista {
 
   public void setPorcentaje(float porcentaje) {
     this.porcentaje = porcentaje;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Accionista that = (Accionista) o;
+    return Objects.equals(cuit, that.cuit);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(cuit);
   }
 }
