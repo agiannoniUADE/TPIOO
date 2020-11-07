@@ -41,7 +41,12 @@ public abstract class GenericDAO<T> {
 
     public void saveAll(List<T> list) throws Exception {
         Gson g = new Gson();
-        String texto = g.toJson(list);
+        String texto = "";
+        for (Object obj : list) {
+            texto = texto.concat(g.toJson(obj));
+            texto = texto.concat(System.lineSeparator());
+        }
+
         FileWriter fileWriter = new FileWriter(archivo);
         fileWriter.write(texto);
         BufferedWriter bwEscritor = new BufferedWriter(fileWriter);

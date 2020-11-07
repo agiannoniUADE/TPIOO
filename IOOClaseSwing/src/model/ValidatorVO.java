@@ -1,4 +1,6 @@
 package model;
+import Controllers.SocioController;
+
 import java.util.*;
 
 /**
@@ -9,14 +11,11 @@ public class ValidatorVO {
     /**
      * Default constructor
      */
-    public ValidatorVO() {
+    public ValidatorVO(SocioController socioController) {
     }
 
-
-
-
     /**
-     * @param float
+     * @param
      */
     private void ValidarMontoOperacion(float monto) {
         // TODO implement here
@@ -32,8 +31,14 @@ public class ValidatorVO {
     /**
      * @param CUIT
      */
-    public void ValidarSocioProtector(String CUIT) {
-        // TODO implement here
+    public static boolean ValidarSocioProtector(SocioController controller, String CUIT) throws Exception {
+        List<SocioParticipe> lista = controller.getSociosParticipe();
+            for(SocioParticipe socio : lista) {
+                if(socio.getAccionista(CUIT) != null){
+                    return false;
+                }
+            }
+        return true;
     }
 
     /**

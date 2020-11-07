@@ -6,44 +6,41 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class SociosControllerTest {
 
-    SocioController socioController = new SocioController();
+    SocioController target = new SocioController();
 
     public SociosControllerTest() throws Exception {
     }
 
-
     @Test
     void AgregarSocio_Success() throws Exception {
         int id = insertSocio();
-        assertNotNull(socioController.getSocioParticipe(1));
-        socioController.delete(id);
+        assertNotNull(target.getSocioParticipe(1));
+        target.delete(id);
     }
 
     @Test
     void searchByIdTest_Fail() throws Exception {
-        int id = socioController.getLastInsertId();
-        Socio socio = socioController.getSocioParticipe(id + 1);
+        int id = target.getLastInsertId();
+        Socio socio = target.getSocioParticipe(id + 1);
         assertNull(socio);
     }
 
     @Test
     void searchByIdTest_Success() throws Exception {
         int id = insertSocio();
-        Socio socio = socioController.getSocioParticipe(9);
+        Socio socio = target.getSocioParticipe(9);
         assertNotNull(socio);
-        socioController.delete(id);
+        target.delete(id);
     }
 
     @Test
     void DeleteByIdTest_Success() throws Exception {
         int id = insertSocio();
-        assertTrue(socioController.delete(id));
+        assertTrue(target.delete(id));
     }
 
     @Test
@@ -72,8 +69,8 @@ public class SociosControllerTest {
             tamanioEmpresa);
 
         nuevoSocio.setId(id);
-        assertTrue(socioController.updateSocio(nuevoSocio));
-        socioController.delete(id);
+        assertTrue(target.updateSocio(nuevoSocio));
+        target.delete(id);
     }
 
     private int insertSocio() throws Exception {
@@ -115,13 +112,66 @@ public class SociosControllerTest {
 
         nuevoSocio.accion = 200;
 
-        return socioController.AgregarNuevoSocio(nuevoSocio);
+        return target.AgregarNuevoSocio(nuevoSocio);
     }
 
     @Test
     void GetSociosConSaldoDeAccionesDisponibles_Success() throws Exception {
         int id = insertSocio();
-        assertNotNull(socioController.getSociosConAccionesDisponibles(TipoSocio.PARTICIPE));
+        assertNotNull(target.getSociosConAccionesDisponibles(TipoSocio.PARTICIPE));
+    }
+
+    @Test
+    void AgregarSocioProtector_fail() throws Exception {
+        SocioProtector socio = CreateSocioProtector("4444444");
+        Exception exception = assertThrows(Exception.class, () -> {
+            target.AgregarNuevoSocio(socio);
+        });
+
+        String expectedMessage = "Un socio protector no puede ser accionista de un socio participe.";
+        String actualMessage = exception.getMessage();
+        assertTrue(actualMessage.contains(expectedMessage));
+    }
+
+    private SocioProtector CreateSocioProtector(String cuitSocio) throws Exception {
+        String cuit = cuitSocio;
+        String razonSocial = "Saveiro SRL";
+        Date inicioActividad = new Date();
+        String actividadPrincipal = "Servicio";
+        TipoSocio tipoSocio = TipoSocio.PROTECTOR;
+        String direccion = "Av. de mayo 341";
+        String telefono = "428123132";
+        String email = "info@lavadero.com";
+        String tamanioEmpresa = "Mediana";
+
+
+        Accionista accionista = new Accionista("4444444", "Accionista4", 20);
+        Accionista accionista2 = new Accionista("111111", "Accionista5", 55);
+
+        DocumentoRegistro documentoRegistro1 = new DocumentoRegistro("Documento 1",
+            "mgonzales", false, TipoDocumento.MANIFESTACION_BIENES);
+
+        DocumentoRegistro documentoRegistro2 = new DocumentoRegistro("Documento 2",
+            "mgonzales", true, TipoDocumento.CONTRATO_SOCIAL);
+
+        SocioProtector nuevoSocio = new SocioProtector(
+            cuit,
+            tipoSocio,
+            razonSocial,
+            inicioActividad,
+            actividadPrincipal,
+            direccion,
+            telefono,
+            email,
+            tamanioEmpresa);
+
+        nuevoSocio.agregarAccionista(accionista);
+        nuevoSocio.agregarAccionista(accionista2);
+        nuevoSocio.agregarDocumento(documentoRegistro1);
+        nuevoSocio.agregarDocumento(documentoRegistro2);
+
+        nuevoSocio.accion = 200;
+        return nuevoSocio;
     }
 }
 

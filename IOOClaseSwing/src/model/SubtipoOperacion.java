@@ -22,7 +22,7 @@ public class SubtipoOperacion {
      */
     public String descripcion;
 
-
+    public TipoOperacion tipoOperacion;
 
     /**
      * @param id
@@ -45,4 +45,16 @@ public class SubtipoOperacion {
         // TODO implement here
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        SubtipoOperacion that = (SubtipoOperacion) o;
+        return id == that.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, descripcion, tipoOperacion);
+    }
 }

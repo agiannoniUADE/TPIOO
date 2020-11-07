@@ -2,10 +2,7 @@ package Controllers;
 import DAO.GenericDAO;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
-import model.Socio;
-import model.SocioParticipe;
-import model.SocioProtector;
-import model.TipoSocio;
+import model.*;
 
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -24,10 +21,16 @@ public class SocioController {
     }
 
     public int AgregarNuevoSocio(Socio socio) throws Exception {
-      int lastId = socioParticipeDao.getLastInsertId();
+        GenericDAO dao = socio.tipoSocio == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
+        if(socio.tipoSocio == TipoSocio.PROTECTOR){
+           if(!ValidatorVO.ValidarSocioProtector(this, socio.cuit)){
+               throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
+           }
+        }
+        int lastId = dao.getLastInsertId();
         lastId++;
         socio.setId(lastId);
-        socioParticipeDao.save(socio);
+        dao.save(socio);
       return lastId;
     }
     /**
@@ -63,6 +66,11 @@ public class SocioController {
   public int getLastInsertId() throws Exception
   {
     return socioParticipeDao.getLastInsertId();
+  }
+
+  public List<SocioParticipe> getSociosParticipe() throws Exception {
+        List<SocioParticipe> lista = socioParticipeDao.getAll();
+        return lista;
   }
     /**
      * @param socioId
@@ -162,6 +170,7 @@ public class SocioController {
 
         comprador.accion +=cantidad;
         vendedor.accion-=cantidad;
+        comprador.setEstado(EstadoSocio.SOCIO_PLENO);
 
         dao.update(comprador);
         dao.update(vendedor);

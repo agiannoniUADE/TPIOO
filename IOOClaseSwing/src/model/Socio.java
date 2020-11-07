@@ -140,7 +140,7 @@ public class Socio {
 
   public Accionista getAccionista(String cuit) {
     for (Accionista a : this.accionistas) {
-      if (a.cuit == cuit) {
+      if (a.cuit.equals(cuit)) {
         return a;
       }
     }
