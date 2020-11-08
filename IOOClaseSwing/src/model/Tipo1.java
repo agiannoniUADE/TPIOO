@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.istack.internal.Nullable;
 
 import java.util.*;
 
@@ -109,9 +108,7 @@ public class Tipo1 extends Operacion {
         return fechaDeCobro;
     }
 
-    /**
-     * @param value
-     */
+
     public void setFechaDeCobro(Date fechaDeCobro) {
         // TODO implement here
       this.fechaDeCobro=fechaDeCobro;
