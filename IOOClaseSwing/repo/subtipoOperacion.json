@@ -1,0 +1,6 @@
+{"id":1,"descripcion":"Cheques propios","tipoOperacion":{"id":1,"descripcion":"tipo 1","comision":0.03,"subtipoOperacion":[]}}
+{"id":2,"descripcion":"Cheques de terceros","tipoOperacion":{"id":1,"descripcion":"tipo 1","comision":0.03,"subtipoOperacion":[]}}
+{"id":3,"descripcion":"Pagaré Bursatil","tipoOperacion":{"id":1,"descripcion":"tipo 1","comision":0.03,"subtipoOperacion":[]}}
+{"id":4,"descripcion":"Cuentas corrientes Comerciales","tipoOperacion":{"id":2,"descripcion":"tipo 2","comision":0.03,"subtipoOperacion":[]}}
+{"id":5,"descripcion":"Tarjetas de crédito","tipoOperacion":{"id":2,"descripcion":"tipo 2","comision":0.03,"subtipoOperacion":[]}}
+{"id":6,"descripcion":"Prestamos","tipoOperacion":{"id":3,"descripcion":"tipo 3","comision":0.04,"subtipoOperacion":[]}}

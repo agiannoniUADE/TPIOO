@@ -1,60 +1,62 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class TipoOperacion {
 
-  public TipoOperacion(int id, String descripcion, float comision) {
-    this.id = id;
-    this.descripcion = descripcion;
-    this.comision = comision;
-  }
-
-  /**
-     * Default constructor
-     */
-    public TipoOperacion() {
-        subtipoOperacion = new ArrayList<>();
+    public TipoOperacion(int id, String descripcion, float comision) {
+        this.id = id;
+        this.descripcion = descripcion;
+        this.comision = comision;
+        this.subtipoOperacion = new ArrayList<>();
     }
 
     /**
-     * 
+     * Default constructor
      */
-    public int id;
+    public TipoOperacion() {
+
+    }
 
     /**
-     * 
+     *
      */
-    public String descripcion;
+    private int id;
 
     /**
-     * 
+     *
      */
-    public float comision;
+    private String descripcion;
 
-    public List<SubtipoOperacion> subtipoOperacion;
+    /**
+     *
+     */
+    private float comision;
 
-  public int getId() {
-    return id;
-  }
+    private List<SubtipoOperacion> subtipoOperacion;
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public String getDescripcion() {
-    return descripcion;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public void setDescripcion(String descripcion) {
-    this.descripcion = descripcion;
-  }
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-  public float getComision() {
-    return comision;
-  }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public float getComision() {
+        return comision;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -68,7 +70,8 @@ public class TipoOperacion {
     public int hashCode() {
         return Objects.hash(id, descripcion, comision, subtipoOperacion);
     }
-  public void setComision(float comision) {
-    this.comision = comision;
-  }
+
+    public void setComision(float comision) {
+        this.comision = comision;
+    }
 }

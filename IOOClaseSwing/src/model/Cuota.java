@@ -12,6 +12,14 @@ public class  Cuota {
     public Cuota() {
     }
 
+    public Cuota(int cuotaId, float monto, EstadoCuotas estado, int numeroCuota, Date fechaVencimiento) {
+        this.cuotaId = cuotaId;
+        this.monto = monto;
+        this.estado = estado;
+        this.numeroCuota = numeroCuota;
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
     /**
      * 
      */
@@ -25,12 +33,22 @@ public class  Cuota {
     /**
      * 
      */
-    private String estado;
+    private EstadoCuotas estado;
 
     /**
      * 
      */
     private int numeroCuota;
+
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    private Date fechaVencimiento;
 
 
   public int getCuotaId() {
@@ -49,11 +67,11 @@ public class  Cuota {
     this.monto = monto;
   }
 
-  public String getEstado() {
+  public EstadoCuotas getEstado() {
     return estado;
   }
 
-  public void setEstado(String estado) {
+  public void setEstado(EstadoCuotas estado) {
     this.estado = estado;
   }
 

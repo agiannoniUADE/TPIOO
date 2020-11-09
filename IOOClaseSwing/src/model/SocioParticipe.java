@@ -25,7 +25,7 @@ public class SocioParticipe extends Socio {
 
     private List<Contragarantia> contragarantias;
 
-    public TipoOperacion comisionPreferencial;
+    private TipoOperacion comisionPreferencial;
 
     public void setLineaDeCredito(LineaDeCredito lineaDeCredito) {
         this.lineaDeCredito = lineaDeCredito;
@@ -35,8 +35,8 @@ public class SocioParticipe extends Socio {
         this.contragarantias = contragarantias;
     }
 
-    public TipoOperacion getComisionPreferencial() {
-        return comisionPreferencial;
+    public float getComisionPreferencial() {
+        return comisionPreferencial.getComision();
     }
 
     public void setComisionPreferencial(TipoOperacion comisionPreferencial) {

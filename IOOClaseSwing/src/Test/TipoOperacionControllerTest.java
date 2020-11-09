@@ -17,12 +17,12 @@ public class TipoOperacionControllerTest {
     public void AgregarTipoOperacion() throws Exception {
         target.saveTipoOperacion();
     }
-
+*/
     @Test
     public void AgregarSubTipoOperacion() throws Exception {
         target.saveSubTipoOperacion();
     }
-*/
+
     @Test
     public void GetComision() throws Exception {
         float value = target.getComsionPorTipo(1);

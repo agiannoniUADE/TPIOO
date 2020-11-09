@@ -1,10 +1,23 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Tipo3 extends Operacion {
+
+    public Tipo3(float monto, Date fechaIngreso, Date fechaVencimiento, SubtipoOperacion subtipoOperacion, String entidad, float tasa, Date fechaDeAcreditacion, int cantidadCuotas, String sistemaAmortizacion) {
+        super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
+        this.entidad = entidad;
+        this.tasa = tasa;
+        this.fechaDeAcreditacion = fechaDeAcreditacion;
+        this.cantidadCuotas = cantidadCuotas;
+        this.sistemaAmortizacion = sistemaAmortizacion;
+        incicalizarCuotas(monto, fechaDeAcreditacion, cantidadCuotas);
+
+    }
+
 
     /**
      * Default constructor
@@ -13,22 +26,17 @@ public class Tipo3 extends Operacion {
     }
 
     /**
-     * 
+     *
      */
     private String entidad;
 
     /**
-     * 
-     */
-    private float monto;
-
-    /**
-     * 
+     *
      */
     private float tasa;
 
     /**
-     * 
+     *
      */
     private Date fechaDeAcreditacion;
 
@@ -38,94 +46,59 @@ public class Tipo3 extends Operacion {
     private int cantidadCuotas;
 
     /**
-     * 
+     *
      */
     private String sistemaAmortizacion;
 
-    /**
-     * 
-     */
-    private float comision;
-
-    /**
-     * 
-     */
-    private Date fechaDeVencimiento;
+    private List<Cuota> cuotas;
 
 
     public String getEntidad() {
-        // TODO implement here
         return entidad;
     }
 
     public void setEntidad(String entidad) {
-        this.entidad=entidad;
+        this.entidad = entidad;
     }
 
     public float getMonto() {
-        // TODO implement here
         return monto;
     }
 
     public void setMonto(float monto) {
-        this.monto=monto;
+        this.monto = monto;
     }
+
     public float getTasa() {
-        // TODO implement here
         return tasa;
     }
 
     public void setTasa(float tasa) {
-        // TODO implement here
-      this.tasa=tasa;
+        this.tasa = tasa;
     }
 
     public Date getFechaDeAcreditacion() {
-        // TODO implement here
         return fechaDeAcreditacion;
     }
 
     public void setFechaDeAcreditacion(Date fechaDeAcreditacion) {
-        // TODO implement here
-      this.fechaDeAcreditacion=fechaDeAcreditacion;
+        this.fechaDeAcreditacion = fechaDeAcreditacion;
     }
+
     public int getCantidadCuotas() {
-        // TODO implement here
         return cantidadCuotas;
     }
 
     public void setCantidadCuotas(int cantidadCuotas) {
-        this.cantidadCuotas=cantidadCuotas;
+        this.cantidadCuotas = cantidadCuotas;
     }
 
     public String getSistemaAmortizacion() {
-        // TODO implement here
         return sistemaAmortizacion;
     }
 
     public void setSistemaAmortizacion(String sistemaAmortizacion) {
-        this.sistemaAmortizacion=sistemaAmortizacion;
-    }
-
-    public float getComision() {
-        // TODO implement here
-        return comision;
-    }
-
-    public void setComision(float comision) {
-        this.comision=comision;
-    }
-
-    /**
-     * @return
-     */
-    public Date getFechaDeVencimiento() {
-
-        return fechaDeVencimiento;
-    }
-
-    public void setFechaDeVencimiento(Date fechaDeVencimiento) {
-        this.fechaDeVencimiento=fechaDeVencimiento;
+        this.sistemaAmortizacion = sistemaAmortizacion;
     }
 
     /**
@@ -137,4 +110,12 @@ public class Tipo3 extends Operacion {
         return null;
     }
 
+    private void incicalizarCuotas(float monto, Date fechaDeAcreditacion, int cantidadCuotas) {
+       /* this.cuotas = new ArrayList<>();
+        float montoCuota = monto / cantidadCuotas;
+        for (int i = 1; i <= cantidadCuotas; i++) {
+            new Cuota(i, montoCuota, EstadoCuotas.EN_FECHA, i);
+            cuotas.add();
+        }*/
+    }
 }

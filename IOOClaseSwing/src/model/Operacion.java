@@ -10,39 +10,36 @@ public class Operacion {
     public Operacion() {
     }
 
-    public Operacion(int id, float monto, Date fecha, EstadoOperacion estado, Date fechaVencimiento) {
-        this.id = id;
-        this.monto = monto;
-        this.fecha = fecha;
-        this.estado = estado;
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public Operacion(float monto, Date fechaIngreso, Date fechaVencimiento) {
+    public Operacion(float monto, Date fechaIngreso, Date fechaVencimiento, SubtipoOperacion subtipoOperacion) {
         this.monto = monto;
         this.fecha = fechaIngreso;
         this.estado = EstadoOperacion.INGRESADO;
         this.fechaVencimiento = fechaVencimiento;
+        this.subtipoOperacion = subtipoOperacion;
     }
 
-    private int id;
-    private float monto;
-    private Date fecha;
-    private EstadoOperacion estado;
-    private Date fechaVencimiento;
-    private Garantia garantia;
-    private SocioParticipe socioParticipe;
-    private SubtipoOperacion subtipoOperacion;
+    protected int id;
+    protected float monto;
+    protected Date fecha;
+    protected EstadoOperacion estado;
+    protected Date fechaVencimiento;
+    protected Certificado certificado;
+    protected SocioParticipe socioParticipe;
+    protected SubtipoOperacion subtipoOperacion;
+    protected Comision comision;
 
     public void setSocioParticipe(SocioParticipe socioParticipe) {
         this.socioParticipe = socioParticipe;
     }
+
     public SubtipoOperacion getSubtipoOperacion() {
         return subtipoOperacion;
     }
+
     public void setSubtipoOperacion(SubtipoOperacion subtipoOperacion) {
         this.subtipoOperacion = subtipoOperacion;
     }
+
     public SocioParticipe getSocioParticipe() {
         return socioParticipe;
     }
@@ -87,14 +84,32 @@ public class Operacion {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public Garantia getGarantia() {
-        return garantia;
+    public Certificado getCertificado() {
+        return certificado;
     }
 
-    public void setGarantia(Garantia garantia) {
-        this.garantia = garantia;
+    public void setCertificado(Certificado certificado) {
+        this.certificado = certificado;
     }
 
+    public Comision getComision() {
+        return comision;
+    }
 
+    public void setComision(Comision comision) {
+        this.comision = comision;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operacion operacion = (Operacion) o;
+        return id == operacion.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

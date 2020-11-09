@@ -76,8 +76,8 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-44444444-2";
-        String razonSocial = "Saveiro SRL";
+        String cuit = "20-333333-2";
+        String razonSocial = "Lavadero SRL";
         Date inicioActividad = new Date();
         String actividadPrincipal = "Servicio";
         TipoSocio tipoSocio = TipoSocio.PARTICIPE;
@@ -115,7 +115,7 @@ public class SociosControllerTest {
 
         nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
-        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
+        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(2);
 
         LineaDeCredito lineaDeCredito = new LineaDeCredito(new Date("12/12/2022"), 70000, tipoOperacion);
         nuevoSocio.setLineaDeCredito(lineaDeCredito);

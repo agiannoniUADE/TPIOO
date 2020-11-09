@@ -21,6 +21,7 @@ public abstract class GenericDAO<T> {
         List<T> list = new ArrayList<T>();
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
+        Gson g = new Gson();
         String line = "";
 
         try {
@@ -28,7 +29,6 @@ public abstract class GenericDAO<T> {
             while ((line = b.readLine()) != null) {
                 JsonParser parser = new JsonParser();
                 JsonObject jsonObject = parser.parse(line).getAsJsonObject();
-                Gson g = new Gson();
                 list.add(g.fromJson(jsonObject, clase));
             }
             b.close();
@@ -69,13 +69,16 @@ public abstract class GenericDAO<T> {
         String last = "";
         String line;
         String index = "0";
+        JsonParser parser = new JsonParser();
+
         try {
             while ((line = input.readLine()) != null) {
                 last = line;
             }
 
             if (last != "") {
-                index = last.substring(last.indexOf(":") + 1, last.indexOf(","));
+                JsonObject jsonObject = parser.parse(last).getAsJsonObject();
+                index = jsonObject.get("id").toString();
             }
             return Integer.parseInt(index);
 
@@ -149,25 +152,28 @@ public abstract class GenericDAO<T> {
         }
 
         public T search ( int id) throws FileNotFoundException {
-            BufferedReader b = new BufferedReader(new FileReader(archivo));
-            String line;
-            JsonParser parser = new JsonParser();
-            Gson g = new Gson();
-            Boolean flag = false;
-
-            try {
-                while ((line = b.readLine()) != null && flag == false) {
-                    JsonObject jsonObject = parser.parse(line).getAsJsonObject();
-                    if (Integer.parseInt(jsonObject.get("id").toString()) == id) {
-                        b.close();
-                        return g.fromJson(jsonObject, clase);
-                    }
-                }
-                b.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
+            return search(id,   clase);
         }
 
+    public T search ( int id, Class<T> clase) throws FileNotFoundException {
+        BufferedReader b = new BufferedReader(new FileReader(archivo));
+        String line;
+        JsonParser parser = new JsonParser();
+        Gson g = new Gson();
+        Boolean flag = false;
+
+        try {
+            while ((line = b.readLine()) != null && flag == false) {
+                JsonObject jsonObject = parser.parse(line).getAsJsonObject();
+                if (Integer.parseInt(jsonObject.get("id").toString()) == id) {
+                    b.close();
+                    return g.fromJson(jsonObject, clase);
+                }
+            }
+            b.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
     }
