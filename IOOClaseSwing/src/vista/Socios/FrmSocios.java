@@ -8,10 +8,6 @@ import vista.State;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.Date;
 
 public class FrmSocios extends JFrame {
@@ -29,7 +25,7 @@ public class FrmSocios extends JFrame {
     private JPanel TabContraGarantias;
     private JPanel TabAccionistas;
     private JTabbedPane tabbedPaneDer;
-    private JButton ButtonBorrar;
+    private JButton BorrarIzqButton;
     private JTextArea textAreaMessage;
     private JTextField textFieldEmail;
     private JTextField TextFieldTelefono;
@@ -40,13 +36,18 @@ public class FrmSocios extends JFrame {
     private JTextField TextFieldRazonSocial;
     private JComboBox comboBoxTamano;
     private JComboBox comboBoxTipo;
-    private JButton ButtonEditarConfirmar;
-    private JButton ButtonAgregarCancelar;
-    private JButton ButtonBuscar;
-    private JTextField textBuscar;
-  private JButton agregarButton;
-  private JButton borrarButton;
-  private JButton editarButton;
+    private JButton EditarIzqButton;
+    private JButton AgregarIzqButton;
+    private JButton BuscarButton;
+    private JTextField Buscartext;
+  private JButton AgregarDerButton;
+  private JButton EditarDerButton;
+  private JButton BorrarDerButton;
+  private JButton CancelarIzqButton;
+  private JButton ConfirmarIzqButton;
+  private JButton CancelarDerButton;
+  private JButton ConfirmarDerButton;
+  private JLabel SocioIDLabel;
   private JLabel StateLabel;
   private SocioController socioController;
   private State State;
@@ -54,6 +55,7 @@ public class FrmSocios extends JFrame {
     private FrmSocios self;
 
     public FrmSocios() throws Exception {
+
         ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
         this.setIconImage(frameIcon.getImage());
 
@@ -76,48 +78,15 @@ public class FrmSocios extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-      ButtonAgregarCancelar.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          String cuit = TextFieldCUIT.getText();
-          String razonSocial = TextFieldRazonSocial.getText();
-          Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
-          String actividadPrincipal =  TextFieldActividadPrincipal.getText();
-          TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
-          String direccion = TextFieldDireccion.getText();
-          String telefono = TextFieldTelefono.getText();
-          String email = textFieldEmail.getText();
-          String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
 
-          Socio nuevoSocio = new Socio(
-            cuit,
-            tipoSocio,
-            razonSocial,
-            inicioActividad,
-            actividadPrincipal,
-            direccion,
-            telefono,
-            email,
-            tamanioEmpresa);
-          try {
-            socioController.AgregarNuevoSocio(nuevoSocio);
-            textAreaMessage.append("oki doki");
-          } catch (Exception e1) {
-            e1.printStackTrace();
-          }
-        }
-      });
-      ButtonBuscar.addActionListener(new ActionListener() {
+      BuscarButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
           try {
-            if (State.getCurrent() == "Buscado") {
-              ButtonBuscar.setText("Buscar");
-              textBuscar.setEnabled(true);
-              State.standby();
-            } else {
-              Socio s = socioController.getSocioParticipe(Integer.parseInt(textBuscar.getText()));
+              Socio s = socioController.getSocioParticipe(Integer.parseInt(Buscartext.getText()));
 
+              SocioIDLabel.setText(Buscartext.getText());
+              Buscartext.setText("");
               TextFieldCUIT.setText(s.cuit);
               TextFieldRazonSocial.setText(s.razonSocial);
               TextFieldFechaInicioActividad.setText(s.fechaInicioActividad.toString());
@@ -126,63 +95,34 @@ public class FrmSocios extends JFrame {
               TextFieldTelefono.setText(s.telefono);
               textFieldEmail.setText(s.email);
 
-              textBuscar.setEnabled(false);
-              State.setCurrent("Buscado");
-              State.setEnv("Socios");
-              ButtonBuscar.setText("Nueva busqueda");
-            }
           } catch (Exception e1) {
             e1.printStackTrace();
+            SocioIDLabel.setText(SocioIDLabel.getText() + " **No Existe**");
           }
         }
       });
-      ButtonBorrar.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          try {
-          if (State.getEnv() == "Socios") {
-            if (State.getCurrent() == "Editando") {
-              //
-            } else if (State.getCurrent() == "Borrando") {
-              //
-            }
-            ButtonEditarConfirmar.setText("Editar");
-            ButtonAgregarCancelar.setText("Agregar");
-            ButtonBorrar.setVisible(true);
-            State.standby();
-          }
-        } catch (Exception e1) {
-          e1.printStackTrace();
-        }
-        }
-        });
-      ButtonEditarConfirmar.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-          try {
-            State.setCurrent("Editando");
-            State.setEnv("Socios");
-            StateLabel.setText(State.getCurrent());
-            ButtonEditarConfirmar.setText("Confirmar");
-            ButtonAgregarCancelar.setText("Cancelar");
-            ButtonBorrar.setVisible(false);
 
-          } catch (Exception e1) {
-            e1.printStackTrace();
-          }
-
-      }});
-      ButtonAgregarCancelar.addActionListener(new ActionListener() {
+      AgregarIzqButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          try {
-          if (State.getCurrent() == "Standby") {
+          if (State.getCurrent() == "Standby" || State.getCurrent() == "Buscado") {
             State.setCurrent("Agregando");
             State.setEnv("Socios");
-            StateLabel.setText(State.getCurrent());
-            ButtonEditarConfirmar.setText("Confirmar");
-            ButtonAgregarCancelar.setText("Cancelar");
-            ButtonBorrar.setVisible(false);
+            BuscarButton.setEnabled(false);
+            Buscartext.setEnabled(false);
+            ConfirmarIzqButton.setEnabled(true);
+            ConfirmarIzqButton.setVisible(true);
+            CancelarIzqButton.setEnabled(true);
+            CancelarIzqButton.setVisible(true);
+            EditarIzqButton.setVisible(false);
+            EditarIzqButton.setEnabled(false);
+            BorrarIzqButton.setVisible(false);
+            BorrarIzqButton.setEnabled(false);
+            AgregarIzqButton.setVisible(false);
+            AgregarIzqButton.setEnabled(false);
+
+            SocioIDLabel.setText("");
+            Buscartext.setText("** Nuevo Usuario **");
             TextFieldCUIT.setText("");
             TextFieldRazonSocial.setText("");
             TextFieldFechaInicioActividad.setText("");
@@ -191,36 +131,201 @@ public class FrmSocios extends JFrame {
             TextFieldTelefono.setText("");
             textFieldEmail.setText("");
 
-          } else if (State.getEnv() == "Socios") {
-              if (State.getCurrent() == "Editando") {
-                //
-              } else if (State.getCurrent() == "Borrando") {
-                //
-              }
-              ButtonEditarConfirmar.setText("Editar");
-              ButtonAgregarCancelar.setText("Agregar");
-              ButtonBorrar.setVisible(true);
-              State.standby();
+          }
+
+          }
+        }
+      );
+
+      BorrarIzqButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          try {
+            if (SocioIDLabel.getText() == "" || SocioIDLabel.getText() == null ) {
+              JOptionPane.showMessageDialog(
+                BorrarIzqButton,
+                "No hay nada seleccionado para borrar");
+            } else {
+              int confirmado = JOptionPane.showConfirmDialog(
+                BorrarIzqButton,
+                "¿Esta seguro de que quiere borrar el Socio " + SocioIDLabel.getText() + "?");
+
+              if (JOptionPane.OK_OPTION == confirmado)
+                System.out.println("confirmado");
+              else
+                System.out.println("vale... no borro nada...");
+            }
+        } catch (Exception e1) {
+          e1.printStackTrace();
+        }
+        }
+        });
+      EditarIzqButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (State.getCurrent() == "Standby" || State.getCurrent() == "Buscado") {
+              State.setCurrent("Editando");
+              State.setEnv("Socios");
+              Buscartext.setEnabled(false);
+              BuscarButton.setEnabled(false);
+              ConfirmarIzqButton.setEnabled(true);
+              ConfirmarIzqButton.setVisible(true);
+              CancelarIzqButton.setEnabled(true);
+              CancelarIzqButton.setVisible(true);
+              EditarIzqButton.setVisible(false);
+              EditarIzqButton.setEnabled(false);
+              BorrarIzqButton.setVisible(false);
+              BorrarIzqButton.setEnabled(false);
+              AgregarIzqButton.setVisible(false);
+              AgregarIzqButton.setEnabled(false);
+
             }
 
+      }});
+
+      ConfirmarIzqButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          if (State.getEnv() == "Socios" && State.getCurrent() == "Agregando") {
+            String cuit = TextFieldCUIT.getText();
+            String razonSocial = TextFieldRazonSocial.getText();
+            Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
+            String actividadPrincipal =  TextFieldActividadPrincipal.getText();
+            TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
+            String direccion = TextFieldDireccion.getText();
+            String telefono = TextFieldTelefono.getText();
+            String email = textFieldEmail.getText();
+            String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
+
+            Socio nuevoSocio = new Socio(
+              cuit,
+              tipoSocio,
+              razonSocial,
+              inicioActividad,
+              actividadPrincipal,
+              direccion,
+              telefono,
+              email,
+              tamanioEmpresa);
+
+            try {
+              socioController.AgregarNuevoSocio(nuevoSocio);
+              Buscartext.setText("oki doki");
+              Buscartext.setEnabled(false);
+              BuscarButton.setEnabled(true);
+            } catch (Exception e1) {
+              e1.printStackTrace();
+            }
+          }
+
+          if (State.getCurrent() == "Agregando" || State.getCurrent() == "Editando") {
+            PanelDer.setEnabled(true);
+            PanelDer.setVisible(true);
+          }
+
+          State.standby();
+          BuscarButton.setEnabled(true);
+          ConfirmarIzqButton.setEnabled(false);
+          ConfirmarIzqButton.setVisible(false);
+          CancelarIzqButton.setEnabled(false);
+          CancelarIzqButton.setVisible(false);
+          EditarIzqButton.setVisible(true);
+          EditarIzqButton.setEnabled(true);
+          BorrarIzqButton.setVisible(true);
+          BorrarIzqButton.setEnabled(true);
+          AgregarIzqButton.setVisible(true);
+          AgregarIzqButton.setEnabled(true);
+        }
+      });
+
+      CancelarIzqButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+          if (State.getEnv() == "Socios" && State.getCurrent() == "Agregando") {
+            Buscartext.setEnabled(true);
+            BuscarButton.setEnabled(true);
+          }
+          State.standby();
+          BuscarButton.setEnabled(true);
+          ConfirmarIzqButton.setEnabled(false);
+          ConfirmarIzqButton.setVisible(false);
+          CancelarIzqButton.setEnabled(false);
+          CancelarIzqButton.setVisible(false);
+          EditarIzqButton.setVisible(true);
+          EditarIzqButton.setEnabled(true);
+          BorrarIzqButton.setVisible(true);
+          BorrarIzqButton.setEnabled(true);
+          AgregarIzqButton.setVisible(true);
+          AgregarIzqButton.setEnabled(true);
+
+
+        }
+      });
+
+      //// BOTONES DERECHA ////
+
+
+      BorrarDerButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+          try {
+            if (tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Contra Garantias" || tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Lineas de Credito") {
+              int confirmado = JOptionPane.showConfirmDialog(
+                BorrarIzqButton,
+                "¿Esta seguro de que quiere borrar en las " + tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) + " el ID XX ?");
+
+              if (JOptionPane.OK_OPTION == confirmado)
+                System.out.println("confirmado");
+              else
+                System.out.println("vale... no borro nada...");
+            } else {
+              JOptionPane.showMessageDialog(
+                BorrarIzqButton,
+                "No puede BORRAR " + tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) + " en este modulo");
+
+            }
           } catch (Exception e1) {
             e1.printStackTrace();
           }
-          }
-
+        }
       });
-
-
-      StateLabel.addComponentListener(new ComponentAdapter() {
+      EditarDerButton.addActionListener(new ActionListener() {
         @Override
-        public void componentResized(ComponentEvent e) {
-          super.componentResized(e);
-          if (State.getCurrent() == "Standby") {
-            StateLabel.setVisible(false);
+        public void actionPerformed(ActionEvent e) {
+          if (tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Contra Garantias" || tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Lineas de Credito") {
+            FrmABM frame = null;
+            try {
+              frame = new FrmABM(tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()),"m");
+            } catch (Exception e1) {
+              e1.printStackTrace();
+            }
+            frame.setVisible(true);
           } else {
-            StateLabel.setText(State.getCurrent());
-            StateLabel.setVisible(true);
+            JOptionPane.showMessageDialog(
+              BorrarIzqButton,
+              "No puede MODIFICAR " + tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) + " en este modulo");
           }
+        }
+      });
+      AgregarDerButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+          if (tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Contra Garantias" || tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) == "Lineas de Credito") {
+            FrmABM frame = null;
+            try {
+              frame = new FrmABM(tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()),"a");
+            } catch (Exception e1) {
+              e1.printStackTrace();
+            }
+            frame.setVisible(true);
+          } else {
+            JOptionPane.showMessageDialog(
+              BorrarIzqButton,
+              "No puede AGREGAR " + tabbedPaneDer.getTitleAt(tabbedPaneDer.getSelectedIndex()) + " en este modulo");
+          }
+
         }
       });
     }};
