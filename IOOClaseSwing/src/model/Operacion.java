@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -10,7 +11,11 @@ public class Operacion {
     public Operacion() {
     }
 
-    public Operacion(float monto, Date fechaIngreso, Date fechaVencimiento, SubtipoOperacion subtipoOperacion) {
+    public Operacion(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion) throws Exception {
+
+        if(monto <= 0){
+            throw new Exception("El monto de la operacion no puede ser negativo");
+        }
         this.monto = monto;
         this.fecha = fechaIngreso;
         this.estado = EstadoOperacion.INGRESADO;
@@ -20,9 +25,9 @@ public class Operacion {
 
     protected int id;
     protected float monto;
-    protected Date fecha;
+    protected LocalDate fecha;
     protected EstadoOperacion estado;
-    protected Date fechaVencimiento;
+    protected LocalDate fechaVencimiento;
     protected Certificado certificado;
     protected SocioParticipe socioParticipe;
     protected SubtipoOperacion subtipoOperacion;
@@ -60,11 +65,11 @@ public class Operacion {
         this.monto = monto;
     }
 
-    public Date getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 
@@ -76,11 +81,11 @@ public class Operacion {
         this.estado = estado;
     }
 
-    public Date getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 

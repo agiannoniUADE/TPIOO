@@ -5,7 +5,8 @@ import Controllers.SocioController;
 import model.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,7 +38,7 @@ public class SGRControllerTest {
         a.setId(1);
         SocioProtector socioProtector =(SocioProtector) socioController.getSocioProtector(1);
         a.setSocio(socioProtector);
-        a.setFechaInicio(new Date("1/11/2020"));
+        a.setFechaInicio(LocalDate.of(2020,1,20));
         a.setMonto(700000);
         a.setRetirado(false);
 

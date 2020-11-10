@@ -8,6 +8,7 @@ import model.*;
 
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -64,7 +65,7 @@ public class OperacionController {
 
         SocioParticipe socio = operacion.getSocioParticipe();
 
-        if (socio.getLineaDeCredito().getFechaVigencia().compareTo(new Date())<0){
+        if (socio.getLineaDeCredito().getFechaVigencia().compareTo(LocalDate.now())<0){
             throw new Exception("La linea de credito del socio se encuentra vencida.");
         }
 
@@ -158,7 +159,7 @@ public class OperacionController {
         // TODO implement here
     }
 
-    public float getComisionPorFecha(Date fecha) throws Exception {
+    public float getComisionPorFecha(LocalDate fecha) throws Exception {
         float comision = 0;
         List<Tipo1> lista = (List<Tipo1>) opeacionT1Dao.getAll()
             .stream()
@@ -179,7 +180,7 @@ public class OperacionController {
     /**
      * @param fecha
      */
-    public void getOperacionesPorFecha(Date fecha) {
+    public void getOperacionesPorFecha(LocalDate fecha) {
         // TODO implement here
     }
 
@@ -188,7 +189,7 @@ public class OperacionController {
      * @param fechaDesde
      * @param fechaHasta
      */
-    public void getOperacionesMonetizadasPorSocio(int idSocio, Date fechaDesde, Date fechaHasta) {
+    public void getOperacionesMonetizadasPorSocio(int idSocio, LocalDate fechaDesde, LocalDate fechaHasta) {
         // TODO implement here
     }
 
@@ -197,7 +198,7 @@ public class OperacionController {
      * @param fechaDesde
      * @param fechaHasta
      */
-    public void getPromedioDescuentoyTotalOperadoPorTamanioEmpresaPorFecha(String tamanioEmpresa, Date fechaDesde, Date fechaHasta) {
+    public void getPromedioDescuentoyTotalOperadoPorTamanioEmpresaPorFecha(String tamanioEmpresa, LocalDate fechaDesde, LocalDate fechaHasta) {
         // TODO implement here
     }
 

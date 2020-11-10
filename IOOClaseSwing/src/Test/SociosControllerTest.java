@@ -5,7 +5,8 @@ import Controllers.TipoOperacionController;
 import model.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -34,7 +35,7 @@ public class SociosControllerTest {
     @Test
     void searchByIdTest_Success() throws Exception {
         int id = insertSocio();
-        Socio socio = target.getSocioParticipe(9);
+        Socio socio = target.getSocioParticipe(id);
         assertNotNull(socio);
         target.delete(id);
     }
@@ -51,7 +52,7 @@ public class SociosControllerTest {
         int id = insertSocio();
         String cuit = "202020";
         String razonSocial = "TEST";
-        Date inicioActividad = new Date();
+        LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Manufactura";
         TipoSocio tipoSocio = TipoSocio.PARTICIPE;
         String direccion = "FAKE street 123";
@@ -76,9 +77,9 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-333333-2";
+        String cuit = "20-555555-2";
         String razonSocial = "Lavadero SRL";
-        Date inicioActividad = new Date();
+        LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
         TipoSocio tipoSocio = TipoSocio.PARTICIPE;
         String direccion = "Av. de mayo 341";
@@ -115,9 +116,9 @@ public class SociosControllerTest {
 
         nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
-        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(2);
+        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(3);
 
-        LineaDeCredito lineaDeCredito = new LineaDeCredito(new Date("12/12/2022"), 70000, tipoOperacion);
+        LineaDeCredito lineaDeCredito = new LineaDeCredito(LocalDate.of(2021,12,12), 70000, tipoOperacion);
         nuevoSocio.setLineaDeCredito(lineaDeCredito);
 
         Contragarantia c1 = new Contragarantia("Garantia1",20000);
@@ -150,7 +151,7 @@ public class SociosControllerTest {
     private SocioProtector CreateSocioProtector(String cuitSocio) throws Exception {
         String cuit = cuitSocio;
         String razonSocial = "Saveiro SRL";
-        Date inicioActividad = new Date();
+        LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
         TipoSocio tipoSocio = TipoSocio.PROTECTOR;
         String direccion = "Av. de mayo 341";

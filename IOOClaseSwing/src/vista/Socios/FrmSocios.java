@@ -8,7 +8,7 @@ import model.TipoSocio;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class FrmSocios extends JFrame {
 
@@ -74,7 +74,7 @@ public class FrmSocios extends JFrame {
         public void actionPerformed(ActionEvent e) {
           String cuit = TextFieldCUIT.getText();
           String razonSocial = TextFieldRazonSocial.getText();
-          Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
+          LocalDate inicioActividad = LocalDate.parse(TextFieldFechaInicioActividad.getText());
           String actividadPrincipal =  TextFieldActividadPrincipal.getText();
           TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
           String direccion = TextFieldDireccion.getText();

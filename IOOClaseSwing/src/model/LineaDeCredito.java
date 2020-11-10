@@ -1,12 +1,12 @@
 package model;
-import java.util.*;
+import java.time.LocalDate;
 
 /**
  * 
  */
 public class LineaDeCredito {
 
-  public LineaDeCredito(int id, Date fechaVigencia, float montoAsignado) {
+  public LineaDeCredito(int id, LocalDate fechaVigencia, float montoAsignado) {
     this.id = id;
     this.fechaVigencia = fechaVigencia;
     this.montoAsignado = montoAsignado;
@@ -18,7 +18,7 @@ public class LineaDeCredito {
     public LineaDeCredito() {
     }
 
-    public LineaDeCredito(Date fechaVigencia, float montoAsignado, TipoOperacion tipoOperacion) {
+    public LineaDeCredito(LocalDate fechaVigencia, float montoAsignado, TipoOperacion tipoOperacion) {
         this.fechaVigencia = fechaVigencia;
         this.montoAsignado = montoAsignado;
         this.tipoOperacion = tipoOperacion;
@@ -32,7 +32,7 @@ public class LineaDeCredito {
     /**
      * 
      */
-    private Date fechaVigencia;
+    private LocalDate fechaVigencia;
 
     /**
      * 
@@ -62,11 +62,11 @@ public class LineaDeCredito {
 
 
 
-  public Date getFechaVigencia() {
+  public LocalDate getFechaVigencia() {
     return fechaVigencia;
   }
 
-  public void setFechaVigencia(Date fechaVigencia) {
+  public void setFechaVigencia(LocalDate fechaVigencia) {
     this.fechaVigencia = fechaVigencia;
   }
 

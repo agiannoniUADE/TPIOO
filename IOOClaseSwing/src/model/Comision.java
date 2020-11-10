@@ -1,6 +1,7 @@
 package model;
 
-import java.util.Date;
+
+import java.time.LocalDate;
 
 public class Comision {
 
@@ -9,13 +10,13 @@ public class Comision {
     private float tasaUtilizada;
     private EstadoComision estadoComision;
     private FacturaComision factura;
-    private Date fechaCalculocomision;
+    private LocalDate fechaCalculocomision;
 
     public Comision(float montoBrutoOperacion, float tasaUtilizada) {
         this.monto = montoBrutoOperacion * tasaUtilizada;
         this.tasaUtilizada = tasaUtilizada;
         this.estadoComision = EstadoComision.CALCULADA;
-        this.fechaCalculocomision = new Date();
+        this.fechaCalculocomision = LocalDate.now();
     }
 
     public int getId() {
@@ -58,11 +59,11 @@ public class Comision {
         this.factura  = new FacturaComision(this.monto, razonSocial);
     }
 
-    public Date getFechaCalculocomision() {
+    public LocalDate getFechaCalculocomision() {
         return fechaCalculocomision;
     }
 
-    public void setFechaCalculocomision(Date fechaCalculocomision) {
+    public void setFechaCalculocomision(LocalDate fechaCalculocomision) {
         this.fechaCalculocomision = fechaCalculocomision;
     }
 }

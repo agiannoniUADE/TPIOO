@@ -1,10 +1,7 @@
 package model;
 
-import utils.DateUtils;
-
-import model.SocioProtector;
-
-import java.util.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 /**
  *
@@ -25,7 +22,7 @@ public class Aporte {
     /**
      *
      */
-    private Date fechaInicio;
+    private LocalDate fechaInicio;
 
     /**
      *
@@ -52,11 +49,11 @@ public class Aporte {
         this.id = id;
     }
 
-    public Date getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(Date fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
@@ -79,6 +76,8 @@ public class Aporte {
 
 
     public Boolean estaDisponibleParaRetiro() {
-        return DateUtils.getDiffYears(fechaInicio, new Date()) >= 2;
+
+        Period age = Period.between(fechaInicio, LocalDate.now());
+        return age.getYears() > 2;
     }
 }

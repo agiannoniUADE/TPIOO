@@ -1,5 +1,6 @@
 package model;
 
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -10,7 +11,7 @@ public class Socio {
     /**
      * ctor socio
      */
-    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, LocalDate fechaInicioActividad,
                  String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
         this.cuit = cuit;
         this.tipoSocio = tipoSocio;
@@ -31,7 +32,7 @@ public class Socio {
     /**
      * ctor con accionistas y documentos
      */
-    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+    public Socio(String cuit, TipoSocio tipoSocio, String razonSocial, LocalDate fechaInicioActividad,
                  String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa,
                  List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
         this.cuit = cuit;
@@ -87,7 +88,7 @@ public class Socio {
     /**
      *
      */
-    private Date fechaInicioActividad;
+    private LocalDate fechaInicioActividad;
 
     /**
      *
@@ -223,11 +224,11 @@ public class Socio {
         this.razonSocial = razonSocial;
     }
 
-    public Date getFechaInicioActividad() {
+    public LocalDate getFechaInicioActividad() {
         return fechaInicioActividad;
     }
 
-    public void setFechaInicioActividad(Date fechaInicioActividad) {
+    public void setFechaInicioActividad(LocalDate fechaInicioActividad) {
         this.fechaInicioActividad = fechaInicioActividad;
     }
 

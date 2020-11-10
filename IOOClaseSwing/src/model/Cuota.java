@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -12,7 +13,7 @@ public class  Cuota {
     public Cuota() {
     }
 
-    public Cuota(int cuotaId, float monto, EstadoCuotas estado, int numeroCuota, Date fechaVencimiento) {
+    public Cuota(int cuotaId, float monto, EstadoCuotas estado, int numeroCuota, LocalDate fechaVencimiento) {
         this.cuotaId = cuotaId;
         this.monto = monto;
         this.estado = estado;
@@ -40,15 +41,15 @@ public class  Cuota {
      */
     private int numeroCuota;
 
-    public Date getFechaVencimiento() {
+    public LocalDate getFechaVencimiento() {
         return fechaVencimiento;
     }
 
-    public void setFechaVencimiento(Date fechaVencimiento) {
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    private Date fechaVencimiento;
+    private LocalDate fechaVencimiento;
 
 
   public int getCuotaId() {

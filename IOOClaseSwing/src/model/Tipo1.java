@@ -1,15 +1,13 @@
 package model;
 
-import com.sun.istack.internal.Nullable;
-
-import java.util.*;
+import java.time.LocalDate;
 
 /**
  *
  */
 public class Tipo1 extends Operacion {
 
-    public Tipo1(float monto, Date fecha, Date fechaVencimiento,SubtipoOperacion subtipoOperacion, String cuitDelFirmante, Float tasaDeDescuento) {
+    public Tipo1(float monto, LocalDate fecha, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String cuitDelFirmante, Float tasaDeDescuento) {
         super(monto, fecha, fechaVencimiento, subtipoOperacion);
         this.cuitDelFirmante = cuitDelFirmante;
         this.fechaDeCobro = fechaDeCobro;
@@ -31,7 +29,7 @@ public class Tipo1 extends Operacion {
     /**
      *
      */
-    private Date fechaDeCobro;
+    private LocalDate fechaDeCobro;
 
     /**
      *
@@ -75,14 +73,14 @@ public class Tipo1 extends Operacion {
     /**
      * @return
      */
-    public Date getFechaDeCobro() {
+    public LocalDate getFechaDeCobro() {
         return fechaDeCobro;
     }
 
     /**
      *
      */
-    public void setFechaDeCobro(Date fechaDeCobro) {
+    public void setFechaDeCobro(LocalDate fechaDeCobro) {
         this.fechaDeCobro = fechaDeCobro;
     }
 

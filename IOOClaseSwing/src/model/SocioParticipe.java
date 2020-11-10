@@ -1,4 +1,5 @@
 package model;
+import java.time.LocalDate;
 import java.util.*;
 
 /**
@@ -9,14 +10,14 @@ public class SocioParticipe extends Socio {
     public SocioParticipe() {
     }
 
-    public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad,
+    public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, LocalDate fechaInicioActividad,
                           String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa) {
         super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa);
 
         this.contragarantias = new ArrayList<>();
     }
 
-    public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, Date fechaInicioActividad, String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa, List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
+    public SocioParticipe(String cuit, TipoSocio tipoSocio, String razonSocial, LocalDate fechaInicioActividad, String actividadPrincipal, String direccion, String telefono, String email, String tamanioEmpresa, List<Accionista> accionistas, List<DocumentoRegistro> documentos) {
         super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa, accionistas, documentos);
     }
 

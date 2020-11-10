@@ -5,6 +5,7 @@ import DAO.SocioProtectorDao;
 import model.*;
 
 import java.io.FileNotFoundException;
+import java.time.LocalDate;
 import java.util.*;
 
 public class SocioController {
@@ -127,7 +128,7 @@ public class SocioController {
      * @param socioId 
      * @param fecha
      */
-    public void getMoraPorSocioPorFecha(int socioId, Date fecha) {
+    public void getMoraPorSocioPorFecha(int socioId, LocalDate fecha) {
         // TODO implement here
     }
 

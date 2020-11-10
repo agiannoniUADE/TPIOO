@@ -8,7 +8,7 @@ import model.TipoSocio;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Date;
+import java.time.LocalDate;
 import javax.swing.*;
 
 public class FrmAgregarSocio extends JDialog{
@@ -42,7 +42,7 @@ public class FrmAgregarSocio extends JDialog{
       public void actionPerformed(ActionEvent e){
         String cuit = CuitTextField.getText();
         String razonSocial = razonSocialTextField.getText();
-        Date inicioActividad = new Date(inicioActividadTextField.getText());
+        LocalDate inicioActividad = LocalDate.parse(inicioActividadTextField.getText());
         String actividadPrincipal =  actividadPrincipalTextField.getText();
         TipoSocio tipoSocio = TipoSocio.lookUp(TipoSocioCombo.getItemAt(TipoSocioCombo.getSelectedIndex()).toString());
         String direccion = direccionTextField.getText();

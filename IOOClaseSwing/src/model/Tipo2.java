@@ -1,11 +1,11 @@
 package model;
 
-import java.util.*;
+import java.time.LocalDate;
 
 public class Tipo2 extends Operacion {
 
 
-    public Tipo2(float monto, Date fechaIngreso, Date fechaVencimiento, SubtipoOperacion subtipoOperacion, String RazonSocialEmpresa) {
+    public Tipo2(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String RazonSocialEmpresa) {
         super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
         this.RazonSocialEmpresa = RazonSocialEmpresa;
     }
