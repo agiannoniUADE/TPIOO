@@ -1,4 +1,5 @@
 package Controllers;
+
 import DAO.GenericDAO;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
@@ -10,42 +11,44 @@ import java.util.*;
 
 public class SocioController {
 
-  private SocioParticipeDao socioParticipeDao;
-  private SocioProtectorDao socioProtectorDao;
+    private SocioParticipeDao socioParticipeDao;
+    private SocioProtectorDao socioProtectorDao;
 
     /**
      * Default constructor
      */
     public SocioController() throws Exception {
-      this.socioParticipeDao = new SocioParticipeDao();
-      this.socioProtectorDao = new SocioProtectorDao();
+        this.socioParticipeDao = new SocioParticipeDao();
+        this.socioProtectorDao = new SocioProtectorDao();
     }
 
     public int AgregarNuevoSocio(Socio socio) throws Exception {
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        if(socio.getTipoSocio() == TipoSocio.PROTECTOR){
-           if(!ValidatorVO.ValidarSocioProtector(this, socio.getCuit())){
-               throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
-           }
+        if (socio.getTipoSocio() == TipoSocio.PROTECTOR) {
+            if (!ValidatorVO.ValidarSocioProtector(this, socio.getCuit())) {
+                throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
+            }
         }
         int lastId = dao.getLastInsertId();
         lastId++;
         socio.setId(lastId);
         dao.save(socio);
-      return lastId;
+        return lastId;
     }
+
     /**
      * @param id
      */
     public Socio getSocioParticipe(int id) throws FileNotFoundException {
 
         Object obj = socioParticipeDao.search(id);
-        return obj != null ? (Socio)obj: null;
+        return obj != null ? (Socio) obj : null;
     }
+
     public SocioParticipe getSocioParticipe(String cuit) throws Exception {
 
         List<SocioParticipe> obj = socioParticipeDao.getAll();
-       return obj.stream()
+        return obj.stream()
             .filter(e -> cuit.equalsIgnoreCase(e.getCuit()))
             .findFirst()
             .orElse(null);
@@ -53,34 +56,34 @@ public class SocioController {
 
     public Socio getSocioProtector(int id) throws FileNotFoundException {
         Object obj = socioProtectorDao.search(id);
-        return obj != null ? (Socio)obj: null;
+        return obj != null ? (Socio) obj : null;
     }
 
-  /**
-   * @param obj
-   */
-  public Boolean updateSocio(Socio obj) throws Exception {
+    /**
+     * @param obj
+     */
+    public Boolean updateSocio(Socio obj) throws Exception {
 
-   return socioParticipeDao.update(obj);
-  }
+        return socioParticipeDao.update(obj);
+    }
 
-  /**
-   * @param id
-   */
-  public Boolean delete(int id) throws Exception {
-    return socioParticipeDao.delete(id);
-  }
+    /**
+     * @param id
+     */
+    public Boolean delete(int id) throws Exception {
+        return socioParticipeDao.delete(id);
+    }
 
 
-  public int getLastInsertId() throws Exception
-  {
-    return socioParticipeDao.getLastInsertId();
-  }
+    public int getLastInsertId() throws Exception {
+        return socioParticipeDao.getLastInsertId();
+    }
 
-  public List<SocioParticipe> getSociosParticipe() throws Exception {
+    public List<SocioParticipe> getSociosParticipe() throws Exception {
         List<SocioParticipe> lista = socioParticipeDao.getAll();
         return lista;
-  }
+    }
+
     /**
      * @param socioId
      */
@@ -96,7 +99,7 @@ public class SocioController {
     }
 
     /**
-     * @param id 
+     * @param id
      * @param tipoOperacionId
      */
     public void getComisionPorSocio(int id, int tipoOperacionId) {
@@ -118,14 +121,14 @@ public class SocioController {
     }
 
     /**
-     * 
+     *
      */
     public void getSociosParticipes() {
         // TODO implement here
     }
 
     /**
-     * @param socioId 
+     * @param socioId
      * @param fecha
      */
     public void getMoraPorSocioPorFecha(int socioId, LocalDate fecha) {
@@ -153,15 +156,14 @@ public class SocioController {
         // TODO implement here
     }
 
-    public Dictionary<String, Integer> getSociosConAccionesDisponibles(TipoSocio tipoSocio) throws Exception
-    {
+    public Dictionary<String, Integer> getSociosConAccionesDisponibles(TipoSocio tipoSocio) throws Exception {
         Socio socio;
         GenericDAO dao = tipoSocio == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
         Dictionary<String, Integer> dic = new Hashtable<String, Integer>();
-        for(Object item: dao.getAll()){
-            socio = (Socio)item;
-                if(socio.getAccion() > 1)
-                    ((Hashtable<String, Integer>) dic).put(socio.getCuit(),Integer.valueOf(socio.getAcciones()));
+        for (Object item : dao.getAll()) {
+            socio = (Socio) item;
+            if (socio.getAccion() > 1)
+                ((Hashtable<String, Integer>) dic).put(socio.getCuit(), Integer.valueOf(socio.getAcciones()));
         }
         return dic;
     }
@@ -169,10 +171,10 @@ public class SocioController {
     public void suscribirAcciones(Socio comprador, Socio vendedor, int cantidad) throws Exception {
         GenericDAO dao;
 
-        if(comprador.getTipoSocio() != vendedor.getTipoSocio() ){
+        if (comprador.getTipoSocio() != vendedor.getTipoSocio()) {
             throw new Exception("No se puede suscribir acciones entre socios de distinto tipo");
         }
-        if(vendedor.getAccion() < cantidad)
+        if (vendedor.getAccion() < cantidad)
             throw new Exception("El socio vendedor no dispone de la cantidad solicitada.");
 
         dao = vendedor.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;

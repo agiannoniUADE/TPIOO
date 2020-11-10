@@ -1,17 +1,18 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class DocumentoRegistro {
 
 
-  /**
-   * Default constructor
-   */
-  public DocumentoRegistro() {
-  }
+    /**
+     * Default constructor
+     */
+    public DocumentoRegistro() {
+    }
 
     public DocumentoRegistro(String nombre, String usuario, boolean obligatorio, TipoDocumento tipoDocumento) {
         this.nombre = nombre;
@@ -22,12 +23,12 @@ public class DocumentoRegistro {
     }
 
     /**
-     * 
+     *
      */
     private int id;
 
     /**
-     * 
+     *
      */
     private String nombre;
 
@@ -35,67 +36,67 @@ public class DocumentoRegistro {
      *
      */
     private String usuario;
-  /**
-   *
-   */
+    /**
+     *
+     */
 
-  private boolean obligatorio;
+    private boolean obligatorio;
 
-  private TipoDocumento tipoDocumento;
+    private TipoDocumento tipoDocumento;
 
-  private EstadoDocumentoRegistro estado;
+    private EstadoDocumentoRegistro estado;
 
-  public boolean isObligatorio() {
-    return obligatorio;
-  }
+    public boolean isObligatorio() {
+        return obligatorio;
+    }
 
-  public void setObligatorio(boolean obligatorio) {
-    this.obligatorio = obligatorio;
-  }
-
-
-  public TipoDocumento getTipoDocumentoRegistro() {
-    return tipoDocumento;
-  }
-
-  public TipoDocumento getTipoDocumento() {
-    return tipoDocumento;
-  }
-
-  public void setTipoDocumento(TipoDocumento tipoDocumento) {
-    this.tipoDocumento = tipoDocumento;
-  }
-
-  public EstadoDocumentoRegistro getEstado() {
-    return estado;
-  }
-
-  public void setEstado(EstadoDocumentoRegistro estado) {
-    this.estado = estado;
-  }
-
-  public int getId() {
-    return id;
-  }
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
-  public String getNombre() {
-    return nombre;
-  }
-
-  public void setNombre(String nombre) {
-    this.nombre = nombre;
-  }
+    public void setObligatorio(boolean obligatorio) {
+        this.obligatorio = obligatorio;
+    }
 
 
-  public String getUsuario() {
-    return usuario;
-  }
+    public TipoDocumento getTipoDocumentoRegistro() {
+        return tipoDocumento;
+    }
 
-  public void setUsuario(String usuario) {
-    this.usuario = usuario;
-  }
+    public TipoDocumento getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public void setTipoDocumento(TipoDocumento tipoDocumento) {
+        this.tipoDocumento = tipoDocumento;
+    }
+
+    public EstadoDocumentoRegistro getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoDocumentoRegistro estado) {
+        this.estado = estado;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }

@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
  */
 public class Tipo3 extends Operacion {
 
-    public Tipo3(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String entidad, float tasa, LocalDate fechaDeAcreditacion, int cantidadCuotas, String sistemaAmortizacion) {
+    public Tipo3(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String entidad, float tasa, LocalDate fechaDeAcreditacion, int cantidadCuotas, String sistemaAmortizacion) throws Exception {
         super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
         this.entidad = entidad;
         this.tasa = tasa;

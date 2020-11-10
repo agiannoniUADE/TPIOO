@@ -1,9 +1,10 @@
 package model;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 
+ *
  */
 public class SGR {
 
@@ -16,31 +17,31 @@ public class SGR {
     }
 
     /**
-     * 
+     *
      */
     public int id;
 
     /**
-     * 
+     *
      */
     private String razonSocial;
 
 
-  public int getId() {
-    return id;
-  }
+    public int getId() {
+        return id;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-  public String getRazonSocial() {
-    return razonSocial;
-  }
+    public String getRazonSocial() {
+        return razonSocial;
+    }
 
-  public void setRazonSocial(String razonSocial) {
-    this.razonSocial = razonSocial;
-  }
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
+    }
 
     private List<Aporte> aportes;
 
@@ -52,7 +53,7 @@ public class SGR {
     }
 
     public void addSocios(List<Socio> socios) {
-        if(socios != null)
+        if (socios != null)
             this.socios.addAll(socios);
     }
 
@@ -66,7 +67,7 @@ public class SGR {
     }
 
     public int addAportes(Aporte aporte) {
-        int id  = aportes.size()+1;
+        int id = aportes.size() + 1;
         aporte.setId(id);
         this.aportes.add(aporte);
         return id;
@@ -74,20 +75,21 @@ public class SGR {
 
 
     /**
-     * 
+     *
      */
     public void getRiesgoVivo() {
         // TODO implement here
     }
+
     /**
      *
      */
     public float calcularFondoDeRiego() {
-        double response =   aportes.stream().filter(x -> !x.FueRetirado())
+        double response = aportes.stream().filter(x -> !x.FueRetirado())
             .map(x -> x.getMonto())
             .collect(Collectors.summingDouble(Float::doubleValue));
 
-        return (float)response;
+        return (float) response;
     }
 
     /**
@@ -116,16 +118,16 @@ public class SGR {
     }
 
     public void retirarAporte(int id) throws Exception {
-       Aporte aporte = getAporte(id);
-       if(aporte == null){
-           throw new Exception("No se pudo encontrar el aporte indicado.");
-       } else if(!aporte.estaDisponibleParaRetiro()){
-           throw new Exception("No se puede retirar un aporte antes de transcurrido dos años.");
-       }else if(aporte.FueRetirado()){
-           throw new Exception("El aporte ya fue retirado");
-       }else{
-           aporte.setRetirado(true);
-       }
+        Aporte aporte = getAporte(id);
+        if (aporte == null) {
+            throw new Exception("No se pudo encontrar el aporte indicado.");
+        } else if (!aporte.estaDisponibleParaRetiro()) {
+            throw new Exception("No se puede retirar un aporte antes de transcurrido dos años.");
+        } else if (aporte.FueRetirado()) {
+            throw new Exception("El aporte ya fue retirado");
+        } else {
+            aporte.setRetirado(true);
+        }
     }
 
     @Override

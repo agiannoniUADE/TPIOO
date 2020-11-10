@@ -1,9 +1,10 @@
 package model;
+
 import java.time.LocalDate;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class SocioParticipe extends Socio {
 
@@ -62,6 +63,7 @@ public class SocioParticipe extends Socio {
     public void addContragarantia(Contragarantia obj) {
         this.contragarantias.add(obj);
     }
+
     /**
      *
      */
@@ -85,14 +87,14 @@ public class SocioParticipe extends Socio {
     }
 
     /**
-     * 
+     *
      */
     public Boolean tieneComisionPreferencial() {
-       return comisionPreferencial != null;
+        return comisionPreferencial != null;
     }
 
     /**
-     * 
+     *
      */
     public float getMontoLineaDeCredito() {
         if (lineaDeCredito == null) {

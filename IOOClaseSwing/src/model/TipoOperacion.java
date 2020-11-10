@@ -36,6 +36,14 @@ public class TipoOperacion {
      */
     private float comision;
 
+    public List<SubtipoOperacion> getSubtipoOperacion() {
+        return subtipoOperacion;
+    }
+
+    public void setSubtipoOperacion(List<SubtipoOperacion> subtipoOperacion) {
+        this.subtipoOperacion = subtipoOperacion;
+    }
+
     private List<SubtipoOperacion> subtipoOperacion;
 
     public int getId() {

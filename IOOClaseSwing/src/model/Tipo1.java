@@ -7,7 +7,7 @@ import java.time.LocalDate;
  */
 public class Tipo1 extends Operacion {
 
-    public Tipo1(float monto, LocalDate fecha, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String cuitDelFirmante, Float tasaDeDescuento) {
+    public Tipo1(float monto, LocalDate fecha, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String cuitDelFirmante, Float tasaDeDescuento) throws Exception {
         super(monto, fecha, fechaVencimiento, subtipoOperacion);
         this.cuitDelFirmante = cuitDelFirmante;
         this.fechaDeCobro = fechaDeCobro;

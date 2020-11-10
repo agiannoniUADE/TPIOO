@@ -56,7 +56,7 @@ public class Comision {
     }
 
     public void GenerarFactura(String razonSocial) {
-        this.factura  = new FacturaComision(this.monto, razonSocial);
+        this.factura = new FacturaComision(this.monto, razonSocial);
     }
 
     public LocalDate getFechaCalculocomision() {

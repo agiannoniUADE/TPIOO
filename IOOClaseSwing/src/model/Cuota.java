@@ -1,11 +1,12 @@
 package model;
+
 import java.time.LocalDate;
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class  Cuota {
+public class Cuota {
 
     /**
      * Default constructor
@@ -22,22 +23,22 @@ public class  Cuota {
     }
 
     /**
-     * 
+     *
      */
     private int cuotaId;
 
     /**
-     * 
+     *
      */
     private float monto;
 
     /**
-     * 
+     *
      */
     private EstadoCuotas estado;
 
     /**
-     * 
+     *
      */
     private int numeroCuota;
 
@@ -52,35 +53,35 @@ public class  Cuota {
     private LocalDate fechaVencimiento;
 
 
-  public int getCuotaId() {
-    return cuotaId;
-  }
+    public int getCuotaId() {
+        return cuotaId;
+    }
 
-  public void setCuotaId(int cuotaId) {
-    this.cuotaId = cuotaId;
-  }
+    public void setCuotaId(int cuotaId) {
+        this.cuotaId = cuotaId;
+    }
 
-  public float getMonto() {
-    return monto;
-  }
+    public float getMonto() {
+        return monto;
+    }
 
-  public void setMonto(float monto) {
-    this.monto = monto;
-  }
+    public void setMonto(float monto) {
+        this.monto = monto;
+    }
 
-  public EstadoCuotas getEstado() {
-    return estado;
-  }
+    public EstadoCuotas getEstado() {
+        return estado;
+    }
 
-  public void setEstado(EstadoCuotas estado) {
-    this.estado = estado;
-  }
+    public void setEstado(EstadoCuotas estado) {
+        this.estado = estado;
+    }
 
-  public int getNumeroCuota() {
-    return numeroCuota;
-  }
+    public int getNumeroCuota() {
+        return numeroCuota;
+    }
 
-  public void setNumeroCuota(int numeroCuota) {
-    this.numeroCuota = numeroCuota;
-  }
+    public void setNumeroCuota(int numeroCuota) {
+        this.numeroCuota = numeroCuota;
+    }
 }

@@ -1,10 +1,11 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
-public class  Contragarantia {
+public class Contragarantia {
 
     /**
      * Default constructor
@@ -13,7 +14,7 @@ public class  Contragarantia {
     }
 
     /**
-     * 
+     *
      */
     private int id;
 
@@ -23,16 +24,14 @@ public class  Contragarantia {
     }
 
     /**
-     * 
+     *
      */
     private String tipo;
 
     /**
-     * 
+     *
      */
     private float monto;
-
-
 
 
     public int getId() {
@@ -40,7 +39,7 @@ public class  Contragarantia {
     }
 
     public void setId(int id) {
-      this.id = id;
+        this.id = id;
     }
 
     public String getTipo() {
@@ -60,7 +59,6 @@ public class  Contragarantia {
     public void setMonto(float monto) {
         this.monto = monto;
     }
-
 
 
 }

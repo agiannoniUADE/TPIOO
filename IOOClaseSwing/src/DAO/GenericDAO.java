@@ -86,76 +86,77 @@ public abstract class GenericDAO<T> {
             return 0;
         }
     }
-        public boolean delete ( int id) throws Exception {
-            boolean wasDeleted = false;
-            try {
-                BufferedReader b = new BufferedReader(new FileReader(archivo));
-                StringBuffer inputBuffer = new StringBuffer();
-                String line;
-                JsonParser parser = new JsonParser();
 
-                while ((line = b.readLine()) != null) {
-                    JsonObject jsonObject = parser.parse(line).getAsJsonObject();
-                    if (Integer.parseInt(jsonObject.get("id").toString()) != id) {
-                        inputBuffer.append(line);
-                        inputBuffer.append('\n');
-                    } else {
-                        wasDeleted = true;
-                    }
-                }
-                b.close();
-                String inputStr = inputBuffer.toString();
+    public boolean delete(int id) throws Exception {
+        boolean wasDeleted = false;
+        try {
+            BufferedReader b = new BufferedReader(new FileReader(archivo));
+            StringBuffer inputBuffer = new StringBuffer();
+            String line;
+            JsonParser parser = new JsonParser();
 
-                System.out.println(inputStr);
-
-                FileOutputStream fileOut = new FileOutputStream(archivo);
-                fileOut.write(inputStr.getBytes());
-                fileOut.close();
-
-            } catch (Exception e) {
-                System.out.println("Problem reading file.");
-            }
-            return wasDeleted;
-        }
-
-        public boolean update (T obj) throws Exception {
-            Boolean wasUpdate = false;
-            try {
-                BufferedReader b = new BufferedReader(new FileReader(archivo));
-                StringBuffer inputBuffer = new StringBuffer();
-                String line;
-                JsonParser parser = new JsonParser();
-                Gson g = new Gson();
-
-                while ((line = b.readLine()) != null) {
-                    JsonObject jsonObject = parser.parse(line).getAsJsonObject();
-                    if (g.fromJson(jsonObject, clase).equals(obj)) {
-                        line = g.toJson(obj);
-                        wasUpdate = true;
-                    }
+            while ((line = b.readLine()) != null) {
+                JsonObject jsonObject = parser.parse(line).getAsJsonObject();
+                if (Integer.parseInt(jsonObject.get("id").toString()) != id) {
                     inputBuffer.append(line);
                     inputBuffer.append('\n');
+                } else {
+                    wasDeleted = true;
                 }
-                b.close();
-                String inputStr = inputBuffer.toString();
-
-                System.out.println(inputStr);
-
-                FileOutputStream fileOut = new FileOutputStream(archivo);
-                fileOut.write(inputStr.getBytes());
-                fileOut.close();
-
-            } catch (Exception e) {
-                System.out.println("Problem reading file.");
             }
-            return wasUpdate;
-        }
+            b.close();
+            String inputStr = inputBuffer.toString();
 
-        public T search ( int id) throws FileNotFoundException {
-            return search(id,   clase);
-        }
+            System.out.println(inputStr);
 
-    public T search ( int id, Class<T> clase) throws FileNotFoundException {
+            FileOutputStream fileOut = new FileOutputStream(archivo);
+            fileOut.write(inputStr.getBytes());
+            fileOut.close();
+
+        } catch (Exception e) {
+            System.out.println("Problem reading file.");
+        }
+        return wasDeleted;
+    }
+
+    public boolean update(T obj) throws Exception {
+        Boolean wasUpdate = false;
+        try {
+            BufferedReader b = new BufferedReader(new FileReader(archivo));
+            StringBuffer inputBuffer = new StringBuffer();
+            String line;
+            JsonParser parser = new JsonParser();
+            Gson g = new Gson();
+
+            while ((line = b.readLine()) != null) {
+                JsonObject jsonObject = parser.parse(line).getAsJsonObject();
+                if (g.fromJson(jsonObject, clase).equals(obj)) {
+                    line = g.toJson(obj);
+                    wasUpdate = true;
+                }
+                inputBuffer.append(line);
+                inputBuffer.append('\n');
+            }
+            b.close();
+            String inputStr = inputBuffer.toString();
+
+            System.out.println(inputStr);
+
+            FileOutputStream fileOut = new FileOutputStream(archivo);
+            fileOut.write(inputStr.getBytes());
+            fileOut.close();
+
+        } catch (Exception e) {
+            System.out.println("Problem reading file.");
+        }
+        return wasUpdate;
+    }
+
+    public T search(int id) throws FileNotFoundException {
+        return search(id, clase);
+    }
+
+    public T search(int id, Class<T> clase) throws FileNotFoundException {
         BufferedReader b = new BufferedReader(new FileReader(archivo));
         String line;
         JsonParser parser = new JsonParser();
@@ -176,4 +177,4 @@ public abstract class GenericDAO<T> {
         }
         return null;
     }
-    }
+}

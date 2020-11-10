@@ -5,7 +5,7 @@ import java.time.LocalDate;
 public class Tipo2 extends Operacion {
 
 
-    public Tipo2(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String RazonSocialEmpresa) {
+    public Tipo2(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String RazonSocialEmpresa) throws Exception {
         super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
         this.RazonSocialEmpresa = RazonSocialEmpresa;
     }

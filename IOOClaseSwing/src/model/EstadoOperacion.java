@@ -3,7 +3,7 @@ package model;
 import java.util.Arrays;
 
 /**
- * 
+ *
  */
 public enum EstadoOperacion {
     INGRESADO("Ingresado"),
