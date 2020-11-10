@@ -94,10 +94,17 @@ public class FrmSocios extends JFrame {
               TextFieldDireccion.setText(s.direccion);
               TextFieldTelefono.setText(s.telefono);
               textFieldEmail.setText(s.email);
+              State.standby();
 
           } catch (Exception e1) {
             e1.printStackTrace();
-            SocioIDLabel.setText(SocioIDLabel.getText() + " **No Existe**");
+            if (State.getEnv() != "Buscar" && State.getCurrent() != "NoExiste") {
+              SocioIDLabel.setText(Buscartext.getText() + " **No Existe**");
+              State.setEnv("Buscar");
+              State.setCurrent("NoExiste");
+            } else {
+              State.standby();
+            }
           }
         }
       });
@@ -105,7 +112,7 @@ public class FrmSocios extends JFrame {
       AgregarIzqButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-          if (State.getCurrent() == "Standby" || State.getCurrent() == "Buscado") {
+          if (State.getCurrent() == "Standby"|| State.getCurrent() == "NoExiste"){
             State.setCurrent("Agregando");
             State.setEnv("Socios");
             BuscarButton.setEnabled(false);
@@ -133,7 +140,7 @@ public class FrmSocios extends JFrame {
 
           }
 
-          }
+        }
         }
       );
 
@@ -141,7 +148,7 @@ public class FrmSocios extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
           try {
-            if (SocioIDLabel.getText() == "" || SocioIDLabel.getText() == null ) {
+            if (SocioIDLabel.getText() == "" || SocioIDLabel.getText() == null || State.getCurrent() == "NoExiste") {
               JOptionPane.showMessageDialog(
                 BorrarIzqButton,
                 "No hay nada seleccionado para borrar");
@@ -163,23 +170,26 @@ public class FrmSocios extends JFrame {
       EditarIzqButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (State.getCurrent() == "Standby" || State.getCurrent() == "Buscado") {
-              State.setCurrent("Editando");
-              State.setEnv("Socios");
-              Buscartext.setEnabled(false);
-              BuscarButton.setEnabled(false);
-              ConfirmarIzqButton.setEnabled(true);
-              ConfirmarIzqButton.setVisible(true);
-              CancelarIzqButton.setEnabled(true);
-              CancelarIzqButton.setVisible(true);
-              EditarIzqButton.setVisible(false);
-              EditarIzqButton.setEnabled(false);
-              BorrarIzqButton.setVisible(false);
-              BorrarIzqButton.setEnabled(false);
-              AgregarIzqButton.setVisible(false);
-              AgregarIzqButton.setEnabled(false);
-
-            }
+           if (State.getCurrent() == "NoExiste") {
+              JOptionPane.showMessageDialog(
+                EditarIzqButton,
+                "El Socio No existe");
+            } else if (State.getCurrent() == "Standby") {
+            State.setCurrent("Editando");
+            State.setEnv("Socios");
+            Buscartext.setEnabled(false);
+            BuscarButton.setEnabled(false);
+            ConfirmarIzqButton.setEnabled(true);
+            ConfirmarIzqButton.setVisible(true);
+            CancelarIzqButton.setEnabled(true);
+            CancelarIzqButton.setVisible(true);
+            EditarIzqButton.setVisible(false);
+            EditarIzqButton.setEnabled(false);
+            BorrarIzqButton.setVisible(false);
+            BorrarIzqButton.setEnabled(false);
+            AgregarIzqButton.setVisible(false);
+            AgregarIzqButton.setEnabled(false);
+          }
 
       }});
 
@@ -187,54 +197,61 @@ public class FrmSocios extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
           if (State.getEnv() == "Socios" && State.getCurrent() == "Agregando") {
-            String cuit = TextFieldCUIT.getText();
-            String razonSocial = TextFieldRazonSocial.getText();
-            Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
-            String actividadPrincipal =  TextFieldActividadPrincipal.getText();
-            TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
-            String direccion = TextFieldDireccion.getText();
-            String telefono = TextFieldTelefono.getText();
-            String email = textFieldEmail.getText();
-            String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
-
-            Socio nuevoSocio = new Socio(
-              cuit,
-              tipoSocio,
-              razonSocial,
-              inicioActividad,
-              actividadPrincipal,
-              direccion,
-              telefono,
-              email,
-              tamanioEmpresa);
-
             try {
+              String cuit = TextFieldCUIT.getText();
+              String razonSocial = TextFieldRazonSocial.getText();
+              Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
+              String actividadPrincipal = TextFieldActividadPrincipal.getText();
+              TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
+              String direccion = TextFieldDireccion.getText();
+              String telefono = TextFieldTelefono.getText();
+              String email = textFieldEmail.getText();
+              String tamanioEmpresa = comboBoxTamano.getItemAt(comboBoxTamano.getSelectedIndex()).toString();
+
+              Socio nuevoSocio = new Socio(
+                cuit,
+                tipoSocio,
+                razonSocial,
+                inicioActividad,
+                actividadPrincipal,
+                direccion,
+                telefono,
+                email,
+                tamanioEmpresa);
+
               socioController.AgregarNuevoSocio(nuevoSocio);
               Buscartext.setText("oki doki");
               Buscartext.setEnabled(false);
               BuscarButton.setEnabled(true);
+              State.setCurrent("Agregado");
             } catch (Exception e1) {
               e1.printStackTrace();
+              JOptionPane.showMessageDialog(
+                EditarIzqButton,
+                "Llene todos los campos o revise que esten correctamente completados");
             }
           }
 
-          if (State.getCurrent() == "Agregando" || State.getCurrent() == "Editando") {
-            PanelDer.setEnabled(true);
-            PanelDer.setVisible(true);
+          if (State.getEnv() == "Socios" && State.getCurrent() == "Agregado" || State.getCurrent() == "Editando") {
+            Buscartext.setEnabled(true);
+            BuscarButton.setEnabled(true);
+            Buscartext.setText("");
+          } else if (State.getCurrent() == "Agregando") {
+            //
+          } else {
+            State.standby();
+            BuscarButton.setEnabled(true);
+            ConfirmarIzqButton.setEnabled(false);
+            ConfirmarIzqButton.setVisible(false);
+            CancelarIzqButton.setEnabled(false);
+            CancelarIzqButton.setVisible(false);
+            EditarIzqButton.setVisible(true);
+            EditarIzqButton.setEnabled(true);
+            BorrarIzqButton.setVisible(true);
+            BorrarIzqButton.setEnabled(true);
+            AgregarIzqButton.setVisible(true);
+            AgregarIzqButton.setEnabled(true);
           }
-
-          State.standby();
-          BuscarButton.setEnabled(true);
-          ConfirmarIzqButton.setEnabled(false);
-          ConfirmarIzqButton.setVisible(false);
-          CancelarIzqButton.setEnabled(false);
-          CancelarIzqButton.setVisible(false);
-          EditarIzqButton.setVisible(true);
-          EditarIzqButton.setEnabled(true);
-          BorrarIzqButton.setVisible(true);
-          BorrarIzqButton.setEnabled(true);
-          AgregarIzqButton.setVisible(true);
-          AgregarIzqButton.setEnabled(true);
         }
       });
 
@@ -242,9 +259,10 @@ public class FrmSocios extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-          if (State.getEnv() == "Socios" && State.getCurrent() == "Agregando") {
+          if (State.getEnv() == "Socios" && State.getCurrent() == "Agregando" || State.getCurrent() == "Editando") {
             Buscartext.setEnabled(true);
             BuscarButton.setEnabled(true);
+            Buscartext.setText("");
           }
           State.standby();
           BuscarButton.setEnabled(true);
