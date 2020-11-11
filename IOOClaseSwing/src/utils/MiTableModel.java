@@ -1,13 +1,25 @@
 package utils;
 
-import modelo.Usuario;
-
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MiTableModel extends AbstractTableModel {
-    private List<Usuario> lista= new ArrayList<Usuario>();
+    @Override
+    public int getRowCount() {
+        return 0;
+    }
+
+    @Override
+    public int getColumnCount() {
+        return 0;
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        return null;
+    }
+    /*private List<Usuario> lista= new ArrayList<Usuario>();
 
     protected String[] columnNames = new String[] { "DNI", "Nombre", "Rol"};
     protected Class[] columnClasses = new Class[] { String.class, String.class, String.class};
@@ -50,5 +62,5 @@ public class MiTableModel extends AbstractTableModel {
     {
         return this.lista;
     }
-
+*/
 }

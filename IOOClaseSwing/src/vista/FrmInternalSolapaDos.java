@@ -14,6 +14,8 @@ public class FrmInternalSolapaDos extends JInternalFrame{
         super(titulo);
         this.setContentPane(pnlPrincipal);
 
+
+
         this.setBorder(null);
         ((javax.swing.plaf.basic.BasicInternalFrameUI)this.getUI()).setNorthPane(null);
 

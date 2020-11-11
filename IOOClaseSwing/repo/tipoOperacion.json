@@ -1,0 +1,3 @@
+{"id":1,"descripcion":"tipo 1","comision":0.03,"subtipoOperacion":[{"id":1,"descripcion":"Cheques propios"},{"id":2,"descripcion":"Cheques de terceros"},{"id":3,"descripcion":"Pagaré Bursatil"}]}
+{"id":2,"descripcion":"tipo 2","comision":0.03,"subtipoOperacion":[{"id":4,"descripcion":"Cuentas corrientes Comerciales"},{"id":5,"descripcion":"Tarjetas de crédito"}]}
+{"id":3,"descripcion":"tipo 3","comision":0.04,"subtipoOperacion":[{"id":6,"descripcion":"Prestamos"}]}

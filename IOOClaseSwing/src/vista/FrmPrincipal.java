@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import vista.Operaciones.FrmOperaciones;
+import vista.Socios.FrmSocios;
+
 public class FrmPrincipal extends JFrame {
 
     private JPanel pnlPrincipal;
@@ -13,6 +16,8 @@ public class FrmPrincipal extends JFrame {
     private JButton tabsButton;
     private JButton gridsButton;
     private JPanel pnlTitulo;
+    private JButton sociosButton;
+  private JButton operacionesButton;
 
     private FrmPrincipal self;
 
@@ -49,6 +54,7 @@ public class FrmPrincipal extends JFrame {
                 frame.setVisible(true);
             }
         });
+
     }
 
     private void asociarEventos()
@@ -75,6 +81,30 @@ public class FrmPrincipal extends JFrame {
                 frame.setVisible(true);
             }
         });
+        sociosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+              FrmSocios frame = null;
+              try {
+                frame = new FrmSocios();
+              } catch (Exception e1) {
+                e1.printStackTrace();
+              }
+              frame.setVisible(true);
+            }
+        });
+      operacionesButton.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(final ActionEvent e) {
+          FrmOperaciones frame = null;
+          try {
+            frame = new FrmOperaciones();
+          } catch (Exception e1) {
+            e1.printStackTrace();
+          }
+          frame.setVisible(true);
+        }
+      });
     }
     public static void main(String[] args) {
         FrmPrincipal frame = new FrmPrincipal("Primer Programa SWING");
