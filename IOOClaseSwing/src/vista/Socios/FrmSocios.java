@@ -8,6 +8,7 @@ import vista.State;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 import java.util.Date;
 
 public class FrmSocios extends JFrame {
@@ -87,13 +88,13 @@ public class FrmSocios extends JFrame {
 
               SocioIDLabel.setText(Buscartext.getText());
               Buscartext.setText("");
-              TextFieldCUIT.setText(s.cuit);
-              TextFieldRazonSocial.setText(s.razonSocial);
-              TextFieldFechaInicioActividad.setText(s.fechaInicioActividad.toString());
-              TextFieldActividadPrincipal.setText(s.actividadPrincipal);
-              TextFieldDireccion.setText(s.direccion);
-              TextFieldTelefono.setText(s.telefono);
-              textFieldEmail.setText(s.email);
+              TextFieldCUIT.setText(s.getCuit());
+              TextFieldRazonSocial.setText(s.getRazonSocial());
+              TextFieldFechaInicioActividad.setText(s.getFechaInicioActividad().toString());
+              TextFieldActividadPrincipal.setText(s.getActividadPrincipal());
+              TextFieldDireccion.setText(s.getDireccion());
+              TextFieldTelefono.setText(s.getTelefono());
+              textFieldEmail.setText(s.getEmail());
               State.standby();
 
           } catch (Exception e1) {
@@ -200,7 +201,7 @@ public class FrmSocios extends JFrame {
             try {
               String cuit = TextFieldCUIT.getText();
               String razonSocial = TextFieldRazonSocial.getText();
-              Date inicioActividad = new Date(TextFieldFechaInicioActividad.getText());
+              LocalDate inicioActividad = LocalDate.now();
               String actividadPrincipal = TextFieldActividadPrincipal.getText();
               TipoSocio tipoSocio = TipoSocio.lookUp(comboBoxTipo.getItemAt(comboBoxTipo.getSelectedIndex()).toString());
               String direccion = TextFieldDireccion.getText();

@@ -2,13 +2,11 @@ package DAO;
 
 import model.Usuario;
 
-public class UsuariosDAO extends GenericDAO {
+public class UsuarioDao extends GenericDAO {
 
-    public UsuariosDAO() throws Exception {
+    public UsuarioDao() throws Exception {
         super(Usuario.class, "repo/usuario.json");
     }
 
 
 }
-
-
