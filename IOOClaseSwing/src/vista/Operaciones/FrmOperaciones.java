@@ -1,8 +1,16 @@
 package vista.Operaciones;
 
-import javax.swing.*;
+import Controllers.OperacionController;
+import Controllers.SocioController;
+import model.Operacion;
+import model.Socio;
+import vista.Socios.FrmSocios;
+import vista.State;
 
-public class FrmOperaciones {
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+
+public class FrmOperaciones extends JFrame {
   private JPanel panel1;
   private JPanel IzqPanel;
   private JPanel DerPanel;
@@ -46,4 +54,33 @@ public class FrmOperaciones {
   private JButton agregarButton;
   private JButton borrarButton;
   private JButton editarButton;
+  private OperacionController operacionController;
+  private FrmOperaciones self;
+  private State State;
+
+  public FrmOperaciones() throws Exception {
+
+    //ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
+    //this.setIconImage(frameIcon.getImage());
+
+    State = new State();
+    operacionController = new OperacionController();
+    try {
+      UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+    } catch (ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (InstantiationException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (UnsupportedLookAndFeelException e) {
+      e.printStackTrace();
+    }
+    this.self = this;
+    this.setContentPane(panel1);
+    this.setSize(1200, 400);
+    this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    this.setLocationRelativeTo(null);
+  }
+
 }
