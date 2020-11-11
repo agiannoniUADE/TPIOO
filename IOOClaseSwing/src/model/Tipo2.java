@@ -1,96 +1,29 @@
 package model;
-import java.util.*;
 
-/**
- * 
- */
+import java.time.LocalDate;
+
 public class Tipo2 extends Operacion {
+
+
+    public Tipo2(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String RazonSocialEmpresa) throws Exception {
+        super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
+        this.RazonSocialEmpresa = RazonSocialEmpresa;
+    }
 
     /**
      * Default constructor
      */
     public Tipo2() {
+
     }
 
-    /**
-     * 
-     */
-    public int id;
+    private String RazonSocialEmpresa;
 
-    /**
-     * 
-     */
-    public String banco;
-
-    /**
-     * 
-     */
-    public float monto;
-
-    /**
-     * 
-     */
-    public float comision;
-
-
-    /**
-     * @return
-     */
-    public int getId() {
-        // TODO implement here
-        return 0;
+    public String getRazonSocialEmpresa() {
+        return RazonSocialEmpresa;
     }
 
-    /**
-     * @param value
-     */
-    public void setId(int value) {
-        // TODO implement here
+    public void setRazonSocialEmpresa(String razonSocialEmpresa) {
+        RazonSocialEmpresa = razonSocialEmpresa;
     }
-
-    /**
-     * @return
-     */
-    public String getBanco() {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @param value
-     */
-    public void setBanco(String value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public float getMonto() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public float getComision() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    public void setComision(float value) {
-        // TODO implement here
-    }
-
 }

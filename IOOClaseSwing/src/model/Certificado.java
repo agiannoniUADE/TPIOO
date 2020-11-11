@@ -1,8 +1,9 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Certificado {
 
@@ -12,34 +13,19 @@ public class Certificado {
     public Certificado() {
     }
 
-    /**
-     * 
-     */
-    public int id;
-
-    /**
-     * 
-     */
-    public String Estado;
-
-    /**
-     * 
-     */
-    public int certifivadoDeGarantia;
-
-
-    /**
-     * @param id
-     */
-    public void getOperacion(int id) {
-        // TODO implement here
+    public Certificado(int numeroCertificado, String razonSocial) {
+        this.numeroCertificado = numeroCertificado;
+        this.razonSocial = razonSocial;
     }
 
-    /**
-     * @param id
-     */
-    public void getSocio(int id) {
-        // TODO implement here
+    private int numeroCertificado;
+    private String razonSocial;
+
+    public int getNumeroCertificado() {
+        return numeroCertificado;
     }
 
+    public void setNumeroCertificado(int numeroCertificado) {
+        this.numeroCertificado = numeroCertificado;
+    }
 }

@@ -1,179 +1,120 @@
 package model;
+
+import java.time.LocalDate;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Operacion {
 
-    /**
-     * Default constructor
-     */
     public Operacion() {
     }
 
-    /**
-     * 
-     */
-    public int id;
+    public Operacion(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion) throws Exception {
 
-    /**
-     * 
-     */
-    public float monto;
-
-    /**
-     * 
-     */
-    public Date fecha;
-
-    /**
-     * 
-     */
-    public EstadoOperacion estado;
-
-    /**
-     * 
-     */
-    public Date fechaVencimiento;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
+        if(monto <= 0){
+            throw new Exception("El monto de la operacion no puede ser negativo");
+        }
+        this.monto = monto;
+        this.fecha = fechaIngreso;
+        this.estado = EstadoOperacion.INGRESADO;
+        this.fechaVencimiento = fechaVencimiento;
+        this.subtipoOperacion = subtipoOperacion;
     }
 
-    /**
-     * 
-     */
-    public void getGarantia() {
-        // TODO implement here
+    protected int id;
+    protected float monto;
+    protected LocalDate fecha;
+    protected EstadoOperacion estado;
+    protected LocalDate fechaVencimiento;
+    protected Certificado certificado;
+    protected SocioParticipe socioParticipe;
+    protected SubtipoOperacion subtipoOperacion;
+    protected Comision comision;
+
+    public void setSocioParticipe(SocioParticipe socioParticipe) {
+        this.socioParticipe = socioParticipe;
     }
 
-    /**
-     * 
-     */
-    public void Operation2() {
-        // TODO implement here
+    public SubtipoOperacion getSubtipoOperacion() {
+        return subtipoOperacion;
     }
 
-    /**
-     * 
-     */
-    public void calcularComision() {
-        // TODO implement here
+    public void setSubtipoOperacion(SubtipoOperacion subtipoOperacion) {
+        this.subtipoOperacion = subtipoOperacion;
     }
 
-    /**
-     * 
-     */
-    public void getIdTipo() {
-        // TODO implement here
+    public SocioParticipe getSocioParticipe() {
+        return socioParticipe;
     }
 
-    /**
-     * @param nroDegarantia
-     */
-    public void getGarantia(int nroDegarantia) {
-        // TODO implement here
+    public int getId() {
+        return id;
     }
 
-    /**
-     * @param id
-     */
-    public void getOperacion(int id) {
-        // TODO implement here
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * 
-     */
-    public void getFecha() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public float getComision() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * 
-     */
-    public void getIdOperacion() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void getEstado() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void getIdSocio() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
-
-    /**
-     * @return
-     */
-    public Date getFechaVencimiento() {
-        // TODO implement here
-        return null;
+    public LocalDate getFecha() {
+        return fecha;
     }
 
-    /**
-     * @param value
-     */
-    public void setFechaVencimiento(Date value) {
-        // TODO implement here
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
     }
 
-    /**
-     * @return
-     */
-    public Desembolso getDesembolso() {
-        // TODO implement here
-        return null;
+    public EstadoOperacion getEstado() {
+        return estado;
     }
 
+    public void setEstado(EstadoOperacion estado) {
+        this.estado = estado;
+    }
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public Certificado getCertificado() {
+        return certificado;
+    }
+
+    public void setCertificado(Certificado certificado) {
+        this.certificado = certificado;
+    }
+
+    public Comision getComision() {
+        return comision;
+    }
+
+    public void setComision(Comision comision) {
+        this.comision = comision;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Operacion operacion = (Operacion) o;
+        return id == operacion.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

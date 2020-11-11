@@ -1,8 +1,9 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Contragarantia {
 
@@ -13,66 +14,51 @@ public class Contragarantia {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
+    private int id;
+
+    public Contragarantia(String tipo, float monto) {
+        this.tipo = tipo;
+        this.monto = monto;
+    }
 
     /**
-     * 
+     *
      */
-    public String tipo;
+    private String tipo;
 
     /**
-     * 
+     *
      */
-    public float monto;
+    private float monto;
 
 
-
-
-    /**
-     * @return
-     */
     public int getId() {
-        // TODO implement here
-        return 0;
+        return id;
     }
 
-    /**
-     * @param value
-     */
-    public void setId(int value) {
-        // TODO implement here
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * @return
-     */
     public String getTipo() {
-        // TODO implement here
-        return "";
+        return tipo;
     }
 
-    /**
-     * @param value
-     */
-    public void setTipo(String value) {
-        // TODO implement here
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
-    /**
-     * @return
-     */
+
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
+
 
 }

@@ -1,10 +1,25 @@
 package model;
+
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
- * 
+ *
  */
 public class Tipo3 extends Operacion {
+
+    public Tipo3(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String entidad, float tasa, LocalDate fechaDeAcreditacion, int cantidadCuotas, String sistemaAmortizacion) throws Exception {
+        super(monto, fechaIngreso, fechaVencimiento, subtipoOperacion);
+        this.entidad = entidad;
+        this.tasa = tasa;
+        this.fechaDeAcreditacion = fechaDeAcreditacion;
+        this.cantidadCuotas = cantidadCuotas;
+        this.sistemaAmortizacion = sistemaAmortizacion;
+        incicalizarCuotas(monto, tasa, fechaDeAcreditacion, cantidadCuotas);
+
+    }
+
 
     /**
      * Default constructor
@@ -13,193 +28,134 @@ public class Tipo3 extends Operacion {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
+    private String entidad;
 
     /**
-     * 
+     *
      */
-    public String entidad;
+    private float tasa;
 
     /**
-     * 
+     *
      */
-    public float monto;
+    private LocalDate fechaDeAcreditacion;
 
     /**
-     * 
+     *
      */
-    public float tasa;
+    private int cantidadCuotas;
 
     /**
-     * 
+     *
      */
-    public Date fechaDeAcreditacion;
+    private String sistemaAmortizacion;
 
-    /**
-     * 
-     */
-    public int cantidadCuotas;
-
-    /**
-     * 
-     */
-    public String sistemaAmortizacion;
-
-    /**
-     * 
-     */
-    public float comision;
-
-    /**
-     * 
-     */
-    public Date fechaDeVencimiento;
+    private List<Cuota> cuotas;
 
 
-
-    /**
-     * @return
-     */
-    public int getId() {
-        // TODO implement here
-        return 0;
-    }
-
-    /**
-     * @param value
-     */
-    public void setId(int value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
     public String getEntidad() {
-        // TODO implement here
-        return "";
+        return entidad;
     }
 
-    /**
-     * @param value
-     */
-    public void setEntidad(String value) {
-        // TODO implement here
+    public void setEntidad(String entidad) {
+        this.entidad = entidad;
     }
 
-    /**
-     * @return
-     */
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
-    /**
-     * @return
-     */
     public float getTasa() {
-        // TODO implement here
-        return 0.0f;
+        return tasa;
     }
 
-    /**
-     * @param value
-     */
-    public void setTasa(float value) {
-        // TODO implement here
+    public void setTasa(float tasa) {
+        this.tasa = tasa;
     }
 
-    /**
-     * @return
-     */
-    public Date getFechaDeAcreditacion() {
-        // TODO implement here
-        return null;
+    public LocalDate getFechaDeAcreditacion() {
+        return fechaDeAcreditacion;
     }
 
-    /**
-     * @param value
-     */
-    public void setFechaDeAcreditacion(Date value) {
-        // TODO implement here
+    public void setFechaDeAcreditacion(LocalDate fechaDeAcreditacion) {
+        this.fechaDeAcreditacion = fechaDeAcreditacion;
     }
 
-    /**
-     * @return
-     */
     public int getCantidadCuotas() {
-        // TODO implement here
-        return 0;
+        return cantidadCuotas;
     }
 
-    /**
-     * @param value
-     */
-    public void setCantidadCuotas(int value) {
-        // TODO implement here
+    public void setCantidadCuotas(int cantidadCuotas) {
+        this.cantidadCuotas = cantidadCuotas;
     }
 
-    /**
-     * @return
-     */
     public String getSistemaAmortizacion() {
-        // TODO implement here
-        return "";
+        return sistemaAmortizacion;
     }
 
-    /**
-     * @param value
-     */
-    public void setSistemaAmortizacion(String value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public float getComision() {
-        // TODO implement here
-        return 0.0f;
-    }
-
-    /**
-     * @param value
-     */
-    public void setComision(float value) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Date getFechaDeVencimiento() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param value
-     */
-    public void setFechaDeVencimiento(Date value) {
-        // TODO implement here
+    public void setSistemaAmortizacion(String sistemaAmortizacion) {
+        this.sistemaAmortizacion = sistemaAmortizacion;
     }
 
     /**
      * @return
      */
     public List<Cuota> getCuotas() {
-        // TODO implement here
-        return null;
+        return cuotas;
     }
 
+    public void pagarCuotas(int numeroCuota) {
+        Cuota cuotaAPagar = cuotas.stream()
+            .filter(x -> x.getNumeroCuota() == numeroCuota)
+            .findFirst()
+            .orElse(null);
+
+        if (cuotaAPagar != null && cuotaAPagar.getEstado() != EstadoCuotas.PAGADA) {
+            cuotaAPagar.setEstado(EstadoCuotas.PAGADA);
+        }
+    }
+
+    /**
+     * retorna el monto que esta en mora.
+     */
+    public float montoEnMora() {
+
+        double monto;
+        monto = cuotas.stream()
+            .filter(x -> x.getEstado() == EstadoCuotas.VENCIDA || x.getFechaVencimiento().compareTo(LocalDate.now()) < 0)
+            .map(x -> x.getMonto())
+            .collect(Collectors.summingDouble(Float::doubleValue));
+
+        return (float) monto;
+    }
+
+    /**
+     * retorna el monto que resta pagar, incluyendo las no vencidas.
+     */
+    public float montoRestanteDePago() {
+
+        double monto;
+        monto = cuotas.stream()
+            .filter(x -> x.getEstado() != EstadoCuotas.PAGADA)
+            .map(x -> x.getMonto())
+            .collect(Collectors.summingDouble(Float::doubleValue));
+
+        return (float) monto;
+    }
+
+    private void incicalizarCuotas(float monto, float tasa, LocalDate fechaDeAcreditacion, int cantidadCuotas) {
+        this.cuotas = new ArrayList<>();
+        monto += (monto * tasa);
+        float montoCuota = monto / cantidadCuotas;
+        for (int i = 1; i <= cantidadCuotas; i++) {
+            fechaDeAcreditacion = fechaDeAcreditacion.plusMonths(1);
+            cuotas.add(new Cuota(i, montoCuota, EstadoCuotas.EN_FECHA, i, fechaDeAcreditacion));
+        }
+    }
 }

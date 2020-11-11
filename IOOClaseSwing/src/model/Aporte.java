@@ -1,8 +1,10 @@
+package model;
 
-import java.util.*;
+import java.time.LocalDate;
+import java.time.Period;
 
 /**
- * 
+ *
  */
 public class Aporte {
 
@@ -13,59 +15,69 @@ public class Aporte {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
+    private int id;
 
     /**
-     * 
+     *
      */
-    public Date fechaInicio;
+    private LocalDate fechaInicio;
 
     /**
-     * 
+     *
      */
-    public float monto;
+    private float monto;
 
-    /**
-     * 
-     */
-    public Boolean estado;
+    private SocioProtector socio;
 
+    private Boolean retirado;
 
+    public SocioProtector getSocio() {
+        return socio;
+    }
 
+    public void setSocio(SocioProtector socio) {
+        this.socio = socio;
+    }
 
-
-    /**
-     * @return
-     */
     public int getId() {
-        // TODO implement here
-        return 0;
+        return id;
     }
 
-    /**
-     * @return
-     */
-    public Date getFechaInicio() {
-        // TODO implement here
-        return null;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    /**
-     * @return
-     */
+    public LocalDate getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(LocalDate fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @return
-     */
-    public Boolean getEstado() {
-        // TODO implement here
-        return null;
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
+
+    public Boolean FueRetirado() {
+        return retirado;
+    }
+
+    public void setRetirado(Boolean estado) {
+        this.retirado = estado;
+    }
+
+
+    public Boolean estaDisponibleParaRetiro() {
+
+        Period age = Period.between(fechaInicio, LocalDate.now());
+        return age.getYears() > 2;
+    }
 }

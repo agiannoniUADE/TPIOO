@@ -1,10 +1,18 @@
 package model;
-import java.util.*;
+
+import java.time.LocalDate;
 
 /**
- * 
+ *
  */
 public class Tipo1 extends Operacion {
+
+    public Tipo1(float monto, LocalDate fecha, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion, String cuitDelFirmante, Float tasaDeDescuento) throws Exception {
+        super(monto, fecha, fechaVencimiento, subtipoOperacion);
+        this.cuitDelFirmante = cuitDelFirmante;
+        this.fechaDeCobro = fechaDeCobro;
+        this.tasaDeDescuento = tasaDeDescuento != null ? tasaDeDescuento.floatValue() : 0f;
+    }
 
     /**
      * Default constructor
@@ -13,74 +21,67 @@ public class Tipo1 extends Operacion {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
-
-    /**
-     * 
-     */
-    public String cuitDelFirmante;
-
-    /**
-     * 
-     */
-    public float comision;
-
-    /**
-     * 
-     */
-    public Date fechaDeCobro;
-
-    /**
-     * 
-     */
-    public float tasaDeDescuento;
-
+    private String cuitDelFirmante;
 
 
     /**
-     * 
+     *
      */
-    public void tieneTasadeDescuento() {
-        // TODO implement here
+    private LocalDate fechaDeCobro;
+
+    /**
+     *
+     */
+    private float tasaDeDescuento;
+
+    @Override
+    public float getMonto() {
+        if (tasaDeDescuento != 0) {
+            return monto - (monto * tasaDeDescuento);
+        }
+        return 0;
+    }
+
+    public float getTasaDeDescuento() {
+        return tasaDeDescuento;
+    }
+
+    public void setTasaDeDescuento(float tasaDeDescuento) {
+        this.tasaDeDescuento = tasaDeDescuento;
     }
 
     /**
-     * 
+     *
      */
-    public void getTasaDeDesceunto() {
-        // TODO implement here
+    public boolean tieneTasadeDescuento() {
+        return tasaDeDescuento != 0;
     }
 
     /**
      * @return
      */
     public String getCuitDelFirmante() {
-        // TODO implement here
-        return "";
+        return cuitDelFirmante;
     }
 
-    /**
-     * @param value
-     */
-    public void setCuitDelFirmante(String value) {
-        // TODO implement here
+    public void setCuitDelFirmante(String cuitDelFirmante) {
+        this.cuitDelFirmante = cuitDelFirmante;
     }
 
     /**
      * @return
      */
-    public Date getFechaDeCobro() {
-        // TODO implement here
-        return null;
+    public LocalDate getFechaDeCobro() {
+        return fechaDeCobro;
     }
 
     /**
-     * @param value
+     *
      */
-    public void setFechaDeCobro(Date value) {
-        // TODO implement here
+    public void setFechaDeCobro(LocalDate fechaDeCobro) {
+        this.fechaDeCobro = fechaDeCobro;
     }
 
 }

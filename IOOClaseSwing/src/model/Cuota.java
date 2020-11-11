@@ -1,8 +1,10 @@
 package model;
+
+import java.time.LocalDate;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Cuota {
 
@@ -12,85 +14,74 @@ public class Cuota {
     public Cuota() {
     }
 
-    /**
-     * 
-     */
-    public int cuotaId;
+    public Cuota(int cuotaId, float monto, EstadoCuotas estado, int numeroCuota, LocalDate fechaVencimiento) {
+        this.cuotaId = cuotaId;
+        this.monto = monto;
+        this.estado = estado;
+        this.numeroCuota = numeroCuota;
+        this.fechaVencimiento = fechaVencimiento;
+    }
 
     /**
-     * 
+     *
      */
-    public float monto;
+    private int cuotaId;
 
     /**
-     * 
+     *
      */
-    public String estado;
+    private float monto;
 
     /**
-     * 
+     *
      */
-    public int numeroCuota;
-
+    private EstadoCuotas estado;
 
     /**
-     * @return
+     *
      */
+    private int numeroCuota;
+
+    public LocalDate getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(LocalDate fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    private LocalDate fechaVencimiento;
+
+
     public int getCuotaId() {
-        // TODO implement here
-        return 0;
+        return cuotaId;
     }
 
-    /**
-     * @param value
-     */
-    public void setCuotaId(int value) {
-        // TODO implement here
+    public void setCuotaId(int cuotaId) {
+        this.cuotaId = cuotaId;
     }
 
-    /**
-     * @return
-     */
     public float getMonto() {
-        // TODO implement here
-        return 0.0f;
+        return monto;
     }
 
-    /**
-     * @param value
-     */
-    public void setMonto(float value) {
-        // TODO implement here
+    public void setMonto(float monto) {
+        this.monto = monto;
     }
 
-    /**
-     * @return
-     */
-    public String getEstado() {
-        // TODO implement here
-        return "";
+    public EstadoCuotas getEstado() {
+        return estado;
     }
 
-    /**
-     * @param value
-     */
-    public void setEstado(String value) {
-        // TODO implement here
+    public void setEstado(EstadoCuotas estado) {
+        this.estado = estado;
     }
 
-    /**
-     * @return
-     */
     public int getNumeroCuota() {
-        // TODO implement here
-        return 0;
+        return numeroCuota;
     }
 
-    /**
-     * @param value
-     */
-    public void setNumeroCuota(int value) {
-        // TODO implement here
+    public void setNumeroCuota(int numeroCuota) {
+        this.numeroCuota = numeroCuota;
     }
-
 }

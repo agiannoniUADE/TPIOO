@@ -3,7 +3,7 @@ package model;
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Accionista {
 
@@ -13,64 +13,87 @@ public class Accionista {
     public Accionista() {
     }
 
-    /**
-     * 
-     */
-    public int id;
+    public Accionista(String cuit, String razonSocial, int porcentaje) {
+        this.cuit = cuit;
+        this.razonSocial = razonSocial;
+        this.porcentaje = porcentaje;
+    }
+
+    public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
+        this.id = id;
+        this.cuit = cuit;
+        this.razonSocial = razonSocial;
+        this.porcentaje = porcentaje;
+    }
 
     /**
-     * 
+     * Default constructor
      */
-    public String cuit;
-
-    /**
-     * 
-     */
-    public String razonSocial;
-
-    /**
-     * 
-     */
-    public float porcentaje;
 
 
     /**
-     * @return
+     *
      */
+    private int id;
+
+    /**
+     *
+     */
+    private String cuit;
+
+    /**
+     *
+     */
+    private String razonSocial;
+
+    /**
+     *
+     */
+    private float porcentaje;
+
+
     public int getId() {
-        // TODO implement here
-        return 0;
+        return id;
     }
 
-    /**
-     * @return
-     */
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getCuit() {
-        // TODO implement here
-        return "";
+        return cuit;
     }
 
-    /**
-     * @return
-     */
+    public void setCuit(String cuit) {
+        this.cuit = cuit;
+    }
+
     public String getRazonSocial() {
-        // TODO implement here
-        return "";
+        return razonSocial;
     }
 
-    /**
-     * @param value
-     */
-    public void setRazonSocial(String value) {
-        // TODO implement here
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
 
-    /**
-     * @return
-     */
     public float getPorcentaje() {
-        // TODO implement here
-        return 0.0f;
+        return porcentaje;
     }
 
+    public void setPorcentaje(float porcentaje) {
+        this.porcentaje = porcentaje;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Accionista that = (Accionista) o;
+        return Objects.equals(cuit, that.cuit);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(cuit);
+    }
 }

@@ -1,10 +1,16 @@
 package model;
+
 import java.util.*;
 
 /**
- * 
+ *
  */
 public class Desembolso {
+
+    public Desembolso(int id, float montoAdeudado) {
+        this.id = id;
+        this.montoAdeudado = montoAdeudado;
+    }
 
     /**
      * Default constructor
@@ -13,15 +19,14 @@ public class Desembolso {
     }
 
     /**
-     * 
+     *
      */
-    public int id;
+    private int id;
 
     /**
-     * 
+     *
      */
-    public float montoAdeudado;
-
+    private float montoAdeudado;
 
 
     /**
@@ -31,4 +36,19 @@ public class Desembolso {
         // TODO implement here
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public float getMontoAdeudado() {
+        return montoAdeudado;
+    }
+
+    public void setMontoAdeudado(float montoAdeudado) {
+        this.montoAdeudado = montoAdeudado;
+    }
 }
