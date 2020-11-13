@@ -34,6 +34,9 @@ public class LoginScreen extends JFrame {
             e.printStackTrace();
         }
 
+
+        this.setSize(1200,400);
+
         this.self = this;
         this.setContentPane(panel1);
 

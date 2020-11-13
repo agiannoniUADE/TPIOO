@@ -52,13 +52,16 @@ public class FrmSocios extends JFrame {
   private JLabel StateLabel;
   private SocioController socioController;
   private State State;
+  private JLabel StatusLabelDesc;
+  private JLabel StatusLabel;
+    private JTextField textField1;
 
     private FrmSocios self;
 
     public FrmSocios() throws Exception {
 
-        ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
-        this.setIconImage(frameIcon.getImage());
+        //ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
+        //this.setIconImage(frameIcon.getImage());
 
         State = new State();
         socioController = new SocioController();
@@ -95,6 +98,7 @@ public class FrmSocios extends JFrame {
               TextFieldDireccion.setText(s.getDireccion());
               TextFieldTelefono.setText(s.getTelefono());
               textFieldEmail.setText(s.getEmail());
+             // StatusLabelDesc.setText(s.getEstado().);
               State.standby();
 
           } catch (Exception e1) {
