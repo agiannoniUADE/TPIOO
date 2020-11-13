@@ -71,6 +71,7 @@ public class FrmNewSocios extends JFrame{
     private JButton ContragarantiasborrarButton;
     private JPanel ContragarantiasABM;
     private JPanel DerPanel;
+    private JLabel TipoDescrLabel;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -209,6 +210,7 @@ public class FrmNewSocios extends JFrame{
                             telefono,
                             email,
                             tamanioEmpresa);
+
                         socioController.AgregarNuevoSocio(nuevoSocio);
                         BuscartextField.setText("oki doki");
                         BuscartextField.setEnabled(false);
@@ -270,7 +272,13 @@ public class FrmNewSocios extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    Socio s = socioController.getSocioParticipe(Integer.parseInt(BuscartextField.getText()));
+                    Socio s = new Socio();
+
+                    if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                        s = socioController.getSocioParticipe(Integer.parseInt(BuscartextField.getText()));
+                    } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                        s = socioController.getSocioProtector(Integer.parseInt(BuscartextField.getText()));
+                    }
 
                     IDDescrLabel.setText(BuscartextField.getText());
                     BuscartextField.setText("");
@@ -287,7 +295,12 @@ public class FrmNewSocios extends JFrame{
                 } catch (Exception e1) {
                     e1.printStackTrace();
                     if (State.getEnv() != "Buscar" && State.getCurrent() != "NoExiste") {
-                        IDDescrLabel.setText(BuscartextField.getText() + " **No Existe**");
+                        if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                            IDDescrLabel.setText(BuscartextField.getText() + " **No Existe el SocioParticipe**");
+                        } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                            IDDescrLabel.setText(BuscartextField.getText() + " **No Existe el SocioProtector**");
+                        }
+
                         State.setEnv("Buscar");
                         State.setCurrent("NoExiste");
                     } else {
