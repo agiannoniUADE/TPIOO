@@ -72,6 +72,15 @@ public class FrmNewSocios extends JFrame{
     private JPanel ContragarantiasABM;
     private JPanel DerPanel;
     private JLabel TipoDescrLabel;
+    private JLabel LineaDeCreditoLabel;
+    private JButton aportesButton;
+    private JPanel AportesSecc;
+    private JTextField AporteFechaDeIniciotextField;
+    private JTextField AporteMontotextField;
+    private JButton AporteRealizarButton;
+    private JButton AporteRetirarButton;
+    private JPanel AportesABM;
+    private JPanel AportesPane;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -86,6 +95,8 @@ public class FrmNewSocios extends JFrame{
         StateDocumentos.setCurrent("Oculto");
         State StateContragarantias = new State();
         StateContragarantias.setCurrent("Oculto");
+        State StateAportes = new State();
+        StateAportes.setCurrent("Oculto");
 
         socioController = new SocioController();
         try {
@@ -292,6 +303,30 @@ public class FrmNewSocios extends JFrame{
                     // StatusLabelDesc.setText(s.getEstado().);
                     State.standby();
 
+                    if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                        LineaDeCreditotextField.setVisible(true);
+                        LineaDeCreditotextField.setEnabled(true);
+                        LineaDeCreditoLabel.setVisible(true);
+                        LineaDeCreditoLabel.setEnabled(true);
+                        contragarantiasButton.setVisible(true);
+                        contragarantiasButton.setEnabled(true);
+                        aportesButton.setEnabled(false);
+                        aportesButton.setVisible(false);
+                        tabbedPane1.setEnabledAt(2,true);
+                        tabbedPane1.setEnabledAt(3,false);
+                    } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                        LineaDeCreditotextField.setVisible(false);
+                        LineaDeCreditotextField.setEnabled(false);
+                        LineaDeCreditoLabel.setVisible(false);
+                        LineaDeCreditoLabel.setEnabled(false);
+                        contragarantiasButton.setVisible(false);
+                        contragarantiasButton.setEnabled(false);
+                        aportesButton.setEnabled(true);
+                        aportesButton.setVisible(true);
+                        tabbedPane1.setEnabledAt(3,true);
+                        tabbedPane1.setEnabledAt(2,false);
+                    }
+
                 } catch (Exception e1) {
                     e1.printStackTrace();
                     if (State.getEnv() != "Buscar" && State.getCurrent() != "NoExiste") {
@@ -407,6 +442,20 @@ public class FrmNewSocios extends JFrame{
                     ContragarantiasSecc.setVisible(false);
                     ContragarantiasSecc.setEnabled(false);
                     StateContragarantias.setCurrent("Oculto");
+                }
+            }
+        });
+        aportesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (StateAportes.getCurrent() == "Oculto") {
+                    AportesSecc.setVisible(true);
+                    AportesSecc.setEnabled(true);
+                    StateAportes.setCurrent("Visible");
+                } else if (StateAportes.getCurrent() == "Visible") {
+                    AportesSecc.setVisible(false);
+                    AportesSecc.setEnabled(false);
+                    StateAportes.setCurrent("Oculto");
                 }
             }
         });
