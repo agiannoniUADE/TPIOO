@@ -1,13 +1,20 @@
 package vista.Socios;
 
 import Controllers.SocioController;
+import model.Accionista;
 import model.Socio;
+import model.SocioParticipe;
 import model.TipoSocio;
+import utils.MiListaModel;
 import vista.State;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 
@@ -40,7 +47,7 @@ public class FrmNewSocios extends JFrame{
     private JButton editarDerButton1;
     private JButton agregarDerButton1;
     private JPanel DocumentosPane;
-    private JPanel AccionistaPane;
+    private JPanel AccionistasPane;
     private JPanel ContragarantiasPane;
     private JPanel PrincipalPanel;
     private JPanel AccionistasSecc;
@@ -81,6 +88,20 @@ public class FrmNewSocios extends JFrame{
     private JButton AporteRetirarButton;
     private JPanel AportesABM;
     private JPanel AportesPane;
+    private JButton accionistasButton;
+    private JTextField AccionistasIDtextField;
+    private JTextField AccionistasCUITtextField;
+    private JTextField AccionistasRazonSocialtextField;
+    private JTextField AccionistasPorcentajetextField;
+    private JButton AccionistasagregarButton;
+    private JButton AccionistasborrarButton;
+    private JPanel AccionistasButtonABM;
+    private JPanel AccionistasABMPorcentaje;
+    private JPanel AccionistasABMSecc;
+    private JList Documentoslist;
+    private JList Accionistaslist;
+    private JList Contragarantiaslist;
+    private JList Aporteslist;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -227,6 +248,10 @@ public class FrmNewSocios extends JFrame{
                         BuscartextField.setEnabled(false);
                         BuscartextField.setEnabled(true);
                         State.setCurrent("Agregado");
+
+                        JOptionPane.showMessageDialog(
+                            borrarButton,
+                            "Socio Agregado.");
                     } catch (Exception e1) {
                         e1.printStackTrace();
                         JOptionPane.showMessageDialog(
@@ -303,6 +328,8 @@ public class FrmNewSocios extends JFrame{
                     // StatusLabelDesc.setText(s.getEstado().);
                     State.standby();
 
+                    Accionistaslist.setListData(s.getAccionistas().toArray());
+
                     if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
                         LineaDeCreditotextField.setVisible(true);
                         LineaDeCreditotextField.setEnabled(true);
@@ -326,6 +353,7 @@ public class FrmNewSocios extends JFrame{
                         tabbedPane1.setEnabledAt(3,true);
                         tabbedPane1.setEnabledAt(2,false);
                     }
+
 
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -457,6 +485,45 @@ public class FrmNewSocios extends JFrame{
                     AportesSecc.setEnabled(false);
                     StateAportes.setCurrent("Oculto");
                 }
+            }
+        });
+
+        AccionistasagregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String cuit = AccionistasCUITtextField.getText();
+                String razonSocial = AccionistasRazonSocialtextField.getText();
+                int id = Integer.parseInt(AccionistasIDtextField.getText());
+                float porcentaje = Integer.parseInt(AccionistasPorcentajetextField.getText());
+
+
+                Accionista nuevoAccionista = new Accionista(
+                    id,
+                    cuit,
+                    razonSocial,
+                    porcentaje
+                    );
+
+                try {
+                   Socio SocioActual = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
+                   SocioActual.agregarAccionista(nuevoAccionista);
+
+                    JOptionPane.showMessageDialog(
+                        borrarButton,
+                        "Accionista Agregado.");
+                } catch (FileNotFoundException fileNotFoundException) {
+                    fileNotFoundException.printStackTrace();
+                }
+
+
+            }
+        });
+
+        Accionistaslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+        ///
             }
         });
     }
