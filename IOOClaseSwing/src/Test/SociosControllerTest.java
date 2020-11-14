@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SociosControllerTest {
 
-    SocioController target = new SocioController();
+    SocioController target = SocioController.getInstance();
     TipoOperacionController tipoOperacionController = new TipoOperacionController();
 
     public SociosControllerTest() throws Exception {
@@ -47,6 +47,13 @@ public class SociosControllerTest {
     }
 
     @Test
+    void ChangeStatus_Success() throws Exception {
+
+
+        target.cambiarEstadoSocio("1234");
+    }
+
+    @Test
     void UpdateSocio_Success() throws Exception {
 
         int id = insertSocio();
@@ -77,7 +84,7 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-555555-2";
+        String cuit = "20-44444444-2";
         String razonSocial = "Lavadero SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
@@ -114,9 +121,9 @@ public class SociosControllerTest {
         nuevoSocio.agregarDocumento(documentoRegistro2);
         nuevoSocio.setAccion(200);
 
-        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
+        nuevoSocio.setEstado(EstadoSocio.POSTULANTE_A_SOCIO);
 
-        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(3);
+        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 
         LineaDeCredito lineaDeCredito = new LineaDeCredito(LocalDate.of(2021,12,12), 70000, tipoOperacion);
         nuevoSocio.setLineaDeCredito(lineaDeCredito);

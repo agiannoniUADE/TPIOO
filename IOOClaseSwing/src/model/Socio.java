@@ -168,7 +168,7 @@ public class Socio {
         // TODO implement here
     }
 
-    public List getAccionistas() {
+    public List<Accionista> getAccionistas() {
         return accionistas;
     }
 

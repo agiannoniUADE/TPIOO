@@ -9,29 +9,18 @@ public class UsuarioController {
 
     private UsuarioDao usuarioDao;
 
-    /**
-     * Default constructor
-     */
-
     public UsuarioController() throws Exception {
-         this.usuarioDao = new UsuarioDao();
-
-    }
-
-
-
+        this.usuarioDao = new UsuarioDao();
+   }
+  
     public int AgregarNuevoUsuario(Usuario usuario) throws Exception {
 
         int lastId= usuarioDao.getLastInsertId();
         lastId++;
         usuario.setId(lastId);
         usuarioDao.save(usuario);
-
         return lastId;
-
-
-        }
-
+    }
     public Usuario getUsuario (int id) throws FileNotFoundException {
         Object obj = usuarioDao.search(id);
         return obj != null ? (Usuario)obj: null;
@@ -41,6 +30,7 @@ public class UsuarioController {
     public Boolean updateUsuario (Usuario usuario) throws Exception {
 
         return usuarioDao.update(usuario);
+
     }
 
     /**
@@ -70,4 +60,5 @@ public class UsuarioController {
         }
     }
 */
+    }
 }

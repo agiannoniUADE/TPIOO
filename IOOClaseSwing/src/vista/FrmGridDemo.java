@@ -1,6 +1,5 @@
 package vista;
 
-import modelo.UsuarioDAO;
 import utils.MiTableModel;
 
 import javax.swing.*;
@@ -17,9 +16,10 @@ public class FrmGridDemo extends JDialog{
     private MiTableModel miModelo = new MiTableModel();
 
     public FrmGridDemo(Window owner) {
+
         super(owner, "");
 
-        this.setContentPane(pnlPrincipal);
+        /*this.setContentPane(pnlPrincipal);
         this.setSize(300, 300);
 
         //No permite volver a la pantalla anterior HASTA cerrar esta
@@ -50,5 +50,6 @@ public class FrmGridDemo extends JDialog{
                 }
             }
         });
+        */
     }
 }

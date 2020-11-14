@@ -15,8 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SGRControllerTest {
 
-    SGRController target = new SGRController();
-    SocioController socioController = new SocioController();
+    SGRController target = SGRController.getInstance();;
+    SocioController socioController = SocioController.getInstance();;
     SocioProtectorDao sociosProtectorDao = new SocioProtectorDao();
 
     public SGRControllerTest() throws Exception {

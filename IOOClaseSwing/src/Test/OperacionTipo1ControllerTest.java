@@ -10,7 +10,7 @@ import java.time.format.DateTimeFormatter;
 
 
 public class OperacionTipo1ControllerTest {
-    OperacionController target = new OperacionController();
+    OperacionController target;
     TipoOperacionController tipoOperacionController = new TipoOperacionController();
 
     public OperacionTipo1ControllerTest() throws Exception {
@@ -19,17 +19,17 @@ public class OperacionTipo1ControllerTest {
 
     @Test
     public void save_t1_success() throws Exception {
-
+        target = OperacionController.getInstance();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         SubtipoOperacion subtipo = tipoOperacionController.getSubtipoOperacion(1);
-        Tipo1 operacion = new Tipo1(5000, LocalDate.now(), LocalDate.parse("06/09/2021", formato), subtipo, "1111111", 0.15f);
+        Tipo1 operacion = new Tipo1(5000, LocalDate.now(), LocalDate.parse("06-09-2021", formato), subtipo, "1111111", 0.10f);
 
         target.AgregarOperacion(operacion, "20-44444444-2");
     }
 
     @Test
     public void save_t2_success() throws Exception {
-
+        target = OperacionController.getInstance();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         SubtipoOperacion subtipo = tipoOperacionController.getSubtipoOperacion(4);
         Tipo2 operacion = new Tipo2(5000, LocalDate.now(), LocalDate.parse("26-04-2021", formato), subtipo, "empresa2");
@@ -39,7 +39,7 @@ public class OperacionTipo1ControllerTest {
 
     @Test
     public void save_t3_success() throws Exception {
-
+        target = OperacionController.getInstance();
         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         SubtipoOperacion subtipo = tipoOperacionController.getSubtipoOperacion(6);
         Tipo3 operacion = new Tipo3(45678, LocalDate.now(), LocalDate.parse("06-06-2022", formato), subtipo, "Santander", 0.08f, LocalDate.now(), 18, "frances");
@@ -49,7 +49,8 @@ public class OperacionTipo1ControllerTest {
 
     @Test
     public void emitir_certificado_success() throws Exception {
-        target.emitirCertificado(1);
+        target = OperacionController.getInstance();
+        target.emitirCertificado(2);
     }
 
     @Test

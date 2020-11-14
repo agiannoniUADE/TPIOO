@@ -1,9 +1,6 @@
 package Controllers;
 
-import DAO.GenericDAO;
 import DAO.OpeacionT1Dao;
-import DAO.OpeacionT2Dao;
-import DAO.OpeacionT3Dao;
 import model.*;
 
 import java.io.FileNotFoundException;
@@ -17,21 +14,36 @@ import java.util.stream.Collectors;
  */
 public class OperacionController {
 
-    SocioController socioController = new SocioController();
+    SocioController socioController;
     TipoOperacionController tipoOperacionController = new TipoOperacionController();
-    SGRController sgrController = new SGRController();
-    OpeacionT1Dao opeacionT1Dao = new OpeacionT1Dao();
-    OpeacionT2Dao opeacionT2Dao = new OpeacionT2Dao();
-    OpeacionT3Dao opeacionT3Dao = new OpeacionT3Dao();
+    SGRController sgrController;
+    OpeacionT1Dao opeacionT1Dao;
 
-    public OperacionController() throws Exception {
 
+    static OperacionController instance;
+
+    public static OperacionController getInstance() throws Exception {
+        if (instance == null) {
+            instance = new OperacionController();
+        }
+        return instance;
+    }
+
+    private OperacionController() throws Exception {
+        socioController = SocioController.getInstance();
+        sgrController = SGRController.getInstance();
+        opeacionT1Dao = new OpeacionT1Dao();
     }
 
     public void AgregarOperacion(Operacion operacion, String cuitSocio) throws Exception {
 
         if (operacion.getSubtipoOperacion() == null) {
             throw new Exception("No se indico el tipo de operacion deseada.");
+        }
+
+
+        if (operacion.getMonto() == 0) {
+            throw new Exception("El monto de la operacion no puede ser nulo.");
         }
 
         SocioParticipe socio = socioController.getSocioParticipe(cuitSocio);
@@ -42,14 +54,22 @@ public class OperacionController {
         if (socio.getEstado() == EstadoSocio.POSTULANTE_A_SOCIO) {
             throw new Exception("Un postulante a socio no puede realizar operaciones.");
         }
-
+        if (ValidatorVO.ValidarMoraMenorAl10deLineaAsignada(socio.getId())) {
+            throw new Exception("Un socio no puede tener operaciones por encima del 10% de la linea asignada.");
+        }
+        //si es del tipo 1 valido que el firmante no acumule mas del 5% del FDR
+        if (operacion.getSubtipoOperacion().getTipoOperacion().getId() == 1) {
+            Tipo1 operacionTipo1 = (Tipo1) operacion;
+            if (ValidatorVO.validarChequesMismoFirmante(operacionTipo1.getCuitDelFirmante(), operacion.getMonto())) {
+                throw new Exception("La SGR no puede recibir mas de 5% del FDR en cheques del mismo firmante.");
+            }
+        }
         operacion.setSocioParticipe(socio);
 
         int lastId = opeacionT1Dao.getLastInsertId() + 1;
         operacion.setId(lastId);
         opeacionT1Dao.save(operacion);
     }
-
 
 
     public void emitirCertificado(int idOperacion) throws Exception {
@@ -65,7 +85,7 @@ public class OperacionController {
 
         SocioParticipe socio = operacion.getSocioParticipe();
 
-        if (socio.getLineaDeCredito().getFechaVigencia().compareTo(LocalDate.now())<0){
+        if (socio.getLineaDeCredito().getFechaVigencia().compareTo(LocalDate.now()) < 0) {
             throw new Exception("La linea de credito del socio se encuentra vencida.");
         }
 
@@ -77,9 +97,16 @@ public class OperacionController {
             throw new Exception("El socio indicado no dispone de saldo en su linea de credito.");
         }
 
-        if (!ValidatorVO.ValidarMontoOperacion(sgrController, operacion.getMonto())) {
-            throw new Exception("Ningun socio puede operar por mas de 10% del fondo de la SGR");
+        if (!socioController.getSociosQuetienenLosMismosAccionistas(socio.getCuit()).isEmpty()) {
+            if (!ValidatorVO.validarMontoOperacionParaSociosQueTienenMismoAccionista(socio.getCuit(), operacion.getMonto())) {
+                throw new Exception("Ningun socio que comparte accionistas puede operar por mas de 5% de la suma de los riesgo vivos.");
+            }
+        } else {
+            if (!ValidatorVO.ValidarMontoOperacion(operacion.getMonto())) {
+                throw new Exception("Ningun socio puede operar por mas de 5% del fondo de la SGR");
+            }
         }
+
 
         if (socio.getLineaDeCredito().getMontoAsignado() < operacion.getMonto()) {
             throw new Exception("El socio no dispone de fondos suficientes para realizar esta operacion.");
@@ -120,9 +147,8 @@ public class OperacionController {
 
         monto = operacion.getMonto();
         //Esto porque las operaciones de tipo 1 se le quita una comision por negociarlos antes de la fecha,
-        if(operacion.getSubtipoOperacion().getTipoOperacion().getId() == 1)
-        {
-            Tipo1 tipo1 = (Tipo1)opeacionT1Dao.search(idOperacion, Tipo1.class);
+        if (operacion.getSubtipoOperacion().getTipoOperacion().getId() == 1) {
+            Tipo1 tipo1 = (Tipo1) opeacionT1Dao.search(idOperacion, Tipo1.class);
             monto = tipo1.getMonto();
         }
         Comision comision = new Comision(monto, tasaComision);
@@ -155,24 +181,27 @@ public class OperacionController {
     /**
      * @param id
      */
-    public void getOperacionPorSocio(int id) {
-        // TODO implement here
+    public List<Operacion> getOperacionPorSocio(int id) throws Exception {
+        return (List<Operacion>) opeacionT1Dao.getAll()
+            .stream()
+            .filter((x -> ((Operacion) x).getId() == id))
+            .collect(Collectors.toList());
     }
 
     public float getComisionPorFecha(LocalDate fecha) throws Exception {
         float comision = 0;
-        List<Tipo1> lista = (List<Tipo1>) opeacionT1Dao.getAll()
+        List<Operacion> lista = (List<Operacion>) opeacionT1Dao.getAll()
             .stream()
-            .filter((x -> ((Tipo1) x).getEstado() == EstadoOperacion.MONETIZADO))
+            .filter((x -> ((Operacion) x).getEstado() == EstadoOperacion.MONETIZADO))
             .collect(Collectors.toList());
 
-        for (Tipo1 item : lista) {
-                SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                String parametro = format.format(fecha);
-                String fechaCalculo = format.format(item.getComision().getFechaCalculocomision());
-                if (parametro.equals(fechaCalculo)) {
-                    comision += item.getComision().getMonto();
-                }
+        for (Operacion item : lista) {
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            String parametro = format.format(fecha);
+            String fechaCalculo = format.format(item.getComision().getFechaCalculocomision());
+            if (parametro.equals(fechaCalculo)) {
+                comision += item.getComision().getMonto();
+            }
         }
         return comision;
     }
@@ -205,15 +234,40 @@ public class OperacionController {
     /**
      * @param tipoId
      */
-    public void getOperacionesPorTipo(int tipoId) {
-        // TODO implement here
+    public List<Operacion> getOperacionesPorTipo(int tipoId) throws Exception {
+        return (List<Operacion>) opeacionT1Dao.getAll()
+            .stream()
+            .filter(x -> ((Operacion) x).getSubtipoOperacion().getTipoOperacion().getId() == tipoId)
+            .collect(Collectors.toList());
     }
 
     /**
      * @param id
      */
-    public void getRiesgoVivoPorSocio(int id) {
-        // TODO implement here
+    public float getRiesgoVivoPorSocio(int id) throws Exception {
+        float riesgoVivo;
+        SocioParticipe socio = SocioController.getInstance().getSocioParticipe(id);
+
+        //si es del tipo 3, necesitamos traer la lista parseada al tipo 3, para acceder a los metodos de cuotas.
+        if (socio.getLineaDeCredito().getTipoOperacion().getId() == 3) {
+            riesgoVivo = (float) opeacionT1Dao.getAll(Tipo3.class)
+                .stream()
+                .filter(x -> ((Tipo3) x).getEstado() == EstadoOperacion.MONETIZADO
+                    && ((Tipo3) x).getFechaVencimiento().compareTo(LocalDate.now()) > 0
+                    && ((Tipo3) x).getSocioParticipe().getId() == socio.getId())
+                .map(x -> ((Tipo3) x).montoRestanteDePago())
+                .collect(Collectors.summingDouble(Float::doubleValue));
+        } else {
+            riesgoVivo = (float) opeacionT1Dao.getAll()
+                .stream()
+                .filter(x -> ((Operacion) x).getEstado() == EstadoOperacion.MONETIZADO
+                    && ((Operacion) x).getFechaVencimiento().compareTo(LocalDate.now()) > 0
+                    && ((Operacion) x).getSocioParticipe().getId() == socio.getId())
+                .map(x -> ((Operacion) x).getMonto())
+                .collect(Collectors.summingDouble(Float::doubleValue));
+        }
+
+        return riesgoVivo;
     }
 
     /**
@@ -221,5 +275,12 @@ public class OperacionController {
      */
     public void getRiesgovivoYTotalUtilizadoPorSocio(int id) {
         // TODO implement here
+    }
+
+    public List<Tipo1> getOperacionesCheque() throws Exception {
+        return (List<Tipo1>) opeacionT1Dao.getAll(Tipo1.class)
+            .stream()
+            .filter(x -> ((Tipo1) x).getSubtipoOperacion().getTipoOperacion().getId() == 1)
+            .collect(Collectors.toList());
     }
 }
