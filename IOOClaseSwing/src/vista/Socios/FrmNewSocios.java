@@ -1,11 +1,9 @@
 package vista.Socios;
 
 import Controllers.SocioController;
-import model.Accionista;
-import model.Socio;
-import model.SocioParticipe;
-import model.TipoSocio;
+import model.*;
 import utils.MiListaModel;
+import utils.MiTableModel;
 import vista.State;
 
 import javax.swing.*;
@@ -13,12 +11,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FrmNewSocios extends JFrame{
     private JTextField BuscartextField;
@@ -55,9 +49,7 @@ public class FrmNewSocios extends JFrame{
     private JPanel AccionistasSecc;
     private JTextField AccPorctextField;
     private JComboBox AccTipocomboBox;
-    private JTextField AccIDtextField;
-    private JTextField DocumentosIDtextField;
-    private JTextField DocumentosEstadotextField;
+    private JTextField AccionCUITtextField;
     private JTextField DocumentosNombretextField;
     private JTextField DocumentosUsuariotextField;
     private JButton agregarButton1;
@@ -80,7 +72,7 @@ public class FrmNewSocios extends JFrame{
     private JButton ContragarantiasborrarButton;
     private JPanel ContragarantiasABM;
     private JPanel DerPanel;
-    private JLabel TipoDescrLabel;
+    private JLabel SocioTipoDescrLabel;
     private JLabel LineaDeCreditoLabel;
     private JButton aportesButton;
     private JPanel AportesSecc;
@@ -93,22 +85,54 @@ public class FrmNewSocios extends JFrame{
     private JButton accionistasButton;
     private JTextField AccionistasIDtextField;
     private JTextField AccionistasCUITtextField;
-    private JTextField AccionistasRazonSocialtextField;
+    private JTextField AccionesRazonSocialtextField;
     private JTextField AccionistasPorcentajetextField;
     private JButton AccionistasagregarButton;
     private JButton AccionistasborrarButton;
     private JPanel AccionistasButtonABM;
-    private JPanel AccionistasABMPorcentaje;
     private JPanel AccionistasABMSecc;
     private JList Documentoslist;
     private JList Accionistaslist;
     private JList Contragarantiaslist;
     private JList Aporteslist;
-    private JLabel AccionistaIDLabel;
+    private JLabel AccionesTipoSocio;
+    private JTextField AccionesCantidadtextField;
+    private JLabel AccionesPorcentaje;
+    private JRadioButton DocumentoObligatorioRadioButton;
+    private JLabel DocumentosIDLabel;
+    private JComboBox DocumentosTipocomboBox;
+    private JLabel DocumentoEstadoActualLabel;
+    private JTextField DocumentoEstadoDeseadotextField;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
     private MiListaModel AccionistasModelo = new MiListaModel();
+    private MiListaModel DocumentosModelo = new MiListaModel();
+
+    private static Socio getSocioFrmfunc(String TipoDeSocio,String CUIT,SocioController Controller) {
+
+        Socio SocioConsulta = new Socio();
+        if (TipoDeSocio == "PARTICIPE") {
+            try {
+                SocioConsulta = Controller.getSocioParticipe(CUIT);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        } else if (TipoDeSocio == "PROTECTOR") {
+            try {
+                SocioConsulta = Controller.getSocioProtector(CUIT);
+            } catch (Exception exception) {
+                exception.printStackTrace();
+            }
+        }
+
+        if (SocioConsulta == null) {
+            return null;
+        }
+
+        return SocioConsulta;
+
+    };
 
     public FrmNewSocios() throws Exception {
 
@@ -137,7 +161,7 @@ public class FrmNewSocios extends JFrame{
         }
         this.self = this;
         this.setContentPane(PrincipalPanel);
-        this.setSize(1200,800);
+        this.setSize(1200,1000);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
@@ -329,7 +353,8 @@ public class FrmNewSocios extends JFrame{
                     DirecciontextField.setText(s.getDireccion());
                     TelefonotextField.setText(s.getTelefono());
                     EmailtextField.setText(s.getEmail());
-                    // StatusLabelDesc.setText(s.getEstado().);
+                    EstadoDescrLabel.setText(s.getEstado().toString());
+                    SocioTipoDescrLabel.setText(s.getTipoSocio().toString());
                     State.standby();
 
                     Accionistaslist.setListData(s.getAccionistas().toArray());
@@ -349,9 +374,14 @@ public class FrmNewSocios extends JFrame{
                             Socio SocioActual = socioController.getSocioParticipe(CUITtextField.getText());
 
                             Accionistaslist.setModel(AccionistasModelo);
+                            Documentoslist.setModel(DocumentosModelo);
 
                             for (Accionista item: SocioActual.getAccionistas()) {
-                                AccionistasModelo.add(item.toString());
+                                AccionistasModelo.add(item.getCuit());
+                            }
+
+                            for (DocumentoRegistro item: SocioActual.getDocumentosRegistros()) {
+                                DocumentosModelo.add(item.getNombre());
                             }
 
                         } catch (Exception j) {
@@ -371,11 +401,14 @@ public class FrmNewSocios extends JFrame{
                         tabbedPane1.setEnabledAt(2,false);
                         try {
                             Socio SocioActual = socioController.getSocioProtector(CUITtextField.getText());
-
                             Accionistaslist.setModel(AccionistasModelo);
 
                             for (Accionista item: SocioActual.getAccionistas()) {
-                                AccionistasModelo.add(item.toString());
+                                AccionistasModelo.add(item.getCuit());
+                            }
+
+                            for (DocumentoRegistro item: SocioActual.getDocumentosRegistros()) {
+                                DocumentosModelo.add(item.getNombre());
                             }
 
                         } catch (Exception k) {
@@ -517,14 +550,14 @@ public class FrmNewSocios extends JFrame{
             }
         });
 
+
         AccionistasagregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String cuit = AccionistasCUITtextField.getText();
-                String razonSocial = AccionistasRazonSocialtextField.getText();
-                int porcentaje = Integer.parseInt(AccionistasPorcentajetextField.getText());
-
+                String razonSocial = AccionesRazonSocialtextField.getText();
+                int porcentaje = 0; //Integer.parseInt(AccionistasPorcentajetextField.getText());
 
                 Accionista nuevoAccionista = new Accionista(
                     cuit,
@@ -554,11 +587,194 @@ public class FrmNewSocios extends JFrame{
         Accionistaslist.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
-        ///
+                //Socio SocioAccionistaActual = new Socio();
+                Socio SocioSeleccion = getSocioFrmfunc(AccionesTipoSocio.getText(),AccionistasCUITtextField.getText(),socioController);
+                Accionista SocioAccionista = SocioSeleccion.getAccionista(SocioSeleccion.getCuit());
+                AccionistasCUITtextField.setText(SocioAccionista.getCuit());
+/*
+                Socio SocioAccionistaActual = new Socio();
+               if (AccionesTipoSocio.getText() == "PARTICIPE") {
+                    try {
+                        SocioAccionistaActual = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
+                        AccionistasCUITtextField.setText(SocioAccionistaActual.getCuit());
+                        AccionCUITtextField.setText(SocioAccionistaActual.getCuit());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
+                    try {
+                        SocioAccionistaActual = socioController.getSocioProtector(AccionistasCUITtextField.getText());
+                        AccionistasCUITtextField.setText(SocioAccionistaActual.getCuit());
+                        AccionCUITtextField.setText(SocioAccionistaActual.getCuit());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
 
 
+                Accionista AccionistaActual = SocioAccionistaActual.getAccionista(Accionistaslist.getSelectedValue().toString());
+                //AccionesRazonSocialtextField.setText(AccionistaActual.getRazonSocial());
+*/
+            }
+        });
+
+        Documentoslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+
+                Socio SocioDocsActual = new Socio();
+                if (AccionesTipoSocio.getText() == "PARTICIPE") {
+                    try {
+                        SocioDocsActual = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
+                    try {
+                        SocioDocsActual = socioController.getSocioProtector(AccionistasCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                //DocumentoRegistro DocsActual = SocioDocsActual.getDocumentoRegistro();
+                //AccionesRazonSocialtextField.setText(AccionistaActual.getRazonSocial());
 
             }
         });
+
+        suscribirButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Socio SocioVendedor = new Socio();
+                if (AccionesTipoSocio.getText() == "PARTICIPE") {
+                    try {
+                        SocioVendedor = socioController.getSocioParticipe(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
+                    try {
+                        SocioVendedor = socioController.getSocioProtector(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                Socio SocioComprador = new Socio();
+                if (SocioTipoDescrLabel.getText() == "PARTICIPE") {
+                    try {
+                        SocioComprador = socioController.getSocioParticipe(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (SocioTipoDescrLabel.getText() == "PROTECTOR") {
+                    try {
+                        SocioComprador = socioController.getSocioProtector(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                try {
+                    socioController.suscribirAcciones(SocioComprador,SocioVendedor,Integer.parseInt(AccionesCantidadtextField.getText()));
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+        });
+
+
+        retirarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                Socio SocioComprador = new Socio();
+                if (AccionesTipoSocio.getText() == "PARTICIPE") {
+                    try {
+                        SocioComprador = socioController.getSocioParticipe(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
+                    try {
+                        SocioComprador = socioController.getSocioProtector(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                Socio SocioVendedor = new Socio();
+                if (SocioTipoDescrLabel.getText() == "PARTICIPE") {
+                    try {
+                        SocioVendedor = socioController.getSocioParticipe(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (SocioTipoDescrLabel.getText() == "PROTECTOR") {
+                    try {
+                        SocioVendedor = socioController.getSocioProtector(AccionCUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                try {
+                    socioController.suscribirAcciones(SocioComprador,SocioVendedor,Integer.parseInt(AccionesCantidadtextField.getText()));
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+            }
+        });
+        agregarButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                String nombre = DocumentosNombretextField.getText();
+                String usuario = DocumentosUsuariotextField.getText();
+                boolean obligatorio = DocumentoObligatorioRadioButton.isSelected();
+
+                DocumentoRegistro DocumentoNuevo = new DocumentoRegistro(
+                    nombre,
+                    usuario,
+                    obligatorio,
+                    TipoDocumento.lookUp(DocumentosTipocomboBox.getSelectedItem().toString())
+                );
+
+                Socio SocioDoc = new Socio();
+                if (SocioTipoDescrLabel.getText() == "PARTICIPE") {
+                    try {
+                        SocioDoc = socioController.getSocioParticipe(CUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                } else if (SocioTipoDescrLabel.getText() == "PROTECTOR") {
+                    try {
+                        SocioDoc = socioController.getSocioProtector(CUITtextField.getText());
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+
+                SocioDoc.agregarDocumento(DocumentoNuevo);
+                try {
+                    socioController.updateSocio(SocioDoc);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+
+
+
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
