@@ -17,6 +17,8 @@ import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrmNewSocios extends JFrame{
     private JTextField BuscartextField;
@@ -102,9 +104,11 @@ public class FrmNewSocios extends JFrame{
     private JList Accionistaslist;
     private JList Contragarantiaslist;
     private JList Aporteslist;
+    private JLabel AccionistaIDLabel;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
+    private MiListaModel AccionistasModelo = new MiListaModel();
 
     public FrmNewSocios() throws Exception {
 
@@ -341,6 +345,19 @@ public class FrmNewSocios extends JFrame{
                         aportesButton.setVisible(false);
                         tabbedPane1.setEnabledAt(2,true);
                         tabbedPane1.setEnabledAt(3,false);
+                        try {
+                            Socio SocioActual = socioController.getSocioParticipe(CUITtextField.getText());
+
+                            Accionistaslist.setModel(AccionistasModelo);
+
+                            for (Accionista item: SocioActual.getAccionistas()) {
+                                AccionistasModelo.add(item.toString());
+                            }
+
+                        } catch (Exception j) {
+                            j.printStackTrace();
+                        }
+
                     } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
                         LineaDeCreditotextField.setVisible(false);
                         LineaDeCreditotextField.setEnabled(false);
@@ -352,6 +369,18 @@ public class FrmNewSocios extends JFrame{
                         aportesButton.setVisible(true);
                         tabbedPane1.setEnabledAt(3,true);
                         tabbedPane1.setEnabledAt(2,false);
+                        try {
+                            Socio SocioActual = socioController.getSocioProtector(CUITtextField.getText());
+
+                            Accionistaslist.setModel(AccionistasModelo);
+
+                            for (Accionista item: SocioActual.getAccionistas()) {
+                                AccionistasModelo.add(item.toString());
+                            }
+
+                        } catch (Exception k) {
+                            k.printStackTrace();
+                        }
                     }
 
 
@@ -494,26 +523,28 @@ public class FrmNewSocios extends JFrame{
 
                 String cuit = AccionistasCUITtextField.getText();
                 String razonSocial = AccionistasRazonSocialtextField.getText();
-                int id = Integer.parseInt(AccionistasIDtextField.getText());
-                float porcentaje = Integer.parseInt(AccionistasPorcentajetextField.getText());
+                int porcentaje = Integer.parseInt(AccionistasPorcentajetextField.getText());
 
 
                 Accionista nuevoAccionista = new Accionista(
-                    id,
                     cuit,
                     razonSocial,
                     porcentaje
                     );
 
                 try {
+
                    Socio SocioActual = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
                    SocioActual.agregarAccionista(nuevoAccionista);
+                   socioController.updateSocio(SocioActual);
 
                     JOptionPane.showMessageDialog(
                         borrarButton,
                         "Accionista Agregado.");
                 } catch (FileNotFoundException fileNotFoundException) {
                     fileNotFoundException.printStackTrace();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
                 }
 
 
@@ -524,6 +555,9 @@ public class FrmNewSocios extends JFrame{
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
         ///
+
+
+
             }
         });
     }
