@@ -9,17 +9,38 @@ public class UsuarioController {
 
     private UsuarioDao usuarioDao;
 
-    public UsuarioController() throws Exception {
+    private UsuarioController() throws Exception {
         this.usuarioDao = new UsuarioDao();
    }
+
+
+    static UsuarioController instance;
+
+    public static UsuarioController getInstance() throws Exception {
+        if (instance == null) {
+            instance = new UsuarioController();
+        }
+        return instance;
+    }
+
+
+
+
   
     public int AgregarNuevoUsuario(Usuario usuario) throws Exception {
 
+        String nombre = usuario.getNombre();
+        if(verificarUsuario(nombre)){
         int lastId= usuarioDao.getLastInsertId();
         lastId++;
         usuario.setId(lastId);
         usuarioDao.save(usuario);
         return lastId;
+        }
+        else{
+            throw new Exception("no se pudo ingresar el usuario");
+        }
+
     }
     public Usuario getUsuario (int id) throws FileNotFoundException {
         Object obj = usuarioDao.search(id);
@@ -29,9 +50,22 @@ public class UsuarioController {
 
     public Boolean updateUsuario (Usuario usuario) throws Exception {
 
+
         return usuarioDao.update(usuario);
 
+
     }
+
+
+    public Usuario getUsuarioByName(String nombre) throws Exception {
+        List<Usuario> obj = usuarioDao.getAll();
+        return obj.stream()
+            .filter(e -> nombre.equalsIgnoreCase(e.getNombre()))
+            .findFirst()
+            .orElse(null);
+    }
+
+
 
     /**
      * @param id
@@ -50,15 +84,33 @@ public class UsuarioController {
         return lista;
     }
 
-/*
-    public Boolean verificarIngreso(String palabra){
-        if (palabra.equals(this.password)){
+
+    public Boolean verificarIngreso(String us, String pass) throws Exception {
+
+        Usuario user = this.getUsuarioByName(us);
+        if (user == null){
+            throw new Exception("El usuario no existe");
+        }
+        if (pass.equals(user.getPassword())){
+            return true;
+        }
+        else {
+            throw new Exception("Contraseña incorrecta, porfavor ingresela nuevamente");
+        }
+
+    }
+
+    public Boolean verificarUsuario (String nom) throws Exception{
+        Usuario user = this.getUsuarioByName(nom);
+        if (user == null){
             return true;
         }
         else{
-            return false;
+            throw new Exception("el nombre de usuario ya existe");
         }
+
     }
-*/
-    }
+
+
 }
+

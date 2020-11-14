@@ -4,6 +4,7 @@ import DAO.GenericDAO;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
+import utils.Logger;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
@@ -254,6 +255,9 @@ public class SocioController {
 
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
 
+
+
+
         if (socio.getEstado() == EstadoSocio.SOCIO_PLENO) {
             throw new Exception("Un Socio Pleno no puede cambiar su estado a postulante");
         }
@@ -265,5 +269,11 @@ public class SocioController {
         }
 
         dao.update(socio);
+
+        Logger logger=Logger.getInstance();
+
+        logger.log(socio.getId(),TipoLog.SOCIOS,EstadoSocio.POSTULANTE_A_SOCIO.toString(),EstadoSocio.SOCIO_PLENO.toString(),LocalDate.now(),"usuario1");
+
+
     }
 }

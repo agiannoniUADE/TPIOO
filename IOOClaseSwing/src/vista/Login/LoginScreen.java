@@ -1,5 +1,7 @@
 package vista.Login;
 
+import Controllers.UsuarioController;
+import model.Usuario;
 import vista.FrmPrincipal;
 import vista.Socios.FrmABM;
 import vista.Socios.FrmSocios;
@@ -11,7 +13,7 @@ import java.awt.event.ActionListener;
 public class LoginScreen extends JFrame {
     private JPanel panel1;
     private JPasswordField passwordField1;
-    private JTextField textField1;
+    private JTextField userTextField1;
     private JPasswordField passwordField2;
     private JButton aceptarButton;
     private JTextField SRGLoginTextField;
@@ -45,15 +47,57 @@ public class LoginScreen extends JFrame {
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               //todo login
-                if(1 == 1){
-                    FrmPrincipal frame = null;
-                    try {
-                        frame = new FrmPrincipal("fafafa");
-                    } catch (Exception e1) {
-                        e1.printStackTrace();
+                //todo login
+                try {
+                    UsuarioController usuarioController = UsuarioController.getInstance();
+
+                    if (usuarioController.verificarIngreso(userTextField1.getText(), passwordField1.getText())) {
+                        FrmPrincipal frame = null;
+                        try {
+                            frame = new FrmPrincipal("Sampo");
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        frame.setVisible(true);
+
+
                     }
-                    frame.setVisible(true);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+
+
+        });
+        nuevoUsuarioButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                try {
+                    UsuarioController usuarioController = UsuarioController.getInstance();
+
+                    String nombre =  userTextField1.getText();
+                    String password = passwordField1.getText();
+
+
+                    Usuario nuevoUsuario = new Usuario(
+                        nombre,
+                        password
+                    );
+
+                    if (usuarioController.AgregarNuevoUsuario(nuevoUsuario)>usuarioController.getLastInsertId()) {
+                        FrmPrincipal frame = null;
+                        try {
+                            frame = new FrmPrincipal("Sampo");
+                        } catch (Exception e1) {
+                            e1.printStackTrace();
+                        }
+                        frame.setVisible(true);
+
+
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
         });
