@@ -29,17 +29,17 @@ public class Logger {
     private LocalDate fecha;
     private String nombreUsuario;
     private LogDao logDao;
-    private static Logger log;
+    private static Logger instance;
 
     private Logger() throws Exception {
         logDao = new LogDao();
     }
 
     public static Logger getInstance() throws Exception {
-        if (log == null) {
-            log = new Logger();
+        if (instance == null) {
+            instance= new Logger();
         }
-        return log;
+        return instance;
     }
 
     public int getId() {

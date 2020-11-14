@@ -103,6 +103,11 @@ public class Tipo3 extends Operacion {
         this.sistemaAmortizacion = sistemaAmortizacion;
     }
 
+    @Override
+    public float getMora() {
+        return montoEnMora();
+    }
+
     /**
      * @return
      */

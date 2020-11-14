@@ -14,10 +14,20 @@ public class SocioController {
     private SocioParticipeDao socioParticipeDao;
     private SocioProtectorDao socioProtectorDao;
 
+
+    static SocioController instance;
+
+    public static SocioController getInstance() throws Exception {
+        if (instance == null) {
+            instance = new SocioController();
+        }
+        return instance;
+    }
+
     /**
      * Default constructor
      */
-    public SocioController() throws Exception {
+    private SocioController() throws Exception {
         this.socioParticipeDao = new SocioParticipeDao();
         this.socioProtectorDao = new SocioProtectorDao();
     }
@@ -25,7 +35,7 @@ public class SocioController {
     public int AgregarNuevoSocio(Socio socio) throws Exception {
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
         if (socio.getTipoSocio() == TipoSocio.PROTECTOR) {
-            if (!ValidatorVO.ValidarSocioProtector(this, socio.getCuit())) {
+            if (!ValidatorVO.ValidarSocioProtector(socio.getCuit())) {
                 throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
             }
         }
@@ -39,10 +49,10 @@ public class SocioController {
     /**
      * @param id
      */
-    public Socio getSocioParticipe(int id) throws FileNotFoundException {
+    public SocioParticipe getSocioParticipe(int id) throws FileNotFoundException {
 
         Object obj = socioParticipeDao.search(id);
-        return obj != null ? (Socio) obj : null;
+        return obj != null ? (SocioParticipe) obj : null;
     }
 
     public SocioParticipe getSocioParticipe(String cuit) throws Exception {
@@ -187,5 +197,23 @@ public class SocioController {
 
         dao.update(comprador);
         dao.update(vendedor);
+    }
+
+    public List<SocioParticipe> getSociosQuetienenLosMismosAccionistas(String cuit) throws Exception {
+
+        SocioParticipe socio = this.getSocioParticipe(cuit);
+        List<SocioParticipe> respuesta = new ArrayList<>();
+
+        for (Accionista a : socio.getAccionistas()) {
+            for (SocioParticipe s : this.getSociosParticipe()){
+                if (s.getAccionista(a.getCuit()) != null){
+                    if(!respuesta.contains(s)){
+                        respuesta.add(s);
+                    }
+                }
+            }
+        }
+
+        return respuesta;
     }
 }

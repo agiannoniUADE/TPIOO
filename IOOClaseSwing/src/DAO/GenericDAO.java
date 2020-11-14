@@ -17,7 +17,7 @@ public abstract class GenericDAO<T> {
         this.archivo.createNewFile();
     }
 
-    public List<T> getAll() throws Exception {
+    public List<T> getAll(Class<T> clase) throws Exception {
         List<T> list = new ArrayList<T>();
         FileReader f = new FileReader(archivo);
         BufferedReader b = new BufferedReader(f);
@@ -37,6 +37,10 @@ public abstract class GenericDAO<T> {
             return list;
         }
         return list;
+    }
+
+    public List<T> getAll() throws Exception {
+        return getAll(clase);
     }
 
     public void saveAll(List<T> list) throws Exception {

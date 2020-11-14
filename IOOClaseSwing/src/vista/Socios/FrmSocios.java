@@ -61,7 +61,7 @@ public class FrmSocios extends JFrame {
         this.setIconImage(frameIcon.getImage());
 
         State = new State();
-        socioController = new SocioController();
+        socioController = SocioController.getInstance();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {

@@ -80,13 +80,6 @@ public class SocioParticipe extends Socio {
     }
 
     /**
-     * @param tipoOperacionId
-     */
-    public void getComisionPreferencial(int tipoOperacionId) {
-        // TODO implement here
-    }
-
-    /**
      *
      */
     public Boolean tieneComisionPreferencial() {
