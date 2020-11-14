@@ -2,6 +2,8 @@ package Controllers;
 
 import DAO.SubtipoOperacionDao;
 import DAO.TipoOperacionDao;
+import model.Socio;
+import model.SocioParticipe;
 import model.SubtipoOperacion;
 import model.TipoOperacion;
 
@@ -16,7 +18,16 @@ public class TipoOperacionController {
     private TipoOperacionDao tipoOperacionDao;
     private SubtipoOperacionDao subtipoOperacionDao;
 
-    public TipoOperacionController() throws Exception {
+    static TipoOperacionController instance;
+
+    public static TipoOperacionController getInstance() throws Exception {
+        if (instance == null) {
+            instance = new TipoOperacionController();
+        }
+        return instance;
+    }
+
+    private TipoOperacionController() throws Exception {
         tipoOperacionDao = new TipoOperacionDao();
         subtipoOperacionDao = new SubtipoOperacionDao();
     }
@@ -35,9 +46,16 @@ public class TipoOperacionController {
     /**
      * @param IdTipoOperacion
      */
-    public float getComsionPorTipo(int IdTipoOperacion) throws FileNotFoundException {
-        TipoOperacion tipo = (TipoOperacion) tipoOperacionDao.search(IdTipoOperacion);
-        return tipo.getComision();
+    public float getComsionPorTipo(int IdTipoOperacion, String cuit) throws Exception {
+        SocioParticipe socio = SocioController.getInstance().getSocioParticipe(cuit);
+        if(socio == null) {
+            throw  new Exception("No existe el socio indicado.");
+        } else if(!socio.tieneComisionPreferencial()){
+            TipoOperacion tipo = (TipoOperacion) tipoOperacionDao.search(IdTipoOperacion);
+            return tipo.getComision();
+        }else{
+            return socio.getComisionPreferencial();
+        }
     }
 
     /**

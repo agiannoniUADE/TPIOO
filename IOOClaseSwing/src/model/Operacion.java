@@ -124,8 +124,6 @@ public class Operacion {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Operacion operacion = (Operacion) o;
         return id == operacion.id;
     }

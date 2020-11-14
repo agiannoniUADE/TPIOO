@@ -1,4 +1,5 @@
 package Controllers;
+
 import DAO.UsuarioDao;
 import model.*;
 
@@ -11,6 +12,7 @@ public class UsuarioController {
 
     private UsuarioController() throws Exception {
         this.usuarioDao = new UsuarioDao();
+
    }
 
 
@@ -22,10 +24,6 @@ public class UsuarioController {
         }
         return instance;
     }
-
-
-
-
   
     public int AgregarNuevoUsuario(Usuario usuario) throws Exception {
 
@@ -42,13 +40,14 @@ public class UsuarioController {
         }
 
     }
-    public Usuario getUsuario (int id) throws FileNotFoundException {
+
+    public Usuario getUsuario(int id) throws FileNotFoundException {
         Object obj = usuarioDao.search(id);
-        return obj != null ? (Usuario)obj: null;
+        return obj != null ? (Usuario) obj : null;
     }
 
 
-    public Boolean updateUsuario (Usuario usuario) throws Exception {
+    public Boolean updateUsuario(Usuario usuario) throws Exception {
 
 
         return usuarioDao.update(usuario);
@@ -100,6 +99,7 @@ public class UsuarioController {
 
     }
 
+
     public Boolean verificarUsuario (String nom) throws Exception{
         Usuario user = this.getUsuarioByName(nom);
         if (user == null){
@@ -110,7 +110,6 @@ public class UsuarioController {
         }
 
     }
-
 
 }
 

@@ -7,8 +7,7 @@ import java.util.Objects;
 public class Usuario {
 
 
-
-    public Usuario( String nombre, String password) {
+    public Usuario(String nombre, String password) {
 
         this.nombre = nombre;
         this.password = password;
@@ -20,14 +19,12 @@ public class Usuario {
 
     private int id;
 
-    private List<Usuario> usuarios;
-
-    public int getId(){
+    public int getId() {
         return id;
     }
 
-    public void setId(int id){
-        this.id=id;
+    public void setId(int id) {
+        this.id = id;
     }
 
 
@@ -46,8 +43,6 @@ public class Usuario {
     public void setPassword(String password) {
         this.password = password;
     }
-
-
 
 
     @Override
