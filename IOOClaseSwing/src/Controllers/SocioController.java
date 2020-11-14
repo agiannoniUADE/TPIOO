@@ -69,6 +69,15 @@ public class SocioController {
         return obj != null ? (Socio) obj : null;
     }
 
+    public SocioProtector getSocioProtector(String cuit) throws Exception {
+
+        List<SocioProtector> obj = socioProtectorDao.getAll();
+        return obj.stream()
+            .filter(e -> cuit.equalsIgnoreCase(e.getCuit()))
+            .findFirst()
+            .orElse(null);
+    }
+
     /**
      * @param obj
      */
@@ -166,6 +175,21 @@ public class SocioController {
         // TODO implement here
     }
 
+
+    public Socio getSocioByCuit (String cuit) throws Exception {
+
+        Socio socio= null;
+
+        if (this.getSocioParticipe(cuit) != null){
+            socio = this.getSocioParticipe(cuit);
+        } else {
+            socio = this.getSocioProtector(cuit);
+        }
+
+        return socio;
+    }
+
+
     public Dictionary<String, Integer> getSociosConAccionesDisponibles(TipoSocio tipoSocio) throws Exception {
         Socio socio;
         GenericDAO dao = tipoSocio == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
@@ -215,5 +239,31 @@ public class SocioController {
         }
 
         return respuesta;
+    }
+    public void cambiarEstadoSocio (String cuit) throws Exception {
+
+
+        SocioController sc = SocioController.getInstance();
+
+        Socio socio = sc.getSocioByCuit(cuit);
+
+
+        if (socio == null) {
+            throw new Exception("El Socio no existe");
+        }
+
+        GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
+
+        if (socio.getEstado() == EstadoSocio.SOCIO_PLENO) {
+            throw new Exception("Un Socio Pleno no puede cambiar su estado a postulante");
+        }
+        if (socio.getAcciones() <= 0) {
+            throw new Exception("El socio no tiene acciones, suscriba acciones y vuelva a intentarlo");
+        }
+        if (socio.getEstado() == EstadoSocio.POSTULANTE_A_SOCIO) {
+            socio.setEstado(EstadoSocio.SOCIO_PLENO);
+        }
+
+        dao.update(socio);
     }
 }

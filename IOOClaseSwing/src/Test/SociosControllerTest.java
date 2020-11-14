@@ -47,6 +47,13 @@ public class SociosControllerTest {
     }
 
     @Test
+    void ChangeStatus_Success() throws Exception {
+
+
+        target.cambiarEstadoSocio("1234");
+    }
+
+    @Test
     void UpdateSocio_Success() throws Exception {
 
         int id = insertSocio();
@@ -114,7 +121,7 @@ public class SociosControllerTest {
         nuevoSocio.agregarDocumento(documentoRegistro2);
         nuevoSocio.setAccion(200);
 
-        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
+        nuevoSocio.setEstado(EstadoSocio.POSTULANTE_A_SOCIO);
 
         TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 
