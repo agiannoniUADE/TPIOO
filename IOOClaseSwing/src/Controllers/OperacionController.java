@@ -70,6 +70,7 @@ public class OperacionController {
         int lastId = opeacionT1Dao.getLastInsertId() + 1;
         operacion.setId(lastId);
         opeacionT1Dao.save(operacion);
+        //estado de operacion = ingresado
     }
 
 
@@ -122,6 +123,8 @@ public class OperacionController {
         operacion.setCertificado(certificado);
 
         opeacionT1Dao.update(operacion);
+    //cambio estado, ingresado r acertemitido
+
     }
 
 
@@ -156,6 +159,8 @@ public class OperacionController {
         operacion.setEstado(EstadoOperacion.MONETIZADO);
 
         opeacionT1Dao.update(operacion);
+
+        //estado monetizado
     }
 
     public void facturarComisiones() throws Exception {
