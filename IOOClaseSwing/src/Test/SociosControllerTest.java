@@ -1,5 +1,6 @@
 package Test;
 
+import Controllers.OperacionController;
 import Controllers.SocioController;
 import Controllers.TipoOperacionController;
 import model.*;
@@ -13,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class SociosControllerTest {
 
     SocioController target = SocioController.getInstance();
-    TipoOperacionController tipoOperacionController = new TipoOperacionController();
+    TipoOperacionController tipoOperacionController;
 
     public SociosControllerTest() throws Exception {
     }
@@ -56,6 +57,8 @@ public class SociosControllerTest {
     @Test
     void UpdateSocio_Success() throws Exception {
 
+
+
         int id = insertSocio();
         String cuit = "202020";
         String razonSocial = "TEST";
@@ -84,7 +87,9 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-44444444-2";
+
+        TipoOperacionController tipoOperacionController = TipoOperacionController.getInstance();
+        String cuit = "20-1000-2";
         String razonSocial = "Lavadero SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
@@ -121,7 +126,7 @@ public class SociosControllerTest {
         nuevoSocio.agregarDocumento(documentoRegistro2);
         nuevoSocio.setAccion(200);
 
-        nuevoSocio.setEstado(EstadoSocio.POSTULANTE_A_SOCIO);
+        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
         TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 

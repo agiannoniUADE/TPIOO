@@ -1,4 +1,5 @@
 package Controllers;
+
 import DAO.UsuarioDao;
 import model.*;
 
@@ -11,23 +12,24 @@ public class UsuarioController {
 
     public UsuarioController() throws Exception {
         this.usuarioDao = new UsuarioDao();
-   }
-  
+    }
+
     public int AgregarNuevoUsuario(Usuario usuario) throws Exception {
 
-        int lastId= usuarioDao.getLastInsertId();
+        int lastId = usuarioDao.getLastInsertId();
         lastId++;
         usuario.setId(lastId);
         usuarioDao.save(usuario);
         return lastId;
     }
-    public Usuario getUsuario (int id) throws FileNotFoundException {
+
+    public Usuario getUsuario(int id) throws FileNotFoundException {
         Object obj = usuarioDao.search(id);
-        return obj != null ? (Usuario)obj: null;
+        return obj != null ? (Usuario) obj : null;
     }
 
 
-    public Boolean updateUsuario (Usuario usuario) throws Exception {
+    public Boolean updateUsuario(Usuario usuario) throws Exception {
 
         return usuarioDao.update(usuario);
 
@@ -60,5 +62,4 @@ public class UsuarioController {
         }
     }
 */
-    }
 }

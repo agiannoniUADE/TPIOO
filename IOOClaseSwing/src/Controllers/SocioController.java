@@ -230,7 +230,7 @@ public class SocioController {
 
         for (Accionista a : socio.getAccionistas()) {
             for (SocioParticipe s : this.getSociosParticipe()){
-                if (s.getAccionista(a.getCuit()) != null){
+                if (!s.getCuit().equals(cuit) && s.getAccionista(a.getCuit()) != null){
                     if(!respuesta.contains(s)){
                         respuesta.add(s);
                     }
@@ -238,7 +238,7 @@ public class SocioController {
             }
         }
 
-        return respuesta;
+        return respuesta ;
     }
     public void cambiarEstadoSocio (String cuit) throws Exception {
 
