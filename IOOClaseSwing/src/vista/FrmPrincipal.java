@@ -106,8 +106,5 @@ public class FrmPrincipal extends JFrame {
         }
       });
     }
-    public static void main(String[] args) {
-        FrmPrincipal frame = new FrmPrincipal("Primer Programa SWING");
-        frame.setVisible(true);
-    }
+
 }

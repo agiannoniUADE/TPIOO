@@ -64,7 +64,7 @@ public class FrmOperaciones extends JFrame {
     //this.setIconImage(frameIcon.getImage());
 
     State = new State();
-    operacionController = new OperacionController();
+    operacionController = OperacionController.getInstance();
     try {
       UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     } catch (ClassNotFoundException e) {
