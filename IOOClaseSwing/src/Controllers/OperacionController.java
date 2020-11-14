@@ -3,6 +3,7 @@ package Controllers;
 import DAO.OpeacionT1Dao;
 import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import model.*;
+import utils.Logger;
 
 import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
@@ -70,7 +71,9 @@ public class OperacionController {
         int lastId = opeacionT1Dao.getLastInsertId() + 1;
         operacion.setId(lastId);
         opeacionT1Dao.save(operacion);
-        //estado de operacion = ingresado
+        Logger logger=Logger.getInstance();
+
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.INGRESADO.toString(),LocalDate.now(),"usuario1");
     }
 
 
@@ -123,7 +126,10 @@ public class OperacionController {
         operacion.setCertificado(certificado);
 
         opeacionT1Dao.update(operacion);
-    //cambio estado, ingresado r acertemitido
+    //cambio estado, ingresado a cert-emitido
+        Logger logger=Logger.getInstance();
+
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.CERTIFICADO_EMITIDO.toString(),LocalDate.now(),"usuario1");
 
     }
 
@@ -160,7 +166,9 @@ public class OperacionController {
 
         opeacionT1Dao.update(operacion);
 
-        //estado monetizado
+        Logger logger=Logger.getInstance();
+
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.MONETIZADO.toString(),LocalDate.now(),"usuario1");
     }
 
     public void facturarComisiones() throws Exception {
