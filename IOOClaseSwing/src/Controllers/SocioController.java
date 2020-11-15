@@ -107,9 +107,42 @@ public class SocioController {
     /**
      * @param socioId
      */
-    public void getMoraPorSocio(int socioId) {
+    public int getMoraPorSocio(int socioId) throws Exception {
         // TODO implement here
+        SocioController socio = SocioController.getInstance();
+        Socio s = socio.getSocioById(socioId);
+        //socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
+        if (s.getTipoSocio() == TipoSocio.PROTECTOR) {
+            throw new Exception("Los Socios Protectores no pueden tener mora");
+        }
+        int suma=0;
+        if (s.getTipoSocio() == TipoSocio.PARTICIPE) {
+            if (s.getEstado() != EstadoSocio.SOCIO_PLENO) {
+                throw new Exception("Socios postulantes no pueden tener operaciones en mora");
+            }
+            if (s.getEstado() == EstadoSocio.SOCIO_PLENO) {
+                OperacionController operaciones = OperacionController.getInstance();
+                List listaOperaciones = operaciones.getOperacionPorSocio(s.getId());
+
+
+                for (int i = 0; i <= listaOperaciones.size(); i++) {
+                    Operacion operacion = (Operacion) listaOperaciones.get(i);
+
+
+                    if (operacion.estaEnMora()) {
+                        suma += operacion.getMonto();
+                    }
+                }
+
+
+
+            }
+        }
+
+        return suma;
+
     }
+
 
     /**
      * @param id
@@ -150,11 +183,24 @@ public class SocioController {
     }
 
 
-    public Socio getSocioByCuit (String cuit) throws Exception {
+    private Socio getSocioById(int id) throws Exception {
+        Socio socio = null;
 
-        Socio socio= null;
+        if (this.getSocioParticipe(id) != null) {
+            socio = this.getSocioParticipe(id);
+        } else {
+            socio = this.getSocioProtector(id);
+        }
 
-        if (this.getSocioParticipe(cuit) != null){
+        return socio;
+
+    }
+
+    public Socio getSocioByCuit(String cuit) throws Exception {
+
+        Socio socio = null;
+
+        if (this.getSocioParticipe(cuit) != null) {
             socio = this.getSocioParticipe(cuit);
         } else {
             socio = this.getSocioProtector(cuit);
@@ -203,18 +249,19 @@ public class SocioController {
         List<SocioParticipe> respuesta = new ArrayList<>();
 
         for (Accionista a : socio.getAccionistas()) {
-            for (SocioParticipe s : this.getSociosParticipe()){
-                if (!s.getCuit().equals(cuit) && s.getAccionista(a.getCuit()) != null){
-                    if(!respuesta.contains(s)){
+            for (SocioParticipe s : this.getSociosParticipe()) {
+                if (!s.getCuit().equals(cuit) && s.getAccionista(a.getCuit()) != null) {
+                    if (!respuesta.contains(s)) {
                         respuesta.add(s);
                     }
                 }
             }
         }
 
-        return respuesta ;
+        return respuesta;
     }
-    public void cambiarEstadoSocio (String cuit) throws Exception {
+
+    public void cambiarEstadoSocio(String cuit) throws Exception {
 
 
         SocioController sc = SocioController.getInstance();
@@ -229,8 +276,6 @@ public class SocioController {
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
 
 
-
-
         if (socio.getEstado() == EstadoSocio.SOCIO_PLENO) {
             throw new Exception("Un Socio Pleno no puede cambiar su estado a postulante");
         }
@@ -243,9 +288,9 @@ public class SocioController {
 
         dao.update(socio);
 
-        Logger logger=Logger.getInstance();
+        Logger logger = Logger.getInstance();
 
-        logger.log(socio.getId(),TipoLog.SOCIOS,EstadoSocio.POSTULANTE_A_SOCIO.toString(),EstadoSocio.SOCIO_PLENO.toString(),LocalDate.now(),"usuario1");
+        logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), "usuario1");
 
 
     }
