@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class UsuariosControllerTest {
 
-    UsuarioController target = new UsuarioController();
+    UsuarioController target = UsuarioController.getInstance();
 
     public UsuariosControllerTest() throws Exception {
     }
@@ -63,12 +63,18 @@ public class UsuariosControllerTest {
     }
 
 
+    @Test
+    void testPass_Success() throws Exception {
+
+        target.verificarIngreso("ABC","123");
+
+    }
 
 
 
     private int insertUser() throws Exception {
         //int id = target.getLastInsertId()+1;
-        String nombre = "ABC";
+        String nombre = "DEF";
         String password = "123";
 
         Usuario nuevoUsuario = new Usuario(
