@@ -6,8 +6,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MiListaModel extends AbstractListModel {
-    private List<String> items= new ArrayList<String>();
+public class AccionistasListaModel extends AbstractListModel {
+    private List<Accionista> items= new ArrayList<Accionista>();
 
     @Override
     public int getSize() {
@@ -19,7 +19,7 @@ public class MiListaModel extends AbstractListModel {
         return items.get(i);
     }
     //Retorna el indice donde se encuentra el valor insertado
-    public int add(String valor)
+    public int add(Accionista valor)
     {
         items.add(valor);
         fireContentsChanged(this, 0, items.size());

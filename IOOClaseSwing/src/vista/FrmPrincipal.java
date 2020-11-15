@@ -4,8 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import vista.Operaciones.FrmNewOperaciones;
 import vista.Operaciones.FrmOperaciones;
-import vista.Socios.FrmSocios;
+import vista.Socios.FrmNewSocios;
 
 public class FrmPrincipal extends JFrame {
 
@@ -17,7 +18,7 @@ public class FrmPrincipal extends JFrame {
     private JButton gridsButton;
     private JPanel pnlTitulo;
     private JButton sociosButton;
-  private JButton operacionesButton;
+   private JButton operacionesButton;
 
     private FrmPrincipal self;
 
@@ -84,9 +85,9 @@ public class FrmPrincipal extends JFrame {
         sociosButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-              FrmSocios frame = null;
+                FrmNewSocios frame = null;
               try {
-                frame = new FrmSocios();
+                frame = new FrmNewSocios();
               } catch (Exception e1) {
                 e1.printStackTrace();
               }
@@ -96,9 +97,9 @@ public class FrmPrincipal extends JFrame {
       operacionesButton.addActionListener(new ActionListener() {
         @Override
         public void actionPerformed(final ActionEvent e) {
-          FrmOperaciones frame = null;
+          FrmNewOperaciones frame = null;
           try {
-            frame = new FrmOperaciones();
+            frame = new FrmNewOperaciones();
           } catch (Exception e1) {
             e1.printStackTrace();
           }

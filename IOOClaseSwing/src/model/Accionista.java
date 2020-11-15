@@ -56,6 +56,14 @@ public class Accionista {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Accionista{" +
+            "cuit='" + cuit + '\'' +
+            ", razonSocial='" + razonSocial + '\'' +
+            '}';
+    }
+
     public void setId(int id) {
         this.id = id;
     }
