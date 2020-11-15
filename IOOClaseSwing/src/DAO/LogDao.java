@@ -6,6 +6,6 @@ public class LogDao extends GenericDAO {
 
 
     public LogDao() throws Exception {
-        super(Logger.class, "repo/log.json");
+        super(Logger.class, "C:\\Users\\Gus Capparelli\\Documents\\Facultad\\Introduccion a la orientacion a objetos\\TPO_IOO\\IOOClaseSwing\\log.json");
     }
 }

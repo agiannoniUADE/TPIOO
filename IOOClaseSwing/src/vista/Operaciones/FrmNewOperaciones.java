@@ -1,6 +1,7 @@
 package vista.Operaciones;
 
 import Controllers.OperacionController;
+import model.Operacion;
 import vista.State;
 
 import javax.swing.*;
@@ -73,7 +74,8 @@ public class FrmNewOperaciones extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-    }
+
+    };
 
 }
 

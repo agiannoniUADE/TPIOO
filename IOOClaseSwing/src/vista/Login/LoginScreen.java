@@ -1,6 +1,7 @@
 package vista.Login;
 
 import vista.FrmPrincipal;
+
 import vista.Socios.FrmABM;
 import vista.Socios.FrmSocios;
 
@@ -43,8 +44,8 @@ public class LoginScreen extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
-        ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
-        this.setIconImage(frameIcon.getImage());
+        //ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
+        //this.setIconImage(frameIcon.getImage());
         aceptarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -66,5 +67,9 @@ public class LoginScreen extends JFrame {
     public static void main(String[] args) throws Exception {
         LoginScreen frame = new LoginScreen();
         frame.setVisible(true);
+    }
+
+    private void createUIComponents() {
+        // TODO: place custom component creation code here
     }
 }
