@@ -44,6 +44,8 @@ public class Usuario {
         this.password = password;
     }
 
+    public static String loggedUser;
+
 
     @Override
     public boolean equals(Object o) {

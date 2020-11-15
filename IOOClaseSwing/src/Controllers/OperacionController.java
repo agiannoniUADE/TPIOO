@@ -299,7 +299,7 @@ public class OperacionController {
                     && x.getFecha().compareTo(fin) <= 0)
             .collect(Collectors.toList());
     }
-s
+
     /**
      * Valor promedio de la tasa de descuento de cheques y pagarés para un tipo de empresa (pequeña, mediana, grande), en un período de tiempo
      */
