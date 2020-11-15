@@ -3,7 +3,6 @@ package vista.Socios;
 import Controllers.SocioController;
 import model.*;
 import utils.MiListaModel;
-import utils.MiTableModel;
 import vista.State;
 
 import javax.swing.*;
@@ -53,7 +52,7 @@ public class FrmNewSocios extends JFrame{
     private JTextField DocumentosNombretextField;
     private JTextField DocumentosUsuariotextField;
     private JButton agregarButton1;
-    private JButton borrarButton1;
+    private JButton DocumentosborrarButton;
     private JButton cambioDeEstadoButton;
     private JButton accionesButton;
     private JButton documentosButton;
@@ -103,6 +102,7 @@ public class FrmNewSocios extends JFrame{
     private JComboBox DocumentosTipocomboBox;
     private JLabel DocumentoEstadoActualLabel;
     private JTextField DocumentoEstadoDeseadotextField;
+    private JTable Accionistastable;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -417,6 +417,10 @@ public class FrmNewSocios extends JFrame{
                     }
 
 
+
+
+
+
                 } catch (Exception e1) {
                     e1.printStackTrace();
                     if (State.getEnv() != "Buscar" && State.getCurrent() != "NoExiste") {
@@ -449,13 +453,13 @@ public class FrmNewSocios extends JFrame{
                 Socio SocioVendedor = new Socio();
                 Socio SocioComprador = new Socio();
 
-                if (AccTipocomboBox.getSelectedItem().toString() == "Participe") {
+                if (SocioTipoDescrLabel.getText() == "Participe") {
                     try {
                         SocioVendedor = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
                     }
-                } else if (AccTipocomboBox.getSelectedItem().toString() == "Protector") {
+                } else if (SocioTipoDescrLabel.getText() == "Protector") {
                     try {
                         SocioVendedor = socioController.getSocioProtector(Integer.parseInt(IDDescrLabel.getText()));
                     } catch (FileNotFoundException fileNotFoundException) {
@@ -463,13 +467,13 @@ public class FrmNewSocios extends JFrame{
                     }
                 }
 
-                if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                if (SocioTipoDescrLabel.getText() == "Participe") {
                     try {
                         SocioComprador = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
                     } catch (FileNotFoundException fileNotFoundException) {
                         fileNotFoundException.printStackTrace();
                     }
-                } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                } else if (SocioTipoDescrLabel.getText() == "Protector") {
                     try {
                         SocioComprador = socioController.getSocioProtector(Integer.parseInt(IDDescrLabel.getText()));
                     } catch (FileNotFoundException fileNotFoundException) {
@@ -478,7 +482,7 @@ public class FrmNewSocios extends JFrame{
                 }
 
                 try {
-                    socioController.suscribirAcciones(SocioComprador,SocioVendedor, AccPorctextField.getSelectionEnd());
+                    socioController.suscribirAcciones(SocioComprador,SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -766,13 +770,65 @@ public class FrmNewSocios extends JFrame{
 
             }
         });
+        AccionistasborrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Socio SocioActual = new Socio();
+                if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                    try {
+                        SocioActual = socioController.getSocioParticipe(CUITtextField.getText());
+                    } catch (Exception fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                    try {
+                        SocioActual = socioController.getSocioProtector(CUITtextField.getText());
+                    } catch (Exception fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                }
 
+                SocioActual.removeAccionista(SocioActual.getAccionista(AccionistasCUITtextField.getText()));
 
+                try {
+                    socioController.updateSocio(SocioActual);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
 
+            }
+        });
+        DocumentosborrarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Socio SocioActual = new Socio();
+                if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
+                    try {
+                        SocioActual = socioController.getSocioParticipe(CUITtextField.getText());
+                    } catch (Exception fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
+                    try {
+                        SocioActual = socioController.getSocioProtector(CUITtextField.getText());
+                    } catch (Exception fileNotFoundException) {
+                        fileNotFoundException.printStackTrace();
+                    }
+                }
 
+                SocioActual.quitarDocumentoRegistro(SocioActual.getDocumentoRegistro(Integer.parseInt(DocumentosIDLabel.getText())));
 
+                try {
+                    socioController.updateSocio(SocioActual);
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
 
+            }
+        });
     }
+
+
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
