@@ -77,7 +77,7 @@ public class OperacionTipo1ControllerTest {
     @Test
     public void getPromedioTasaDescunto() throws Exception {
         target = OperacionController.getInstance();
-        target.getPromedioTasaDescuentoParaOperacionesChequeParaUntipoEmpresa(
+        target.getPromedioTasaDescuentoParaOperacionesChequeParaUntipoEmpresaPoFecha(
             "Mediana",LocalDate.of(2020,11,1),LocalDate.of(2021,1,1));
     }
 

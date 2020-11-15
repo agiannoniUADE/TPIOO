@@ -125,39 +125,12 @@ public class SocioController {
         // TODO implement here
     }
 
-    /**
-     * @param id
-     */
-    public void getOperacionAvaladas(int id) {
-        // TODO implement here
-    }
-
-    /**
-     * @param IdSocio
-     */
-    public void getSocioParticipePorId(int IdSocio) {
-        // TODO implement here
-    }
-
-    /**
-     *
-     */
-    public void getSociosParticipes() {
-        // TODO implement here
-    }
 
     /**
      * @param socioId
      * @param fecha
      */
     public void getMoraPorSocioPorFecha(int socioId, LocalDate fecha) {
-        // TODO implement here
-    }
-
-    /**
-     * @param Cuit
-     */
-    public void getSocioParticipePorCUIT(String Cuit) {
         // TODO implement here
     }
 

@@ -247,7 +247,7 @@ public class OperacionController {
     }
 
     /**
-     * @param id
+     * Riesgo vivo por socio son todas las operaciones monetizadas no vencidas.
      */
     public float getRiesgoVivoPorSocio(int id) throws Exception {
 
@@ -279,26 +279,26 @@ public class OperacionController {
         return (float) riesgoVivo;
     }
 
+
     /**
      * Las operaciones avaladas a nombre de un socio, en estado monetizadas en un período de tiempo
      */
-    public List<Operacion> operacionesDeUnsocioPorEstado(String cuit) throws Exception {
+    public List<Operacion> operacionesDeUnsocioPorEstado(String cuit, LocalDate inicio, LocalDate fin) throws Exception {
         Socio socio = SocioController.getInstance().getSocioByCuit(cuit);
         if (socio == null)
             throw new Exception("El socio no existe");
         return getOperacionPorSocio(socio.getId())
             .stream()
-            .filter(x -> x.getEstado() == EstadoOperacion.MONETIZADO).collect(Collectors.toList());
+            .filter(x -> x.getEstado() == EstadoOperacion.MONETIZADO
+                    && x.getFecha().compareTo(inicio) >= 0
+                    && x.getFecha().compareTo(fin) <= 0)
+            .collect(Collectors.toList());
     }
-
-    public void getRiesgovivoYTotalUtilizadoPorSocio(int id) {
-        // TODO implement here
-    }
-
+s
     /**
      * Valor promedio de la tasa de descuento de cheques y pagarés para un tipo de empresa (pequeña, mediana, grande), en un período de tiempo
      */
-    public float getPromedioTasaDescuentoParaOperacionesChequeParaUntipoEmpresaPorfecha(String tamanoEmpresa, LocalDate inicio, LocalDate fin) throws Exception {
+    public float getPromedioTasaDescuentoParaOperacionesChequeParaUntipoEmpresaPoFecha(String tamanoEmpresa, LocalDate inicio, LocalDate fin) throws Exception {
         double total = 0;
         List<Tipo1> lista = (List<Tipo1>) opeacionT1Dao.getAll(Tipo1.class)
             .stream()
@@ -317,7 +317,7 @@ public class OperacionController {
     /**
      * total operado de cheques y pagarés para un tipo de empresa (pequeña, mediana, grande), en un período de tiempo
      */
-    public float getTotalOperadoenChequeParaUntipoEmpresaPorfecha(String tamanoEmpresa, LocalDate inicio, LocalDate fin)throws Exception {
+    public float getTotalOperadoenChequeParaUntipoEmpresaPorFecha(String tamanoEmpresa, LocalDate inicio, LocalDate fin) throws Exception {
         double total = 0;
         List<Tipo1> lista = (List<Tipo1>) opeacionT1Dao.getAll(Tipo1.class)
             .stream()
@@ -332,6 +332,27 @@ public class OperacionController {
         }
         return (float) total;
     }
+
+    /**
+     * El utilizado de la línea son las operaciones con certificado emitido más el riesgo vivo del socio.
+     */
+    public float GetTotalUtilizadoDeLinea(String cuit) throws Exception {
+        SocioParticipe socio = SocioController.getInstance().getSocioParticipe(cuit);
+        int idOperacion = socio.getLineaDeCredito().getTipoOperacion().getId();
+
+        double totalUtilizado = (double) opeacionT1Dao.getAll(Operacion.class)
+            .stream()
+            .filter(x -> ((Operacion) x).getEstado() == EstadoOperacion.MONETIZADO
+                && ((Operacion) x).getSocioParticipe().getId() == socio.getId()
+                && (((Operacion) x).getSubtipoOperacion().getTipoOperacion().getId() == idOperacion))
+            .map(x -> ((Operacion) x).getMonto())
+            .collect(Collectors.summingDouble(Float::doubleValue));
+
+        double riesgovivo = this.getRiesgoVivoPorSocio(socio.getId());
+
+        return (float) (riesgovivo + totalUtilizado);
+    }
+
 
     public List<Tipo1> getOperacionesCheque() throws Exception {
         return (List<Tipo1>) opeacionT1Dao.getAll(Tipo1.class)
