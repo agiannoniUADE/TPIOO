@@ -13,7 +13,7 @@ import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 
-public class FrmNewSocios extends JFrame{
+public class FrmNewSocios extends JFrame {
     private JTextField BuscartextField;
     private JButton buscarButton;
     private JTextField RazonSocialtextField;
@@ -109,7 +109,7 @@ public class FrmNewSocios extends JFrame{
     private MiListaModel AccionistasModelo = new MiListaModel();
     private MiListaModel DocumentosModelo = new MiListaModel();
 
-    private static Socio getSocioFrmfunc(String TipoDeSocio,String CUIT,SocioController Controller) {
+    private static Socio getSocioFrmfunc(String TipoDeSocio, String CUIT, SocioController Controller) {
 
         Socio SocioConsulta = new Socio();
         if (TipoDeSocio == "PARTICIPE") {
@@ -132,7 +132,9 @@ public class FrmNewSocios extends JFrame{
 
         return SocioConsulta;
 
-    };
+    }
+
+    ;
 
     public FrmNewSocios() throws Exception {
 
@@ -147,7 +149,7 @@ public class FrmNewSocios extends JFrame{
         State StateAportes = new State();
         StateAportes.setCurrent("Oculto");
 
-        socioController = new SocioController();
+        socioController = SocioController.getInstance();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {
@@ -161,7 +163,7 @@ public class FrmNewSocios extends JFrame{
         }
         this.self = this;
         this.setContentPane(PrincipalPanel);
-        this.setSize(1200,1000);
+        this.setSize(1200, 1000);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
@@ -193,7 +195,7 @@ public class FrmNewSocios extends JFrame{
         agregarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (State.getCurrent() == "Standby"|| State.getCurrent() == "NoExiste"){
+                if (State.getCurrent() == "Standby" || State.getCurrent() == "NoExiste") {
                     State.setCurrent("Agregando");
                     State.setEnv("Socios");
                     buscarButton.setEnabled(false);
@@ -368,19 +370,19 @@ public class FrmNewSocios extends JFrame{
                         contragarantiasButton.setEnabled(true);
                         aportesButton.setEnabled(false);
                         aportesButton.setVisible(false);
-                        tabbedPane1.setEnabledAt(2,true);
-                        tabbedPane1.setEnabledAt(3,false);
+                        tabbedPane1.setEnabledAt(2, true);
+                        tabbedPane1.setEnabledAt(3, false);
                         try {
-                            Socio SocioActual = socioController.getSocioParticipe(CUITtextField.getText());
+                            Socio socioActual = socioController.getSocioParticipe(CUITtextField.getText());
 
                             Accionistaslist.setModel(AccionistasModelo);
                             Documentoslist.setModel(DocumentosModelo);
 
-                            for (Accionista item: SocioActual.getAccionistas()) {
+                            for (Accionista item : socioActual.getAccionistas()) {
                                 AccionistasModelo.add(item.getCuit());
                             }
 
-                            for (DocumentoRegistro item: SocioActual.getDocumentosRegistros()) {
+                            for (DocumentoRegistro item : socioActual.getDocumentosRegistro()) {
                                 DocumentosModelo.add(item.getNombre());
                             }
 
@@ -397,17 +399,17 @@ public class FrmNewSocios extends JFrame{
                         contragarantiasButton.setEnabled(false);
                         aportesButton.setEnabled(true);
                         aportesButton.setVisible(true);
-                        tabbedPane1.setEnabledAt(3,true);
-                        tabbedPane1.setEnabledAt(2,false);
+                        tabbedPane1.setEnabledAt(3, true);
+                        tabbedPane1.setEnabledAt(2, false);
                         try {
                             Socio SocioActual = socioController.getSocioProtector(CUITtextField.getText());
                             Accionistaslist.setModel(AccionistasModelo);
 
-                            for (Accionista item: SocioActual.getAccionistas()) {
+                            for (Accionista item : SocioActual.getAccionistas()) {
                                 AccionistasModelo.add(item.getCuit());
                             }
 
-                            for (DocumentoRegistro item: SocioActual.getDocumentosRegistros()) {
+                            for (DocumentoRegistro item : SocioActual.getDocumentosRegistro()) {
                                 DocumentosModelo.add(item.getNombre());
                             }
 
@@ -415,10 +417,6 @@ public class FrmNewSocios extends JFrame{
                             k.printStackTrace();
                         }
                     }
-
-
-
-
 
 
                 } catch (Exception e1) {
@@ -438,7 +436,6 @@ public class FrmNewSocios extends JFrame{
                 }
             }
         });
-
 
 
         suscribirButton.addActionListener(new ActionListener() {
@@ -482,7 +479,7 @@ public class FrmNewSocios extends JFrame{
                 }
 
                 try {
-                    socioController.suscribirAcciones(SocioComprador,SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
+                    socioController.suscribirAcciones(SocioComprador, SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -567,13 +564,13 @@ public class FrmNewSocios extends JFrame{
                     cuit,
                     razonSocial,
                     porcentaje
-                    );
+                );
 
                 try {
 
-                   Socio SocioActual = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
-                   SocioActual.agregarAccionista(nuevoAccionista);
-                   socioController.updateSocio(SocioActual);
+                    Socio SocioActual = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
+                    SocioActual.agregarAccionista(nuevoAccionista);
+                    socioController.updateSocio(SocioActual);
 
                     JOptionPane.showMessageDialog(
                         borrarButton,
@@ -591,34 +588,24 @@ public class FrmNewSocios extends JFrame{
         Accionistaslist.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
-                //Socio SocioAccionistaActual = new Socio();
-                Socio SocioSeleccion = getSocioFrmfunc(AccionesTipoSocio.getText(),AccionistasCUITtextField.getText(),socioController);
-                Accionista SocioAccionista = SocioSeleccion.getAccionista(SocioSeleccion.getCuit());
-                AccionistasCUITtextField.setText(SocioAccionista.getCuit());
-/*
-                Socio SocioAccionistaActual = new Socio();
-               if (AccionesTipoSocio.getText() == "PARTICIPE") {
-                    try {
-                        SocioAccionistaActual = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
-                        AccionistasCUITtextField.setText(SocioAccionistaActual.getCuit());
-                        AccionCUITtextField.setText(SocioAccionistaActual.getCuit());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
-                    try {
-                        SocioAccionistaActual = socioController.getSocioProtector(AccionistasCUITtextField.getText());
-                        AccionistasCUITtextField.setText(SocioAccionistaActual.getCuit());
-                        AccionCUITtextField.setText(SocioAccionistaActual.getCuit());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
+                SocioController controller;
+                try {
+                    controller = SocioController.getInstance();
+
+
+                    Socio socio = controller.getSocioByCuit(CUITtextField.getText());
+
+                    String cuitAccionista = (String)Accionistaslist.getSelectedValue();
+
+                    Accionista accionista = socio.getAccionista(cuitAccionista);
+
+                    //seteo los texfield de accionostas
+
+                    AccionesRazonSocialtextField.setText(accionista.getRazonSocial());
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-
-                Accionista AccionistaActual = SocioAccionistaActual.getAccionista(Accionistaslist.getSelectedValue().toString());
-                //AccionesRazonSocialtextField.setText(AccionistaActual.getRazonSocial());
-*/
             }
         });
 
@@ -682,7 +669,7 @@ public class FrmNewSocios extends JFrame{
                 }
 
                 try {
-                    socioController.suscribirAcciones(SocioComprador,SocioVendedor,Integer.parseInt(AccionesCantidadtextField.getText()));
+                    socioController.suscribirAcciones(SocioComprador, SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -725,7 +712,7 @@ public class FrmNewSocios extends JFrame{
                 }
 
                 try {
-                    socioController.suscribirAcciones(SocioComprador,SocioVendedor,Integer.parseInt(AccionesCantidadtextField.getText()));
+                    socioController.suscribirAcciones(SocioComprador, SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
@@ -827,7 +814,6 @@ public class FrmNewSocios extends JFrame{
             }
         });
     }
-
 
 
     private void createUIComponents() {

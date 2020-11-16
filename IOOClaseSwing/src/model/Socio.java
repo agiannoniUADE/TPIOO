@@ -122,6 +122,10 @@ public class Socio {
 
     private List<Accionista> accionistas;
 
+    public List<DocumentoRegistro> getDocumentosRegistro() {
+        return documentosRegistro;
+    }
+
     private List<DocumentoRegistro> documentosRegistro;
 
     public void agregarDocumento(DocumentoRegistro obj) {
