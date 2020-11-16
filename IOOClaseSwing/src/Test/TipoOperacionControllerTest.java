@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class TipoOperacionControllerTest {
 
-    TipoOperacionController target = new TipoOperacionController();
+    TipoOperacionController target;
 
     public TipoOperacionControllerTest() throws Exception {
     }
@@ -22,6 +22,7 @@ public class TipoOperacionControllerTest {
     @Test
     public void AgregarTipoOperacion() throws Exception {
 
+        target = TipoOperacionController.getInstance();
         TipoOperacion t = new TipoOperacion();
 
         t.setId(1);
@@ -79,7 +80,7 @@ public class TipoOperacionControllerTest {
 
     @Test
     public void AgregarSubTipoOperacion() throws Exception {
-
+        target = TipoOperacionController.getInstance();
         TipoOperacion t = new TipoOperacion();
         t.setId(1);
         t.setDescripcion("tipo 1");
@@ -141,7 +142,8 @@ public class TipoOperacionControllerTest {
 
     @Test
     public void GetComision() throws Exception {
-        float value = target.getComsionPorTipo(1);
+        target = TipoOperacionController.getInstance();
+        float value = target.getComsionPorTipo(1,"23-9999999-1");
         assertNotNull(value);
     }
 }

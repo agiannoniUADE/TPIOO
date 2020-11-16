@@ -1,5 +1,7 @@
 package utils;
 
+import model.Accionista;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;

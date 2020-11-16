@@ -41,7 +41,7 @@ public class Tipo1 extends Operacion {
         if (tasaDeDescuento != 0) {
             return monto - (monto * tasaDeDescuento);
         }
-        return 0;
+        return monto;
     }
 
     public float getTasaDeDescuento() {

@@ -38,7 +38,7 @@ public class ConsultasGenerales extends JFrame {
     public ConsultasGenerales() throws Exception {
         //ImageIcon frameIcon = new ImageIcon("C:\\Users\\Albondigor\\Desktop\\Nullicon.png");
         //this.setIconImage(frameIcon.getImage());
-        operacionController = new OperacionController();
+        operacionController = OperacionController.getInstance();
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {

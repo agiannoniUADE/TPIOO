@@ -23,7 +23,7 @@ public class FrmAgregarSocio extends JDialog{
   private JTextField emailTextField;
   private JTextField tamañoEmpresaTextField;
   private JButton guardarButton;
-  private SocioController socioController = new SocioController();
+  private SocioController socioController = SocioController.getInstance();
 
   public FrmAgregarSocio(Window owner) throws Exception {
     super(owner, "");

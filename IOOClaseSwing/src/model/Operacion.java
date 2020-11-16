@@ -13,7 +13,7 @@ public class Operacion {
 
     public Operacion(float monto, LocalDate fechaIngreso, LocalDate fechaVencimiento, SubtipoOperacion subtipoOperacion) throws Exception {
 
-        if(monto <= 0){
+        if (monto <= 0) {
             throw new Exception("El monto de la operacion no puede ser negativo");
         }
         this.monto = monto;
@@ -32,6 +32,7 @@ public class Operacion {
     protected SocioParticipe socioParticipe;
     protected SubtipoOperacion subtipoOperacion;
     protected Comision comision;
+    protected Desembolso desembolso;
 
     public void setSocioParticipe(SocioParticipe socioParticipe) {
         this.socioParticipe = socioParticipe;
@@ -105,10 +106,24 @@ public class Operacion {
         this.comision = comision;
     }
 
+    public Desembolso getDesembolso() {
+        return desembolso;
+    }
+
+    public void setDesembolso(Desembolso desembolso) {
+        this.desembolso = desembolso;
+    }
+
+    public boolean estaEnMora() {
+        return fechaVencimiento.compareTo(LocalDate.now()) < 0 && desembolso != null;
+    }
+
+    public float getMora() {
+        return estaEnMora() ? this.monto : 0;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
         Operacion operacion = (Operacion) o;
         return id == operacion.id;
     }

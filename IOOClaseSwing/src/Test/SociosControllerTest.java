@@ -1,5 +1,6 @@
 package Test;
 
+import Controllers.OperacionController;
 import Controllers.SocioController;
 import Controllers.TipoOperacionController;
 import model.*;
@@ -12,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SociosControllerTest {
 
-    SocioController target = new SocioController();
-    TipoOperacionController tipoOperacionController = new TipoOperacionController();
+    SocioController target = SocioController.getInstance();
+    TipoOperacionController tipoOperacionController;
 
     public SociosControllerTest() throws Exception {
     }
@@ -47,7 +48,16 @@ public class SociosControllerTest {
     }
 
     @Test
+    void ChangeStatus_Success() throws Exception {
+
+
+        target.cambiarEstadoSocio("1234");
+    }
+
+    @Test
     void UpdateSocio_Success() throws Exception {
+
+
 
         int id = insertSocio();
         String cuit = "202020";
@@ -77,7 +87,9 @@ public class SociosControllerTest {
     }
 
     private int insertSocio() throws Exception {
-        String cuit = "20-555555-2";
+
+        TipoOperacionController tipoOperacionController = TipoOperacionController.getInstance();
+        String cuit = "20-1000-2";
         String razonSocial = "Lavadero SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
@@ -116,7 +128,7 @@ public class SociosControllerTest {
 
         nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
-        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(3);
+        TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 
         LineaDeCredito lineaDeCredito = new LineaDeCredito(LocalDate.of(2021,12,12), 70000, tipoOperacion);
         nuevoSocio.setLineaDeCredito(lineaDeCredito);

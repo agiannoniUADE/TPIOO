@@ -4,6 +4,7 @@ import DAO.SGRDao;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
+import utils.Logger;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -11,11 +12,23 @@ import java.util.List;
 
 public class SGRController {
 
-    SGRDao dao = new SGRDao();
-    SocioProtectorDao sociosProtectorDao = new SocioProtectorDao();
-    SocioParticipeDao sociosParticipeDao = new SocioParticipeDao();
+    SGRDao dao;
+    SocioProtectorDao sociosProtectorDao;
+    SocioParticipeDao sociosParticipeDao;
 
-    public SGRController() throws Exception {
+    static SGRController instance;
+
+    public static SGRController getInstance() throws Exception {
+        if (instance == null) {
+            instance= new SGRController();
+        }
+        return instance;
+    }
+
+    private SGRController() throws Exception {
+        sociosProtectorDao = new SocioProtectorDao();
+        sociosParticipeDao = new SocioParticipeDao();
+        dao = new SGRDao();
     }
 
     //Se creo para instanciar la SGR, NO borrar!!
@@ -24,7 +37,8 @@ public class SGRController {
     }
 
 
-    public SGR GetSGR() throws Exception {
+
+    public  SGR GetSGR() throws Exception {
         SGR sgr = (SGR) dao.search(1);
         List<Socio> sociosProtectores = (List<Socio>) sociosProtectorDao.getAll();
         List<Socio> sociosParticipes = (List<Socio>) sociosParticipeDao.getAll();

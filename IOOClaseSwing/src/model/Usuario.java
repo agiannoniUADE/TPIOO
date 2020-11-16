@@ -1,23 +1,39 @@
 package model;
 
+
+import java.util.List;
+import java.util.Objects;
+
 public class Usuario {
 
-    public Usuario(String usuario, String password) {
-        this.usuario = usuario;
+
+    public Usuario(String nombre, String password) {
+
+        this.nombre = nombre;
         this.password = password;
     }
 
-    private String usuario;
+    private String nombre;
 
     private String password;
 
+    private int id;
 
-    public String getUsuario() {
-        return usuario;
+    public int getId() {
+        return id;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getPassword() {
@@ -26,5 +42,21 @@ public class Usuario {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public static String loggedUser;
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return id == usuario.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

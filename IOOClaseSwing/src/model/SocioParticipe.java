@@ -22,7 +22,6 @@ public class SocioParticipe extends Socio {
         super(cuit, tipoSocio, razonSocial, fechaInicioActividad, actividadPrincipal, direccion, telefono, email, tamanioEmpresa, accionistas, documentos);
     }
 
-
     private LineaDeCredito lineaDeCredito;
 
     private List<Contragarantia> contragarantias;
@@ -62,28 +61,6 @@ public class SocioParticipe extends Socio {
 
     public void addContragarantia(Contragarantia obj) {
         this.contragarantias.add(obj);
-    }
-
-    /**
-     *
-     */
-    public void getRiesgo() {
-        // TODO implement here
-    }
-
-
-    /**
-     * @param id
-     */
-    public void getOperacion(int id) {
-        // TODO implement here
-    }
-
-    /**
-     * @param tipoOperacionId
-     */
-    public void getComisionPreferencial(int tipoOperacionId) {
-        // TODO implement here
     }
 
     /**
