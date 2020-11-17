@@ -602,6 +602,9 @@ public class FrmNewSocios extends JFrame {
                     //seteo los texfield de accionostas
 
                     AccionesRazonSocialtextField.setText(accionista.getRazonSocial());
+                    AccionesTipoSocio.setText(socio.getTipoSocio().toString());
+                   // AccionesPorcentaje.setText(accionista.getPorcentaje().toString());
+                    AccionistasCUITtextField.setText(accionista.getCuit();
 
                 } catch (Exception e) {
                     e.printStackTrace();
