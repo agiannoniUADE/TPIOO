@@ -51,7 +51,7 @@ public class SociosControllerTest {
     void ChangeStatus_Success() throws Exception {
 
 
-        target.cambiarEstadoSocio("1234");
+        target.cambiarEstadoSocio("1212");
     }
 
     @Test
@@ -86,10 +86,25 @@ public class SociosControllerTest {
         target.delete(id);
     }
 
+    @Test
+    void ChangeStatusDoc_Success() throws Exception {
+
+
+        target.cambioEstadoDocumentoOk("1212", "Documento 1");
+    }
+
+    @Test
+    void ChangeStatusDocRechazo_Success() throws Exception {
+
+
+        target.cambioEstadoDocumentoRechazado("1212", "Documento 2");
+    }
+
+
     private int insertSocio() throws Exception {
 
         TipoOperacionController tipoOperacionController = TipoOperacionController.getInstance();
-        String cuit = "20-1000-2";
+        String cuit = "1212";
         String razonSocial = "Lavadero SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
@@ -124,9 +139,9 @@ public class SociosControllerTest {
         nuevoSocio.agregarAccionista(accionista2);
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
-        nuevoSocio.setAccion(200);
+        nuevoSocio.setAcciones(200);
 
-        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
+        nuevoSocio.setEstado(EstadoSocio.POSTULANTE_A_SOCIO);
 
         TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 
