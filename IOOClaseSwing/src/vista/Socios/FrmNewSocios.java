@@ -32,7 +32,6 @@ public class FrmNewSocios extends JFrame {
     private JButton confirmarButton;
     private JButton cancelarButton;
     private JLabel IDDescrLabel;
-    private JLabel IDLabel;
     private JLabel EstadoDescrLabel;
     private JButton suscribirButton;
     private JButton retirarButton;
@@ -604,7 +603,7 @@ public class FrmNewSocios extends JFrame {
                     AccionesRazonSocialtextField.setText(accionista.getRazonSocial());
                     AccionesTipoSocio.setText(socio.getTipoSocio().toString());
                    // AccionesPorcentaje.setText(accionista.getPorcentaje().toString());
-                    AccionistasCUITtextField.setText(accionista.getCuit();
+                    AccionistasCUITtextField.setText(accionista.getCuit());
 
                 } catch (Exception e) {
                     e.printStackTrace();
