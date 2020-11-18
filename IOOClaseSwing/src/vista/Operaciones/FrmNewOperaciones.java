@@ -9,6 +9,8 @@ import utils.MiListaModel;
 import vista.State;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -36,7 +38,6 @@ public class FrmNewOperaciones extends JFrame {
     private JTextField FechaDeAcreditaciontextField;
     private JComboBox CantidadCuotascomboBox;
     private JTextField SistemadeAmortizaciontextField;
-    private JList list1;
     private JButton agregarButton;
     private JButton borrarButton;
     private JComboBox TipoDeOperacioncomboBox;
@@ -108,6 +109,7 @@ public class FrmNewOperaciones extends JFrame {
                         Tipo = 1;
                         //Tipo1 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo1 operacionBuscadaTipoAdecuado = (Tipo1)operacionBuscada;
+                        IDLabel.setText(String.valueOf(operacionBuscada.getId()));
                         CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
                         EstadotextField.setText(operacionBuscada.getEstado().toString());
                         MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
@@ -123,10 +125,22 @@ public class FrmNewOperaciones extends JFrame {
                         Tipo2Label.setVisible(false);
                         Tipo3Secc.setVisible(false);
                         Tipo3Label.setVisible(false);
+                    if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
+                        CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                        CertificadotextField.setEnabled(false);
+                        CertificadoagregarButton.setEnabled(false);
+                        CertificadosacarButton.setEnabled(true);
+                    } else {
+                        CertificadotextField.setText("");
+                        CertificadotextField.setEnabled(true);
+                        CertificadoagregarButton.setEnabled(true);
+                        CertificadosacarButton.setEnabled(false);
+                    }
                     } else if (id == 2 ) {
                         Tipo = 2;
                         //Tipo2 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo2 operacionBuscadaTipoAdecuado = (Tipo2)operacionBuscada;
+                        IDLabel.setText(String.valueOf(operacionBuscada.getId()));
                         CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
                         EstadotextField.setText(operacionBuscada.getEstado().toString());
                         MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
@@ -139,10 +153,22 @@ public class FrmNewOperaciones extends JFrame {
                         Tipo2Label.setVisible(true);
                         Tipo3Secc.setVisible(false);
                         Tipo3Label.setVisible(false);
+                    if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
+                        CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                        CertificadotextField.setEnabled(false);
+                        CertificadoagregarButton.setVisible(false);
+                        CertificadosacarButton.setVisible(true);
+                    } else {
+                        CertificadotextField.setText("");
+                        CertificadotextField.setEnabled(true);
+                        CertificadoagregarButton.setVisible(true);
+                        CertificadosacarButton.setVisible(false);
+                    }
                     } else if (id == 3) {
                         Tipo = 3;
                         //Tipo3 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo3 operacionBuscadaTipoAdecuado = (Tipo3)operacionBuscada;
+                        IDLabel.setText(String.valueOf(operacionBuscada.getId()));
                         CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
                         EstadotextField.setText(operacionBuscada.getEstado().toString());
                         MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
@@ -155,6 +181,17 @@ public class FrmNewOperaciones extends JFrame {
                         Tipo2Label.setVisible(false);
                         Tipo3Secc.setVisible(true);
                         Tipo3Label.setVisible(true);
+                        if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
+                            CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                            CertificadotextField.setEnabled(false);
+                            CertificadoagregarButton.setVisible(false);
+                            CertificadosacarButton.setVisible(true);
+                        } else {
+                            CertificadotextField.setText("");
+                            CertificadotextField.setEnabled(true);
+                            CertificadoagregarButton.setVisible(true);
+                            CertificadosacarButton.setVisible(false);
+                        }
                     }
 
                     /*
@@ -325,6 +362,117 @@ public class FrmNewOperaciones extends JFrame {
                 CertificadoLabel.setVisible(true);
                 EstadoLabel.setVisible(true);
                 BuscarIzqtextField.setText("");
+            }
+        });
+
+        OperacionesList.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                    OperacionController controller;
+                    try {
+                        String TmpString = (String) OperacionesList.getSelectedValue();
+                        int idoperacion = Integer.parseInt(TmpString);
+                        controller = OperacionController.getInstance();
+                        Operacion operacionBuscada = controller.getOperacionSafely(idoperacion);
+
+                        int Tipo = 0;
+                        int id = operacionBuscada.getSubtipoOperacion().getTipoOperacion().getId();
+
+                        if (id == 1) {
+                            Tipo = 1;
+                            //Tipo1 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                            Tipo1 operacionBuscadaTipoAdecuado = (Tipo1)operacionBuscada;
+                            IDLabel.setText(String.valueOf(operacionBuscada.getId()));
+                            CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
+                            EstadotextField.setText(operacionBuscada.getEstado().toString());
+                            MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
+                            FechatextField.setText(operacionBuscada.getFecha().toString());
+                            FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
+                            TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+                            // CUITFirmantetextField.setText(operacionController.get);
+                            // FechadeCobrotextField.setText();
+                            // TasaDeDescuentotextField.setText();
+                            Tipo1Secc.setVisible(true);
+                            Tipo1Label.setVisible(true);
+                            Tipo2Secc.setVisible(false);
+                            Tipo2Label.setVisible(false);
+                            Tipo3Secc.setVisible(false);
+                            Tipo3Label.setVisible(false);
+                        } else if (id == 2 ) {
+                            Tipo = 2;
+                            //Tipo2 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                            Tipo2 operacionBuscadaTipoAdecuado = (Tipo2)operacionBuscada;
+                            IDLabel.setText(String.valueOf(operacionBuscada.getId()));
+                            CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
+                            EstadotextField.setText(operacionBuscada.getEstado().toString());
+                            MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
+                            FechatextField.setText(operacionBuscada.getFecha().toString());
+                            FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
+                            TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+                            Tipo1Secc.setVisible(false);
+                            Tipo1Label.setVisible(false);
+                            Tipo2Secc.setVisible(true);
+                            Tipo2Label.setVisible(true);
+                            Tipo3Secc.setVisible(false);
+                            Tipo3Label.setVisible(false);
+                        } else if (id == 3) {
+                            Tipo = 3;
+                            //Tipo3 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                            Tipo3 operacionBuscadaTipoAdecuado = (Tipo3)operacionBuscada;
+                            IDLabel.setText(String.valueOf(operacionBuscada.getId()));
+                            CUITtextField.setText(operacionBuscada.getSocioParticipe().getCuit());
+                            EstadotextField.setText(operacionBuscada.getEstado().toString());
+                            MontotextField.setText(String.valueOf(operacionBuscada.getMonto()));
+                            FechatextField.setText(operacionBuscada.getFecha().toString());
+                            FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
+                            TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+                            Tipo1Secc.setVisible(false);
+                            Tipo1Label.setVisible(false);
+                            Tipo2Secc.setVisible(false);
+                            Tipo2Label.setVisible(false);
+                            Tipo3Secc.setVisible(true);
+                            Tipo3Label.setVisible(true);
+                        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        CertificadoagregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                OperacionController controller;
+
+                try {
+                    controller = OperacionController.getInstance();
+                    Operacion operacionBuscada = controller.getOperacionSafely(Integer.parseInt(IDLabel.getText()));
+                    controller.emitirCertificado(operacionBuscada.getId());
+
+                    /*
+                    int Tipo = 0;
+                    int id = operacionBuscada.getSubtipoOperacion().getTipoOperacion().getId();
+
+                    if (id == 1) {
+                        Tipo = 1;
+                        //Tipo1 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                        Tipo1 operacionBuscadaTipoAdecuado = (Tipo1)operacionBuscada;
+                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                    } else if (id == 2 ) {
+                        Tipo = 2;
+                        //Tipo2 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                        Tipo2 operacionBuscadaTipoAdecuado = (Tipo2)operacionBuscada;
+                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                    } else if (id == 3) {
+                        Tipo = 3;
+                        //Tipo3 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
+                        Tipo3 operacionBuscadaTipoAdecuado = (Tipo3)operacionBuscada;
+                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                    }
+                    */
+
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
     }

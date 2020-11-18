@@ -190,23 +190,6 @@ public class FrmConsultasGenerales extends JFrame {
                 } else if (Selected == 4) {
 
                 }
-
-
-
-/*
-                try {
-                    TipoOperacionController controller = TipoOperacionController.getInstance();
-                    OperacionController controller2 = OperacionController.getInstance();
-
-                    LocalDate Desde = LocalDate.parse(Param2textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                    LocalDate Hasta = LocalDate.parse(Param3textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-
-                    controller2.getOperacionesMonetizadasPorSocio(Integer.parseInt(Param1textField.getText()),Desde,Hasta);
-
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
- */
             }
         });
     }
