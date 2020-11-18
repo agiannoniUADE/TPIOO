@@ -64,6 +64,7 @@ public class FrmNewOperaciones extends JFrame {
     private JLabel FechaLabel;
     private JLabel CertificadoLabelDesc;
     private JTextField CantidadCuotastextField;
+    private JButton monetizarButton;
     private OperacionController operacionController;
     private TipoOperacionController tipoController;
     private FrmNewOperaciones self;
@@ -205,6 +206,11 @@ public class FrmNewOperaciones extends JFrame {
                             CertificadoagregarButton.setVisible(true);
                             CertificadosacarButton.setVisible(false);
                         }
+                    if (EstadotextField.getText() == "CERTIFICADO_EMITIDO") {
+                        monetizarButton.setVisible(true);
+                    } else {
+                        monetizarButton.setVisible(false);
+                    }
                     }
 
                     /*
@@ -563,6 +569,11 @@ public class FrmNewOperaciones extends JFrame {
                                 CertificadoagregarButton.setVisible(true);
                                 CertificadosacarButton.setVisible(false);
                             }
+                            if (EstadotextField.getText() == "CERTIFICADO_EMITIDO") {
+                                monetizarButton.setVisible(true);
+                            } else {
+                                monetizarButton.setVisible(false);
+                            }
                         }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -573,13 +584,13 @@ public class FrmNewOperaciones extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 OperacionController controller;
+                SocioController controller2;
 
                 try {
                     controller = OperacionController.getInstance();
+                    controller2 = SocioController.getInstance();
                     Operacion operacionBuscada = controller.getOperacionSafely(Integer.parseInt(IDLabel.getText()));
-                    controller.emitirCertificado(operacionBuscada.getId());
 
-                    /*
                     int Tipo = 0;
                     int id = operacionBuscada.getSubtipoOperacion().getTipoOperacion().getId();
 
@@ -587,19 +598,36 @@ public class FrmNewOperaciones extends JFrame {
                         Tipo = 1;
                         //Tipo1 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo1 operacionBuscadaTipoAdecuado = (Tipo1)operacionBuscada;
-                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                        controller.emitirCertificado(operacionBuscada.getId());
+                        if (operacionBuscada.getEstado().toString() == "CERTIFICADO_EMITIDO") {
+                            CertificadoLabel.setVisible(false);
+                            CertificadoLabelDesc.setVisible(false);
+                            CertificadoagregarButton.setVisible(false);
+                            CertificadosacarButton.setVisible(false);
+                        }
                     } else if (id == 2 ) {
                         Tipo = 2;
                         //Tipo2 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo2 operacionBuscadaTipoAdecuado = (Tipo2)operacionBuscada;
-                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                        controller.emitirCertificado(operacionBuscada.getId());
+                        if (operacionBuscada.getEstado().toString() == "CERTIFICADO_EMITIDO") {
+                            CertificadoLabel.setVisible(false);
+                            CertificadoLabelDesc.setVisible(false);
+                            CertificadoagregarButton.setVisible(false);
+                            CertificadosacarButton.setVisible(false);
+                        }
                     } else if (id == 3) {
                         Tipo = 3;
                         //Tipo3 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
                         Tipo3 operacionBuscadaTipoAdecuado = (Tipo3)operacionBuscada;
-                        controller.emitirCertificado(operacionBuscadaTipoAdecuado.getId());
+                        controller.emitirCertificado(operacionBuscada.getId());
+                        if (operacionBuscada.getEstado().toString() == "CERTIFICADO_EMITIDO") {
+                            CertificadoLabel.setVisible(false);
+                            CertificadoLabelDesc.setVisible(false);
+                            CertificadoagregarButton.setVisible(false);
+                            CertificadosacarButton.setVisible(false);
+                        }
                     }
-                    */
 
                 } catch (Exception exception) {
                     exception.printStackTrace();
@@ -610,6 +638,22 @@ public class FrmNewOperaciones extends JFrame {
 
                 }
             });
+        monetizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (EstadotextField.getText() == "CERTIFICADO_EMITIDO") {
+                    OperacionController controller;
+
+                    try {
+                        controller = OperacionController.getInstance();
+                        controller.pasarAMonetizada(Integer.parseInt(IDLabel.getText()));
+                        monetizarButton.setVisible(false);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
+                }
+            }
+        });
     }
 
 }
