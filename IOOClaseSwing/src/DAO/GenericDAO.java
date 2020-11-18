@@ -26,7 +26,7 @@ public abstract class GenericDAO<T> {
 
         try {
 
-            while ((line = b.readLine()) != null) {
+            while ((line = b.readLine()) != null && !line.equals("")) {
                 JsonParser parser = new JsonParser();
                 JsonObject jsonObject = parser.parse(line).getAsJsonObject();
                 list.add(g.fromJson(jsonObject, clase));

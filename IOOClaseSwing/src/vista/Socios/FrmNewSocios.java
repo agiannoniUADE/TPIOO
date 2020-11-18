@@ -1,8 +1,12 @@
 package vista.Socios;
 
+import Controllers.SGRController;
 import Controllers.SocioController;
+import DAO.GenericDAO;
+//import com.sun.javafx.css.ParsedValueImpl;
 import model.*;
 import utils.MiListaModel;
+import vista.FrmPrincipal;
 import vista.State;
 
 import javax.swing.*;
@@ -10,8 +14,12 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrmNewSocios extends JFrame {
     private JTextField BuscartextField;
@@ -60,8 +68,6 @@ public class FrmNewSocios extends JFrame {
     private JButton contragarantiasButton;
     private JPanel SocioABM;
     private JPanel ContragarantiasSecc;
-    private JTextField ContragarantiasIDtextField;
-    private JTextField ContragarantiasTipotextField;
     private JTextField ContragarantiasMontotextField;
     private JPanel IzqPanel;
     private JPanel seccABM;
@@ -81,7 +87,7 @@ public class FrmNewSocios extends JFrame {
     private JButton AporteRetirarButton;
     private JPanel AportesABM;
     private JPanel AportesPane;
-    private JButton accionistasButton;
+    private JButton accionesButton1;
     private JTextField AccionistasIDtextField;
     private JTextField AccionistasCUITtextField;
     private JTextField AccionesRazonSocialtextField;
@@ -100,14 +106,23 @@ public class FrmNewSocios extends JFrame {
     private JRadioButton DocumentoObligatorioRadioButton;
     private JLabel DocumentosIDLabel;
     private JComboBox DocumentosTipocomboBox;
-    private JLabel DocumentoEstadoActualLabel;
-    private JTextField DocumentoEstadoDeseadotextField;
     private JTable Accionistastable;
+    private JLabel accionesTextField;
+    private JTextField cantidadTextField;
+    private JTextField porcentajeTextField;
+    private JTextPane textPane1;
+    private JLabel documentoEstadoLabel;
+    private JButton agregarButton2;
+    private JLabel lineaLabel;
+    private JComboBox contragarantiasTipoComboBox;
+    private JCheckBox RetiradoCheck;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
-    private MiListaModel AccionistasModelo = new MiListaModel();
-    private MiListaModel DocumentosModelo = new MiListaModel();
+    private MiListaModel AccionistasModelo;
+    private MiListaModel DocumentosModelo;
+    private MiListaModel contragarantiasModelo;
+    private MiListaModel AportesModelo;
 
     private static Socio getSocioFrmfunc(String TipoDeSocio, String CUIT, SocioController Controller) {
 
@@ -163,9 +178,18 @@ public class FrmNewSocios extends JFrame {
         }
         this.self = this;
         this.setContentPane(PrincipalPanel);
-        this.setSize(1200, 1000);
+        this.setSize(1200, 1400);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
+
+        //Seteo la vista socio protector por defecto
+
+        ContragarantiasSecc.setVisible(true);
+        Contragarantiaslist.setVisible(true);
+        AportesSecc.setVisible(false);
+        Aporteslist.setVisible(false);
+        contragarantiasButton.setVisible(true);
+        aportesButton.setVisible(false);
 
         editarButton.addActionListener(new ActionListener() {
             @Override
@@ -220,6 +244,7 @@ public class FrmNewSocios extends JFrame {
                     DirecciontextField.setText("");
                     TelefonotextField.setText("");
                     EmailtextField.setText("");
+                    lineaLabel.setText("");
 
                 }
             }
@@ -337,6 +362,12 @@ public class FrmNewSocios extends JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                AccionistasModelo = new MiListaModel();
+                DocumentosModelo = new MiListaModel();
+                contragarantiasModelo = new MiListaModel();
+
+
                 try {
                     Socio s = new Socio();
 
@@ -355,34 +386,52 @@ public class FrmNewSocios extends JFrame {
                     DirecciontextField.setText(s.getDireccion());
                     TelefonotextField.setText(s.getTelefono());
                     EmailtextField.setText(s.getEmail());
+                    accionesTextField.setText(String.valueOf(s.getAccion()));
                     EstadoDescrLabel.setText(s.getEstado().toString());
                     SocioTipoDescrLabel.setText(s.getTipoSocio().toString());
                     State.standby();
 
+                    List<Accionista> lista = new ArrayList<>();
+                    Accionistaslist.setListData(lista.toArray());
                     Accionistaslist.setListData(s.getAccionistas().toArray());
 
                     if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
-                        LineaDeCreditotextField.setVisible(true);
-                        LineaDeCreditotextField.setEnabled(true);
+                        SocioParticipe participe = socioController.getSocioParticipe(CUITtextField.getText());
+
                         LineaDeCreditoLabel.setVisible(true);
                         LineaDeCreditoLabel.setEnabled(true);
+                        lineaLabel.setVisible(true);
+                        lineaLabel.enable(true);
+                        agregarButton2.setVisible(true);
+                        agregarButton2.setEnabled(true);
+
                         contragarantiasButton.setVisible(true);
                         contragarantiasButton.setEnabled(true);
                         aportesButton.setEnabled(false);
                         aportesButton.setVisible(false);
                         tabbedPane1.setEnabledAt(2, true);
                         tabbedPane1.setEnabledAt(3, false);
+
+                        lineaLabel.setText(participe.getLineaDeCredito().toString());
+
                         try {
-                            Socio socioActual = socioController.getSocioParticipe(CUITtextField.getText());
 
                             Accionistaslist.setModel(AccionistasModelo);
                             Documentoslist.setModel(DocumentosModelo);
+                            Contragarantiaslist.setModel(contragarantiasModelo);
 
-                            for (Accionista item : socioActual.getAccionistas()) {
+                            for (Accionista item : participe.getAccionistas()) {
                                 AccionistasModelo.add(item.getCuit());
                             }
 
-                            for (DocumentoRegistro item : socioActual.getDocumentosRegistro()) {
+                            if (participe.getTipoSocio() == TipoSocio.PARTICIPE) {
+                                for (Contragarantia item : participe.getContragarantias()) {
+                                    contragarantiasModelo.add(item.toString());
+                                }
+                            }
+
+
+                            for (DocumentoRegistro item : participe.getDocumentosRegistro()) {
                                 DocumentosModelo.add(item.getNombre());
                             }
 
@@ -391,10 +440,13 @@ public class FrmNewSocios extends JFrame {
                         }
 
                     } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
-                        LineaDeCreditotextField.setVisible(false);
-                        LineaDeCreditotextField.setEnabled(false);
+
                         LineaDeCreditoLabel.setVisible(false);
                         LineaDeCreditoLabel.setEnabled(false);
+                        lineaLabel.setVisible(false);
+                        lineaLabel.enable(false);
+                        agregarButton2.setVisible(false);
+                        agregarButton2.setEnabled(false);
                         contragarantiasButton.setVisible(false);
                         contragarantiasButton.setEnabled(false);
                         aportesButton.setEnabled(true);
@@ -412,6 +464,16 @@ public class FrmNewSocios extends JFrame {
                             for (DocumentoRegistro item : SocioActual.getDocumentosRegistro()) {
                                 DocumentosModelo.add(item.getNombre());
                             }
+
+                            SGRController sgrController = SGRController.getInstance();
+
+                            AportesModelo = new MiListaModel();
+
+                            for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                                AportesModelo.add(String.valueOf(item.getMonto()));
+                            }
+
+                            Aporteslist.setModel(AportesModelo);
 
                         } catch (Exception k) {
                             k.printStackTrace();
@@ -486,12 +548,7 @@ public class FrmNewSocios extends JFrame {
 
             }
         });
-        retirarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //
-            }
-        });
+
         accionesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -556,9 +613,10 @@ public class FrmNewSocios extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String cuit = AccionistasCUITtextField.getText();
+                String cuit = AccionCUITtextField.getText();
                 String razonSocial = AccionesRazonSocialtextField.getText();
-                int porcentaje = 0; //Integer.parseInt(AccionistasPorcentajetextField.getText());
+                float porcentaje = Float.parseFloat(porcentajeTextField.getText());
+
 
                 Accionista nuevoAccionista = new Accionista(
                     cuit,
@@ -582,8 +640,26 @@ public class FrmNewSocios extends JFrame {
                 }
 
 
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
             }
+
         });
+
 
         Accionistaslist.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -595,13 +671,15 @@ public class FrmNewSocios extends JFrame {
 
                     Socio socio = controller.getSocioByCuit(CUITtextField.getText());
 
-                    String cuitAccionista = (String)Accionistaslist.getSelectedValue();
+                    String cuitAccionista = (String) Accionistaslist.getSelectedValue();
 
                     Accionista accionista = socio.getAccionista(cuitAccionista);
 
                     //seteo los texfield de accionostas
 
+                    AccionCUITtextField.setText(cuitAccionista);
                     AccionesRazonSocialtextField.setText(accionista.getRazonSocial());
+                    porcentajeTextField.setText(String.valueOf(accionista.getPorcentaje()));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -612,72 +690,67 @@ public class FrmNewSocios extends JFrame {
         Documentoslist.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                SocioController controller;
+                try {
+                    controller = SocioController.getInstance();
 
-                Socio SocioDocsActual = new Socio();
-                if (AccionesTipoSocio.getText() == "PARTICIPE") {
-                    try {
-                        SocioDocsActual = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
-                    try {
-                        SocioDocsActual = socioController.getSocioProtector(AccionistasCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
+
+                    Socio socio = controller.getSocioByCuit(CUITtextField.getText());
+
+                    String nombreDocumento = (String) Documentoslist.getSelectedValue();
+
+                    DocumentoRegistro docu = socio.getDocuementosRegistroPorNombre(nombreDocumento);
+                    DocumentosNombretextField.setText(docu.getNombre());
+                    DocumentosUsuariotextField.setText(docu.getUsuario());
+
+                    int indice = 0;
+
+                    if (docu.getTipoDocumento() == TipoDocumento.CONTRATO_SOCIAL)
+                        indice = 0;
+                    else if (docu.getTipoDocumento() == TipoDocumento.MANIFESTACION_BIENES)
+                        indice = 1;
+                    else if (docu.getTipoDocumento() == TipoDocumento.BALANCE_CERTIFICADO)
+                        indice = 2;
+
+                    DocumentosTipocomboBox.setSelectedIndex(indice);
+                    DocumentoObligatorioRadioButton.setSelected(docu.isObligatorio());
+                    documentoEstadoLabel.setText(docu.getEstado().toString());
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                //DocumentoRegistro DocsActual = SocioDocsActual.getDocumentoRegistro();
-                //AccionesRazonSocialtextField.setText(AccionistaActual.getRazonSocial());
-
             }
         });
 
         suscribirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                Socio SocioVendedor = new Socio();
-                if (AccionesTipoSocio.getText() == "PARTICIPE") {
-                    try {
-                        SocioVendedor = socioController.getSocioParticipe(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
-                    try {
-                        SocioVendedor = socioController.getSocioProtector(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                }
-
-                Socio SocioComprador = new Socio();
-                if (SocioTipoDescrLabel.getText() == "PARTICIPE") {
-                    try {
-                        SocioComprador = socioController.getSocioParticipe(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (SocioTipoDescrLabel.getText() == "PROTECTOR") {
-                    try {
-                        SocioComprador = socioController.getSocioProtector(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                }
-
+                Socio socioComprador;
+                Socio socioVendedor;
                 try {
-                    socioController.suscribirAcciones(SocioComprador, SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
-                } catch (Exception exception) {
-                    exception.printStackTrace();
+                    socioComprador = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
+                    if (socioComprador == null) {
+                        socioComprador = socioController.getSocioProtector(Integer.parseInt(IDDescrLabel.getText()));
+                    }
+
+                    socioVendedor = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
+                    if (socioVendedor == null) {
+                        socioVendedor = socioController.getSocioProtector(AccionistasCUITtextField.getText());
+                    }
+
+                    socioController.suscribirAcciones(socioComprador, socioVendedor, Integer.parseInt(cantidadTextField.getText()));
+
+                    setUI(socioComprador.getCuit());
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
+                AccionistasCUITtextField.setText("");
+                cantidadTextField.setText("");
             }
         });
 
 
-        retirarButton.addActionListener(new ActionListener() {
+        /*retirarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -717,20 +790,20 @@ public class FrmNewSocios extends JFrame {
                     exception.printStackTrace();
                 }
             }
-        });
+        });*/
         agregarButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 String nombre = DocumentosNombretextField.getText();
-                String usuario = DocumentosUsuariotextField.getText();
+                String usuario = Usuario.loggedUser;
                 boolean obligatorio = DocumentoObligatorioRadioButton.isSelected();
 
                 DocumentoRegistro DocumentoNuevo = new DocumentoRegistro(
                     nombre,
                     usuario,
                     obligatorio,
-                    TipoDocumento.lookUp(DocumentosTipocomboBox.getSelectedItem().toString())
+                    TipoDocumento.lookUpWithName(DocumentosTipocomboBox.getSelectedItem().toString())
                 );
 
                 Socio SocioDoc = new Socio();
@@ -755,6 +828,21 @@ public class FrmNewSocios extends JFrame {
                     exception.printStackTrace();
                 }
 
+                SocioParticipe participe = null;
+                try {
+                    participe = socioController.getSocioParticipe(CUITtextField.getText());
+                    DocumentosModelo = new MiListaModel();
+                    Documentoslist.setModel(DocumentosModelo);
+
+                    for (DocumentoRegistro item : participe.getDocumentosRegistro()) {
+                        DocumentosModelo.add(item.getNombre());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                documentoEstadoLabel.setText("");
+                DocumentosNombretextField.setText("");
+                DocumentosUsuariotextField.setText("");
             }
         });
         AccionistasborrarButton.addActionListener(new ActionListener() {
@@ -775,13 +863,31 @@ public class FrmNewSocios extends JFrame {
                     }
                 }
 
-                SocioActual.removeAccionista(SocioActual.getAccionista(AccionistasCUITtextField.getText()));
+                SocioActual.removeAccionista(SocioActual.getAccionista(AccionCUITtextField.getText()));
 
                 try {
                     socioController.updateSocio(SocioActual);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
+
 
             }
         });
@@ -810,13 +916,265 @@ public class FrmNewSocios extends JFrame {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
+        cambioDeEstadoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    SocioController controller = SocioController.getInstance();
+                    int input = JOptionPane.showConfirmDialog(null, "Desea aprobar el documento?", "Atencion",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+
+                    if (input == JOptionPane.YES_OPTION) {
+                        controller.cambioEstadoDocumentoOk(CUITtextField.getText(), DocumentosNombretextField.getText());
+                    }
+                    if (input == JOptionPane.YES_NO_CANCEL_OPTION) {
+                        controller.cambioEstadoDocumentoRechazo(CUITtextField.getText(), DocumentosNombretextField.getText());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        postularseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    SocioController controller = SocioController.getInstance();
+                    controller.cambiarEstadoSocio(CUITtextField.getText());
+                    JOptionPane.showMessageDialog(null, "Socio Actualizado correctamente");
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        agregarButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModalLineaCredito frame;
+
+                try {
+                    frame = new ModalLineaCredito(CUITtextField.getText());
+                    frame.setVisible(true);
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        ContragarantiasagregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String tipo = contragarantiasTipoComboBox.getSelectedItem().toString();
+                float monto = Float.valueOf(ContragarantiasMontotextField.getText());
+
+                try {
+                    socioController = SocioController.getInstance();
+
+                    SocioParticipe participe = socioController.getSocioParticipe(CUITtextField.getText());
+
+                    participe.addContragarantia(new Contragarantia(tipo, monto));
+
+                    socioController.updateSocio(participe);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Agregado correctamente.",
+                        "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    ContragarantiasMontotextField.setText("");
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        Contragarantiaslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                SocioController controller;
+                try {
+                    controller = SocioController.getInstance();
+
+
+                    SocioParticipe socio = controller.getSocioParticipe(CUITtextField.getText());
+
+                    int index = Contragarantiaslist.getSelectedIndex();
+
+
+                    Contragarantia contragarantia = socio.getContragarantias().get(index);
+
+                    ContragarantiasMontotextField.setText(String.valueOf(contragarantia.getMonto()));
+                    contragarantiasTipoComboBox.setSelectedItem(contragarantia.getTipo());
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        TipoDeSociocomboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (TipoDeSociocomboBox.getSelectedItem().toString().equals("Protector")) {
+                    ContragarantiasSecc.setVisible(false);
+                    Contragarantiaslist.setVisible(false);
+                    AportesSecc.setVisible(true);
+                    Aporteslist.setVisible(true);
+                    contragarantiasButton.setVisible(false);
+                    aportesButton.setVisible(true);
+
+                } else {
+                    ContragarantiasSecc.setVisible(true);
+                    Contragarantiaslist.setVisible(true);
+                    AportesSecc.setVisible(false);
+                    Aporteslist.setVisible(false);
+                    contragarantiasButton.setVisible(true);
+                    aportesButton.setVisible(false);
+
+                }
+            }
+        });
+        AporteRealizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float monto = Float.valueOf(AporteMontotextField.getText());
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate fecha = LocalDate.parse(AporteFechaDeIniciotextField.getText(), formato);
+                try {
+                    socioController = SocioController.getInstance();
+                    Aporte aporte = new Aporte();
+                    aporte.setFechaInicio(fecha);
+                    aporte.setSocio(socioController.getSocioProtector(CUITtextField.getText()));
+                    aporte.setRetirado(false);
+                    aporte.setMonto(monto);
+
+                    SGRController sgrController = SGRController.getInstance();
+
+                    sgrController.agregarAporte(aporte);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Aporte agregado correctamente",
+                        "Mensaje",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    AporteMontotextField.setText("");
+                    AporteFechaDeIniciotextField.setText("");
+                    AportesModelo = new MiListaModel();
+
+                    for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                        AportesModelo.add(String.valueOf(item.getMonto()));
+                    }
+
+                    Aporteslist.setModel(AportesModelo);
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        Aporteslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                SGRController sgrController = null;
+                try {
+                    sgrController = SGRController.getInstance();
+
+                    int index = Aporteslist.getSelectedIndex() + 1;
+
+                    Aporte aporte = sgrController.GetSGR().getAporte(index);
+
+                    AporteMontotextField.setText(String.valueOf(aporte.getMonto()));
+                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    AporteFechaDeIniciotextField.setText(aporte.getFechaInicio().format(formato));
+                    RetiradoCheck.setSelected(aporte.FueRetirado());
+                    AporteRetirarButton.setEnabled(!aporte.FueRetirado());
+                    if(aporte.FueRetirado()){
+                        AporteRetirarButton.setToolTipText("No se puede retirar un aporte retirado.");
+                    } else{
+                        AporteRetirarButton.setToolTipText("");
+                    }
+
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        AporteRetirarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SGRController sgrController = null;
+                try {
+                    sgrController = SGRController.getInstance();
+                    int index = Aporteslist.getSelectedIndex() + 1;
+
+                    SGR sgr = sgrController.GetSGR();
+
+                    sgrController.RetirarAportes(index);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Aporte retirado correctamente",
+                        "Mensaje",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    AporteMontotextField.setText("");
+                    AporteFechaDeIniciotextField.setText("");
+                    AportesModelo = new MiListaModel();
+
+                    for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                        AportesModelo.add(String.valueOf(item.getMonto()));
+                    }
+
+                    Aporteslist.setModel(AportesModelo);
+
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null,
+                        e1.getMessage(),
+                        "Mensaje",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+
 
             }
         });
     }
 
+    private void setUI(String cuit) throws Exception {
+        try {
+            SocioController sc = SocioController.getInstance();
+            Socio socio = sc.getSocioByCuit(cuit);
+            if (socio == null) {
+                throw new Exception("El Socio no existe");
+            }
 
-    private void createUIComponents() {
+            IDDescrLabel.setText(BuscartextField.getText());
+            BuscartextField.setText("");
+            CUITtextField.setText(socio.getCuit());
+            RazonSocialtextField.setText(socio.getRazonSocial());
+            FechaDeInicioDeActividadtextField.setText(socio.getFechaInicioActividad().toString());
+            ActividadPrincipaltextField.setText(socio.getActividadPrincipal());
+            DirecciontextField.setText(socio.getDireccion());
+            TelefonotextField.setText(socio.getTelefono());
+            EmailtextField.setText(socio.getEmail());
+            EstadoDescrLabel.setText(socio.getEstado().toString());
+            SocioTipoDescrLabel.setText(socio.getTipoSocio().toString());
+            State.standby();
+            Accionistaslist.setListData(socio.getAccionistas().toArray());
+            accionesTextField.setText(String.valueOf(socio.getAccion()));
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void setIU(Socio socio) {
         // TODO: place custom component creation code here
     }
 }

@@ -5,15 +5,12 @@ import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
 import utils.Logger;
+import java.util.ArrayList;
 
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Dictionary;
-import java.util.Hashtable;
-import java.util.List;
-
-
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class SocioController {
 
@@ -45,12 +42,13 @@ public class SocioController {
                 throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
             }
         }
-        int lastId = dao.getLastInsertId();
+        int lastId = getLastSocioId();
         lastId++;
         socio.setId(lastId);
         dao.save(socio);
         return lastId;
     }
+
 
     /**
      * @param id
@@ -112,7 +110,7 @@ public class SocioController {
     /**
      * @param socioId
      */
-    public int getMoraPorSocio(int socioId) throws Exception {
+    public double getMoraPorSocio(int socioId) throws Exception {
         // TODO implement here
         SocioController socio = SocioController.getInstance();
         Socio s = socio.getSocioById(socioId);
@@ -127,24 +125,27 @@ public class SocioController {
             }
             if (s.getEstado() == EstadoSocio.SOCIO_PLENO) {
                 OperacionController operaciones = OperacionController.getInstance();
+
+
+                double totalMora = (double) operaciones.getOperacionPorSocio(socioId)
+                    .stream()
+                    .filter(x -> x.estaEnMora() == true)
+                    .map(x -> ((Operacion) x).getMonto())
+                    .collect(Collectors.summingDouble(Float::doubleValue));
+
+                /*
                 List listaOperaciones = operaciones.getOperacionPorSocio(s.getId());
-
-
                 for (int i = 0; i <= listaOperaciones.size(); i++) {
-                    Operacion operacion = (Operacion) listaOperaciones.get(i);
-
-
-                    if (operacion.estaEnMora()) {
-                        suma += operacion.getMonto();
-                    }
-                }
-
-
+                    Operacion oper =  (Operacion) listaOperaciones.get(i);
+                    if (oper.estaEnMora()) {
+                        suma += oper.getMonto();
+                    }*/
+                return totalMora;
             }
+
+
         }
-
-        return suma;
-
+        return 0;
     }
 
 
@@ -168,7 +169,7 @@ public class SocioController {
      * @param socioId
      * @param fecha
      */
-    public int  getMoraPorSocioPorFecha(int socioId, LocalDate fecha) throws Exception {
+    public int getMoraPorSocioPorFecha(int socioId, LocalDate fecha) throws Exception {
         // TODO implement here
         SocioController socio = SocioController.getInstance();
         Socio s = socio.getSocioById(socioId);
@@ -252,7 +253,7 @@ public class SocioController {
         for (Object item : dao.getAll()) {
             socio = (Socio) item;
             if (socio.getAccion() > 1)
-                ((Hashtable<String, Integer>) dic).put(socio.getCuit(), Integer.valueOf(socio.getAcciones()));
+                ((Hashtable<String, Integer>) dic).put(socio.getCuit(), Integer.valueOf(socio.getAccion()));
         }
         return dic;
     }
@@ -268,11 +269,11 @@ public class SocioController {
 
         dao = vendedor.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
 
-        int accionesNuevas = comprador.getAcciones() + cantidad;
-        int restaAciones = vendedor.getAcciones() - cantidad;
+        int accionesNuevas = comprador.getAccion() + cantidad;
+        int restaAciones = vendedor.getAccion() - cantidad;
         comprador.setAccion(accionesNuevas);
         vendedor.setAccion(restaAciones);
-        comprador.setEstado(EstadoSocio.SOCIO_PLENO);
+        //comprador.setEstado(EstadoSocio.SOCIO_PLENO);
 
         dao.update(comprador);
         dao.update(vendedor);
@@ -297,57 +298,50 @@ public class SocioController {
     }
 
 
-    public void cambioEstadoDocumentoOk (String cuit, String doc) throws Exception {
+    public void cambioEstadoDocumentoOk(String cuit, String doc) throws Exception {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
-
         List docs = socio.getDocumentosRegistro();
-        if (socio == null){
-            throw  new  Exception("El Socio no existe");
+        if (socio == null) {
+            throw new Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.getDocumentoRegistro(i).getNombre())){
-                if(socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+        for (int i = 0; i <= docs.size(); i++) {
+            if (doc.equals(socio.getDocumentoRegistro(i).getNombre())) {
+                if (socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
                     socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
                     dao.update(socio);
                     break;
                 }
             }
         }
-
         Logger logger = Logger.getInstance();
-        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), socio.getCuit());
+        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), Usuario.loggedUser);
+    }
 
-        }
-
-    public void cambioEstadoDocumentoRechazo (String cuit, String doc) throws Exception {
+    public void cambioEstadoDocumentoRechazo(String cuit, String doc) throws Exception {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
-
         List docs = socio.getDocumentosRegistro();
-        if (socio == null){
-            throw  new  Exception("El Socio no existe");
+        if (socio == null) {
+            throw new Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.getDocumentoRegistro(i).getNombre())){
-                if(socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
-                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
+        for (int i = 0; i <= docs.size(); i++) {
+            if (doc.equals(socio.getDocumentoRegistro(i).getNombre())) {
+                if (socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.RECHAZADO);
                     dao.update(socio);
                     break;
                 }
             }
         }
-
         Logger logger = Logger.getInstance();
-        logger.log(socio.getId(), TipoLog.DOCUMENTOS,EstadoDocumentoRegistro.INGRESADO.toString(),EstadoDocumentoRegistro.RECHAZADO.toString(),LocalDate.now(),"usuario1");
-
+        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.RECHAZADO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
 
     public void cambiarEstadoSocio(String cuit) throws Exception {
-
 
         SocioController sc = SocioController.getInstance();
 
@@ -364,7 +358,7 @@ public class SocioController {
         if (socio.getEstado() == EstadoSocio.SOCIO_PLENO) {
             throw new Exception("Un Socio Pleno no puede cambiar su estado a postulante");
         }
-        if (socio.getAcciones() <= 0) {
+        if (socio.getAccion() <= 0) {
             throw new Exception("El socio no tiene acciones, suscriba acciones y vuelva a intentarlo");
         }
         if (socio.getEstado() == EstadoSocio.POSTULANTE_A_SOCIO) {
@@ -375,8 +369,13 @@ public class SocioController {
 
         Logger logger = Logger.getInstance();
 
-        logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), socio.getCuit());
+        logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), Usuario.loggedUser);
+    }
 
+    private int getLastSocioId() throws Exception {
+        int a = socioParticipeDao.getLastInsertId();
+        int b = socioProtectorDao.getLastInsertId();
 
+        return a > b ? a : b;
     }
 }

@@ -1,0 +1,8 @@
+{"id":1,"idEntidad":2,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1212"}
+{"id":2,"idEntidad":2,"estadoAnterior":"INGRESADO","estadoActual":"RECHAZADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1212"}
+{"id":3,"idEntidad":2,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1212"}
+{"id":4,"idEntidad":2,"estadoAnterior":"INGRESADO","estadoActual":"RECHAZADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1212"}
+{"id":5,"idEntidad":1,"estadoAnterior":"POSTULANTE_A_SOCIO","estadoActual":"SOCIO_PLENO","tipoLog":"SOCIOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"11"}
+{"id":6,"idEntidad":1,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1"}
+{"id":7,"idEntidad":1,"estadoAnterior":"INGRESADO","estadoActual":"RECHAZADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1"}
+{"id":8,"idEntidad":1,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1"}

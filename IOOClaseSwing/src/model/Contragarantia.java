@@ -60,5 +60,8 @@ public class Contragarantia {
         this.monto = monto;
     }
 
-
+    @Override
+    public String toString() {
+        return "tipo: " + tipo + '|' + "monto: " + monto;
+    }
 }

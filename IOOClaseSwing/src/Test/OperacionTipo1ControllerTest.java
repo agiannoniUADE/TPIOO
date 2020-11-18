@@ -25,7 +25,7 @@ public class OperacionTipo1ControllerTest {
         SubtipoOperacion subtipo = tipoOperacionController.getSubtipoOperacion(1);
         Tipo1 operacion = new Tipo1(5000, LocalDate.now(), LocalDate.parse("06-09-2021", formato), subtipo, "222222", 0.10f);
 
-        target.AgregarOperacion(operacion, "20-1000-2");
+        target.AgregarOperacion(operacion, "1212");
     }
 
     @Test

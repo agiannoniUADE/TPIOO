@@ -71,7 +71,7 @@ public class DocumentoRegistro {
         return estado;
     }
 
-    public  void setEstado(EstadoDocumentoRegistro estado) {
+    public void setEstado(EstadoDocumentoRegistro estado) {
         this.estado = estado;
     }
 

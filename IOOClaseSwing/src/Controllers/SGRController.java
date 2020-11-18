@@ -4,11 +4,8 @@ import DAO.SGRDao;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
-import utils.Logger;
-
-import java.time.LocalDate;
-import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SGRController {
 
@@ -36,8 +33,6 @@ public class SGRController {
         dao.save(s);
     }
 
-
-
     public  SGR GetSGR() throws Exception {
         SGR sgr = (SGR) dao.search(1);
         List<Socio> sociosProtectores = (List<Socio>) sociosProtectorDao.getAll();
@@ -51,7 +46,7 @@ public class SGRController {
     public void RetirarAportes(int id) throws Exception {
         SGR sgr = GetSGR();
         sgr.retirarAporte(id);
-        dao.update(1);
+        dao.update(sgr);
     }
 
     public int agregarAporte(Aporte obj) throws Exception {
@@ -59,5 +54,14 @@ public class SGRController {
         int id = sgr.addAportes(obj);
         dao.update(sgr);
         return id;
+    }
+
+    public List<Aporte> listarAportesXsocio(String cuit) throws Exception {
+        SGR sgr = GetSGR();
+
+        return sgr.getAportes()
+            .stream()
+            .filter(x-> x.getSocio().getCuit().equals(cuit))
+            .collect(Collectors.toList());
     }
 }

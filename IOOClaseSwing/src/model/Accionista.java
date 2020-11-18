@@ -19,8 +19,7 @@ public class Accionista {
         this.porcentaje = porcentaje;
     }
 
-    public Accionista(int id, String cuit, String razonSocial, float porcentaje) {
-        this.id = id;
+    public Accionista(String cuit, String razonSocial, float porcentaje) {
         this.cuit = cuit;
         this.razonSocial = razonSocial;
         this.porcentaje = porcentaje;
