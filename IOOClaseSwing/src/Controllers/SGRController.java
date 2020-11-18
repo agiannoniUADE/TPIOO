@@ -61,7 +61,7 @@ public class SGRController {
 
         return sgr.getAportes()
             .stream()
-            .filter(x-> x.getSocio().getCuit().equals(cuit) && x.FueRetirado() == false)
+            .filter(x-> x.getSocio().getCuit().equals(cuit))
             .collect(Collectors.toList());
     }
 }

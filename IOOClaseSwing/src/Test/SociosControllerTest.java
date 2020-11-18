@@ -1,11 +1,9 @@
 package Test;
 
-import Controllers.OperacionController;
 import Controllers.SocioController;
 import Controllers.TipoOperacionController;
 import model.*;
 import org.junit.jupiter.api.Test;
-
 
 import java.time.LocalDate;
 

@@ -115,6 +115,7 @@ public class FrmNewSocios extends JFrame {
     private JButton agregarButton2;
     private JLabel lineaLabel;
     private JComboBox contragarantiasTipoComboBox;
+    private JCheckBox RetiradoCheck;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -629,7 +630,6 @@ public class FrmNewSocios extends JFrame {
                     SocioActual.agregarAccionista(nuevoAccionista);
                     socioController.updateSocio(SocioActual);
 
-
                     JOptionPane.showMessageDialog(
                         borrarButton,
                         "Accionista Agregado.");
@@ -640,8 +640,26 @@ public class FrmNewSocios extends JFrame {
                 }
 
 
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
             }
+
         });
+
 
         Accionistaslist.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -845,13 +863,31 @@ public class FrmNewSocios extends JFrame {
                     }
                 }
 
-                SocioActual.removeAccionista(SocioActual.getAccionista(AccionistasCUITtextField.getText()));
+                SocioActual.removeAccionista(SocioActual.getAccionista(AccionCUITtextField.getText()));
 
                 try {
                     socioController.updateSocio(SocioActual);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
+
 
             }
         });
@@ -1055,6 +1091,14 @@ public class FrmNewSocios extends JFrame {
                     AporteMontotextField.setText(String.valueOf(aporte.getMonto()));
                     DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                     AporteFechaDeIniciotextField.setText(aporte.getFechaInicio().format(formato));
+                    RetiradoCheck.setSelected(aporte.FueRetirado());
+                    AporteRetirarButton.setEnabled(!aporte.FueRetirado());
+                    if(aporte.FueRetirado()){
+                        AporteRetirarButton.setToolTipText("No se puede retirar un aporte retirado.");
+                    } else{
+                        AporteRetirarButton.setToolTipText("");
+                    }
+
 
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -1071,9 +1115,9 @@ public class FrmNewSocios extends JFrame {
                     sgrController = SGRController.getInstance();
                     int index = Aporteslist.getSelectedIndex() + 1;
 
-                   SGR sgr = sgrController.GetSGR();
+                    SGR sgr = sgrController.GetSGR();
 
-                   sgrController.RetirarAportes(index);
+                    sgrController.RetirarAportes(index);
 
                     JOptionPane.showMessageDialog(null,
                         "Aporte retirado correctamente",
