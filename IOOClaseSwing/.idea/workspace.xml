@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9ada0b3e-b51e-4e1e-a27e-f90663f37848" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SGRController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/IOOClaseSwing/Controllers/SGRController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/IOOClaseSwing/META-INF/IOOClaseSwing.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repo/usuario.json" beforeDir="false" afterPath="$PROJECT_DIR$/repo/usuario.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/FrmPrincipal.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/FrmPrincipal.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +18,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/OperacionController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+            <state relative-caret-position="371">
+              <caret line="222" selection-start-line="222" selection-end-line="222" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -30,37 +28,48 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form">
+        <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="169" selection-start-line="169" selection-end-line="169" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repo/tipoOperacion.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="915">
+              <caret line="61" column="55" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.form">
           <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/repo/socioParticipe.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="171" column="70" lean-forward="true" selection-start-line="171" selection-start-column="70" selection-end-line="171" selection-end-column="70" />
-            </state>
+            <state relative-caret-position="-15" />
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/repo/sgr.json">
+        <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Desembolso.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-              <folding>
-                <element signature="e#410#411#0" expanded="true" />
-                <element signature="e#444#445#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="404">
+              <caret line="682" column="109" selection-start-line="682" selection-start-column="109" selection-end-line="682" selection-end-column="109" />
             </state>
           </provider>
         </entry>
@@ -68,8 +77,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+            <state relative-caret-position="279">
+              <caret line="84" selection-start-line="84" selection-end-line="84" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,40 +87,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/OperacionTipo1ControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="23" column="8" lean-forward="true" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.form">
+          <provider selected="true" editor-type-id="ui-designer" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Test/SGRControllerTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="410">
-              <caret line="82" selection-start-line="82" selection-end-line="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="363" selection-start-line="363" selection-end-line="363" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/repo/tipo1.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+            <state relative-caret-position="45">
+              <caret line="3" column="1747" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="1747" />
             </state>
           </provider>
         </entry>
@@ -128,7 +112,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>RazonSocialtextField</find>
       <find>docu</find>
       <find>logger.log(</find>
       <find>accion</find>
@@ -158,6 +141,7 @@
       <find>busca</find>
       <find>acciones</find>
       <find>buscar</find>
+      <find>primer</find>
     </findStrings>
     <replaceStrings>
       <replace>Date</replace>
@@ -173,8 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/model/EstadoOperacion.java" />
-        <option value="$PROJECT_DIR$/src/model/FondoDeRiesgo.java" />
         <option value="$PROJECT_DIR$/src/model/Garantia.java" />
         <option value="$PROJECT_DIR$/src/model/SubtipoOperacion.java" />
         <option value="$PROJECT_DIR$/src/model/Tipo2.java" />
@@ -203,7 +185,6 @@
         <option value="$PROJECT_DIR$/src/vista/Socios/ModalLineaCredito.java" />
         <option value="$PROJECT_DIR$/src/model/LineaDeCredito.java" />
         <option value="$PROJECT_DIR$/src/model/SocioParticipe.java" />
-        <option value="$PROJECT_DIR$/repo/socioParticipe.json" />
         <option value="$PROJECT_DIR$/src/model/Contragarantia.java" />
         <option value="$PROJECT_DIR$/repo/usuario.json" />
         <option value="$PROJECT_DIR$/src/vista/Login/LoginScreen.java" />
@@ -213,17 +194,20 @@
         <option value="$PROJECT_DIR$/src/vista/Socios/FrmNewSocios.form" />
         <option value="$PROJECT_DIR$/src/Controllers/SocioController.java" />
         <option value="$PROJECT_DIR$/src/vista/Socios/FrmNewSocios.java" />
-        <option value="$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java" />
         <option value="$PROJECT_DIR$/src/model/SGR.java" />
         <option value="$PROJECT_DIR$/src/model/Desembolso.java" />
         <option value="$PROJECT_DIR$/src/Controllers/OperacionController.java" />
         <option value="$PROJECT_DIR$/src/Test/SGRControllerTest.java" />
         <option value="$PROJECT_DIR$/repo/sgr.json" />
-        <option value="$PROJECT_DIR$/repo/tipo1.json" />
         <option value="$PROJECT_DIR$/src/Controllers/SGRController.java" />
         <option value="$PROJECT_DIR$/src/Test/OperacionTipo1ControllerTest.java" />
         <option value="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form" />
         <option value="$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java" />
+        <option value="$PROJECT_DIR$/repo/log.json" />
+        <option value="$PROJECT_DIR$/repo/socioParticipe.json" />
+        <option value="$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java" />
+        <option value="$PROJECT_DIR$/src/vista/FrmPrincipal.form" />
+        <option value="$PROJECT_DIR$/repo/tipo1.json" />
       </list>
     </option>
   </component>
@@ -261,12 +245,6 @@
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
-              <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vista" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -274,15 +252,15 @@
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vista" type="462c0819:PsiDirectoryNode" />
-              <item name="ConsultasGenerales" type="462c0819:PsiDirectoryNode" />
+              <item name="Operaciones" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
               <item name="IOOClaseSwing" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vista" type="462c0819:PsiDirectoryNode" />
-              <item name="ConsultasGenerales" type="462c0819:PsiDirectoryNode" />
-              <item name="FrmConsultasGenerales" type="e9f4de52:FormNode" />
+              <item name="Operaciones" type="462c0819:PsiDirectoryNode" />
+              <item name="FrmNewOperaciones" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="IOOClaseSwing" type="b2602c69:ProjectViewProjectNode" />
@@ -512,7 +490,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211212000" />
+    <option name="totallyTimeSpent" value="212031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="0" />
@@ -521,15 +499,15 @@
       <window_info id="Capture Tool" order="0" />
       <window_info id="Image Layers" order="1" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.49936306" visible="true" weight="0.25608012" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.49936306" visible="true" weight="0.19313304" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info id="Structure" order="5" sideWeight="0.50063694" side_tool="true" weight="0.25679544" />
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Duplicate detector" order="0" weight="0.3299363" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.37197453" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.32738853" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.2089172" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32738853" />
+      <window_info anchor="bottom" id="Debug" order="4" visible="true" weight="0.2089172" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.3210191" />
@@ -772,13 +750,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java</url>
-          <line>102</line>
-          <properties />
-          <option name="timeStamp" value="222" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java</url>
-          <line>228</line>
+          <line>236</line>
           <properties />
           <option name="timeStamp" value="223" />
         </line-breakpoint>
@@ -790,7 +762,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java</url>
-          <line>329</line>
+          <line>338</line>
           <properties />
           <option name="timeStamp" value="226" />
         </line-breakpoint>
@@ -811,6 +783,12 @@
           <line>210</line>
           <properties />
           <option name="timeStamp" value="229" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java</url>
+          <line>679</line>
+          <properties />
+          <option name="timeStamp" value="234" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -909,16 +887,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-          <folding>
-            <element signature="e#405#406#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/Login/LoginScreen.form">
       <provider selected="true" editor-type-id="ui-designer" />
     </entry>
@@ -957,9 +925,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/UsuariosControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -996,22 +961,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Socio.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2068">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        <state relative-caret-position="192">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4249#4250#0" expanded="true" />
-            <element signature="e#4276#4277#0" expanded="true" />
-            <element signature="e#5834#5835#0" expanded="true" />
-            <element signature="e#5870#5871#0" expanded="true" />
+            <element signature="e#4101#4102#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="45" selection-end-column="41" />
+        <state relative-caret-position="75">
+          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1144,31 +1106,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/repo/socioParticipe.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
+        <state relative-caret-position="-15" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/SocioController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="279" selection-start-line="279" selection-end-line="279" />
+        <state relative-caret-position="915">
+          <caret line="61" column="55" selection-start-line="61" selection-start-column="51" selection-end-line="61" selection-end-column="55" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/repo/tipoOperacion.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.form">
-      <provider selected="true" editor-type-id="ui-designer" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="361" selection-start-line="361" selection-end-line="361" />
         </state>
       </provider>
     </entry>
@@ -1241,13 +1188,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repo/tipo1.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
@@ -1262,16 +1202,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/OperacionTipo1ControllerTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1282,23 +1212,63 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/OperacionController.java">
+    <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.form">
+      <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Comision.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="209" column="17" selection-start-line="209" selection-start-column="17" selection-end-line="209" selection-end-column="17" />
+        <state relative-caret-position="205">
+          <caret line="14" column="11" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/SGRController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="84" selection-start-line="84" selection-end-line="84" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.form">
+    <entry file="file://$PROJECT_DIR$/src/vista/Operaciones/FrmNewOperaciones.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="404">
+          <caret line="682" column="109" selection-start-line="682" selection-start-column="109" selection-end-line="682" selection-end-column="109" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/vista/FrmPrincipal.form">
       <provider selected="true" editor-type-id="ui-designer" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/OperacionController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="222" selection-start-line="222" selection-end-line="222" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/vista/ConsultasGenerales/FrmConsultasGenerales.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="171" column="70" lean-forward="true" selection-start-line="171" selection-start-column="70" selection-end-line="171" selection-end-column="70" />
+        <state relative-caret-position="185">
+          <caret line="169" selection-start-line="169" selection-end-line="169" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/tipoOperacion.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repo/tipo1.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="1747" lean-forward="true" selection-start-line="3" selection-end-line="3" selection-end-column="1747" />
         </state>
       </provider>
     </entry>

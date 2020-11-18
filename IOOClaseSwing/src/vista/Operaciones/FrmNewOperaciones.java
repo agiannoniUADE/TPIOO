@@ -1,6 +1,7 @@
 package vista.Operaciones;
 
 import Controllers.OperacionController;
+import Controllers.SGRController;
 import Controllers.SocioController;
 import Controllers.TipoOperacionController;
 import model.*;
@@ -665,6 +666,19 @@ public class FrmNewOperaciones extends JFrame {
                     OperacionController operacionController = OperacionController.getInstance();
                     operacionController.pasarAMonetizada(idOperacion);
                     JOptionPane.showMessageDialog(null, "La operacion fue actualizada con exito", "Message", JOptionPane.INFORMATION_MESSAGE);
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null, e1.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+        desembolsosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    SGRController sgrController = SGRController.getInstance();
+                    int id =Integer.valueOf(BuscarIzqtextField.getText());
+                    sgrController.HacerDesembolso(id);
+                    JOptionPane.showMessageDialog(null, "El desembolso fue realizado con exito.", "Message", JOptionPane.INFORMATION_MESSAGE);
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(null, e1.getMessage(), "error", JOptionPane.ERROR_MESSAGE);
                 }
