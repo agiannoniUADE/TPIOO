@@ -26,4 +26,8 @@ public class MiListaModel extends AbstractListModel {
 
         return items.size()-1;
     }
+
+    public void delAll() {
+        items.clear();
+    }
 }

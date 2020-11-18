@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import vista.Operaciones.FrmNewOperaciones;
 import vista.Operaciones.FrmOperaciones;
 import vista.Socios.FrmNewSocios;
+import vista.ConsultasGenerales.FrmConsultasGenerales;
 
 public class FrmPrincipal extends JFrame {
 
@@ -19,6 +20,7 @@ public class FrmPrincipal extends JFrame {
     private JPanel pnlTitulo;
     private JButton sociosButton;
    private JButton operacionesButton;
+    private JButton consultasGeneralesButton;
 
     private FrmPrincipal self;
 
@@ -56,6 +58,18 @@ public class FrmPrincipal extends JFrame {
             }
         });
 
+        consultasGeneralesButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                FrmConsultasGenerales frame = null;
+                try {
+                    frame = new FrmConsultasGenerales();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                frame.setVisible(true);
+            }
+        });
     }
 
     private void asociarEventos()
