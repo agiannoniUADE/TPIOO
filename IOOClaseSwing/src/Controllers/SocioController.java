@@ -3,13 +3,12 @@ package Controllers;
 import DAO.GenericDAO;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
-import com.sun.javadoc.Doc;
 import model.*;
 import utils.Logger;
+
 import java.util.ArrayList;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -43,12 +42,13 @@ public class SocioController {
                 throw new Exception("Un socio protector no puede ser accionista de un socio participe.");
             }
         }
-        int lastId = dao.getLastInsertId();
+        int lastId = getLastSocioId();
         lastId++;
         socio.setId(lastId);
         dao.save(socio);
         return lastId;
     }
+
 
     /**
      * @param id
@@ -166,7 +166,7 @@ public class SocioController {
      * @param socioId
      * @param fecha
      */
-    public int  getMoraPorSocioPorFecha(int socioId, LocalDate fecha) throws Exception {
+    public int getMoraPorSocioPorFecha(int socioId, LocalDate fecha) throws Exception {
         // TODO implement here
         SocioController socio = SocioController.getInstance();
         Socio s = socio.getSocioById(socioId);
@@ -250,7 +250,7 @@ public class SocioController {
         for (Object item : dao.getAll()) {
             socio = (Socio) item;
             if (socio.getAccion() > 1)
-                ((Hashtable<String, Integer>) dic).put(socio.getCuit(), Integer.valueOf(socio.getAcciones()));
+                ((Hashtable<String, Integer>) dic).put(socio.getCuit(), Integer.valueOf(socio.getAccion()));
         }
         return dic;
     }
@@ -266,11 +266,11 @@ public class SocioController {
 
         dao = vendedor.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
 
-        int accionesNuevas = comprador.getAcciones() + cantidad;
-        int restaAciones = vendedor.getAcciones() - cantidad;
+        int accionesNuevas = comprador.getAccion() + cantidad;
+        int restaAciones = vendedor.getAccion() - cantidad;
         comprador.setAccion(accionesNuevas);
         vendedor.setAccion(restaAciones);
-        comprador.setEstado(EstadoSocio.SOCIO_PLENO);
+        //comprador.setEstado(EstadoSocio.SOCIO_PLENO);
 
         dao.update(comprador);
         dao.update(vendedor);
@@ -295,62 +295,47 @@ public class SocioController {
     }
 
 
-    public void cambioEstadoDocumentoOk (String cuit, String doc) throws Exception {
+    public void cambioEstadoDocumentoOk(String cuit, String doc) throws Exception {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
-
-        List docs = socio.documentosRegistro;
-        if (socio == null){
-            throw  new  Exception("El Socio no existe");
+        List docs = socio.getDocumentosRegistro();
+        if (socio == null) {
+            throw new Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.documentosRegistro.get(i).getNombre())){
-                if(socio.documentosRegistro.get(i).getEstado() == EstadoDocumentoRegistro.INGRESADO) {
-                    socio.documentosRegistro.get(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
+        for (int i = 0; i <= docs.size(); i++) {
+            if (doc.equals(socio.getDocumentoRegistro(i).getNombre())) {
+                if (socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
                     dao.update(socio);
                     break;
                 }
             }
         }
-
         Logger logger = Logger.getInstance();
         logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), socio.getCuit());
+    }
 
-                
-
-
-
-
-
-
-        }
-
-    public void cambioEstadoDocumentoRechazado (String cuit, String doc) throws Exception {
+    public void cambioEstadoDocumentoRechazo(String cuit, String doc) throws Exception {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
-
-        List docs = socio.documentosRegistro;
-        if (socio == null){
-            throw  new  Exception("El Socio no existe");
+        List docs = socio.getDocumentosRegistro();
+        if (socio == null) {
+            throw new Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
-        for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.documentosRegistro.get(i).getNombre())){
-                if(socio.documentosRegistro.get(i).getEstado() == EstadoDocumentoRegistro.INGRESADO) {
-                    socio.documentosRegistro.get(i).setEstado(EstadoDocumentoRegistro.RECHAZADO);
+        for (int i = 0; i <= docs.size(); i++) {
+            if (doc.equals(socio.getDocumentoRegistro(i).getNombre())) {
+                if (socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.RECHAZADO);
                     dao.update(socio);
                     break;
                 }
             }
         }
-
         Logger logger = Logger.getInstance();
-        logger.log(socio.getId(), TipoLog.DOCUMENTOS,EstadoDocumentoRegistro.INGRESADO.toString(),EstadoDocumentoRegistro.RECHAZADO.toString(),LocalDate.now(),"usuario1");
-
-
+        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.RECHAZADO.toString(), LocalDate.now(), socio.getCuit());
     }
-
 
 
     public void cambiarEstadoSocio(String cuit) throws Exception {
@@ -371,7 +356,7 @@ public class SocioController {
         if (socio.getEstado() == EstadoSocio.SOCIO_PLENO) {
             throw new Exception("Un Socio Pleno no puede cambiar su estado a postulante");
         }
-        if (socio.getAcciones() <= 0) {
+        if (socio.getAccion() <= 0) {
             throw new Exception("El socio no tiene acciones, suscriba acciones y vuelva a intentarlo");
         }
         if (socio.getEstado() == EstadoSocio.POSTULANTE_A_SOCIO) {
@@ -383,7 +368,12 @@ public class SocioController {
         Logger logger = Logger.getInstance();
 
         logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), socio.getCuit());
+    }
 
+    private int getLastSocioId() throws Exception {
+        int a = socioParticipeDao.getLastInsertId();
+        int b = socioProtectorDao.getLastInsertId();
 
+        return a > b ? a : b;
     }
 }

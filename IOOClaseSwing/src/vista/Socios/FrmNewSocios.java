@@ -1,6 +1,7 @@
 package vista.Socios;
 
 import Controllers.SocioController;
+import DAO.GenericDAO;
 import model.*;
 import utils.MiListaModel;
 import vista.State;
@@ -81,7 +82,7 @@ public class FrmNewSocios extends JFrame {
     private JButton AporteRetirarButton;
     private JPanel AportesABM;
     private JPanel AportesPane;
-    private JButton accionistasButton;
+    private JButton accionesButton1;
     private JTextField AccionistasIDtextField;
     private JTextField AccionistasCUITtextField;
     private JTextField AccionesRazonSocialtextField;
@@ -103,6 +104,10 @@ public class FrmNewSocios extends JFrame {
     private JLabel DocumentoEstadoActualLabel;
     private JTextField DocumentoEstadoDeseadotextField;
     private JTable Accionistastable;
+    private JLabel accionesTextField;
+    private JTextField cantidadTextField;
+    private JTextField porcentajeTextField;
+    private JTextPane textPane1;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
@@ -163,7 +168,7 @@ public class FrmNewSocios extends JFrame {
         }
         this.self = this;
         this.setContentPane(PrincipalPanel);
-        this.setSize(1200, 1000);
+        this.setSize(1200, 1400);
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
@@ -355,6 +360,7 @@ public class FrmNewSocios extends JFrame {
                     DirecciontextField.setText(s.getDireccion());
                     TelefonotextField.setText(s.getTelefono());
                     EmailtextField.setText(s.getEmail());
+                    accionesTextField.setText(String.valueOf(s.getAccion()));
                     EstadoDescrLabel.setText(s.getEstado().toString());
                     SocioTipoDescrLabel.setText(s.getTipoSocio().toString());
                     State.standby();
@@ -486,12 +492,7 @@ public class FrmNewSocios extends JFrame {
 
             }
         });
-        retirarButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //
-            }
-        });
+
         accionesButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -595,13 +596,15 @@ public class FrmNewSocios extends JFrame {
 
                     Socio socio = controller.getSocioByCuit(CUITtextField.getText());
 
-                    String cuitAccionista = (String)Accionistaslist.getSelectedValue();
+                    String cuitAccionista = (String) Accionistaslist.getSelectedValue();
 
                     Accionista accionista = socio.getAccionista(cuitAccionista);
 
                     //seteo los texfield de accionostas
 
+                    AccionCUITtextField.setText(cuitAccionista);
                     AccionesRazonSocialtextField.setText(accionista.getRazonSocial());
+                    porcentajeTextField.setText(String.valueOf(accionista.getPorcentaje()));
 
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -612,72 +615,66 @@ public class FrmNewSocios extends JFrame {
         Documentoslist.addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent listSelectionEvent) {
+                SocioController controller;
+                try {
+                    controller = SocioController.getInstance();
 
-                Socio SocioDocsActual = new Socio();
-                if (AccionesTipoSocio.getText() == "PARTICIPE") {
-                    try {
-                        SocioDocsActual = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
-                    try {
-                        SocioDocsActual = socioController.getSocioProtector(AccionistasCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
+
+                    Socio socio = controller.getSocioByCuit(CUITtextField.getText());
+
+                    String nombreDocumento = (String) Documentoslist.getSelectedValue();
+
+                    DocumentoRegistro docu = socio.getDocuementosRegistroPorNombre(nombreDocumento);
+                    DocumentosNombretextField.setText(docu.getNombre());
+                    DocumentosUsuariotextField.setText(docu.getUsuario());
+
+                    int indice = 0;
+
+                    if (docu.getTipoDocumento() == TipoDocumento.CONTRATO_SOCIAL)
+                        indice = 0;
+                    else if (docu.getTipoDocumento() == TipoDocumento.MANIFESTACION_BIENES)
+                        indice = 1;
+                    else if (docu.getTipoDocumento() == TipoDocumento.BALANCE_CERTIFICADO)
+                        indice = 2;
+
+                    DocumentosTipocomboBox.setSelectedIndex(indice);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                //DocumentoRegistro DocsActual = SocioDocsActual.getDocumentoRegistro();
-                //AccionesRazonSocialtextField.setText(AccionistaActual.getRazonSocial());
-
             }
         });
 
         suscribirButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                Socio SocioVendedor = new Socio();
-                if (AccionesTipoSocio.getText() == "PARTICIPE") {
-                    try {
-                        SocioVendedor = socioController.getSocioParticipe(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (AccionesTipoSocio.getText() == "PROTECTOR") {
-                    try {
-                        SocioVendedor = socioController.getSocioProtector(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                }
-
-                Socio SocioComprador = new Socio();
-                if (SocioTipoDescrLabel.getText() == "PARTICIPE") {
-                    try {
-                        SocioComprador = socioController.getSocioParticipe(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                } else if (SocioTipoDescrLabel.getText() == "PROTECTOR") {
-                    try {
-                        SocioComprador = socioController.getSocioProtector(AccionCUITtextField.getText());
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
-                }
-
+                Socio socioComprador;
+                Socio socioVendedor;
                 try {
-                    socioController.suscribirAcciones(SocioComprador, SocioVendedor, Integer.parseInt(AccionesCantidadtextField.getText()));
-                } catch (Exception exception) {
-                    exception.printStackTrace();
+                    socioComprador = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
+                    if (socioComprador == null) {
+                        socioComprador = socioController.getSocioProtector(Integer.parseInt(IDDescrLabel.getText()));
+                    }
+
+                    socioVendedor = socioController.getSocioParticipe(AccionistasCUITtextField.getText());
+                    if (socioVendedor == null) {
+                        socioVendedor = socioController.getSocioProtector(AccionistasCUITtextField.getText());
+                    }
+
+                    socioController.suscribirAcciones(socioComprador, socioVendedor, Integer.parseInt(cantidadTextField.getText()));
+
+                    setUI(socioComprador.getCuit());
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
+                AccionistasCUITtextField.setText("");
+                cantidadTextField.setText("");
             }
         });
 
 
-        retirarButton.addActionListener(new ActionListener() {
+        /*retirarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -717,7 +714,7 @@ public class FrmNewSocios extends JFrame {
                     exception.printStackTrace();
                 }
             }
-        });
+        });*/
         agregarButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -815,8 +812,34 @@ public class FrmNewSocios extends JFrame {
         });
     }
 
+    private void setUI(String cuit) throws Exception {
+        try {
+            SocioController sc = SocioController.getInstance();
+            Socio socio = sc.getSocioByCuit(cuit);
+            if (socio == null) {
+                throw new Exception("El Socio no existe");
+            }
 
-    private void createUIComponents() {
+            IDDescrLabel.setText(BuscartextField.getText());
+            BuscartextField.setText("");
+            CUITtextField.setText(socio.getCuit());
+            RazonSocialtextField.setText(socio.getRazonSocial());
+            FechaDeInicioDeActividadtextField.setText(socio.getFechaInicioActividad().toString());
+            ActividadPrincipaltextField.setText(socio.getActividadPrincipal());
+            DirecciontextField.setText(socio.getDireccion());
+            TelefonotextField.setText(socio.getTelefono());
+            EmailtextField.setText(socio.getEmail());
+            EstadoDescrLabel.setText(socio.getEstado().toString());
+            SocioTipoDescrLabel.setText(socio.getTipoSocio().toString());
+            State.standby();
+            Accionistaslist.setListData(socio.getAccionistas().toArray());
+            accionesTextField.setText(String.valueOf(socio.getAccion()));
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
+    }
+
+    private void setIU(Socio socio) {
         // TODO: place custom component creation code here
     }
 }

@@ -97,7 +97,7 @@ public class SociosControllerTest {
     void ChangeStatusDocRechazo_Success() throws Exception {
 
 
-        target.cambioEstadoDocumentoRechazado("1212", "Documento 2");
+        target.cambioEstadoDocumentoRechazo("1212", "Documento 2");
     }
 
 
@@ -139,9 +139,9 @@ public class SociosControllerTest {
         nuevoSocio.agregarAccionista(accionista2);
         nuevoSocio.agregarDocumento(documentoRegistro1);
         nuevoSocio.agregarDocumento(documentoRegistro2);
-        nuevoSocio.setAcciones(200);
+        nuevoSocio.setAccion(200);
 
-        nuevoSocio.setEstado(EstadoSocio.POSTULANTE_A_SOCIO);
+        nuevoSocio.setEstado(EstadoSocio.SOCIO_PLENO);
 
         TipoOperacion tipoOperacion = tipoOperacionController.getTipoOperacion(1);
 

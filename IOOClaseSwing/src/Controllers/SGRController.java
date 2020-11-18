@@ -4,10 +4,6 @@ import DAO.SGRDao;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
-import utils.Logger;
-
-import java.time.LocalDate;
-import java.util.*;
 import java.util.List;
 
 public class SGRController {
@@ -36,8 +32,6 @@ public class SGRController {
         dao.save(s);
     }
 
-
-
     public  SGR GetSGR() throws Exception {
         SGR sgr = (SGR) dao.search(1);
         List<Socio> sociosProtectores = (List<Socio>) sociosProtectorDao.getAll();
@@ -60,4 +54,6 @@ public class SGRController {
         dao.update(sgr);
         return id;
     }
+
+    //TODO get aportes por socio protector.
 }

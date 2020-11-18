@@ -58,8 +58,6 @@ public class Socio {
 
     }
 
-
-    private int acciones;
     /**
      *
      */
@@ -180,14 +178,6 @@ public class Socio {
         this.accionistas = accionistas;
     }
 
-    public int getAcciones() {
-        return acciones;
-    }
-
-    public void setAcciones(int acciones) {
-        this.acciones = acciones;
-    }
-
     public int getId() {
         return id;
     }
@@ -284,23 +274,18 @@ public class Socio {
         this.tamanioEmpresa = tamanioEmpresa;
     }
 
-    /**
-     * @param accion
-     */
-    public boolean comprarAcciones(int accion) {
-        acciones += accion;
-        return true;
+    public DocumentoRegistro getDocumentoRegistro(int id) {
+        return this.documentosRegistro.get(id);
     }
 
-    public DocumentoRegistro getDocumentoRegistro(int id) {
-        for (DocumentoRegistro doc : this.documentosRegistro) {
-            if (doc.equals(id)) {
-                return doc;
+    public DocumentoRegistro getDocuementosRegistroPorNombre(String nombre){
+        for (DocumentoRegistro d : this.documentosRegistro){
+            if(d.getNombre().equals(nombre)){
+                return d;
             }
         }
         return null;
     }
-
 
     @Override
     public boolean equals(Object o) {

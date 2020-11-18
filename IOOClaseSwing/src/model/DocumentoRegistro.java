@@ -71,8 +71,8 @@ public class DocumentoRegistro {
         return estado;
     }
 
-    public static void setEstado(EstadoDocumentoRegistro estado) {
-        estado = estado;
+    public void setEstado(EstadoDocumentoRegistro estado) {
+        this.estado = estado;
     }
 
     public int getId() {
