@@ -236,6 +236,8 @@ public class Socio {
         this.fechaInicioActividad = fechaInicioActividad;
     }
 
+    public List<DocumentoRegistro> getDocumentosRegistro() {return documentosRegistro;}
+
     public String getActividadPrincipal() {
         return actividadPrincipal;
     }
@@ -292,14 +294,7 @@ public class Socio {
         return true;
     }
 
-    public DocumentoRegistro getDocumentoRegistro(int id) {
-        for (DocumentoRegistro doc : this.documentosRegistro) {
-            if (doc.equals(id)) {
-                return doc;
-            }
-        }
-        return null;
-    }
+    public DocumentoRegistro getDocumentoRegistro(int id) { return this.documentosRegistro.get(id);   }
 
 
     @Override
