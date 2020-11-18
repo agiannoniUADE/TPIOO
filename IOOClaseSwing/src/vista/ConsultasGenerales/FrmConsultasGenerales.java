@@ -33,6 +33,7 @@ public class FrmConsultasGenerales extends JFrame {
     private JPanel IzqPanel;
     private JPanel DerPanel;
     private JPanel panel1;
+    private JTextArea resultTextArea;
     private FrmConsultasGenerales self;
     private int Selected;
     private OperacionController operacionController;
@@ -64,13 +65,13 @@ public class FrmConsultasGenerales extends JFrame {
         this.setLocationRelativeTo(null);
 
 
-        ConsultaComboBox.addActionListener (new ActionListener() {
+        ConsultaComboBox.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //doSomething();
                 Selected = ConsultaComboBox.getSelectedIndex();
 
 
-                if(Selected == 0) {
+                if (Selected == 0) {
                     //Get Comision por dia de operaciones de cheque
                     Param1Secc.setVisible(true);
                     Param1textField.setText("");
@@ -87,70 +88,70 @@ public class FrmConsultasGenerales extends JFrame {
 
                     //GetOperacionesAvaladas
                 } else if (Selected == 1) {
-                        Param1Secc.setVisible(true);
-                        Param1textField.setText("");
-                        Param1Label.setText("Operacion ID");
+                    Param1Secc.setVisible(true);
+                    Param1textField.setText("");
+                    Param1Label.setText("Operacion ID");
 
-                        Param2Secc.setVisible(true);
-                        Param2textField.setText("Fecha Desde");
-                        Param2Label.setText("");
+                    Param2Secc.setVisible(true);
+                    Param2textField.setText("Fecha Desde");
+                    Param2Label.setText("");
 
-                        Param3Secc.setVisible(true);
-                        Param3textField.setText("Fecha Hasta");
-                        Param3Label.setText("");
+                    Param3Secc.setVisible(true);
+                    Param3textField.setText("Fecha Hasta");
+                    Param3Label.setText("");
 
-                        //Valor promedio de la tasa de descuento y total operado de cheques y pagare
+                    //Valor promedio de la tasa de descuento y total operado de cheques y pagare
                 } else if (Selected == 2) {
-                        Param1Secc.setVisible(true);
-                        Param1textField.setText("");
-                        Param1Label.setText("Operacion ID");
+                    Param1Secc.setVisible(true);
+                    Param1textField.setText("");
+                    Param1Label.setText("Operacion ID");
 
-                        Param2Secc.setVisible(false);
-                        Param2textField.setText("");
-                        Param2Label.setText("");
+                    Param2Secc.setVisible(false);
+                    Param2textField.setText("");
+                    Param2Label.setText("");
 
-                        Param3Secc.setVisible(false);
-                        Param3textField.setText("");
-                        Param3Label.setText("");
-                        //XConsulta de porcentaje de comision por tipo -> Get Comision x Socio x Tipo de Operacion
+                    Param3Secc.setVisible(false);
+                    Param3textField.setText("");
+                    Param3Label.setText("");
+                    //XConsulta de porcentaje de comision por tipo -> Get Comision x Socio x Tipo de Operacion
                 } else if (Selected == 3) {
-                        Param1Secc.setVisible(true);
-                        Param1textField.setText("");
-                        Param1Label.setText("ID del Socio");
+                    Param1Secc.setVisible(true);
+                    Param1textField.setText("");
+                    Param1Label.setText("ID del Socio");
 
-                        Param2Secc.setVisible(true);
-                        Param2textField.setText("");
-                        Param2Label.setText("Tipo Operacion ID");
+                    Param2Secc.setVisible(true);
+                    Param2textField.setText("");
+                    Param2Label.setText("Tipo Operacion ID");
 
-                        Param3Secc.setVisible(false);
-                        Param3textField.setText("");
-                        Param3Label.setText("");
-                        //XConsulta de Saldo por mora -> get mora x socio x fecha
+                    Param3Secc.setVisible(false);
+                    Param3textField.setText("");
+                    Param3Label.setText("");
+                    //XConsulta de Saldo por mora -> get mora x socio x fecha
                 } else if (Selected == 4) {
-                        Param1Secc.setVisible(true);
-                        Param1textField.setText("");
-                        Param1Label.setText("Socio ID");
+                    Param1Secc.setVisible(true);
+                    Param1textField.setText("");
+                    Param1Label.setText("Socio ID");
 
-                        Param2Secc.setVisible(true);
-                        Param2textField.setText("");
-                        Param2Label.setText("Fecha");
+                    Param2Secc.setVisible(true);
+                    Param2textField.setText("");
+                    Param2Label.setText("Fecha");
 
-                        Param3Secc.setVisible(false);
-                        Param3textField.setText("");
-                        Param3Label.setText("");
-                        //Consulta consolidada del Riesgo vivo contra garantias -> Consulta consolidad x Socio
+                    Param3Secc.setVisible(false);
+                    Param3textField.setText("");
+                    Param3Label.setText("");
+                    //Consulta consolidada del Riesgo vivo contra garantias -> Consulta consolidad x Socio
                 } else if (Selected == 4) {
-                        Param1Secc.setVisible(true);
-                        Param1textField.setText("");
-                        Param1Label.setText("Socio ID");
+                    Param1Secc.setVisible(true);
+                    Param1textField.setText("");
+                    Param1Label.setText("Socio ID");
 
-                        Param2Secc.setVisible(false);
-                        Param2textField.setText("");
-                        Param2Label.setText("");
+                    Param2Secc.setVisible(false);
+                    Param2textField.setText("");
+                    Param2Label.setText("");
 
-                        Param3Secc.setVisible(false);
-                        Param3textField.setText("");
-                        Param3Label.setText("");
+                    Param3Secc.setVisible(false);
+                    Param3textField.setText("");
+                    Param3Label.setText("");
                 }
 
             }
@@ -160,35 +161,44 @@ public class FrmConsultasGenerales extends JFrame {
         Ejecutarbutton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(Selected == 0) {
+                try {
+                    OperacionController operacionController = OperacionController.getInstance();
+
                     //Get Comision por dia de operaciones de cheque
+                    if (Selected == 0) {
+                        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                        float result = operacionController.getComisionDeChequesPorFecha(LocalDate.parse(Param1textField.getText(),formato));
 
-                    //GetOperacionesAvaladas
-                } else if (Selected == 1) {
-                    try {
-                        TipoOperacionController controller = TipoOperacionController.getInstance();
-                        OperacionController controller2 = OperacionController.getInstance();
+                        resultTextArea.append(String.valueOf(result));
+                        //GetOperacionesAvaladas
+                    } else if (Selected == 1) {
+                        try {
+                            TipoOperacionController controller = TipoOperacionController.getInstance();
+                            OperacionController controller2 = OperacionController.getInstance();
 
-                        LocalDate Desde = LocalDate.parse(Param2textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                        LocalDate Hasta = LocalDate.parse(Param3textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            LocalDate Desde = LocalDate.parse(Param2textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                            LocalDate Hasta = LocalDate.parse(Param3textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-                        controller2.getOperacionesMonetizadasPorSocio(Integer.parseInt(Param1textField.getText()),Desde,Hasta);
+                            controller2.getOperacionesMonetizadasPorSocio(Integer.parseInt(Param1textField.getText()), Desde, Hasta);
 
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
+                        } catch (Exception exception) {
+                            exception.printStackTrace();
+                        }
+                        //Valor promedio de la tasa de descuento y total operado de cheques y pagare
+                    } else if (Selected == 2) {
+
+                        //XConsulta de porcentaje de comision por tipo -> Get Comision x Socio x Tipo de Operacion
+                    } else if (Selected == 3) {
+
+                        //XConsulta de Saldo por mora -> get mora x socio x fecha
+                    } else if (Selected == 4) {
+
+                        //Consulta consolidada del Riesgo vivo contra garantias -> Consulta consolidad x Socio
+                    } else if (Selected == 4) {
+
                     }
-                    //Valor promedio de la tasa de descuento y total operado de cheques y pagare
-                } else if (Selected == 2) {
-
-                    //XConsulta de porcentaje de comision por tipo -> Get Comision x Socio x Tipo de Operacion
-                } else if (Selected == 3) {
-
-                    //XConsulta de Saldo por mora -> get mora x socio x fecha
-                } else if (Selected == 4) {
-
-                    //Consulta consolidada del Riesgo vivo contra garantias -> Consulta consolidad x Socio
-                } else if (Selected == 4) {
-
+                } catch (Exception e1) {
+                    e1.printStackTrace();
                 }
             }
         });
