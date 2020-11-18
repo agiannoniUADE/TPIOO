@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import Controllers.OperacionController;
 import vista.Operaciones.FrmNewOperaciones;
 import vista.Operaciones.FrmOperaciones;
 import vista.Socios.FrmNewSocios;
@@ -21,6 +22,7 @@ public class FrmPrincipal extends JFrame {
     private JButton sociosButton;
    private JButton operacionesButton;
     private JButton consultasGeneralesButton;
+    private JButton facturarComisionesBtn;
 
     private FrmPrincipal self;
 
@@ -68,6 +70,16 @@ public class FrmPrincipal extends JFrame {
                     e1.printStackTrace();
                 }
                 frame.setVisible(true);
+            }
+        });
+        facturarComisionesBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    OperacionController.getInstance().facturarComisiones();
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
