@@ -344,7 +344,7 @@ public class FrmNewOperaciones extends JFrame {
                     );
  */
                     int index = TipoDeOperacioncomboBox.getSelectedIndex();
-                    if (index > 0 && index <= 2 ) {
+                    if (index >= 0 && index <= 2 ) {
 
                         String cuitDelFirmante = CUITFirmantetextField.getText();
                         float tasaDeDescuento = Float.valueOf(TasaDeDescuentotextField.getText());

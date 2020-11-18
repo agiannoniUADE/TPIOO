@@ -412,7 +412,9 @@ public class FrmNewSocios extends JFrame {
                         tabbedPane1.setEnabledAt(2, true);
                         tabbedPane1.setEnabledAt(3, false);
 
-                        lineaLabel.setText(participe.getLineaDeCredito().toString());
+                        if(participe.getLineaDeCredito() != null){
+                            lineaLabel.setText(participe.getLineaDeCredito().toString());
+                        }
 
                         try {
 
