@@ -100,6 +100,13 @@ public class SociosControllerTest {
         target.cambioEstadoDocumentoRechazo("1212", "Documento 2");
     }
 
+    @Test
+    void getMora_Success() throws Exception {
+
+
+        target.getMoraPorSocio(1);
+    }
+
 
     private int insertSocio() throws Exception {
 

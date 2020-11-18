@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class SocioController {
 
@@ -110,7 +111,7 @@ public class SocioController {
     /**
      * @param socioId
      */
-    public int getMoraPorSocio(int socioId) throws Exception {
+    public double getMoraPorSocio(int socioId) throws Exception {
         // TODO implement here
         SocioController socio = SocioController.getInstance();
         Socio s = socio.getSocioById(socioId);
@@ -125,24 +126,29 @@ public class SocioController {
             }
             if (s.getEstado() == EstadoSocio.SOCIO_PLENO) {
                 OperacionController operaciones = OperacionController.getInstance();
+
+
+                double totalMora = (double) operaciones.getOperacionPorSocio(socioId)
+                    .stream()
+                    .filter(x -> x.estaEnMora() == true)
+                    .map(x -> ((Operacion) x).getMonto())
+                    .collect(Collectors.summingDouble(Float::doubleValue));
+
+
+
+                /*
                 List listaOperaciones = operaciones.getOperacionPorSocio(s.getId());
-
-
                 for (int i = 0; i <= listaOperaciones.size(); i++) {
-                    Operacion operacion = (Operacion) listaOperaciones.get(i);
-
-
-                    if (operacion.estaEnMora()) {
-                        suma += operacion.getMonto();
-                    }
-                }
-
-
+                    Operacion oper =  (Operacion) listaOperaciones.get(i);
+                    if (oper.estaEnMora()) {
+                        suma += oper.getMonto();
+                    }*/
+                return totalMora;
             }
+
+
         }
-
-        return suma;
-
+        return 0;
     }
 
 

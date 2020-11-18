@@ -2,6 +2,7 @@ package vista.Socios;
 
 import Controllers.SocioController;
 import DAO.GenericDAO;
+//import com.sun.javafx.css.ParsedValueImpl;
 import model.*;
 import utils.MiListaModel;
 import vista.State;
@@ -13,6 +14,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FrmNewSocios extends JFrame {
     private JTextField BuscartextField;
@@ -368,6 +371,8 @@ public class FrmNewSocios extends JFrame {
                     SocioTipoDescrLabel.setText(s.getTipoSocio().toString());
                     State.standby();
 
+                    List<Accionista> lista = new ArrayList<>();
+                    Accionistaslist.setListData(lista.toArray());
                     Accionistaslist.setListData(s.getAccionistas().toArray());
 
                     if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
@@ -560,9 +565,10 @@ public class FrmNewSocios extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                String cuit = AccionistasCUITtextField.getText();
+                String cuit = AccionCUITtextField.getText();
                 String razonSocial = AccionesRazonSocialtextField.getText();
-                int porcentaje = 0; //Integer.parseInt(AccionistasPorcentajetextField.getText());
+                int porcentaje =  Integer.parseInt(porcentajeTextField.getText());
+
 
                 Accionista nuevoAccionista = new Accionista(
                     cuit,
