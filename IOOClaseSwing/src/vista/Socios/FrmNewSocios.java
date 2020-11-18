@@ -374,6 +374,9 @@ public class FrmNewSocios extends JFrame {
                         try {
                             Socio socioActual = socioController.getSocioParticipe(CUITtextField.getText());
 
+                            AccionistasModelo.delAll();
+                            DocumentosModelo.delAll();
+
                             Accionistaslist.setModel(AccionistasModelo);
                             Documentoslist.setModel(DocumentosModelo);
 

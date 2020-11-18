@@ -6,6 +6,7 @@ import java.util.List;
 
 public class MiTableModel extends AbstractTableModel {
     @Override
+
     public int getRowCount() {
         return 0;
     }
@@ -19,7 +20,8 @@ public class MiTableModel extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         return null;
     }
-    /*private List<Usuario> lista= new ArrayList<Usuario>();
+  /*
+    private List<Usuario> lista= new ArrayList<Usuario>();
 
     protected String[] columnNames = new String[] { "DNI", "Nombre", "Rol"};
     protected Class[] columnClasses = new Class[] { String.class, String.class, String.class};
@@ -63,4 +65,5 @@ public class MiTableModel extends AbstractTableModel {
         return this.lista;
     }
 */
+
 }

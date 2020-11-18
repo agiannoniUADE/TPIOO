@@ -54,7 +54,6 @@ public class FrmNewOperaciones extends JFrame {
     private JPanel Tipo3Secc;
     private JPanel PrincipalPanel;
     private JPanel CertificadoSecc;
-    private JTextField CertificadotextField;
     private JButton CertificadosacarButton;
     private JButton CertificadoagregarButton;
     private JTextField CUITtextField;
@@ -63,6 +62,8 @@ public class FrmNewOperaciones extends JFrame {
     private JLabel CertificadoLabel;
     private JLabel EstadoLabel;
     private JLabel FechaLabel;
+    private JLabel CertificadoLabelDesc;
+    private JTextField CantidadCuotastextField;
     private OperacionController operacionController;
     private TipoOperacionController tipoController;
     private FrmNewOperaciones self;
@@ -116,25 +117,27 @@ public class FrmNewOperaciones extends JFrame {
                         FechatextField.setText(operacionBuscada.getFecha().toString());
                         FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                         TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
-                       // CUITFirmantetextField.setText(operacionController.get);
-                       // FechadeCobrotextField.setText();
-                       // TasaDeDescuentotextField.setText();
+
+                    CUITFirmantetextField.setText(((Tipo1) operacionBuscada).getCuitDelFirmante());
+                    FechadeCobrotextField.setText(String.valueOf(((Tipo1) operacionBuscada).getFechaDeCobro()));
+                    TasaDeDescuentotextField.setText(String.valueOf(((Tipo1) operacionBuscada).getTasaDeDescuento()));
+
                         Tipo1Secc.setVisible(true);
                         Tipo1Label.setVisible(true);
                         Tipo2Secc.setVisible(false);
                         Tipo2Label.setVisible(false);
                         Tipo3Secc.setVisible(false);
                         Tipo3Label.setVisible(false);
-                    if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
-                        CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
-                        CertificadotextField.setEnabled(false);
-                        CertificadoagregarButton.setEnabled(false);
-                        CertificadosacarButton.setEnabled(true);
+                    if (operacionBuscada.getCertificado() != null) {
+                        CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                        CertificadoLabelDesc.setEnabled(false);
+                        CertificadoagregarButton.setVisible(false);
+                        CertificadosacarButton.setVisible(true);
                     } else {
-                        CertificadotextField.setText("");
-                        CertificadotextField.setEnabled(true);
-                        CertificadoagregarButton.setEnabled(true);
-                        CertificadosacarButton.setEnabled(false);
+                        CertificadoLabelDesc.setText("");
+                        CertificadoLabelDesc.setEnabled(true);
+                        CertificadoagregarButton.setVisible(true);
+                        CertificadosacarButton.setVisible(false);
                     }
                     } else if (id == 2 ) {
                         Tipo = 2;
@@ -147,20 +150,23 @@ public class FrmNewOperaciones extends JFrame {
                         FechatextField.setText(operacionBuscada.getFecha().toString());
                         FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                         TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+
+                        BancotextField.setText(String.valueOf(((Tipo2) operacionBuscada).getRazonSocialEmpresa()));
+
                         Tipo1Secc.setVisible(false);
                         Tipo1Label.setVisible(false);
                         Tipo2Secc.setVisible(true);
                         Tipo2Label.setVisible(true);
                         Tipo3Secc.setVisible(false);
                         Tipo3Label.setVisible(false);
-                    if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
-                        CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
-                        CertificadotextField.setEnabled(false);
+                    if (operacionBuscada.getCertificado() != null) {
+                        CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                        CertificadoLabelDesc.setEnabled(false);
                         CertificadoagregarButton.setVisible(false);
                         CertificadosacarButton.setVisible(true);
                     } else {
-                        CertificadotextField.setText("");
-                        CertificadotextField.setEnabled(true);
+                        CertificadoLabelDesc.setText("");
+                        CertificadoLabelDesc.setEnabled(true);
                         CertificadoagregarButton.setVisible(true);
                         CertificadosacarButton.setVisible(false);
                     }
@@ -175,20 +181,27 @@ public class FrmNewOperaciones extends JFrame {
                         FechatextField.setText(operacionBuscada.getFecha().toString());
                         FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                         TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+
+                        EntidadtextField.setText(String.valueOf(((Tipo3) operacionBuscada).getEntidad()));
+                        TasatextField.setText(String.valueOf(((Tipo3) operacionBuscada).getTasa()));
+                        FechaDeAcreditaciontextField.setText(String.valueOf(((Tipo3) operacionBuscada).getFechaDeAcreditacion()));
+                        CantidadCuotastextField.setToolTipText(String.valueOf(((Tipo3) operacionBuscada).getCantidadCuotas()));
+                        SistemadeAmortizaciontextField.setText(((Tipo3) operacionBuscada).getSistemaAmortizacion());
+
                         Tipo1Secc.setVisible(false);
                         Tipo1Label.setVisible(false);
                         Tipo2Secc.setVisible(false);
                         Tipo2Label.setVisible(false);
                         Tipo3Secc.setVisible(true);
                         Tipo3Label.setVisible(true);
-                        if (operacionBuscada.getCertificado().getNumeroCertificado() > 0) {
-                            CertificadotextField.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
-                            CertificadotextField.setEnabled(false);
+                        if (operacionBuscada.getCertificado() != null) {
+                            CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                            CertificadoLabelDesc.setEnabled(false);
                             CertificadoagregarButton.setVisible(false);
                             CertificadosacarButton.setVisible(true);
                         } else {
-                            CertificadotextField.setText("");
-                            CertificadotextField.setEnabled(true);
+                            CertificadoLabelDesc.setText("");
+                            CertificadoLabelDesc.setEnabled(true);
                             CertificadoagregarButton.setVisible(true);
                             CertificadosacarButton.setVisible(false);
                         }
@@ -214,6 +227,9 @@ public class FrmNewOperaciones extends JFrame {
 
                 try {
                     OperacionController controller = OperacionController.getInstance();
+
+                    operacionesDelSocioModelo.delAll();
+
                     OperacionesList.setModel(operacionesDelSocioModelo);
 
                     List<Operacion> operaciones = controller.getOperacionPorSocio(Integer.parseInt(BuscarDertextField.getText()));
@@ -267,7 +283,7 @@ public class FrmNewOperaciones extends JFrame {
 
                     CUITtextField.setText("");
                     EstadotextField.setText("");
-                    CertificadotextField.setText("");
+                    CertificadoLabelDesc.setText("");
                     FechatextField.setText("");
                     FechaDeVencimientotextField.setText("");
                     MontotextField.setText("");
@@ -289,7 +305,7 @@ public class FrmNewOperaciones extends JFrame {
                     IzqbuscarButton.setEnabled(false);
                     EstadotextField.setVisible(false);
                     CertificadoSecc.setVisible(false);
-                    CertificadoLabel.setVisible(false);
+                    CertificadoLabelDesc.setVisible(false);
                     EstadoLabel.setVisible(false);
                 }
             }
@@ -337,7 +353,7 @@ public class FrmNewOperaciones extends JFrame {
                     IzqbuscarButton.setEnabled(true);
                     EstadotextField.setVisible(true);
                     CertificadoSecc.setVisible(true);
-                    CertificadoLabel.setVisible(true);
+                    CertificadoLabelDesc.setVisible(true);
                     EstadoLabel.setVisible(true);
                     AgregarState.setCurrent("Nada");
                 } catch (Exception exception) {
@@ -359,7 +375,7 @@ public class FrmNewOperaciones extends JFrame {
                 AgregarState.setCurrent("Nada");
                 EstadotextField.setVisible(true);
                 CertificadoSecc.setVisible(true);
-                CertificadoLabel.setVisible(true);
+                CertificadoLabelDesc.setVisible(true);
                 EstadoLabel.setVisible(true);
                 BuscarIzqtextField.setText("");
             }
@@ -378,6 +394,8 @@ public class FrmNewOperaciones extends JFrame {
                         int Tipo = 0;
                         int id = operacionBuscada.getSubtipoOperacion().getTipoOperacion().getId();
 
+                        BuscarDertextField.setText("");
+
                         if (id == 1) {
                             Tipo = 1;
                             //Tipo1 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
@@ -389,15 +407,28 @@ public class FrmNewOperaciones extends JFrame {
                             FechatextField.setText(operacionBuscada.getFecha().toString());
                             FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                             TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
-                            // CUITFirmantetextField.setText(operacionController.get);
-                            // FechadeCobrotextField.setText();
-                            // TasaDeDescuentotextField.setText();
+
+                            CUITFirmantetextField.setText(((Tipo1) operacionBuscada).getCuitDelFirmante());
+                            FechadeCobrotextField.setText(String.valueOf(((Tipo1) operacionBuscada).getFechaDeCobro()));
+                            TasaDeDescuentotextField.setText(String.valueOf(((Tipo1) operacionBuscada).getTasaDeDescuento()));
+
                             Tipo1Secc.setVisible(true);
                             Tipo1Label.setVisible(true);
                             Tipo2Secc.setVisible(false);
                             Tipo2Label.setVisible(false);
                             Tipo3Secc.setVisible(false);
                             Tipo3Label.setVisible(false);
+                            if (operacionBuscada.getCertificado() != null) {
+                                CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                                CertificadoLabelDesc.setEnabled(false);
+                                CertificadoagregarButton.setVisible(false);
+                                CertificadosacarButton.setVisible(true);
+                            } else {
+                                CertificadoLabelDesc.setText("");
+                                CertificadoLabelDesc.setEnabled(true);
+                                CertificadoagregarButton.setVisible(true);
+                                CertificadosacarButton.setVisible(false);
+                            }
                         } else if (id == 2 ) {
                             Tipo = 2;
                             //Tipo2 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
@@ -409,12 +440,26 @@ public class FrmNewOperaciones extends JFrame {
                             FechatextField.setText(operacionBuscada.getFecha().toString());
                             FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                             TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+
+                            BancotextField.setText(String.valueOf(((Tipo2) operacionBuscada).getRazonSocialEmpresa()));
+
                             Tipo1Secc.setVisible(false);
                             Tipo1Label.setVisible(false);
                             Tipo2Secc.setVisible(true);
                             Tipo2Label.setVisible(true);
                             Tipo3Secc.setVisible(false);
                             Tipo3Label.setVisible(false);
+                            if (operacionBuscada.getCertificado() != null) {
+                                CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                                CertificadoLabelDesc.setEnabled(false);
+                                CertificadoagregarButton.setVisible(false);
+                                CertificadosacarButton.setVisible(true);
+                            } else {
+                                CertificadoLabelDesc.setText("");
+                                CertificadoLabelDesc.setEnabled(true);
+                                CertificadoagregarButton.setVisible(true);
+                                CertificadosacarButton.setVisible(false);
+                            }
                         } else if (id == 3) {
                             Tipo = 3;
                             //Tipo3 operacionBuscadaTipoAdecuado = controller.getOperacionSafely(Integer.parseInt(BuscarIzqtextField.getText()));
@@ -426,12 +471,30 @@ public class FrmNewOperaciones extends JFrame {
                             FechatextField.setText(operacionBuscada.getFecha().toString());
                             FechaDeVencimientotextField.setText(operacionBuscada.getFechaVencimiento().toString());
                             TipoDeOperacioncomboBox.setSelectedIndex(operacionBuscada.getSubtipoOperacion().getId() - 1);
+
+                            EntidadtextField.setText(String.valueOf(((Tipo3) operacionBuscada).getEntidad()));
+                            TasatextField.setText(String.valueOf(((Tipo3) operacionBuscada).getTasa()));
+                            FechaDeAcreditaciontextField.setText(String.valueOf(((Tipo3) operacionBuscada).getFechaDeAcreditacion()));
+                            CantidadCuotastextField.setToolTipText(String.valueOf(((Tipo3) operacionBuscada).getCantidadCuotas()));
+                            SistemadeAmortizaciontextField.setText(((Tipo3) operacionBuscada).getSistemaAmortizacion());
+
                             Tipo1Secc.setVisible(false);
                             Tipo1Label.setVisible(false);
                             Tipo2Secc.setVisible(false);
                             Tipo2Label.setVisible(false);
                             Tipo3Secc.setVisible(true);
                             Tipo3Label.setVisible(true);
+                            if (operacionBuscada.getCertificado() != null) {
+                                CertificadoLabelDesc.setText(String.valueOf(operacionBuscada.getCertificado().getNumeroCertificado()));
+                                CertificadoLabelDesc.setEnabled(false);
+                                CertificadoagregarButton.setVisible(false);
+                                CertificadosacarButton.setVisible(true);
+                            } else {
+                                CertificadoLabelDesc.setText("");
+                                CertificadoLabelDesc.setEnabled(true);
+                                CertificadoagregarButton.setVisible(true);
+                                CertificadosacarButton.setVisible(false);
+                            }
                         }
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -472,9 +535,13 @@ public class FrmNewOperaciones extends JFrame {
 
                 } catch (Exception exception) {
                     exception.printStackTrace();
+                    JOptionPane.showMessageDialog(
+                        CertificadoagregarButton,
+                        exception.getMessage());
                 }
-            }
-        });
+
+                }
+            });
     }
 
 }
