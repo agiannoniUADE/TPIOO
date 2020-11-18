@@ -70,9 +70,9 @@ public class OperacionController {
         int lastId = opeacionT1Dao.getLastInsertId() + 1;
         operacion.setId(lastId);
         opeacionT1Dao.save(operacion);
-        Logger logger=Logger.getInstance();
+        Logger logger = Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.INGRESADO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(), TipoLog.OPERACIONES, EstadoOperacion.INGRESADO.toString(), EstadoOperacion.INGRESADO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
 
@@ -125,10 +125,10 @@ public class OperacionController {
         operacion.setCertificado(certificado);
 
         opeacionT1Dao.update(operacion);
-    //cambio estado, ingresado a cert-emitido
-        Logger logger=Logger.getInstance();
+        //cambio estado, ingresado a cert-emitido
+        Logger logger = Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.CERTIFICADO_EMITIDO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(), TipoLog.OPERACIONES, EstadoOperacion.INGRESADO.toString(), EstadoOperacion.CERTIFICADO_EMITIDO.toString(), LocalDate.now(), Usuario.loggedUser);
 
     }
 
@@ -165,9 +165,9 @@ public class OperacionController {
 
         opeacionT1Dao.update(operacion);
 
-        Logger logger=Logger.getInstance();
+        Logger logger = Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.MONETIZADO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(), TipoLog.OPERACIONES, EstadoOperacion.INGRESADO.toString(), EstadoOperacion.MONETIZADO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
     public void facturarComisiones() throws Exception {
@@ -302,8 +302,8 @@ public class OperacionController {
         return getOperacionPorSocio(socio.getId())
             .stream()
             .filter(x -> x.getEstado() == EstadoOperacion.MONETIZADO
-                    && x.getFecha().compareTo(inicio) >= 0
-                    && x.getFecha().compareTo(fin) <= 0)
+                && x.getFecha().compareTo(inicio) >= 0
+                && x.getFecha().compareTo(fin) <= 0)
             .collect(Collectors.toList());
     }
 
