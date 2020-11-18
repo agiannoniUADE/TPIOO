@@ -390,4 +390,13 @@ public class OperacionController {
     public void updateOperacion(Operacion op) throws Exception {
         opeacionT1Dao.update(op);
     }
+
+    public void guardarDesembolso(int idOperacion, Desembolso desembolso) throws Exception {
+
+        Operacion operacion = (Operacion) this.getOperacionSafely(idOperacion);
+
+        operacion.setDesembolso(desembolso);
+
+        opeacionT1Dao.update(operacion);
+    }
 }

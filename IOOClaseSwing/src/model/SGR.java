@@ -14,6 +14,7 @@ public class SGR {
     public SGR() {
         socios = new ArrayList<>();
         aportes = new ArrayList<>();
+        desembolsos = new ArrayList<>();
     }
 
     /**
@@ -47,6 +48,20 @@ public class SGR {
 
     private List<Socio> socios;
 
+    public void setSocios(List<Socio> socios) {
+        this.socios = socios;
+    }
+
+    public List<Desembolso> getDesembolsos() {
+        return desembolsos;
+    }
+
+    public void setDesembolsos(List<Desembolso> desembolsos) {
+        this.desembolsos = desembolsos;
+    }
+
+    private List<Desembolso> desembolsos;
+
 
     public List<Socio> getSocios() {
         return socios;
@@ -70,6 +85,13 @@ public class SGR {
         int id = aportes.size() + 1;
         aporte.setId(id);
         this.aportes.add(aporte);
+        return id;
+    }
+
+    public int addDesembolsos(Desembolso obj) {
+        int id = desembolsos.size() + 1;
+        obj.setId(id);
+        this.desembolsos.add(obj);
         return id;
     }
 

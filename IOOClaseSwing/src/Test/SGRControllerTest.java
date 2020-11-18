@@ -75,5 +75,13 @@ public class SGRControllerTest {
 
         target.agregarAporte(a);
     }
+
+
+    @Test
+    void desembolso_sucess() throws Exception {
+        target.HacerDesembolso(11);
+    }
+
+
 }
 

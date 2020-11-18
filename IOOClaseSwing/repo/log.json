@@ -8,3 +8,4 @@
 {"id":8,"idEntidad":1,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1"}
 {"id":9,"idEntidad":5,"estadoAnterior":"POSTULANTE_A_SOCIO","estadoActual":"SOCIO_PLENO","tipoLog":"SOCIOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"1"}
 {"id":10,"idEntidad":12,"estadoAnterior":"INGRESADO","estadoActual":"INGRESADO","tipoLog":"OPERACIONES","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"usuario1"}
+{"id":11,"idEntidad":5,"estadoAnterior":"INGRESADO","estadoActual":"CONTROLADO","tipoLog":"DOCUMENTOS","fecha":{"year":2020,"month":11,"day":18},"nombreUsuario":"frodriguez"}

@@ -4,6 +4,8 @@ import DAO.SGRDao;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
+
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +19,7 @@ public class SGRController {
 
     public static SGRController getInstance() throws Exception {
         if (instance == null) {
-            instance= new SGRController();
+            instance = new SGRController();
         }
         return instance;
     }
@@ -33,7 +35,7 @@ public class SGRController {
         dao.save(s);
     }
 
-    public  SGR GetSGR() throws Exception {
+    public SGR GetSGR() throws Exception {
         SGR sgr = (SGR) dao.search(1);
         List<Socio> sociosProtectores = (List<Socio>) sociosProtectorDao.getAll();
         List<Socio> sociosParticipes = (List<Socio>) sociosParticipeDao.getAll();
@@ -61,7 +63,38 @@ public class SGRController {
 
         return sgr.getAportes()
             .stream()
-            .filter(x-> x.getSocio().getCuit().equals(cuit))
+            .filter(x -> x.getSocio().getCuit().equals(cuit))
             .collect(Collectors.toList());
+    }
+
+    public void HacerDesembolso(int idOperacion) throws Exception {
+
+        OperacionController operacionController = OperacionController.getInstance();
+
+        Operacion operacion = (Operacion) operacionController.getOperacionSafely(idOperacion);
+
+        if (operacion == null) {
+            throw new Exception("la operacion no existe.");
+        }
+
+        if (operacion.getEstado() != EstadoOperacion.MONETIZADO) {
+            throw new Exception("la operacion debe estar monetizada'.");
+        }
+
+        if (operacion.getFechaVencimiento().compareTo(LocalDate.now()) > 0) {
+            throw new Exception("la operacion debe estar vencida.");
+        }
+        Desembolso desembolso = new Desembolso();
+        desembolso.setMontoAdeudado(operacion.getMora());
+        desembolso.setIdOperacion(operacion.getId());
+
+        SGR sgr = GetSGR();
+        int id = sgr.addDesembolsos(desembolso);
+        dao.update(sgr);
+
+        desembolso.setId(id);
+
+        operacionController.guardarDesembolso(idOperacion, desembolso);
+
     }
 }

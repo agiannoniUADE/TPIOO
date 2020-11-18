@@ -28,6 +28,16 @@ public class Desembolso {
      */
     private float montoAdeudado;
 
+    public int getIdOperacion() {
+        return idOperacion;
+    }
+
+    public void setIdOperacion(int idOperacion) {
+        this.idOperacion = idOperacion;
+    }
+
+    private int idOperacion;
+
 
     /**
      * @param id
