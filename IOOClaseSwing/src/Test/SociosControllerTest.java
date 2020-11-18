@@ -59,10 +59,10 @@ public class SociosControllerTest {
 
         int id = insertSocio();
         String cuit = "202020";
-        String razonSocial = "TEST";
+        String razonSocial = "Maderera Las flores SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Manufactura";
-        TipoSocio tipoSocio = TipoSocio.PARTICIPE;
+        TipoSocio tipoSocio = TipoSocio.PROTECTOR;
         String direccion = "FAKE street 123";
         String telefono = "428123132";
         String email = "info@test.com";
@@ -109,11 +109,11 @@ public class SociosControllerTest {
     private int insertSocio() throws Exception {
 
         TipoOperacionController tipoOperacionController = TipoOperacionController.getInstance();
-        String cuit = "1212";
-        String razonSocial = "Lavadero SRL";
+        String cuit = "1234";
+        String razonSocial = "Yerba La estaca SRL";
         LocalDate inicioActividad = LocalDate.now();
         String actividadPrincipal = "Servicio";
-        TipoSocio tipoSocio = TipoSocio.PARTICIPE;
+        TipoSocio tipoSocio = TipoSocio.PROTECTOR;
         String direccion = "Av. de mayo 341";
         String telefono = "428123132";
         String email = "info@lavadero.com";

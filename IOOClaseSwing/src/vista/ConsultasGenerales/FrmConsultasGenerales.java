@@ -3,6 +3,7 @@ package vista.ConsultasGenerales;
 import Controllers.OperacionController;
 import Controllers.SocioController;
 import Controllers.TipoOperacionController;
+import model.Operacion;
 import model.TipoOperacion;
 
 
@@ -11,6 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 public class FrmConsultasGenerales extends JFrame {
 
@@ -90,7 +92,7 @@ public class FrmConsultasGenerales extends JFrame {
                 } else if (Selected == 1) {
                     Param1Secc.setVisible(true);
                     Param1textField.setText("");
-                    Param1Label.setText("Operacion ID");
+                    Param1Label.setText("CUIT");
 
                     Param2Secc.setVisible(true);
                     Param2textField.setText("Fecha Desde");
@@ -168,7 +170,7 @@ public class FrmConsultasGenerales extends JFrame {
                     if (Selected == 0) {
                         DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
                         float result = operacionController.getComisionDeChequesPorFecha(LocalDate.parse(Param1textField.getText(),formato));
-
+                        resultTextArea.setText("");
                         resultTextArea.append(String.valueOf(result));
                         //GetOperacionesAvaladas
                     } else if (Selected == 1) {
@@ -179,7 +181,13 @@ public class FrmConsultasGenerales extends JFrame {
                             LocalDate Desde = LocalDate.parse(Param2textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                             LocalDate Hasta = LocalDate.parse(Param3textField.getText(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
 
-                            controller2.getOperacionesMonetizadasPorSocio(Integer.parseInt(Param1textField.getText()), Desde, Hasta);
+                            List<Operacion> lista = controller2.operacionesMonetizadasDeUnsocioEntreFechas(String.valueOf(Param1textField.getText()), Desde, Hasta);
+
+                            resultTextArea.setText("");
+
+                            for (Operacion op : lista){
+                                resultTextArea.append(op.getId()+ " | ");
+                            }
 
                         } catch (Exception exception) {
                             exception.printStackTrace();

@@ -47,8 +47,8 @@ public class SGRControllerTest {
        a2.setRetirado(false);
        List<Aporte> aportes = new ArrayList<>();
 
-       aportes.add(a);
-       aportes.add(a2);
+       //aportes.add(a);
+       //aportes.add(a2);
        //fin aportes
        s.setAportes(aportes);
 

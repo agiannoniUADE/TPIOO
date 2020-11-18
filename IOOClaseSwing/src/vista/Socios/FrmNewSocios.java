@@ -744,7 +744,10 @@ public class FrmNewSocios extends JFrame {
                     setUI(socioComprador.getCuit());
 
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null,
+                        e1.getMessage(),
+                        "Mensaje",
+                        JOptionPane.ERROR_MESSAGE);
                 }
                 AccionistasCUITtextField.setText("");
                 cantidadTextField.setText("");
@@ -949,7 +952,10 @@ public class FrmNewSocios extends JFrame {
                     controller.cambiarEstadoSocio(CUITtextField.getText());
                     JOptionPane.showMessageDialog(null, "Socio Actualizado correctamente");
                 } catch (Exception e1) {
-                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null,
+                        e1.getMessage(),
+                        "Mensaje",
+                        JOptionPane.ERROR_MESSAGE);
                 }
             }
         });

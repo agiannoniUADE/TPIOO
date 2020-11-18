@@ -132,7 +132,6 @@ public class OperacionController {
 
     }
 
-
     public void pasarAMonetizada(int idOperacion) throws Exception {
 
         float tasaComision;
@@ -231,15 +230,6 @@ public class OperacionController {
     }
 
     /**
-     * @param idSocio
-     * @param fechaDesde
-     * @param fechaHasta
-     */
-    public void getOperacionesMonetizadasPorSocio(int idSocio, LocalDate fechaDesde, LocalDate fechaHasta) {
-        // TODO implement here
-    }
-
-    /**
      * @param tamanioEmpresa
      * @param fechaDesde
      * @param fechaHasta
@@ -295,7 +285,7 @@ public class OperacionController {
     /**
      * Las operaciones avaladas a nombre de un socio, en estado monetizadas en un período de tiempo
      */
-    public List<Operacion> operacionesDeUnsocioPorEstado(String cuit, LocalDate inicio, LocalDate fin) throws Exception {
+    public List<Operacion> operacionesMonetizadasDeUnsocioEntreFechas(String cuit, LocalDate inicio, LocalDate fin) throws Exception {
         Socio socio = SocioController.getInstance().getSocioByCuit(cuit);
         if (socio == null)
             throw new Exception("El socio no existe");
