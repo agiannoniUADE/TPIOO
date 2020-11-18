@@ -3,15 +3,17 @@ package Controllers;
 import DAO.GenericDAO;
 import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
-import com.sun.javadoc.Doc;
 import model.*;
 import utils.Logger;
-import java.util.ArrayList;
 
 import java.io.FileNotFoundException;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.List;
+
+
 
 public class SocioController {
 
@@ -299,15 +301,15 @@ public class SocioController {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
 
-        List docs = socio.documentosRegistro;
+        List docs = socio.getDocumentosRegistro();
         if (socio == null){
             throw  new  Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
         for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.documentosRegistro.get(i).getNombre())){
-                if(socio.documentosRegistro.get(i).getEstado() == EstadoDocumentoRegistro.INGRESADO) {
-                    socio.documentosRegistro.get(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
+            if(doc.equals(socio.getDocumentoRegistro(i).getNombre())){
+                if(socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
                     dao.update(socio);
                     break;
                 }
@@ -317,28 +319,21 @@ public class SocioController {
         Logger logger = Logger.getInstance();
         logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), socio.getCuit());
 
-                
-
-
-
-
-
-
         }
 
-    public void cambioEstadoDocumentoRechazado (String cuit, String doc) throws Exception {
+    public void cambioEstadoDocumentoRechazo (String cuit, String doc) throws Exception {
         SocioController sc = SocioController.getInstance();
         Socio socio = sc.getSocioByCuit(cuit);
 
-        List docs = socio.documentosRegistro;
+        List docs = socio.getDocumentosRegistro();
         if (socio == null){
             throw  new  Exception("El Socio no existe");
         }
         GenericDAO dao = socio.getTipoSocio() == TipoSocio.PARTICIPE ? socioParticipeDao : socioProtectorDao;
         for(int i =0; i <= docs.size(); i++ ){
-            if(doc.equals(socio.documentosRegistro.get(i).getNombre())){
-                if(socio.documentosRegistro.get(i).getEstado() == EstadoDocumentoRegistro.INGRESADO) {
-                    socio.documentosRegistro.get(i).setEstado(EstadoDocumentoRegistro.RECHAZADO);
+            if(doc.equals(socio.getDocumentoRegistro(i).getNombre())){
+                if(socio.getDocumentoRegistro(i).getEstado().equals(EstadoDocumentoRegistro.INGRESADO)) {
+                    socio.getDocumentoRegistro(i).setEstado(EstadoDocumentoRegistro.CONTROLADO);
                     dao.update(socio);
                     break;
                 }
@@ -348,9 +343,7 @@ public class SocioController {
         Logger logger = Logger.getInstance();
         logger.log(socio.getId(), TipoLog.DOCUMENTOS,EstadoDocumentoRegistro.INGRESADO.toString(),EstadoDocumentoRegistro.RECHAZADO.toString(),LocalDate.now(),"usuario1");
 
-
     }
-
 
 
     public void cambiarEstadoSocio(String cuit) throws Exception {

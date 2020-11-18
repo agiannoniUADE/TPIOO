@@ -90,15 +90,17 @@ public class SociosControllerTest {
     void ChangeStatusDoc_Success() throws Exception {
 
 
-        target.cambioEstadoDocumentoOk("1212", "Documento 1");
+        target.cambioEstadoDocumentoOk("1212", "Documento 2");
     }
 
+   /*
     @Test
     void ChangeStatusDocRechazo_Success() throws Exception {
 
 
-        target.cambioEstadoDocumentoRechazado("1212", "Documento 2");
+        target.cambioEstadoDocumentoRechao("1212", "Documento 2");
     }
+    */
 
 
     private int insertSocio() throws Exception {
