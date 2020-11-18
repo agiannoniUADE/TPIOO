@@ -616,8 +616,29 @@ public class FrmNewSocios extends JFrame {
                 }
 
 
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
             }
-        });
+
+            });
+
 
         Accionistaslist.addListSelectionListener(new ListSelectionListener() {
             @Override
@@ -821,13 +842,34 @@ public class FrmNewSocios extends JFrame {
                     }
                 }
 
-                SocioActual.removeAccionista(SocioActual.getAccionista(AccionistasCUITtextField.getText()));
+                SocioActual.removeAccionista(SocioActual.getAccionista(AccionCUITtextField.getText()));
 
                 try {
                     socioController.updateSocio(SocioActual);
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+
+                Socio socio = null;
+                try {
+                    socio = socioController.getSocioParticipe(CUITtextField.getText());
+                    AccionistasModelo = new MiListaModel();
+                    Accionistaslist.setModel(AccionistasModelo);
+
+
+
+
+
+                    for (Accionista item : socio.getAccionistas()) {
+                        AccionistasModelo.add(item.getCuit());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                AccionCUITtextField.setText("");
+                AccionesRazonSocialtextField.setText("");
+                porcentajeTextField.setText("");
+
 
             }
         });
@@ -955,6 +997,7 @@ public class FrmNewSocios extends JFrame {
                 }
             }
         });
+
     }
 
     private void setUI(String cuit) throws Exception {
