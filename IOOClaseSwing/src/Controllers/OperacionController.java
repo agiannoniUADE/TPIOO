@@ -1,7 +1,7 @@
 package Controllers;
 
 import DAO.OpeacionT1Dao;
-import com.sun.xml.internal.xsom.impl.scd.Iterators;
+//import com.sun.xml.internal.xsom.impl.scd.Iterators;
 import model.*;
 import utils.Logger;
 
@@ -197,7 +197,7 @@ public class OperacionController {
     public List<Operacion> getOperacionPorSocio(int id) throws Exception {
         return (List<Operacion>) opeacionT1Dao.getAll()
             .stream()
-            .filter((x -> ((Operacion) x).getId() == id))
+            .filter((x -> ((Operacion) x).getSocioParticipe().getId() == id))
             .collect(Collectors.toList());
     }
 
@@ -383,8 +383,12 @@ public class OperacionController {
         if (tipoOperacion == 1)
             return (Tipo1) opeacionT1Dao.search(id, Tipo1.class);
         if (tipoOperacion == 2)
-            return (Tipo1) opeacionT1Dao.search(id, Tipo2.class);
+            return (Tipo2) opeacionT1Dao.search(id, Tipo2.class);
         else
-            return (Tipo1) opeacionT1Dao.search(id, Tipo3.class);
+            return (Tipo3) opeacionT1Dao.search(id, Tipo3.class);
+    }
+
+    public void updateOperacion(Operacion op) throws Exception {
+        opeacionT1Dao.update(op);
     }
 }
