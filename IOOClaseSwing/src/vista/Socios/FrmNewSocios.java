@@ -101,18 +101,17 @@ public class FrmNewSocios extends JFrame {
     private JRadioButton DocumentoObligatorioRadioButton;
     private JLabel DocumentosIDLabel;
     private JComboBox DocumentosTipocomboBox;
-    private JLabel DocumentoEstadoActualLabel;
-    private JTextField DocumentoEstadoDeseadotextField;
     private JTable Accionistastable;
     private JLabel accionesTextField;
     private JTextField cantidadTextField;
     private JTextField porcentajeTextField;
     private JTextPane textPane1;
+    private JLabel documentoEstadoLabel;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
-    private MiListaModel AccionistasModelo = new MiListaModel();
-    private MiListaModel DocumentosModelo = new MiListaModel();
+    private MiListaModel AccionistasModelo;
+    private MiListaModel DocumentosModelo;
 
     private static Socio getSocioFrmfunc(String TipoDeSocio, String CUIT, SocioController Controller) {
 
@@ -342,6 +341,10 @@ public class FrmNewSocios extends JFrame {
         buscarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                AccionistasModelo = new MiListaModel();
+                DocumentosModelo = new MiListaModel();
+
                 try {
                     Socio s = new Socio();
 
@@ -638,7 +641,8 @@ public class FrmNewSocios extends JFrame {
                         indice = 2;
 
                     DocumentosTipocomboBox.setSelectedIndex(indice);
-
+                    DocumentoObligatorioRadioButton.setSelected(docu.isObligatorio());
+                    documentoEstadoLabel.setText(docu.getEstado().toString());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -807,7 +811,39 @@ public class FrmNewSocios extends JFrame {
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
+            }
+        });
+        cambioDeEstadoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    SocioController controller = SocioController.getInstance();
+                    int input = JOptionPane.showConfirmDialog(null, "Desea aprobar el documento?", "Atencion",
+                        JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
+                    if(input == JOptionPane.YES_OPTION){
+                        controller.cambioEstadoDocumentoOk(CUITtextField.getText(),DocumentosNombretextField.getText());
+                    }
+                    if(input == JOptionPane.YES_NO_CANCEL_OPTION){
+                        controller.cambioEstadoDocumentoRechazo(CUITtextField.getText(),DocumentosNombretextField.getText());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        postularseButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    SocioController controller = SocioController.getInstance();
+                    controller.cambiarEstadoSocio(CUITtextField.getText());
+                    JOptionPane.showMessageDialog(null, "Socio Actualizado correctamente");
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
             }
         });
     }
@@ -834,6 +870,7 @@ public class FrmNewSocios extends JFrame {
             State.standby();
             Accionistaslist.setListData(socio.getAccionistas().toArray());
             accionesTextField.setText(String.valueOf(socio.getAccion()));
+
         } catch (Exception exception) {
             exception.printStackTrace();
         }

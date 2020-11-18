@@ -313,7 +313,7 @@ public class SocioController {
             }
         }
         Logger logger = Logger.getInstance();
-        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), socio.getCuit());
+        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.CONTROLADO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
     public void cambioEstadoDocumentoRechazo(String cuit, String doc) throws Exception {
@@ -339,7 +339,6 @@ public class SocioController {
 
 
     public void cambiarEstadoSocio(String cuit) throws Exception {
-
 
         SocioController sc = SocioController.getInstance();
 
@@ -367,7 +366,7 @@ public class SocioController {
 
         Logger logger = Logger.getInstance();
 
-        logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), socio.getCuit());
+        logger.log(socio.getId(), TipoLog.SOCIOS, EstadoSocio.POSTULANTE_A_SOCIO.toString(), EstadoSocio.SOCIO_PLENO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
     private int getLastSocioId() throws Exception {
