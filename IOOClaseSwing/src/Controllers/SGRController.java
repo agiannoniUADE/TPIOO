@@ -5,6 +5,7 @@ import DAO.SocioParticipeDao;
 import DAO.SocioProtectorDao;
 import model.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class SGRController {
 
@@ -45,7 +46,7 @@ public class SGRController {
     public void RetirarAportes(int id) throws Exception {
         SGR sgr = GetSGR();
         sgr.retirarAporte(id);
-        dao.update(1);
+        dao.update(sgr);
     }
 
     public int agregarAporte(Aporte obj) throws Exception {
@@ -55,5 +56,12 @@ public class SGRController {
         return id;
     }
 
-    //TODO get aportes por socio protector.
+    public List<Aporte> listarAportesXsocio(String cuit) throws Exception {
+        SGR sgr = GetSGR();
+
+        return sgr.getAportes()
+            .stream()
+            .filter(x-> x.getSocio().getCuit().equals(cuit) && x.FueRetirado() == false)
+            .collect(Collectors.toList());
+    }
 }

@@ -1,5 +1,6 @@
 package vista.Socios;
 
+import Controllers.SGRController;
 import Controllers.SocioController;
 import DAO.GenericDAO;
 //import com.sun.javafx.css.ParsedValueImpl;
@@ -16,6 +17,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ComponentAdapter;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -119,6 +121,7 @@ public class FrmNewSocios extends JFrame {
     private MiListaModel AccionistasModelo;
     private MiListaModel DocumentosModelo;
     private MiListaModel contragarantiasModelo;
+    private MiListaModel AportesModelo;
 
     private static Socio getSocioFrmfunc(String TipoDeSocio, String CUIT, SocioController Controller) {
 
@@ -178,6 +181,15 @@ public class FrmNewSocios extends JFrame {
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
 
+        //Seteo la vista socio protector por defecto
+
+        ContragarantiasSecc.setVisible(true);
+        Contragarantiaslist.setVisible(true);
+        AportesSecc.setVisible(false);
+        Aporteslist.setVisible(false);
+        contragarantiasButton.setVisible(true);
+        aportesButton.setVisible(false);
+
         editarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -231,6 +243,7 @@ public class FrmNewSocios extends JFrame {
                     DirecciontextField.setText("");
                     TelefonotextField.setText("");
                     EmailtextField.setText("");
+                    lineaLabel.setText("");
 
                 }
             }
@@ -451,6 +464,16 @@ public class FrmNewSocios extends JFrame {
                                 DocumentosModelo.add(item.getNombre());
                             }
 
+                            SGRController sgrController = SGRController.getInstance();
+
+                            AportesModelo = new MiListaModel();
+
+                            for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                                AportesModelo.add(String.valueOf(item.getMonto()));
+                            }
+
+                            Aporteslist.setModel(AportesModelo);
+
                         } catch (Exception k) {
                             k.printStackTrace();
                         }
@@ -591,7 +614,7 @@ public class FrmNewSocios extends JFrame {
 
                 String cuit = AccionCUITtextField.getText();
                 String razonSocial = AccionesRazonSocialtextField.getText();
-                int porcentaje = Integer.parseInt(porcentajeTextField.getText());
+                float porcentaje = Float.parseFloat(porcentajeTextField.getText());
 
 
                 Accionista nuevoAccionista = new Accionista(
@@ -605,6 +628,7 @@ public class FrmNewSocios extends JFrame {
                     Socio SocioActual = socioController.getSocioParticipe(Integer.parseInt(IDDescrLabel.getText()));
                     SocioActual.agregarAccionista(nuevoAccionista);
                     socioController.updateSocio(SocioActual);
+
 
                     JOptionPane.showMessageDialog(
                         borrarButton,
@@ -953,6 +977,127 @@ public class FrmNewSocios extends JFrame {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+        TipoDeSociocomboBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (TipoDeSociocomboBox.getSelectedItem().toString().equals("Protector")) {
+                    ContragarantiasSecc.setVisible(false);
+                    Contragarantiaslist.setVisible(false);
+                    AportesSecc.setVisible(true);
+                    Aporteslist.setVisible(true);
+                    contragarantiasButton.setVisible(false);
+                    aportesButton.setVisible(true);
+
+                } else {
+                    ContragarantiasSecc.setVisible(true);
+                    Contragarantiaslist.setVisible(true);
+                    AportesSecc.setVisible(false);
+                    Aporteslist.setVisible(false);
+                    contragarantiasButton.setVisible(true);
+                    aportesButton.setVisible(false);
+
+                }
+            }
+        });
+        AporteRealizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                float monto = Float.valueOf(AporteMontotextField.getText());
+                DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                LocalDate fecha = LocalDate.parse(AporteFechaDeIniciotextField.getText(), formato);
+                try {
+                    socioController = SocioController.getInstance();
+                    Aporte aporte = new Aporte();
+                    aporte.setFechaInicio(fecha);
+                    aporte.setSocio(socioController.getSocioProtector(CUITtextField.getText()));
+                    aporte.setRetirado(false);
+                    aporte.setMonto(monto);
+
+                    SGRController sgrController = SGRController.getInstance();
+
+                    sgrController.agregarAporte(aporte);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Aporte agregado correctamente",
+                        "Mensaje",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    AporteMontotextField.setText("");
+                    AporteFechaDeIniciotextField.setText("");
+                    AportesModelo = new MiListaModel();
+
+                    for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                        AportesModelo.add(String.valueOf(item.getMonto()));
+                    }
+
+                    Aporteslist.setModel(AportesModelo);
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        Aporteslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                SGRController sgrController = null;
+                try {
+                    sgrController = SGRController.getInstance();
+
+                    int index = Aporteslist.getSelectedIndex() + 1;
+
+                    Aporte aporte = sgrController.GetSGR().getAporte(index);
+
+                    AporteMontotextField.setText(String.valueOf(aporte.getMonto()));
+                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+                    AporteFechaDeIniciotextField.setText(aporte.getFechaInicio().format(formato));
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
+        });
+        AporteRetirarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SGRController sgrController = null;
+                try {
+                    sgrController = SGRController.getInstance();
+                    int index = Aporteslist.getSelectedIndex() + 1;
+
+                   SGR sgr = sgrController.GetSGR();
+
+                   sgrController.RetirarAportes(index);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Aporte retirado correctamente",
+                        "Mensaje",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    AporteMontotextField.setText("");
+                    AporteFechaDeIniciotextField.setText("");
+                    AportesModelo = new MiListaModel();
+
+                    for (Aporte item : sgrController.listarAportesXsocio(CUITtextField.getText())) {
+                        AportesModelo.add(String.valueOf(item.getMonto()));
+                    }
+
+                    Aporteslist.setModel(AportesModelo);
+
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(null,
+                        e1.getMessage(),
+                        "Mensaje",
+                        JOptionPane.ERROR_MESSAGE);
+                }
+
+
             }
         });
     }

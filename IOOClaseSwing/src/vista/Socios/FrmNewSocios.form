@@ -922,7 +922,7 @@
                   <tabbedpane title="Contragarntias" enabled="false"/>
                 </constraints>
                 <properties>
-                  <visible value="true"/>
+                  <visible value="false"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -944,7 +944,7 @@
                   <tabbedpane title="Aportes" enabled="false"/>
                 </constraints>
                 <properties>
-                  <visible value="false"/>
+                  <visible value="true"/>
                 </properties>
                 <border type="none"/>
                 <children>
@@ -954,7 +954,9 @@
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <model/>
+                    </properties>
                   </component>
                 </children>
               </grid>
