@@ -60,6 +60,10 @@ public class SocioParticipe extends Socio {
     }
 
     public void addContragarantia(Contragarantia obj) {
+        if(this.contragarantias == null){
+            this.contragarantias = new ArrayList<>();
+        }
+
         this.contragarantias.add(obj);
     }
 

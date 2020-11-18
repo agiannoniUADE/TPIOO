@@ -24,4 +24,11 @@ public enum TipoDocumento {
             .findFirst()
             .orElse(null);
     }
+
+    public static TipoDocumento lookUpWithName(final String value) {
+        return Arrays.stream(TipoDocumento.values())
+            .filter(e -> e.name == value)
+            .findFirst()
+            .orElse(null);
+    }
 }

@@ -73,7 +73,7 @@ public class OperacionController {
         opeacionT1Dao.save(operacion);
         Logger logger=Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.INGRESADO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.INGRESADO.toString(),LocalDate.now(), Usuario.loggedUser);
     }
 
 
@@ -129,7 +129,7 @@ public class OperacionController {
     //cambio estado, ingresado a cert-emitido
         Logger logger=Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.CERTIFICADO_EMITIDO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.CERTIFICADO_EMITIDO.toString(),LocalDate.now(), Usuario.loggedUser);
 
     }
 
@@ -168,7 +168,7 @@ public class OperacionController {
 
         Logger logger=Logger.getInstance();
 
-        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.MONETIZADO.toString(),LocalDate.now(),"usuario1");
+        logger.log(operacion.getId(),TipoLog.OPERACIONES,EstadoOperacion.INGRESADO.toString(),EstadoOperacion.MONETIZADO.toString(),LocalDate.now(), Usuario.loggedUser);
     }
 
     public void facturarComisiones() throws Exception {

@@ -1,18 +1,19 @@
 package model;
+
 import java.time.LocalDate;
 
 /**
- * 
+ *
  */
 public class LineaDeCredito {
 
-  public LineaDeCredito(int id, LocalDate fechaVigencia, float montoAsignado) {
-    this.id = id;
-    this.fechaVigencia = fechaVigencia;
-    this.montoAsignado = montoAsignado;
-  }
+    public LineaDeCredito(int id, LocalDate fechaVigencia, float montoAsignado) {
+        this.id = id;
+        this.fechaVigencia = fechaVigencia;
+        this.montoAsignado = montoAsignado;
+    }
 
-  /**
+    /**
      * Default constructor
      */
     public LineaDeCredito() {
@@ -25,17 +26,17 @@ public class LineaDeCredito {
     }
 
     /**
-     * 
+     *
      */
     private int id;
 
     /**
-     * 
+     *
      */
     private LocalDate fechaVigencia;
 
     /**
-     * 
+     *
      */
     private float montoAsignado;
 
@@ -51,30 +52,35 @@ public class LineaDeCredito {
     }
 
 
-
     public int getId() {
-    return id;
-  }
+        return id;
+    }
 
-  public void setId(int id) {
-    this.id = id;
-  }
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
+    public LocalDate getFechaVigencia() {
+        return fechaVigencia;
+    }
 
-  public LocalDate getFechaVigencia() {
-    return fechaVigencia;
-  }
+    public void setFechaVigencia(LocalDate fechaVigencia) {
+        this.fechaVigencia = fechaVigencia;
+    }
 
-  public void setFechaVigencia(LocalDate fechaVigencia) {
-    this.fechaVigencia = fechaVigencia;
-  }
+    public float getMontoAsignado() {
+        return montoAsignado;
+    }
 
-  public float getMontoAsignado() {
-    return montoAsignado;
-  }
+    public void setMontoAsignado(float montoAsignado) {
+        this.montoAsignado = montoAsignado;
+    }
 
-  public void setMontoAsignado(float montoAsignado) {
-    this.montoAsignado = montoAsignado;
-  }
+    @Override
+    public String toString() {
+        return "fechaVigencia: " + fechaVigencia +
+                ", montoAsignado: " + montoAsignado +
+                ", tipoOperacion: " + tipoOperacion.getDescripcion();
+    }
 }

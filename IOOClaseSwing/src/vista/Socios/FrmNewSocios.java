@@ -5,6 +5,7 @@ import DAO.GenericDAO;
 //import com.sun.javafx.css.ParsedValueImpl;
 import model.*;
 import utils.MiListaModel;
+import vista.FrmPrincipal;
 import vista.State;
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
 import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -64,8 +66,6 @@ public class FrmNewSocios extends JFrame {
     private JButton contragarantiasButton;
     private JPanel SocioABM;
     private JPanel ContragarantiasSecc;
-    private JTextField ContragarantiasIDtextField;
-    private JTextField ContragarantiasTipotextField;
     private JTextField ContragarantiasMontotextField;
     private JPanel IzqPanel;
     private JPanel seccABM;
@@ -110,11 +110,15 @@ public class FrmNewSocios extends JFrame {
     private JTextField porcentajeTextField;
     private JTextPane textPane1;
     private JLabel documentoEstadoLabel;
+    private JButton agregarButton2;
+    private JLabel lineaLabel;
+    private JComboBox contragarantiasTipoComboBox;
     private SocioController socioController;
     private State State;
     private FrmNewSocios self;
     private MiListaModel AccionistasModelo;
     private MiListaModel DocumentosModelo;
+    private MiListaModel contragarantiasModelo;
 
     private static Socio getSocioFrmfunc(String TipoDeSocio, String CUIT, SocioController Controller) {
 
@@ -347,6 +351,8 @@ public class FrmNewSocios extends JFrame {
 
                 AccionistasModelo = new MiListaModel();
                 DocumentosModelo = new MiListaModel();
+                contragarantiasModelo = new MiListaModel();
+
 
                 try {
                     Socio s = new Socio();
@@ -376,27 +382,42 @@ public class FrmNewSocios extends JFrame {
                     Accionistaslist.setListData(s.getAccionistas().toArray());
 
                     if (TipoDeSociocomboBox.getSelectedItem().toString() == "Participe") {
-                        LineaDeCreditotextField.setVisible(true);
-                        LineaDeCreditotextField.setEnabled(true);
+                        SocioParticipe participe = socioController.getSocioParticipe(CUITtextField.getText());
+
                         LineaDeCreditoLabel.setVisible(true);
                         LineaDeCreditoLabel.setEnabled(true);
+                        lineaLabel.setVisible(true);
+                        lineaLabel.enable(true);
+                        agregarButton2.setVisible(true);
+                        agregarButton2.setEnabled(true);
+
                         contragarantiasButton.setVisible(true);
                         contragarantiasButton.setEnabled(true);
                         aportesButton.setEnabled(false);
                         aportesButton.setVisible(false);
                         tabbedPane1.setEnabledAt(2, true);
                         tabbedPane1.setEnabledAt(3, false);
+
+                        lineaLabel.setText(participe.getLineaDeCredito().toString());
+
                         try {
-                            Socio socioActual = socioController.getSocioParticipe(CUITtextField.getText());
 
                             Accionistaslist.setModel(AccionistasModelo);
                             Documentoslist.setModel(DocumentosModelo);
+                            Contragarantiaslist.setModel(contragarantiasModelo);
 
-                            for (Accionista item : socioActual.getAccionistas()) {
+                            for (Accionista item : participe.getAccionistas()) {
                                 AccionistasModelo.add(item.getCuit());
                             }
 
-                            for (DocumentoRegistro item : socioActual.getDocumentosRegistro()) {
+                            if (participe.getTipoSocio() == TipoSocio.PARTICIPE) {
+                                for (Contragarantia item : participe.getContragarantias()) {
+                                    contragarantiasModelo.add(item.toString());
+                                }
+                            }
+
+
+                            for (DocumentoRegistro item : participe.getDocumentosRegistro()) {
                                 DocumentosModelo.add(item.getNombre());
                             }
 
@@ -405,10 +426,13 @@ public class FrmNewSocios extends JFrame {
                         }
 
                     } else if (TipoDeSociocomboBox.getSelectedItem().toString() == "Protector") {
-                        LineaDeCreditotextField.setVisible(false);
-                        LineaDeCreditotextField.setEnabled(false);
+
                         LineaDeCreditoLabel.setVisible(false);
                         LineaDeCreditoLabel.setEnabled(false);
+                        lineaLabel.setVisible(false);
+                        lineaLabel.enable(false);
+                        agregarButton2.setVisible(false);
+                        agregarButton2.setEnabled(false);
                         contragarantiasButton.setVisible(false);
                         contragarantiasButton.setEnabled(false);
                         aportesButton.setEnabled(true);
@@ -567,7 +591,7 @@ public class FrmNewSocios extends JFrame {
 
                 String cuit = AccionCUITtextField.getText();
                 String razonSocial = AccionesRazonSocialtextField.getText();
-                int porcentaje =  Integer.parseInt(porcentajeTextField.getText());
+                int porcentaje = Integer.parseInt(porcentajeTextField.getText());
 
 
                 Accionista nuevoAccionista = new Accionista(
@@ -730,14 +754,14 @@ public class FrmNewSocios extends JFrame {
             public void actionPerformed(ActionEvent e) {
 
                 String nombre = DocumentosNombretextField.getText();
-                String usuario = DocumentosUsuariotextField.getText();
+                String usuario = Usuario.loggedUser;
                 boolean obligatorio = DocumentoObligatorioRadioButton.isSelected();
 
                 DocumentoRegistro DocumentoNuevo = new DocumentoRegistro(
                     nombre,
                     usuario,
                     obligatorio,
-                    TipoDocumento.lookUp(DocumentosTipocomboBox.getSelectedItem().toString())
+                    TipoDocumento.lookUpWithName(DocumentosTipocomboBox.getSelectedItem().toString())
                 );
 
                 Socio SocioDoc = new Socio();
@@ -762,6 +786,21 @@ public class FrmNewSocios extends JFrame {
                     exception.printStackTrace();
                 }
 
+                SocioParticipe participe = null;
+                try {
+                    participe = socioController.getSocioParticipe(CUITtextField.getText());
+                    DocumentosModelo = new MiListaModel();
+                    Documentoslist.setModel(DocumentosModelo);
+
+                    for (DocumentoRegistro item : participe.getDocumentosRegistro()) {
+                        DocumentosModelo.add(item.getNombre());
+                    }
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+                documentoEstadoLabel.setText("");
+                DocumentosNombretextField.setText("");
+                DocumentosUsuariotextField.setText("");
             }
         });
         AccionistasborrarButton.addActionListener(new ActionListener() {
@@ -827,11 +866,11 @@ public class FrmNewSocios extends JFrame {
                     int input = JOptionPane.showConfirmDialog(null, "Desea aprobar el documento?", "Atencion",
                         JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
 
-                    if(input == JOptionPane.YES_OPTION){
-                        controller.cambioEstadoDocumentoOk(CUITtextField.getText(),DocumentosNombretextField.getText());
+                    if (input == JOptionPane.YES_OPTION) {
+                        controller.cambioEstadoDocumentoOk(CUITtextField.getText(), DocumentosNombretextField.getText());
                     }
-                    if(input == JOptionPane.YES_NO_CANCEL_OPTION){
-                        controller.cambioEstadoDocumentoRechazo(CUITtextField.getText(),DocumentosNombretextField.getText());
+                    if (input == JOptionPane.YES_NO_CANCEL_OPTION) {
+                        controller.cambioEstadoDocumentoRechazo(CUITtextField.getText(), DocumentosNombretextField.getText());
                     }
                 } catch (Exception e1) {
                     e1.printStackTrace();
@@ -849,6 +888,70 @@ public class FrmNewSocios extends JFrame {
                     JOptionPane.showMessageDialog(null, "Socio Actualizado correctamente");
                 } catch (Exception e1) {
                     e1.printStackTrace();
+                }
+            }
+        });
+        agregarButton2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ModalLineaCredito frame;
+
+                try {
+                    frame = new ModalLineaCredito(CUITtextField.getText());
+                    frame.setVisible(true);
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        ContragarantiasagregarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String tipo = contragarantiasTipoComboBox.getSelectedItem().toString();
+                float monto = Float.valueOf(ContragarantiasMontotextField.getText());
+
+                try {
+                    socioController = SocioController.getInstance();
+
+                    SocioParticipe participe = socioController.getSocioParticipe(CUITtextField.getText());
+
+                    participe.addContragarantia(new Contragarantia(tipo, monto));
+
+                    socioController.updateSocio(participe);
+
+                    JOptionPane.showMessageDialog(null,
+                        "Agregado correctamente.",
+                        "Aviso",
+                        JOptionPane.INFORMATION_MESSAGE);
+
+                    ContragarantiasMontotextField.setText("");
+
+                } catch (Exception e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
+        Contragarantiaslist.addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                SocioController controller;
+                try {
+                    controller = SocioController.getInstance();
+
+
+                    SocioParticipe socio = controller.getSocioParticipe(CUITtextField.getText());
+
+                    int index = Contragarantiaslist.getSelectedIndex();
+
+
+                    Contragarantia contragarantia = socio.getContragarantias().get(index);
+
+                    ContragarantiasMontotextField.setText(String.valueOf(contragarantia.getMonto()));
+                    contragarantiasTipoComboBox.setSelectedItem(contragarantia.getTipo());
+
+                } catch (Exception ex) {
+                    ex.printStackTrace();
                 }
             }
         });

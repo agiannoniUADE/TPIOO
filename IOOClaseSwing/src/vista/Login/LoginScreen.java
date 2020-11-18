@@ -97,17 +97,7 @@ public class LoginScreen extends JFrame {
                         password
                     );
 
-                    if (usuarioController.AgregarNuevoUsuario(nuevoUsuario) > usuarioController.getLastInsertId()) {
-                        FrmPrincipal frame = null;
-                        try {
-                            frame = new FrmPrincipal("Sampo");
-                        } catch (Exception e1) {
-                            e1.printStackTrace();
-                        }
-                        frame.setVisible(true);
-
-
-                    }
+                    usuarioController.AgregarNuevoUsuario(nuevoUsuario);
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }

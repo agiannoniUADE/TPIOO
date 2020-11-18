@@ -340,7 +340,7 @@ public class SocioController {
             }
         }
         Logger logger = Logger.getInstance();
-        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.RECHAZADO.toString(), LocalDate.now(), socio.getCuit());
+        logger.log(socio.getId(), TipoLog.DOCUMENTOS, EstadoDocumentoRegistro.INGRESADO.toString(), EstadoDocumentoRegistro.RECHAZADO.toString(), LocalDate.now(), Usuario.loggedUser);
     }
 
 
